@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-10-29 15:47+0900\n"
+"PO-Revision-Date: 2019-10-14 08:49+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de\n"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:6
+#: data/com.github.lainsce.khronos.desktop.in:3
+msgid "Khronos"
+msgstr "Stundenplan"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:7
+#: data/com.github.lainsce.khronos.desktop.in:4
+msgid "Plot out your own khronos for the week and organize it"
+msgstr ""
+"Stellen Sie Ihren eigenen Stundenplan für die Woche zusammen und "
+"organisieren Sie ihn"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:9
+msgid ""
+"Start organizing each day with the columns and export your khronos away in "
+"an easy way"
+msgstr ""
+"Beginnen Sie die Spalten jeden Tages zu organisieren und exportieren Sie "
+"Ihren Stundenplan auf einfache Weise"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:11
+msgid "Intelligently start building your khronos with the day columns"
+msgstr ""
+"Beginnen Sie intelligent mit dem Aufbau der Tagesspalten Ihres Stundenplanes"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:12
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Beenden Sie jederzeit mit der Tastenkombination Strg + Q"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:18
+msgid "Lains"
+msgstr "Lains"
+
+#: data/com.github.lainsce.khronos.desktop.in:6
+msgid "com.github.lainsce.khronos"
+msgstr "com.github.lainsce.khronos"
+
+#: data/com.github.lainsce.khronos.desktop.in:7
+msgid "Plot;Week;Planning;Khronos;"
+msgstr "Plot;Woche;Planung;Stundenplan;"

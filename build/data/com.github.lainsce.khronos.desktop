@@ -1,0 +1,21 @@
+[Desktop Entry]
+Name[ja]=予定表
+Name[fr]=Planning
+Name[lt]=Tvarkaraštis
+Name[nl_NL]=Tijdschema
+Name[de]=Stundenplan
+Name=Khronos
+Comment=Track each task time in a simple inobtrusive way
+Exec=com.github.lainsce.khronos
+Icon[ja]=com.github.lainsce.khronos
+Icon[fr]=com.github.lainsce.khronos
+Icon[lt]=com.github.lainsce.khronos
+Icon[nl_NL]=com.github.lainsce.khronos
+Icon[de]=com.github.lainsce.khronos
+Icon=com.github.lainsce.khronos
+Keywords=Plot;Planning;Time Tracking;
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Office;
+NoDisplay=false
