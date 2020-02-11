@@ -8,8 +8,8 @@ if 'DESTDIR' not in os.environ:
     schemadir = os.path.join(datadir, 'glib-2.0', 'schemas')
     icondir = os.path.join(datadir, 'icons', 'hicolor')
 
-    print('Compiling gsettings schemas...')
+    print('Compiling gsettings schemas…')
     subprocess.call(['glib-compile-schemas', schemadir])
 
-    print('Rebuilding desktop icons cache...')
+    print('Rebuilding desktop icons cache…')
     subprocess.call(['gtk-update-icon-cache', '-t', '-f', icondir])

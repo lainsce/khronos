@@ -26,7 +26,7 @@ msgid "New task name…"
 msgstr ""
 
 #: src/Widgets/Column.vala:32
-msgid "Start Timer..."
+msgid "Start Timer…"
 msgstr ""
 
 #: src/Widgets/Column.vala:45
