@@ -1,147 +1,48 @@
-# Catalan translation for Khronos.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Catalan translations for com.github.lainsce.khronos package.
+# Copyright (C) 2020 THE com.github.lainsce.khronos'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the com.github.lainsce.khronos package.
-# Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2018.
+# Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.lainsce.khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-13 17:16-0500\n"
-"PO-Revision-Date: 2018-10-13 17:16-0500\n"
+"POT-Creation-Date: 2020-02-11 08:13+0100\n"
+"PO-Revision-Date: 2020-02-11 08:05+0100\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: \n"
+"Language-Team: none\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/MainWindow.vala:48
+#: src/MainWindow.vala:33
 msgid "Khronos"
 msgstr "Horari"
 
-#: src/MainWindow.vala:96
-msgid "New Khronos"
-msgstr "Horari nou"
-
-#: src/MainWindow.vala:99
-msgid "Export Khronos…"
-msgstr "Exporta l’horari…"
-
-#: src/MainWindow.vala:114
-msgid "Export"
-msgstr "Exporta"
-
-#: src/MainWindow.vala:119 src/Widgets/Preferences.vala:26
-msgid "Preferences"
-msgstr "Preferències"
-
-#: src/MainWindow.vala:136 src/Widgets/TaskBox.vala:203
-msgid "Settings"
-msgstr "Paràmetres"
-
-#: src/Services/DialogServices.vala:5
-msgid "There are unsaved changes to the khronos. Do you want to save?"
-msgstr "Hi ha canvis no desats en l’horari. Voleu desar-los?"
-
-#: src/Services/DialogServices.vala:6
-msgid "If you don't save, changes will be lost forever."
-msgstr "Si no els deseu, es perdran permanentment."
-
-#: src/Services/DialogServices.vala:11
-msgid "Don't Save"
-msgstr "No els desis"
-
-#: src/Services/DialogServices.vala:19
-msgid "Export khronos to…"
-msgstr "Exporta l’horari com a…"
-
-#: src/Services/DialogServices.vala:43
-msgid "Org files"
-msgstr "Fitxers Org"
-
-#: src/Services/DialogServices.vala:48
-msgid "All files"
-msgstr "Tots els fitxers"
-
-#: src/Widgets/DayColumn.vala:22
-msgid "MON"
-msgstr "DL"
-
-#: src/Widgets/DayColumn.vala:25
-msgid "TUE"
-msgstr "DT"
-
-#: src/Widgets/DayColumn.vala:28
-msgid "WED"
-msgstr "DC"
-
-#: src/Widgets/DayColumn.vala:31
-msgid "THU"
-msgstr "DJ"
-
-#: src/Widgets/DayColumn.vala:34
-msgid "FRI"
-msgstr "DV"
-
-#: src/Widgets/DayColumn.vala:43
-msgid "No tasks…"
+#: src/Widgets/Column.vala:19
+#, fuzzy
+msgid "New task name…"
 msgstr "No hi ha cap tasca…"
 
-#: src/Widgets/DayColumn.vala:61
-msgid "Task…"
-msgstr "Tasca…"
+#: src/Widgets/Column.vala:32
+msgid "Start Timer..."
+msgstr ""
 
-#: src/Widgets/Preferences.vala:39
-msgid "Close"
-msgstr "Tanca"
+#: src/Widgets/Column.vala:45
+#, fuzzy
+msgid "Reset Timer"
+msgstr "Hora de la tasca"
 
-#: src/Widgets/Preferences.vala:55
-msgid "Tasks Coloring"
-msgstr "Coloració de les tasques"
+#: src/Widgets/Column.vala:59
+msgid "Add Log"
+msgstr ""
 
-#: src/Widgets/Preferences.vala:56
-msgid "High contrast colors:"
-msgstr "Colors de contrast alt:"
+#: src/Widgets/Column.vala:84
+msgid "Stop Timer"
+msgstr ""
 
-#: src/Widgets/TaskBox.vala:28
-msgid "Task Name"
-msgstr "Nom de la tasca"
-
-#: src/Widgets/TaskBox.vala:51
-msgid "Task Color"
-msgstr "Color de la tasca"
-
-#: src/Widgets/TaskBox.vala:58
-msgid "Red"
-msgstr "Vermell"
-
-#: src/Widgets/TaskBox.vala:69
-msgid "Orange"
-msgstr "Taronja"
-
-#: src/Widgets/TaskBox.vala:80
-msgid "Yellow"
-msgstr "Groc"
-
-#: src/Widgets/TaskBox.vala:91
-msgid "Green"
-msgstr "Verd"
-
-#: src/Widgets/TaskBox.vala:102
-msgid "Blue"
-msgstr "Blau"
-
-#: src/Widgets/TaskBox.vala:113
-msgid "Indigo"
-msgstr "Anyil"
-
-#: src/Widgets/TaskBox.vala:124
-msgid "Clear color"
-msgstr "Neteja el color"
-
-#: src/Widgets/TaskBox.vala:139
-msgid "Task Time"
+#: src/Widgets/Column.vala:91
+#, fuzzy
+msgid "Start Timer"
 msgstr "Hora de la tasca"

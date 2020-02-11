@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 15:47+0900\n"
+"POT-Creation-Date: 2020-02-11 08:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,26 +23,32 @@ msgid "Khronos"
 msgstr ""
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:7
-#: data/com.github.lainsce.khronos.desktop.in:4
-msgid "Plot out your own khronos for the week and organize it"
+msgid "Track each task's time in a simple inobtrusive way"
 msgstr ""
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:9
 msgid ""
-"Start organizing each day with the columns and export your khronos away in "
-"an easy way"
+"Start tracking any task's \"during\" time and start &amp; stop as you go."
 msgstr ""
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:11
-msgid "Intelligently start building your khronos with the day columns"
-msgstr ""
-
-#: data/com.github.lainsce.khronos.appdata.xml.in:12
 msgid "Quit anytime with the shortcut Ctrl + Q"
 msgstr ""
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:18
+#: data/com.github.lainsce.khronos.appdata.xml.in:17
 msgid "Lains"
+msgstr ""
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:57
+msgid "Release: Initial Tracking"
+msgstr ""
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:59
+msgid "First stable release."
+msgstr ""
+
+#: data/com.github.lainsce.khronos.desktop.in:4
+msgid "Track each task time in a simple inobtrusive way"
 msgstr ""
 
 #: data/com.github.lainsce.khronos.desktop.in:6
@@ -50,5 +56,5 @@ msgid "com.github.lainsce.khronos"
 msgstr ""
 
 #: data/com.github.lainsce.khronos.desktop.in:7
-msgid "Plot;Week;Planning;Khronos;"
+msgid "Plot;Planning;Time Tracking;"
 msgstr ""
