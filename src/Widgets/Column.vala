@@ -32,6 +32,18 @@ namespace Khronos {
             column_play_button_style_context.add_class ("image-button");
             column_play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-start-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
 
+            var column_reset_button = new Gtk.Button ();
+            column_reset_button.sensitive = false;
+            column_reset_button.can_focus = false;
+            column_reset_button.halign = Gtk.Align.START;
+            column_reset_button.valign = Gtk.Align.CENTER;
+            column_reset_button.width_request = 42;
+            column_reset_button.height_request = 42;
+            var column_reset_button_style_context = column_reset_button.get_style_context ();
+            column_reset_button_style_context.add_class ("tt-button");
+            column_reset_button_style_context.add_class ("image-button");
+            column_reset_button.set_image (new Gtk.Image.from_icon_name ("edit-clear-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
+
             var column_button = new Gtk.Button ();
             column_button.can_focus = false;
             column_button.halign = Gtk.Align.END;
@@ -56,15 +68,22 @@ namespace Khronos {
                         return true;
                     });;
                     column_play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-stop-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
+                    column_reset_button.sensitive = false;
                 } else {
                     start = false;
                     GLib.Source.remove(timer_id);
                     column_play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-start-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
+                    column_reset_button.sensitive = true;
                 }
             });
 
+            column_reset_button.clicked.connect (() => {
+                column_time_label.set_markup (@"\n<span size=\"x-large\">0 mins, 0 secs</span>");
+            });
+
             this.row_spacing = 6;
-            this.attach (column_play_button, 0, 0, 1, 2);
+            this.attach (column_play_button, 0, 0, 1, 1);
+            this.attach (column_reset_button, 0, 1, 1, 1);
             this.attach (column_entry, 1, 0, 1, 1);
             this.attach (column_time_label, 1, 1, 1, 1);
             this.attach (column_button, 2, 0, 1, 2);
@@ -99,7 +118,6 @@ namespace Khronos {
                     min += 1;
                     column_time_label.set_markup ("\n<span size=\"x-large\">"+"%u mins, 0 secs".printf(min)+"</span>");
                 }
-
             }
         }
 
