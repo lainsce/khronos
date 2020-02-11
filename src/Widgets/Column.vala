@@ -73,7 +73,7 @@ namespace Khronos {
             column_button.set_image (new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
 
             column_button.clicked.connect (() => {
-                add_task (column_entry.text, column_time_label.label, "Started on: "+dt.format("%F %H:%M"));
+                add_task (column_entry.text, column_time_label.label, _("Started on: %s").printf (dt.format ("%F %H:%M")));
                 column_entry.text = "";
             });
 
