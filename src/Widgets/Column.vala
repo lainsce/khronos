@@ -4,8 +4,10 @@ namespace Khronos {
         private DayColumnListBox column;
         public Gtk.Label column_time_label;
         public bool is_modified {get; set; default = false;}
-        bool start = false;
+        private bool start = false;
         private uint timer_id;
+        private uint sec = 0;
+        private uint min = 0;
 
         public DayColumn (int day, MainWindow win) {
             this.win = win;
@@ -14,17 +16,21 @@ namespace Khronos {
             column = new DayColumnListBox (day, win);
 
             var column_entry = new Gtk.Entry ();
-            column_entry.placeholder_text = _("New task name");
+            column_entry.placeholder_text = _("New task name…");
             column_entry.hexpand = true;
-            column_entry.margin = 12;
+            column_entry.margin_top = 6;
+            column_entry.margin_start = column_entry.margin_end = 12;
+            column_entry.valign = Gtk.Align.START;
 
             column_time_label = new Gtk.Label("");
             column_time_label.set_markup (@"\n<span size=\"x-large\">0 mins, 0 secs</span>");
+            column_time_label.margin_bottom = 6;
+            column_time_label.valign = Gtk.Align.END;
 
             var column_play_button = new Gtk.Button ();
             column_play_button.can_focus = false;
             column_play_button.halign = Gtk.Align.START;
-            column_play_button.valign = Gtk.Align.CENTER;
+            column_play_button.valign = Gtk.Align.START;
             column_play_button.width_request = 42;
             column_play_button.height_request = 42;
             var column_play_button_style_context = column_play_button.get_style_context ();
@@ -36,7 +42,7 @@ namespace Khronos {
             column_reset_button.sensitive = false;
             column_reset_button.can_focus = false;
             column_reset_button.halign = Gtk.Align.START;
-            column_reset_button.valign = Gtk.Align.CENTER;
+            column_reset_button.valign = Gtk.Align.END;
             column_reset_button.width_request = 42;
             column_reset_button.height_request = 42;
             var column_reset_button_style_context = column_reset_button.get_style_context ();
@@ -47,7 +53,7 @@ namespace Khronos {
             var column_button = new Gtk.Button ();
             column_button.can_focus = false;
             column_button.halign = Gtk.Align.END;
-            column_button.valign = Gtk.Align.CENTER;
+            column_button.valign = Gtk.Align.START;
             column_button.width_request = 42;
             column_button.height_request = 42;
             var column_button_style_context = column_button.get_style_context ();
@@ -79,6 +85,8 @@ namespace Khronos {
 
             column_reset_button.clicked.connect (() => {
                 column_time_label.set_markup (@"\n<span size=\"x-large\">0 mins, 0 secs</span>");
+                sec = 0;
+                min = 0;
             });
 
             this.row_spacing = 6;
@@ -108,8 +116,6 @@ namespace Khronos {
 
         // TODO: Think more about this
         public void timer () {
-            uint sec = 0;
-            uint min = 0;
             if (start) {
                 sec += 1;
                 column_time_label.set_markup ("\n<span size=\"x-large\">"+"%u mins, %u secs".printf(min, sec)+"</span>");
