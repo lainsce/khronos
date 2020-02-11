@@ -1,21 +1,22 @@
-# French translations for com.github.lainsce.khronos package.
+# Japanese translations for com.github.lainsce.khronos package.
 # Copyright (C) 2020 THE com.github.lainsce.khronos'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the com.github.lainsce.khronos package.
-# Nathan Bonnemains (@NathanBnm), 2020.
+# Ryo Nakano <ryonakaknock3@gmail.com>, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.lainsce.khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-12 07:01+0900\n"
-"PO-Revision-Date: 2020-02-11 08:05+0100\n"
-"Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
+"POT-Creation-Date: 2020-02-12 07:03+0900\n"
+"PO-Revision-Date: 2020-02-12 07:04+0900\n"
+"Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: none\n"
-"Language: fr\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #: src/MainWindow.vala:33
 msgid "Khronos"
@@ -23,37 +24,37 @@ msgstr "Khronos"
 
 #: src/Widgets/Column.vala:23
 msgid "New task name…"
-msgstr "Nom de la nouvelle tâche…"
+msgstr "新しいタスク名…"
 
 #: src/Widgets/Column.vala:36
 msgid "Start Timer…"
-msgstr "Démarrer le chronomètre"
+msgstr "タイマーを開始…"
 
 #: src/Widgets/Column.vala:49
 msgid "Reset Timer"
-msgstr "Réinitialiser le chronomètre"
+msgstr "タイマーをリセット"
 
 #: src/Widgets/Column.vala:63
 msgid "Add Log"
-msgstr "Ajouter un journal"
+msgstr "ログを追加"
 
 #: src/Widgets/Column.vala:76
 #, c-format
 msgid "Started on: %s"
-msgstr ""
+msgstr "開始時刻: %s"
 
 #: src/Widgets/Column.vala:88
 msgid "Stop Timer"
-msgstr "Arrêter le chronomètre"
+msgstr "タイマーを停止"
 
 #: src/Widgets/Column.vala:95
 msgid "Start Timer"
-msgstr "Démarrer le chronomètre"
+msgstr "タイマーを開始"
 
 #: src/Widgets/ColumnListBox.vala:39
 msgid "No tasks…"
-msgstr "Aucune tâche…"
+msgstr "タスクがありません…"
 
 #: src/Widgets/EventBox.vala:68
 msgid "Delete Task"
-msgstr "Supprimer la tâche"
+msgstr "タスクを削除"
