@@ -1,7 +1,7 @@
 # French translations for extra package.
 # Copyright (C) 2020 THE extra'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the extra package.
-# Automatically generated, 2020.
+# Nathan Bonnemains (@NathanBnm), 2020.
 #
 msgid ""
 msgstr ""
@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-11 08:13+0100\n"
 "PO-Revision-Date: 2020-02-11 08:05+0100\n"
-"Last-Translator: Automatically generated\n"
+"Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -20,41 +20,42 @@ msgstr ""
 #: data/com.github.lainsce.khronos.appdata.xml.in:6
 #: data/com.github.lainsce.khronos.desktop.in:3
 msgid "Khronos"
-msgstr ""
+msgstr "Khronos"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:7
 msgid "Track each task's time in a simple inobtrusive way"
-msgstr ""
+msgstr "Suivez le déroulement de chaque tâche de manière simple et discrète"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:9
 msgid ""
 "Start tracking any task's \"during\" time and start &amp; stop as you go."
 msgstr ""
+"Commencez à suivre le déroulement de n'importe quelle tâche et continuez au fur et à mesure."
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:11
 msgid "Quit anytime with the shortcut Ctrl + Q"
-msgstr ""
+msgstr "Quittez à tout moment avec le raccourci Ctrl + Q"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:17
 msgid "Lains"
-msgstr ""
+msgstr "Lains"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:57
 msgid "Release: Initial Tracking"
-msgstr ""
+msgstr "Version : Suivi initial"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:59
 msgid "First stable release."
-msgstr ""
+msgstr "Première version stable."
 
 #: data/com.github.lainsce.khronos.desktop.in:4
 msgid "Track each task time in a simple inobtrusive way"
-msgstr ""
+msgstr "Suivez le déroulement de chaque tâche de manière simple et discrète"
 
 #: data/com.github.lainsce.khronos.desktop.in:6
 msgid "com.github.lainsce.khronos"
-msgstr ""
+msgstr "com.github.lainsce.khronos"
 
 #: data/com.github.lainsce.khronos.desktop.in:7
 msgid "Plot;Planning;Time Tracking;"
-msgstr ""
+msgstr "Planing;Suivi du temps;"

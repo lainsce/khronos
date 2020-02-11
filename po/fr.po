@@ -1,7 +1,7 @@
 # French translations for com.github.lainsce.khronos package.
 # Copyright (C) 2020 THE com.github.lainsce.khronos'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the com.github.lainsce.khronos package.
-# Automatically generated, 2020.
+# Nathan Bonnemains (@NathanBnm), 2020.
 #
 msgid ""
 msgstr ""
@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-11 08:13+0100\n"
 "PO-Revision-Date: 2020-02-11 08:05+0100\n"
-"Last-Translator: Automatically generated\n"
+"Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -19,28 +19,28 @@ msgstr ""
 
 #: src/MainWindow.vala:33
 msgid "Khronos"
-msgstr ""
+msgstr "Khronos"
 
 #: src/Widgets/Column.vala:19
 msgid "New task name…"
-msgstr ""
+msgstr "Nom de la nouvelle tâche…"
 
 #: src/Widgets/Column.vala:32
 msgid "Start Timer…"
-msgstr ""
+msgstr "Démarrer le chronomètre"
 
 #: src/Widgets/Column.vala:45
 msgid "Reset Timer"
-msgstr ""
+msgstr "Réinitialiser le chronomètre"
 
 #: src/Widgets/Column.vala:59
 msgid "Add Log"
-msgstr ""
+msgstr "Ajouter un journal"
 
 #: src/Widgets/Column.vala:84
 msgid "Stop Timer"
-msgstr ""
+msgstr "Arrêter le chronomètre"
 
 #: src/Widgets/Column.vala:91
 msgid "Start Timer"
-msgstr ""
+msgstr "Démarrer le chronomètre"
