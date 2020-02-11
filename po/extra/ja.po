@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-11 08:13+0100\n"
-"PO-Revision-Date: 2020-02-11 08:05+0100\n"
+"POT-Creation-Date: 2020-02-12 07:04+0900\n"
+"PO-Revision-Date: 2020-02-12 07:04+0900\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -16,20 +16,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:6
 #: data/com.github.lainsce.khronos.desktop.in:3
 msgid "Khronos"
-msgstr "予定表"
+msgstr "Khronos"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:7
 msgid "Track each task's time in a simple inobtrusive way"
-msgstr ""
+msgstr "シンプルで目障りにならない方法で、タスクにかかった時間を計測しましょう"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:9
-msgid ""
-"Start tracking any task's \"during\" time and start &amp; stop as you go."
-msgstr ""
+msgid "Start tracking any task's \"during\" time and start &amp; stop as you go."
+msgstr "タスクの経過時間と開始・終了時間の計測を習慣化してみましょう。"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:11
 msgid "Quit anytime with the shortcut Ctrl + Q"
@@ -40,22 +40,33 @@ msgid "Lains"
 msgstr "Lains"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:57
-msgid "Release: Initial Tracking"
+msgid "Release: Start Building Up"
 msgstr ""
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:59
+msgid "Added: Logging the start date of tasks"
+msgstr ""
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:60
+msgid "Added: Personal notifications"
+msgstr ""
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:66
+msgid "Release: Initial Tracking"
+msgstr ""
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:68
 msgid "First stable release."
 msgstr ""
 
 #: data/com.github.lainsce.khronos.desktop.in:4
 msgid "Track each task time in a simple inobtrusive way"
-msgstr ""
+msgstr "シンプルで目障りにならない方法で、タスクにかかった時間を計測しましょう"
 
 #: data/com.github.lainsce.khronos.desktop.in:6
 msgid "com.github.lainsce.khronos"
 msgstr "com.github.lainsce.khronos"
 
 #: data/com.github.lainsce.khronos.desktop.in:7
-#, fuzzy
 msgid "Plot;Planning;Time Tracking;"
-msgstr "Plot;Week;Planning;Khronos;作成;週;計画;予定表;"
+msgstr "Plot;Planning;Time Tracking;計画;プラン;時間管理;"
