@@ -59,7 +59,6 @@ namespace Khronos {
                 } else {
                     start = false;
                     GLib.Source.remove(timer_id);
-                    column_time_label.set_markup (@"\n<span size=\"x-large\">00:00:00</span>");
                     column_play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-start-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
                 }
             });
