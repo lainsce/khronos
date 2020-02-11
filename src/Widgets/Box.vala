@@ -4,15 +4,17 @@ namespace Khronos {
 
         public string task_name;
         public string time;
+        public string date;
 
         private int uid;
         private static int uid_counter;
 
-        public TaskBox (MainWindow win, string task_name, string time) {
+        public TaskBox (MainWindow win, string task_name, string time, string date) {
             this.win = win;
             this.uid = uid_counter++;
             this.task_name = task_name;
             this.time = time;
+            this.date = date;
 
             var evbox = new TaskEventBox (this.win, this);
 

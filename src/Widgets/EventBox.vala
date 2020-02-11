@@ -13,6 +13,7 @@ namespace Khronos {
         public TaskEventBox evbox;
         public Gtk.Label task_label;
         public Gtk.Label task_time_label;
+        public Gtk.Label task_date_label;
 
         public signal void delete_requested ();
 
@@ -38,12 +39,18 @@ namespace Khronos {
             task_time_label.halign = Gtk.Align.START;
             task_time_label.label = tb.time;
 
+            task_date_label = new Gtk.Label ("");
+            task_date_label.use_markup = true;
+            task_date_label.halign = Gtk.Align.START;
+            task_date_label.label = tb.date;
+
             var task_box = new Gtk.Grid ();
             task_box.row_homogeneous = true;
             task_box.events |= Gdk.EventMask.BUTTON_PRESS_MASK &
                                Gdk.EventMask.BUTTON_RELEASE_MASK;
             task_box.attach (task_label, 0, 0);
             task_box.attach (task_time_label, 0, 1);
+            task_box.attach (task_date_label, 0, 2);
 
             task_delete_button = new Gtk.Button();
             task_delete_button.events |= Gdk.EventMask.BUTTON_PRESS_MASK &

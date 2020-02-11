@@ -74,6 +74,7 @@ namespace Khronos {
                 builder.begin_array ();
 		        builder.add_string_value (task.task_name);
                 builder.add_string_value (task.time);
+                builder.add_string_value (task.date);
                 builder.end_array ();
 	        }
 	        builder.end_array ();
@@ -98,8 +99,9 @@ namespace Khronos {
                         var task = tasks.get_array ();
                         string task_name = task.get_string_element(0);
                         string time = task.get_string_element(1);
+                        string date = task.get_string_element(2);
 
-                        win.column.add_task (task_name,time);
+                        win.column.add_task (task_name,time,date);
                     }
                 }
             } catch (Error e) {

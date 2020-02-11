@@ -8,11 +8,15 @@ namespace Khronos {
         private uint timer_id;
         private uint sec = 0;
         private uint min = 0;
+        private GLib.DateTime dt;
 
         public DayColumn (int day, MainWindow win) {
             this.win = win;
             this.set_size_request (180,-1);
             is_modified = false;
+
+            dt = new GLib.DateTime.now_local ();
+
             column = new DayColumnListBox (day, win);
 
             var column_entry = new Gtk.Entry ();
@@ -23,7 +27,7 @@ namespace Khronos {
             column_entry.valign = Gtk.Align.START;
 
             column_time_label = new Gtk.Label("");
-            column_time_label.set_markup (@"\n<span size=\"x-large\">0 mins, 0 secs</span>");
+            column_time_label.set_markup (@"\n<span size=\"large\">0 mins, 0 secs</span>");
             column_time_label.margin_bottom = 6;
             column_time_label.valign = Gtk.Align.END;
 
@@ -69,7 +73,7 @@ namespace Khronos {
             column_button.set_image (new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
 
             column_button.clicked.connect (() => {
-                add_task (column_entry.text, column_time_label.label);
+                add_task (column_entry.text, column_time_label.label, "Started on: "+dt.format("%F %H:%M"));
                 column_entry.text = "";
             });
 
@@ -95,7 +99,7 @@ namespace Khronos {
             });
 
             column_reset_button.clicked.connect (() => {
-                column_time_label.set_markup (@"\n<span size=\"x-large\">0 mins, 0 secs</span>");
+                column_time_label.set_markup (@"\n<span size=\"large\">0 mins, 0 secs</span>");
                 sec = 0;
                 min = 0;
                 column_reset_button.sensitive = false;
@@ -114,8 +118,8 @@ namespace Khronos {
             this.show_all ();
         }
 
-        public void add_task (string name, string time) {
-            var taskbox = new TaskBox (this.win, name, time);
+        public void add_task (string name, string time, string date) {
+            var taskbox = new TaskBox (this.win, name, time, date);
             column.insert (taskbox, -1);
             win.tm.save_notes ();
             is_modified = true;
@@ -132,11 +136,11 @@ namespace Khronos {
         public void timer () {
             if (start) {
                 sec += 1;
-                column_time_label.set_markup ("\n<span size=\"x-large\">"+"%u mins, %u secs".printf(min, sec)+"</span>");
+                column_time_label.set_markup ("\n<span size=\"large\">"+"%u mins, %u secs".printf(min, sec)+"</span>");
                 if (sec > 60) {
                     sec = 0;
                     min += 1;
-                    column_time_label.set_markup ("\n<span size=\"x-large\">"+"%u mins, 0 secs".printf(min)+"</span>");
+                    column_time_label.set_markup ("\n<span size=\"large\">"+"%u mins, 0 secs".printf(min)+"</span>");
                 }
             }
         }

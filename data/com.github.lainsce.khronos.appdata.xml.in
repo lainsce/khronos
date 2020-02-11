@@ -52,6 +52,15 @@
         <content_attribute id="money-gambling">none</content_attribute>
     </content_rating>
     <releases>
+        <release version="1.0.2" date="2020-02-21">
+            <description>
+                <p>Release: Start Building Up</p>
+                <ul>
+                    <li>Added: Logging the start date of tasks</li>
+                    <li>Added: Personal notifications</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.0.0" date="2020-02-14">
             <description>
                 <p>Release: Initial Tracking</p>
