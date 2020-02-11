@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.lainsce.khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-11 08:30+0100\n"
+"POT-Creation-Date: 2020-02-12 07:01+0900\n"
 "PO-Revision-Date: 2020-02-11 08:05+0100\n"
 "Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
 "Language-Team: none\n"
@@ -21,27 +21,32 @@ msgstr ""
 msgid "Khronos"
 msgstr "Khronos"
 
-#: src/Widgets/Column.vala:19
+#: src/Widgets/Column.vala:23
 msgid "New task name…"
 msgstr "Nom de la nouvelle tâche…"
 
-#: src/Widgets/Column.vala:32
+#: src/Widgets/Column.vala:36
 msgid "Start Timer…"
 msgstr "Démarrer le chronomètre"
 
-#: src/Widgets/Column.vala:45
+#: src/Widgets/Column.vala:49
 msgid "Reset Timer"
 msgstr "Réinitialiser le chronomètre"
 
-#: src/Widgets/Column.vala:59
+#: src/Widgets/Column.vala:63
 msgid "Add Log"
 msgstr "Ajouter un journal"
 
-#: src/Widgets/Column.vala:84
+#: src/Widgets/Column.vala:76
+#, c-format
+msgid "Started on: %s"
+msgstr ""
+
+#: src/Widgets/Column.vala:88
 msgid "Stop Timer"
 msgstr "Arrêter le chronomètre"
 
-#: src/Widgets/Column.vala:91
+#: src/Widgets/Column.vala:95
 msgid "Start Timer"
 msgstr "Démarrer le chronomètre"
 
@@ -49,6 +54,6 @@ msgstr "Démarrer le chronomètre"
 msgid "No tasks…"
 msgstr "Aucune tâche…"
 
-#: src/Widgets/EventBox.vala:61
+#: src/Widgets/EventBox.vala:68
 msgid "Delete Task"
 msgstr "Supprimer la tâche"
