@@ -28,6 +28,8 @@ namespace Khronos {
             column_time_label.valign = Gtk.Align.END;
 
             var column_play_button = new Gtk.Button ();
+            column_play_button.has_tooltip = true;
+            column_play_button.tooltip_text = _("Start Timer...");
             column_play_button.can_focus = false;
             column_play_button.halign = Gtk.Align.START;
             column_play_button.valign = Gtk.Align.START;
@@ -39,6 +41,8 @@ namespace Khronos {
             column_play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-start-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
 
             var column_reset_button = new Gtk.Button ();
+            column_reset_button.has_tooltip = true;
+            column_reset_button.tooltip_text = _("Reset Timer");
             column_reset_button.sensitive = false;
             column_reset_button.can_focus = false;
             column_reset_button.halign = Gtk.Align.START;
@@ -51,7 +55,10 @@ namespace Khronos {
             column_reset_button.set_image (new Gtk.Image.from_icon_name ("edit-clear-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
 
             var column_button = new Gtk.Button ();
+            column_button.has_tooltip = true;
+            column_button.tooltip_text = _("Add Log");
             column_button.can_focus = false;
+            column_button.sensitive = false;
             column_button.halign = Gtk.Align.END;
             column_button.valign = Gtk.Align.START;
             column_button.width_request = 42;
@@ -74,12 +81,16 @@ namespace Khronos {
                         return true;
                     });;
                     column_play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-stop-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
+                    column_play_button.tooltip_text = _("Stop Timer");
                     column_reset_button.sensitive = false;
+                    column_button.sensitive = false;
                 } else {
                     start = false;
                     GLib.Source.remove(timer_id);
                     column_play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-start-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
+                    column_play_button.tooltip_text = _("Start Timer");
                     column_reset_button.sensitive = true;
+                    column_button.sensitive = true;
                 }
             });
 
@@ -87,6 +98,9 @@ namespace Khronos {
                 column_time_label.set_markup (@"\n<span size=\"x-large\">0 mins, 0 secs</span>");
                 sec = 0;
                 min = 0;
+                column_reset_button.sensitive = false;
+                column_button.sensitive = false;
+                column_entry.text = "";
             });
 
             this.row_spacing = 6;
