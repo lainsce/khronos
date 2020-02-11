@@ -1,14 +1,14 @@
 # Japanese translations for extra package.
-# Copyright (C) 2018 THE extra'S COPYRIGHT HOLDER
+# Copyright (C) 2020 THE extra'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the extra package.
-# Automatically generated, 2018.
+# Ryo Nakano <ryonakaknock3@gmail.com>, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 20:45+0900\n"
-"PO-Revision-Date: 2018-10-29 21:15+0900\n"
+"POT-Creation-Date: 2020-02-11 08:13+0100\n"
+"PO-Revision-Date: 2020-02-11 08:05+0100\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -16,7 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.0.6\n"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:6
 #: data/com.github.lainsce.khronos.desktop.in:3
@@ -24,33 +23,39 @@ msgid "Khronos"
 msgstr "予定表"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:7
-#: data/com.github.lainsce.khronos.desktop.in:4
-msgid "Plot out your own khronos for the week and organize it"
-msgstr "自分の週間予定表を作成して整理しましょう"
+msgid "Track each task's time in a simple inobtrusive way"
+msgstr ""
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:9
 msgid ""
-"Start organizing each day with the columns and export your khronos away in "
-"an easy way"
+"Start tracking any task's \"during\" time and start &amp; stop as you go."
 msgstr ""
-"列ごとに一日一日を整理するようにして、簡単に予定表をエクスポートしましょう"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:11
-msgid "Intelligently start building your khronos with the day columns"
-msgstr "日付の列を使って賢く予定表を作り始められます"
-
-#: data/com.github.lainsce.khronos.appdata.xml.in:12
 msgid "Quit anytime with the shortcut Ctrl + Q"
 msgstr "ショートカット Ctrl + Q で、いつでも終了できます"
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:18
+#: data/com.github.lainsce.khronos.appdata.xml.in:17
 msgid "Lains"
 msgstr "Lains"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:57
+msgid "Release: Initial Tracking"
+msgstr ""
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:59
+msgid "First stable release."
+msgstr ""
+
+#: data/com.github.lainsce.khronos.desktop.in:4
+msgid "Track each task time in a simple inobtrusive way"
+msgstr ""
 
 #: data/com.github.lainsce.khronos.desktop.in:6
 msgid "com.github.lainsce.khronos"
 msgstr "com.github.lainsce.khronos"
 
 #: data/com.github.lainsce.khronos.desktop.in:7
-msgid "Plot;Week;Planning;Khronos;"
+#, fuzzy
+msgid "Plot;Planning;Time Tracking;"
 msgstr "Plot;Week;Planning;Khronos;作成;週;計画;予定表;"

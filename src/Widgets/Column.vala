@@ -29,7 +29,7 @@ namespace Khronos {
 
             var column_play_button = new Gtk.Button ();
             column_play_button.has_tooltip = true;
-            column_play_button.tooltip_text = _("Start Timer...");
+            column_play_button.tooltip_text = _("Start Timer…");
             column_play_button.can_focus = false;
             column_play_button.halign = Gtk.Align.START;
             column_play_button.valign = Gtk.Align.START;
