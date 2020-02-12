@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2018 Lains
+* Copyright (c) 2020 Lains
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -72,7 +72,7 @@ namespace Khronos {
 	        builder.begin_array ();
 	        foreach (var task in column.get_tasks ()) {
                 builder.begin_array ();
-		        builder.add_string_value (task.task_name);
+		        builder.add_string_value (task.name);
                 builder.add_string_value (task.time);
                 builder.add_string_value (task.date);
                 builder.end_array ();
@@ -97,11 +97,11 @@ namespace Khronos {
                     var columns = array.get_array_element (0);
                     foreach (var tasks in columns.get_elements()) {
                         var task = tasks.get_array ();
-                        string task_name = task.get_string_element(0);
+                        string name = task.get_string_element(0);
                         string time = task.get_string_element(1);
                         string date = task.get_string_element(2);
 
-                        win.column.add_task (task_name,time,date);
+                        win.column.add_task (name,time,date);
                     }
                 }
             } catch (Error e) {

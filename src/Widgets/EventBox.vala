@@ -32,7 +32,7 @@ namespace Khronos {
             task_label.halign = Gtk.Align.START;
             task_label.wrap = true;
             task_label.hexpand = true;
-            task_label.set_markup (@"\n<span size=\"x-large\">"+tb.task_name+"</span>");
+            task_label.set_markup (@"\n<span size=\"x-large\">"+tb.name+"</span>");
 
             task_time_label = new Gtk.Label ("");
             task_time_label.use_markup = true;

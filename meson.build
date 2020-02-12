@@ -45,6 +45,8 @@ executable(
     'src/Application.vala',
     'src/MainWindow.vala',
     'src/Services/TaskManager.vala',
+    'src/Services/FileManager.vala',
+    'src/Services/Dialog.vala',
     'src/Widgets/Column.vala',
     'src/Widgets/ColumnListBox.vala',
     'src/Widgets/Box.vala',

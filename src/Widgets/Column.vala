@@ -8,6 +8,7 @@ namespace Khronos {
         private uint timer_id;
         private uint sec = 0;
         private uint min = 0;
+        private uint hrs = 0;
         private GLib.DateTime dt;
 
         public DayColumn (int day, MainWindow win) {
@@ -27,9 +28,11 @@ namespace Khronos {
             column_entry.valign = Gtk.Align.START;
 
             column_time_label = new Gtk.Label("");
-            column_time_label.set_markup (@"\n<span size=\"large\">0 mins, 0 secs</span>");
+            column_time_label.label = "0 hrs, 0 mins, 0 secs";
             column_time_label.margin_bottom = 6;
             column_time_label.valign = Gtk.Align.END;
+            var column_time_label_style_context = column_time_label.get_style_context ();
+            column_time_label_style_context.add_class ("tt-label");
 
             var column_play_button = new Gtk.Button ();
             column_play_button.has_tooltip = true;
@@ -57,6 +60,19 @@ namespace Khronos {
             column_reset_button_style_context.add_class ("tt-button");
             column_reset_button_style_context.add_class ("image-button");
             column_reset_button.set_image (new Gtk.Image.from_icon_name ("edit-clear-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
+
+            var column_export_button = new Gtk.Button ();
+            column_export_button.has_tooltip = true;
+            column_export_button.tooltip_text = _("Export Log As…");
+            column_export_button.can_focus = false;
+            column_export_button.halign = Gtk.Align.END;
+            column_export_button.valign = Gtk.Align.START;
+            column_export_button.width_request = 42;
+            column_export_button.height_request = 42;
+            var column_export_button_style_context = column_export_button.get_style_context ();
+            column_export_button_style_context.add_class ("tt-button");
+            column_export_button_style_context.add_class ("image-button");
+            column_export_button.set_image (new Gtk.Image.from_icon_name ("document-export-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
 
             var column_button = new Gtk.Button ();
             column_button.has_tooltip = true;
@@ -99,7 +115,7 @@ namespace Khronos {
             });
 
             column_reset_button.clicked.connect (() => {
-                column_time_label.set_markup (@"\n<span size=\"large\">0 mins, 0 secs</span>");
+                column_time_label.label = "0 hrs, 0 mins, 0 secs";
                 sec = 0;
                 min = 0;
                 column_reset_button.sensitive = false;
@@ -107,12 +123,21 @@ namespace Khronos {
                 column_entry.text = "";
             });
 
+            column_export_button.clicked.connect (() => {
+                try {
+                    FileManager.save_as (win);
+                } catch (Error e) {
+                    warning ("Unexpected error during export: " + e.message);
+                }
+            });
+
             this.row_spacing = 6;
             this.attach (column_play_button, 0, 0, 1, 1);
             this.attach (column_reset_button, 0, 1, 1, 1);
             this.attach (column_entry, 1, 0, 1, 1);
             this.attach (column_time_label, 1, 1, 1, 1);
-            this.attach (column_button, 2, 0, 1, 2);
+            this.attach (column_button, 2, 0, 1, 1);
+            this.attach (column_export_button, 2, 1, 1, 1);
             this.attach (column, 0, 2, 3, 1);
 
             this.show_all ();
@@ -132,15 +157,19 @@ namespace Khronos {
             win.tm.save_notes ();
         }
 
-        // TODO: Think more about this
         public void timer () {
             if (start) {
                 sec += 1;
-                column_time_label.set_markup ("\n<span size=\"large\">"+"%u mins, %u secs".printf(min, sec)+"</span>");
+                column_time_label.label = "%u hrs, %u mins, %u secs".printf(hrs, min, sec);
                 if (sec > 60) {
                     sec = 0;
                     min += 1;
-                    column_time_label.set_markup ("\n<span size=\"large\">"+"%u mins, 0 secs".printf(min)+"</span>");
+                    column_time_label.label = "%u hrs, %u mins".printf(hrs, min);
+                    if (min > 60) {
+                        min = 0;
+                        hrs += 1;
+                        column_time_label.label = "%u hrs".printf(hrs);
+                    }
                 }
             }
         }

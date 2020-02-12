@@ -57,7 +57,7 @@
                 <p>Release: Start Building Up</p>
                 <ul>
                     <li>Added: Logging the start date of tasks</li>
-                    <li>Added: Personal notifications</li>
+                    <li>Added: Exporting the Task Log as CSV file</li>
                 </ul>
             </description>
         </release>
@@ -65,7 +65,7 @@
             <description>
                 <p>Release: Initial Tracking</p>
                 <ul>
-                    <li>First stable release.</li>
+                    <li>First stable release</li>
                 </ul>
             </description>
         </release>

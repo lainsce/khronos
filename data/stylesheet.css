@@ -75,3 +75,7 @@
     );
     border: 1px solid alpha(#000, 0.5);
 }
+
+.tt-label {
+    font-size: 1.44em;
+}
