@@ -40,7 +40,7 @@ msgstr "Ajouter un journal"
 #: src/Widgets/Column.vala:76
 #, c-format
 msgid "Started on: %s"
-msgstr ""
+msgstr "Commencé le : %s"
 
 #: src/Widgets/Column.vala:88
 msgid "Stop Timer"
