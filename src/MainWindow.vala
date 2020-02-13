@@ -245,7 +245,7 @@ namespace Khronos {
         }
 
         public void notification2 () {
-            var notification2 = new GLib.Notification ("%i minutes have passed".printf((uint) GLib.Math.floor (Khronos.Application.gsettings.get_int("notification-delay")*1.5)));
+            var notification2 = new GLib.Notification ("%i minutes have passed".printf((int) GLib.Math.floor (Khronos.Application.gsettings.get_int("notification-delay")*1.5)));
             notification2.set_body (_("Go rest for a while before continuing."));
             var icon = new GLib.ThemedIcon ("appointment");
             notification2.set_icon (icon);
@@ -263,7 +263,7 @@ namespace Khronos {
         }
 
         public void notification4 () {
-            var notification4 = new GLib.Notification ("%i minutes have passed".printf((uint) GLib.Math.floor (Khronos.Application.gsettings.get_int("notification-delay")*2.5)));
+            var notification4 = new GLib.Notification ("%i minutes have passed".printf((int) GLib.Math.floor (Khronos.Application.gsettings.get_int("notification-delay")*2.5)));
             notification4.set_body (_("Go rest for a while before continuing."));
             var icon = new GLib.ThemedIcon ("appointment");
             notification4.set_icon (icon);
