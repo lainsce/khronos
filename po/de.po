@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.lainsce.khronos package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.lainsce.khronos\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-12 07:01+0900\n"
+"PO-Revision-Date: 2020-02-13 19:43+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de\n"
+
+#: src/MainWindow.vala:33
+msgid "Khronos"
+msgstr "Khronos"
+
+#: src/Widgets/Column.vala:23
+msgid "New task name…"
+msgstr "Neuer Aufgabenname..."
+
+#: src/Widgets/Column.vala:36
+msgid "Start Timer…"
+msgstr "Zeiterfassung starten..."
+
+#: src/Widgets/Column.vala:49
+msgid "Reset Timer"
+msgstr "Zeiterfassung zurücksetzen"
+
+#: src/Widgets/Column.vala:63
+msgid "Add Log"
+msgstr "Log hinzufügen"
+
+#: src/Widgets/Column.vala:76
+#, c-format
+msgid "Started on: %s"
+msgstr "Gestartet am: %s"
+
+#: src/Widgets/Column.vala:88
+msgid "Stop Timer"
+msgstr "Zeiterfassung beenden"
+
+#: src/Widgets/Column.vala:95
+msgid "Start Timer"
+msgstr "Zeiterfassung starten"
+
+#: src/Widgets/ColumnListBox.vala:39
+msgid "No tasks…"
+msgstr "Keine Aufgaben..."
+
+#: src/Widgets/EventBox.vala:68
+msgid "Delete Task"
+msgstr "Aufgabe löschen"
