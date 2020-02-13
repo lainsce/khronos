@@ -79,3 +79,11 @@
 .tt-label {
     font-size: 1.44em;
 }
+
+actionbar,
+.action-bar {
+    border-top: 1px solid transparent;
+    box-shadow: none;
+    background-image: none;
+    padding: 3px;
+}

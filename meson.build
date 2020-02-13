@@ -38,6 +38,7 @@ c_args = [
 ]
 
 cc = meson.get_compiler('c')
+m_dep = cc.find_library('m', required: true)
 
 # Let's define our executable
 executable(
@@ -58,7 +59,8 @@ executable(
         dependency('gobject-2.0'),
         dependency('json-glib-1.0'),
         dependency('gee-0.8'),
-        dependency('gtk+-3.0')
+        dependency('gtk+-3.0'),
+        m_dep,
     ],
     vala_args: [
         meson.source_root() + '/vapi/config.vapi',

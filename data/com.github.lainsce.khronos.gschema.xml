@@ -20,5 +20,15 @@
 				<summary>Window position</summary>
 				<description>The width of the window</description>
 		</key>
+	  <key name="notification-delay" type="i">
+				<default>1800</default>
+				<summary>Delay between notifications</summary>
+				<description>The delay between two notifications, default is 30min. in seconds.</description>
+		</key>
+	  <key name="notification" type="b">
+				<default>false</default>
+				<summary>Use notifications</summary>
+				<description>Whether to alert the user via notifications, default is false.</description>
+		</key>
 	</schema>
 </schemalist>

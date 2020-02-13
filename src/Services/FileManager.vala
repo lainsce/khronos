@@ -43,7 +43,7 @@ namespace Khronos.FileManager {
         public string get_column_tasks (DayColumn column) {
             string task_string = "";
             foreach (var task in column.get_tasks ()) {
-                task_string += "\"" + task.name + ",\"" + task.time + "\",\"" + task.date + "\"\n";
+                task_string += "\"" + task.name + "\",\"" + task.time + "\",\"" + task.date + "\"\n";
             }
             return task_string;
         }

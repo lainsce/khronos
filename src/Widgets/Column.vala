@@ -3,8 +3,13 @@ namespace Khronos {
         private MainWindow win;
         private DayColumnListBox column;
         public Gtk.Label column_time_label;
+        public Gtk.Button column_button;
+        public Gtk.Button column_export_button;
+        public Gtk.Button column_reset_button;
+        public Gtk.Button column_play_button;
+        public Gtk.Entry column_entry;
         public bool is_modified {get; set; default = false;}
-        private bool start = false;
+        public bool start = false;
         private uint timer_id;
         private uint sec = 0;
         private uint min = 0;
@@ -20,7 +25,7 @@ namespace Khronos {
 
             column = new DayColumnListBox (day, win);
 
-            var column_entry = new Gtk.Entry ();
+            column_entry = new Gtk.Entry ();
             column_entry.placeholder_text = _("New task name…");
             column_entry.hexpand = true;
             column_entry.margin_top = 6;
@@ -34,7 +39,7 @@ namespace Khronos {
             var column_time_label_style_context = column_time_label.get_style_context ();
             column_time_label_style_context.add_class ("tt-label");
 
-            var column_play_button = new Gtk.Button ();
+            column_play_button = new Gtk.Button ();
             column_play_button.has_tooltip = true;
             column_play_button.tooltip_text = _("Start Timer…");
             column_play_button.can_focus = false;
@@ -47,7 +52,7 @@ namespace Khronos {
             column_play_button_style_context.add_class ("image-button");
             column_play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-start-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
 
-            var column_reset_button = new Gtk.Button ();
+            column_reset_button = new Gtk.Button ();
             column_reset_button.has_tooltip = true;
             column_reset_button.tooltip_text = _("Reset Timer");
             column_reset_button.sensitive = false;
@@ -61,7 +66,7 @@ namespace Khronos {
             column_reset_button_style_context.add_class ("image-button");
             column_reset_button.set_image (new Gtk.Image.from_icon_name ("edit-clear-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
 
-            var column_export_button = new Gtk.Button ();
+            column_export_button = new Gtk.Button ();
             column_export_button.has_tooltip = true;
             column_export_button.tooltip_text = _("Export Log As…");
             column_export_button.can_focus = false;
@@ -74,7 +79,7 @@ namespace Khronos {
             column_export_button_style_context.add_class ("image-button");
             column_export_button.set_image (new Gtk.Image.from_icon_name ("document-export-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
 
-            var column_button = new Gtk.Button ();
+            column_button = new Gtk.Button ();
             column_button.has_tooltip = true;
             column_button.tooltip_text = _("Add Log");
             column_button.can_focus = false;
@@ -115,12 +120,7 @@ namespace Khronos {
             });
 
             column_reset_button.clicked.connect (() => {
-                column_time_label.label = "0 hrs, 0 mins, 0 secs";
-                sec = 0;
-                min = 0;
-                column_reset_button.sensitive = false;
-                column_button.sensitive = false;
-                column_entry.text = "";
+                reset_timer ();
             });
 
             column_export_button.clicked.connect (() => {
@@ -141,6 +141,16 @@ namespace Khronos {
             this.attach (column, 0, 2, 3, 1);
 
             this.show_all ();
+        }
+
+        public void reset_timer () {
+            column_time_label.label = "0 hrs, 0 mins, 0 secs";
+            sec = 0;
+            min = 0;
+            hrs = 0;
+            column_reset_button.sensitive = false;
+            column_button.sensitive = false;
+            column_entry.text = "";
         }
 
         public void add_task (string name, string time, string date) {
