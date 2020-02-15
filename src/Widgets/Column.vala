@@ -171,11 +171,11 @@ namespace Khronos {
             if (start) {
                 sec += 1;
                 column_time_label.label = "%u hrs, %u mins, %u secs".printf(hrs, min, sec);
-                if (sec > 60) {
+                if (sec >= 60) {
                     sec = 0;
                     min += 1;
                     column_time_label.label = "%u hrs, %u mins".printf(hrs, min);
-                    if (min > 60) {
+                    if (min >= 60) {
                         min = 0;
                         hrs += 1;
                         column_time_label.label = "%u hrs".printf(hrs);
