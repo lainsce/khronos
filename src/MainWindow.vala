@@ -21,6 +21,7 @@ namespace Khronos {
         // Widgets
         public DayColumn column;
         public Gtk.Grid grid;
+        public Gtk.Grid sort_type_grid;
 
         public TaskManager tm;
         public Gtk.Application app { get; construct; }
@@ -119,11 +120,15 @@ namespace Khronos {
             notification_box.add (notification_sb);
             notification_box.show_all ();
 
+            sort_type_menu_item ();
+
             var menu_grid = new Gtk.Grid ();
             menu_grid.margin = 6;
             menu_grid.row_spacing = 6;
             menu_grid.column_spacing = 12;
             menu_grid.orientation = Gtk.Orientation.VERTICAL;
+            menu_grid.add (sort_type_grid);
+            menu_grid.add (separator);
             menu_grid.add (notification_box);
             menu_grid.show_all ();
 
@@ -188,6 +193,26 @@ namespace Khronos {
             Khronos.Application.gsettings.set_int("window-width", w);
             Khronos.Application.gsettings.set_int("window-height", h);
             return false;
+        }
+
+        public void sort_type_menu_item () {
+            var sort_time = new Gtk.RadioButton.with_label_from_widget (null, _("Sort By Time"));
+	        sort_time.toggled.connect (() => {
+	            Khronos.Application.gsettings.set_string("sort-type", "time");
+	        });
+
+	        var sort_name = new Gtk.RadioButton.with_label_from_widget (sort_time, _("Sort By Name"));
+	        sort_name.toggled.connect (() => {
+	            Khronos.Application.gsettings.set_string("sort-type", "name");
+	        });
+	        sort_name.set_active (true);
+
+            sort_type_grid = new Gtk.Grid ();
+            sort_type_grid.row_spacing = 12;
+            sort_type_grid.orientation = Gtk.Orientation.VERTICAL;
+            sort_type_grid.add (sort_time);
+            sort_type_grid.add (sort_name);
+            sort_type_grid.show_all ();
         }
 
         public void set_timeouts () {

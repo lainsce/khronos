@@ -13,22 +13,42 @@ namespace Khronos {
             this.activate_on_single_click = false;
             this.selection_mode = Gtk.SelectionMode.SINGLE;
             this.set_sort_func ((row1, row2) => {
-                string task1 = ((TaskBox) row1).time;
-                string task2 = ((TaskBox) row2).time;
+                if (Khronos.Application.gsettings.get_string ("sort-type") == "time") {
+                    string task1 = ((TaskBox) row1).time;
+                    string task2 = ((TaskBox) row2).time;
 
-                int int1 = int.parse(task1);
-                int int2 = int.parse(task2);
+                    int int1 = int.parse(task1);
+                    int int2 = int.parse(task2);
 
-                unichar str1 = task1.get_char (task1.index_of_nth_char (0));
-                unichar str2 = task2.get_char (task2.index_of_nth_char (0));
+                    unichar str1 = task1.get_char (task1.index_of_nth_char (0));
+                    unichar str2 = task2.get_char (task2.index_of_nth_char (0));
 
-                if (str1.tolower () != 'a' || str2.tolower () != 'a') {
-                    return strcmp (task1.ascii_down (), task2.ascii_down ());
-                } else if (int1 > int2) {
-                    return task1.ascii_down ().collate (task2.ascii_down ());
-                } else {
-                    return 0;
+                    if (str1.tolower () != '0' || str2.tolower () != '0') {
+                        return strcmp (task1.ascii_down (), task2.ascii_down ());
+                    } else if (int1 > int2) {
+                        return task1.ascii_down ().collate (task2.ascii_down ());
+                    } else {
+                        return 0;
+                    }
+                } else if (Khronos.Application.gsettings.get_string ("sort-type") == "name") {
+                    string task1 = ((TaskBox) row1).name;
+                    string task2 = ((TaskBox) row2).name;
+
+                    int int1 = int.parse(task1);
+                    int int2 = int.parse(task2);
+
+                    unichar str1 = task1.get_char (task1.index_of_nth_char (0));
+                    unichar str2 = task2.get_char (task2.index_of_nth_char (0));
+
+                    if (str1.tolower () != 'a' || str2.tolower () != 'a') {
+                        return strcmp (task1.ascii_down (), task2.ascii_down ());
+                    } else if (int1 > int2) {
+                        return task1.ascii_down ().collate (task2.ascii_down ());
+                    } else {
+                        return 0;
+                    }
                 }
+                return 0;
             });
 
             this.build_drag_and_drop ();

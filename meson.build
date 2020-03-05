@@ -1,6 +1,6 @@
 # Name our project
 project('com.github.lainsce.khronos', ['vala', 'c'],
-    version: '1.0.2'
+    version: '1.0.6'
 )
 
 # Import main lib files

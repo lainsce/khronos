@@ -30,5 +30,10 @@
 				<summary>Use notifications</summary>
 				<description>Whether to alert the user via notifications, default is false.</description>
 		</key>
+	  <key name="sort-type" type="s">
+				<default>'time'</default>
+				<summary>Sorting type for the task list</summary>
+				<description>The user-preferred sorting of tasks to use in Khronos, default is time</description>
+		</key>
 	</schema>
 </schemalist>
