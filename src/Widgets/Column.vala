@@ -1,7 +1,7 @@
 namespace Khronos {
     public class DayColumn : Gtk.Grid {
         private MainWindow win;
-        private DayColumnListBox column;
+        public DayColumnListBox column;
         public Gtk.Label column_time_label;
         public Gtk.Button column_button;
         public Gtk.Button column_export_button;

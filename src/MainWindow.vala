@@ -199,13 +199,20 @@ namespace Khronos {
             var sort_time = new Gtk.RadioButton.with_label_from_widget (null, _("Sort By Time"));
 	        sort_time.toggled.connect (() => {
 	            Khronos.Application.gsettings.set_string("sort-type", "time");
+	            column.column.invalidate_sort ();
 	        });
 
 	        var sort_name = new Gtk.RadioButton.with_label_from_widget (sort_time, _("Sort By Name"));
 	        sort_name.toggled.connect (() => {
 	            Khronos.Application.gsettings.set_string("sort-type", "name");
+	            column.column.invalidate_sort ();
 	        });
-	        sort_name.set_active (true);
+
+	        if (Khronos.Application.gsettings.get_string("sort-type") == "name") {
+	            sort_name.set_active (true);
+	        } else {
+	            sort_time.set_active (true);
+	        }
 
             sort_type_grid = new Gtk.Grid ();
             sort_type_grid.row_spacing = 12;

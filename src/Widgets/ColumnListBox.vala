@@ -17,36 +17,25 @@ namespace Khronos {
                     string task1 = ((TaskBox) row1).time;
                     string task2 = ((TaskBox) row2).time;
 
-                    int int1 = int.parse(task1);
-                    int int2 = int.parse(task2);
+                    var reg = new Regex("(?m)^\\d{2} hrs, (?<min>\\d{2}) mins, \\d{2} secs");
+                    GLib.MatchInfo match;
 
-                    unichar str1 = task1.get_char (task1.index_of_nth_char (0));
-                    unichar str2 = task2.get_char (task2.index_of_nth_char (0));
-
-                    if (str1.tolower () != '0' || str2.tolower () != '0') {
-                        return strcmp (task1.ascii_down (), task2.ascii_down ());
-                    } else if (int1 > int2) {
-                        return task1.ascii_down ().collate (task2.ascii_down ());
+                    if (reg.match (task1, 0, out match)) {
+                        do {
+                            if (match.fetch_named ("min") != "") {
+                                return task1.collate(task2);
+                            }
+                        } while (match.next ());
                     } else {
-                        return 0;
+                        return task2.collate(task1);
                     }
                 } else if (Khronos.Application.gsettings.get_string ("sort-type") == "name") {
                     string task1 = ((TaskBox) row1).name;
                     string task2 = ((TaskBox) row2).name;
 
-                    int int1 = int.parse(task1);
-                    int int2 = int.parse(task2);
-
-                    unichar str1 = task1.get_char (task1.index_of_nth_char (0));
-                    unichar str2 = task2.get_char (task2.index_of_nth_char (0));
-
-                    if (str1.tolower () != 'a' || str2.tolower () != 'a') {
-                        return strcmp (task1.ascii_down (), task2.ascii_down ());
-                    } else if (int1 > int2) {
-                        return task1.ascii_down ().collate (task2.ascii_down ());
-                    } else {
-                        return 0;
-                    }
+                    return task1.collate(task2);
+                } else {
+                    return 0;
                 }
                 return 0;
             });
@@ -59,7 +48,7 @@ namespace Khronos {
             var no_tasks = new Gtk.Label (_("No tasks…"));
             no_tasks.halign = Gtk.Align.CENTER;
             var no_tasks_style_context = no_tasks.get_style_context ();
-            no_tasks_style_context.add_class ("h2");
+            no_tasks_style_context.add_class ("tt-label");
             no_tasks.sensitive = false;
             no_tasks.margin = 12;
             no_tasks.show_all ();
@@ -97,6 +86,5 @@ namespace Khronos {
             source.show_all ();
 
             win.tm.save_notes ();
-        }
-    }
+        }    }
 }
