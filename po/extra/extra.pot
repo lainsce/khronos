@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-11 08:13+0100\n"
+"POT-Creation-Date: 2020-03-06 11:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,8 @@ msgstr ""
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:9
 msgid ""
-"Start tracking any task's \"during\" time and start &amp; stop as you go."
+"Start tracking any task's \"during\" time and start &amp; stop as you go, "
+"with notifications."
 msgstr ""
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:11
@@ -40,11 +41,35 @@ msgid "Lains"
 msgstr ""
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:57
-msgid "Release: Initial Tracking"
+msgid "Release: Start Sorting"
 msgstr ""
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:59
-msgid "First stable release."
+msgid "Added: Sorting Options on Settings Menu"
+msgstr ""
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:65
+msgid "Release: Start Building Up"
+msgstr ""
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:67
+msgid "Added: Logging the start date of tasks"
+msgstr ""
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:68
+msgid "Added: Exporting the Task Log as CSV file"
+msgstr ""
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:69
+msgid "Added: Configurable notifications to go along with tasks"
+msgstr ""
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:75
+msgid "Release: Initial Tracking"
+msgstr ""
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:77
+msgid "First stable release"
 msgstr ""
 
 #: data/com.github.lainsce.khronos.desktop.in:4

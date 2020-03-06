@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-11 08:13+0100\n"
+"POT-Creation-Date: 2020-03-06 11:16+0100\n"
 "PO-Revision-Date: 2020-02-11 08:05+0100\n"
 "Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
 "Language-Team: none\n"
@@ -28,9 +28,11 @@ msgstr "Suivez le déroulement de chaque tâche de manière simple et discrète"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:9
 msgid ""
-"Start tracking any task's \"during\" time and start &amp; stop as you go."
+"Start tracking any task's \"during\" time and start &amp; stop as you go, "
+"with notifications."
 msgstr ""
-"Commencez à suivre le déroulement de n'importe quelle tâche et continuez au fur et à mesure."
+"Commencez à suivre le déroulement de n'importe quelle tâche et continuez au "
+"fur et à mesure. Notifications incluses."
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:11
 msgid "Quit anytime with the shortcut Ctrl + Q"
@@ -41,12 +43,36 @@ msgid "Lains"
 msgstr "Lains"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:57
+msgid "Release: Start Sorting"
+msgstr "Version : Démarrage du tri"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:59
+msgid "Added: Sorting Options on Settings Menu"
+msgstr "Ajouté : Options de tri dans le menu des paramètres"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:65
+msgid "Release: Start Building Up"
+msgstr "Version : Début de la construction"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:67
+msgid "Added: Logging the start date of tasks"
+msgstr "Ajouté : Journalisation de la date de démarrage des tâches"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:68
+msgid "Added: Exporting the Task Log as CSV file"
+msgstr "Ajouté : Export des journaux de tâches au format CSV"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:69
+msgid "Added: Configurable notifications to go along with tasks"
+msgstr "Ajouté : Notifications configurables pour suivre les tâches"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:75
 msgid "Release: Initial Tracking"
 msgstr "Version : Suivi initial"
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:59
-msgid "First stable release."
-msgstr "Première version stable."
+#: data/com.github.lainsce.khronos.appdata.xml.in:77
+msgid "First stable release"
+msgstr "Première version stable"
 
 #: data/com.github.lainsce.khronos.desktop.in:4
 msgid "Track each task time in a simple inobtrusive way"

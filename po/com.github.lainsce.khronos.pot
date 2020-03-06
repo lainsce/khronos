@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.lainsce.khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-12 07:01+0900\n"
+"POT-Creation-Date: 2020-03-06 11:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,40 +17,65 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/MainWindow.vala:33
+#: src/MainWindow.vala:40
 msgid "Khronos"
 msgstr ""
 
-#: src/Widgets/Column.vala:23
+#: src/MainWindow.vala:99
+msgid "Notification Delay:"
+msgstr ""
+
+#: src/MainWindow.vala:141
+msgid "Settings"
+msgstr ""
+
+#: src/MainWindow.vala:199
+msgid "Sort By Time"
+msgstr ""
+
+#: src/MainWindow.vala:205
+msgid "Sort By Name"
+msgstr ""
+
+#: src/MainWindow.vala:272 src/MainWindow.vala:281 src/MainWindow.vala:290
+#: src/MainWindow.vala:299 src/MainWindow.vala:308
+msgid "Go rest for a while before continuing."
+msgstr ""
+
+#: src/Widgets/Column.vala:29
 msgid "New task name…"
 msgstr ""
 
-#: src/Widgets/Column.vala:36
+#: src/Widgets/Column.vala:44
 msgid "Start Timer…"
 msgstr ""
 
-#: src/Widgets/Column.vala:49
+#: src/Widgets/Column.vala:57
 msgid "Reset Timer"
 msgstr ""
 
-#: src/Widgets/Column.vala:63
+#: src/Widgets/Column.vala:71
+msgid "Export Log As…"
+msgstr ""
+
+#: src/Widgets/Column.vala:84
 msgid "Add Log"
 msgstr ""
 
-#: src/Widgets/Column.vala:76
+#: src/Widgets/Column.vala:97
 #, c-format
 msgid "Started on: %s"
 msgstr ""
 
-#: src/Widgets/Column.vala:88
+#: src/Widgets/Column.vala:109
 msgid "Stop Timer"
 msgstr ""
 
-#: src/Widgets/Column.vala:95
+#: src/Widgets/Column.vala:116
 msgid "Start Timer"
 msgstr ""
 
-#: src/Widgets/ColumnListBox.vala:39
+#: src/Widgets/ColumnListBox.vala:48
 msgid "No tasks…"
 msgstr ""
 
