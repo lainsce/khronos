@@ -130,11 +130,20 @@ namespace Khronos {
                     warning ("Unexpected error during export: " + e.message);
                 }
             });
+	    
+	    var custom_help = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.BUTTON);
+            custom_help.halign = Gtk.Align.START;
+            custom_help.hexpand = true;
+            custom_help.tooltip_text = _("You can log this task by starting the task's timer first.");
+	    
+	    var column_entry_and_help_grid = new Gtk.Grid ();
+	    column_entry_and_help_grid.add (column_entry);
+	    column_entry_and_help_grid.add (custom_help);
 
             this.row_spacing = 6;
             this.attach (column_play_button, 0, 0, 1, 1);
             this.attach (column_reset_button, 0, 1, 1, 1);
-            this.attach (column_entry, 1, 0, 1, 1);
+            this.attach (column_entry_and_help_grid, 1, 0, 1, 1);
             this.attach (column_time_label, 1, 1, 1, 1);
             this.attach (column_button, 2, 0, 1, 1);
             this.attach (column_export_button, 2, 1, 1, 1);
