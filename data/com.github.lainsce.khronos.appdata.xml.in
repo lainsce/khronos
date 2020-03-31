@@ -52,6 +52,14 @@
         <content_attribute id="money-gambling">none</content_attribute>
     </content_rating>
     <releases>
+        <release version="1.0.8" date="2020-04-04">
+            <description>
+                <p>Release: Helpful Tips</p>
+                <ul>
+                    <li>Added: Tooltip icon beside the entry to help users.</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.0.6" date="2020-03-06">
             <description>
                 <p>Release: Start Sorting</p>
