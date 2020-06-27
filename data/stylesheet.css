@@ -1,13 +1,11 @@
-@define-color accent_color #8080c5;
-@define-color accent_color_500 #8080c5;
-@define-color accent_color_300 #8080c5;
+@define-color accent_color #6060c5;
+@define-color accent_color_500 #6060c5;
+@define-color accent_color_300 #6060c5;
 
 window.unified decoration,
 window.unified decoration-overlay {
   border-radius: 8px;
 }
-
-
 
 .tt-column {
     background: mix (@accent_color, @content_view_bg, 0.95);
@@ -68,4 +66,8 @@ window.unified decoration-overlay {
 .tt-toolbar-dark {
     background: #000;
     box-shadow: none;
+}
+
+.tt-view-dark {
+    background: #151515;
 }

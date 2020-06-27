@@ -23,6 +23,7 @@ namespace Khronos {
         public Gtk.Grid grid;
         public Gtk.Grid sgrid;
         public Gtk.Grid sort_type_grid;
+        public Gtk.Box main_frame_grid;
         public Gtk.Entry column_entry;
         public Gtk.Label column_time_label;
         public Gtk.Button column_button;
@@ -68,6 +69,42 @@ namespace Khronos {
                 }
                 return false;
             });
+
+            if (Khronos.Application.gsettings.get_boolean("dark-mode")) {
+                Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
+                titlebar.get_style_context ().add_class ("tt-toolbar-dark");
+                main_frame_grid.get_style_context ().add_class ("tt-view-dark");
+            } else {
+                Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = false;
+                titlebar.get_style_context ().remove_class ("tt-toolbar-dark");
+                main_frame_grid.get_style_context ().remove_class ("tt-view-dark");
+            }
+
+            if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK) {
+                Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
+                titlebar.get_style_context ().add_class ("tt-toolbar-dark");
+                main_frame_grid.get_style_context ().add_class ("tt-view-dark");
+                Khronos.Application.gsettings.set_boolean("dark-mode", true);
+            } else if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.NO_PREFERENCE) {
+                Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = false;
+                titlebar.get_style_context ().remove_class ("tt-toolbar-dark");
+                main_frame_grid.get_style_context ().remove_class ("tt-view-dark");
+                Khronos.Application.gsettings.set_boolean("dark-mode", false);
+            }
+
+            Khronos.Application.grsettings.notify["prefers-color-scheme"].connect (() => {
+                 if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK) {
+                     Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
+                     titlebar.get_style_context ().add_class ("tt-toolbar-dark");
+                     main_frame_grid.get_style_context ().add_class ("tt-view-dark");
+                     Khronos.Application.gsettings.set_boolean("dark-mode", true);
+                 } else if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.NO_PREFERENCE) {
+                     Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = false;
+                     titlebar.get_style_context ().remove_class ("tt-toolbar-dark");
+                     main_frame_grid.get_style_context ().remove_class ("tt-view-dark");
+                     Khronos.Application.gsettings.set_boolean("dark-mode", false);
+                 }
+            });
         }
 
         construct {
@@ -85,27 +122,18 @@ namespace Khronos {
                 this.resize (w, h);
             }
 
-            if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK) {
-                Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
-                titlebar.get_style_context ().add_class ("tt-toolbar-dark");
-            } else if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.NO_PREFERENCE) {
-                Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = false;
-                titlebar.get_style_context ().remove_class ("tt-toolbar-dark");
-            }
-
-            Khronos.Application.grsettings.notify["prefers-color-scheme"].connect (() => {
-                 if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK) {
-                     Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
-                     titlebar.get_style_context ().add_class ("tt-toolbar-dark");
-                 } else if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.NO_PREFERENCE) {
-                     Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = false;
-                     titlebar.get_style_context ().remove_class ("tt-toolbar-dark");
-                 }
-            });
-
             Khronos.Application.gsettings.changed.connect (() => {
                 if (Khronos.Application.gsettings.get_boolean("notification")) {
                     set_timeouts ();
+                }
+                if (Khronos.Application.gsettings.get_boolean("dark-mode")) {
+                    Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
+                    titlebar.get_style_context ().add_class ("tt-toolbar-dark");
+                    main_frame_grid.get_style_context ().add_class ("tt-view-dark");
+                } else {
+                    Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = false;
+                    titlebar.get_style_context ().remove_class ("tt-toolbar-dark");
+                    main_frame_grid.get_style_context ().remove_class ("tt-view-dark");
                 }
             });
 
@@ -237,9 +265,7 @@ namespace Khronos {
 
             var main_frame = new Gtk.Grid ();
             main_frame.orientation = Gtk.Orientation.VERTICAL;
-            main_frame.halign = Gtk.Align.CENTER;
             main_frame.valign = Gtk.Align.CENTER;
-            main_frame.vexpand = true;
             main_frame.add (column_time_label);
             main_frame.add (column_entry_and_help_grid);
             main_frame.show_all ();
@@ -263,6 +289,20 @@ namespace Khronos {
             notification_sb.value_changed.connect (() => {
                 Khronos.Application.gsettings.set_int("notification-delay", ((int)notification_sb.value * 60));
             });
+
+            var dark_header = new Granite.HeaderLabel (_("Interface"));
+
+            var dark_label = new Gtk.Label (_("Dark Mode:"));
+
+            var dark_sw = new Gtk.Switch ();
+            dark_sw.valign = Gtk.Align.CENTER;
+            Khronos.Application.gsettings.bind ("dark-mode", dark_sw, "active", GLib.SettingsBindFlags.DEFAULT);
+
+            var dark_box = new Gtk.Grid ();
+            dark_box.column_spacing = 6;
+            dark_box.add (dark_label);
+            dark_box.add (dark_sw);
+            dark_box.show_all ();
 
             var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
 
@@ -300,6 +340,8 @@ namespace Khronos {
             menu_grid.row_spacing = 6;
             menu_grid.column_spacing = 12;
             menu_grid.orientation = Gtk.Orientation.VERTICAL;
+            menu_grid.add (dark_header);
+            menu_grid.add (dark_box);
             menu_grid.add (sort_type_grid);
             menu_grid.add (notification_header);
             menu_grid.add (notification_box);
@@ -335,9 +377,13 @@ namespace Khronos {
             sgrid.attach (column_scroller, 0, 1, 1, 1);
             sgrid.show_all ();
 
+            main_frame_grid = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            main_frame_grid.expand = true;
+            main_frame_grid.add (main_frame);
+
             grid = new Gtk.Grid ();
             grid.attach (titlebar, 1, 0, 1, 1);
-            grid.attach (main_frame, 1, 1, 1, 1);
+            grid.attach (main_frame_grid, 1, 1, 1, 1);
             grid.show_all ();
 
             separator = new Gtk.Separator (Gtk.Orientation.VERTICAL);
@@ -392,6 +438,7 @@ namespace Khronos {
             Khronos.Application.gsettings.set_int("window-y", y);
             Khronos.Application.gsettings.set_int("window-width", w);
             Khronos.Application.gsettings.set_int("window-height", h);
+
             return false;
         }
 

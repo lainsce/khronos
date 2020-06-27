@@ -25,6 +25,11 @@
 				<summary>Delay between notifications</summary>
 				<description>The delay between two notifications, default is 30min. in seconds.</description>
 		</key>
+	  <key name="dark-mode" type="b">
+				<default>false</default>
+				<summary>Use dark mode</summary>
+				<description>Whether the UI is dark or not.</description>
+		</key>
 	  <key name="notification" type="b">
 				<default>false</default>
 				<summary>Use notifications</summary>
