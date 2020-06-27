@@ -379,6 +379,7 @@ namespace Khronos {
 
             main_frame_grid = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             main_frame_grid.expand = true;
+            main_frame_grid.get_style_context ().add_class ("tt-view");
             main_frame_grid.add (main_frame);
 
             grid = new Gtk.Grid ();

@@ -60,12 +60,17 @@ window.unified decoration-overlay {
 
 .tt-toolbar {
     box-shadow: none;
+    background: #FFF;
     border-bottom: 1px solid alpha (black, 0.25);
 }
 
 .tt-toolbar-dark {
     background: #000;
     box-shadow: none;
+}
+
+.tt-view {
+    background: #F7F7F7;
 }
 
 .tt-view-dark {
