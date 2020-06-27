@@ -7,6 +7,8 @@ window.unified decoration-overlay {
   border-radius: 8px;
 }
 
+
+
 .tt-column {
     background: mix (@accent_color, @content_view_bg, 0.95);
     border-right: 1px solid alpha (black, 0.25);
@@ -61,4 +63,9 @@ window.unified decoration-overlay {
 .tt-toolbar {
     box-shadow: none;
     border-bottom: 1px solid alpha (black, 0.25);
+}
+
+.tt-toolbar-dark {
+    background: #000;
+    box-shadow: none;
 }

@@ -16,17 +16,20 @@ namespace Khronos {
                     string task1 = ((TaskBox) row1).time;
                     string task2 = ((TaskBox) row2).time;
 
-                    var reg = new Regex("(?m)^\\d{2} hrs, (?<min>\\d{2}) mins, \\d{2} secs");
-                    GLib.MatchInfo match;
-
-                    if (reg.match (task1, 0, out match)) {
-                        do {
-                            if (match.fetch_named ("min") != "") {
-                                return task1.collate(task2);
-                            }
-                        } while (match.next ());
-                    } else {
-                        return task2.collate(task1);
+                    try {
+                        var reg = new Regex("(?m)^\\d{2} hrs, (?<min>\\d{2}) mins, \\d{2} secs");
+                        GLib.MatchInfo match;
+                        if (reg.match (task1, 0, out match)) {
+                            do {
+                                if (match.fetch_named ("min") != "") {
+                                    return task1.collate(task2);
+                                }
+                            } while (match.next ());
+                        } else {
+                            return task2.collate(task1);
+                        }
+                    } catch (GLib.Error e) {
+                        warning ("ERR: %s", e.message);
                     }
                 } else if (Khronos.Application.gsettings.get_string ("sort-type") == "name") {
                     string task1 = ((TaskBox) row1).name;

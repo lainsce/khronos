@@ -87,16 +87,20 @@ namespace Khronos {
 
             if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK) {
                 Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
+                titlebar.get_style_context ().add_class ("tt-toolbar-dark");
             } else if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.NO_PREFERENCE) {
                 Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = false;
+                titlebar.get_style_context ().remove_class ("tt-toolbar-dark");
             }
 
             Khronos.Application.grsettings.notify["prefers-color-scheme"].connect (() => {
-                if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK) {
-                    Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
-                } else if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.NO_PREFERENCE) {
-                    Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = false;
-                }
+                 if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK) {
+                     Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
+                     titlebar.get_style_context ().add_class ("tt-toolbar-dark");
+                 } else if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.NO_PREFERENCE) {
+                     Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = false;
+                     titlebar.get_style_context ().remove_class ("tt-toolbar-dark");
+                 }
             });
 
             Khronos.Application.gsettings.changed.connect (() => {
@@ -116,8 +120,8 @@ namespace Khronos {
             titlebar = new Hdy.HeaderBar ();
             titlebar.show_close_button = true;
             var titlebar_style_context = titlebar.get_style_context ();
-            titlebar_style_context.add_class ("tt-toolbar");
             titlebar_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
+            titlebar_style_context.add_class ("tt-toolbar");
             titlebar.has_subtitle = false;
             titlebar.title = " Khronos";
             titlebar.set_show_close_button (true);
