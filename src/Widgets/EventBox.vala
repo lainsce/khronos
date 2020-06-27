@@ -1,5 +1,5 @@
 namespace Khronos {
-    public class TaskEventBox : Gtk.EventBox {
+    public class TaskEventBox : Gtk.Box {
         public MainWindow win;
         public TaskBox tb;
         public Gtk.Button app_button;
@@ -34,6 +34,8 @@ namespace Khronos {
             task_label.wrap = true;
             task_label.hexpand = true;
             task_label.label = tb.name;
+            var task_label_c = task_label.get_style_context ();
+            task_label_c.add_class ("tt-title");
 
             task_time_label = new Gtk.Label ("");
             task_time_label.use_markup = true;
@@ -47,15 +49,11 @@ namespace Khronos {
 
             var task_box = new Gtk.Grid ();
             task_box.row_homogeneous = true;
-            task_box.events |= Gdk.EventMask.BUTTON_PRESS_MASK &
-                               Gdk.EventMask.BUTTON_RELEASE_MASK;
             task_box.attach (task_label, 0, 0);
             task_box.attach (task_time_label, 0, 1);
             task_box.attach (task_date_label, 0, 2);
 
             task_delete_button = new Gtk.Button();
-            task_delete_button.events |= Gdk.EventMask.BUTTON_PRESS_MASK &
-                                         Gdk.EventMask.BUTTON_RELEASE_MASK;
             var task_delete_button_c = task_delete_button.get_style_context ();
             task_delete_button_c.add_class ("flat");
             task_delete_button_c.add_class ("icon-shadow");
@@ -68,53 +66,12 @@ namespace Khronos {
                                           ));
             task_delete_button.tooltip_text = (_("Delete Task"));
 
-            var task_buttons_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
-            task_buttons_box.pack_start (task_delete_button, false, true, 0);
-
-            revealer = new Gtk.Revealer ();
-            revealer.events |= Gdk.EventMask.ENTER_NOTIFY_MASK &
-                               Gdk.EventMask.LEAVE_NOTIFY_MASK &
-                               Gdk.EventMask.BUTTON_PRESS_MASK &
-                               Gdk.EventMask.BUTTON_RELEASE_MASK;
-            revealer.set_transition_duration (100);
-            revealer.set_transition_type (Gtk.RevealerTransitionType.CROSSFADE);
-            revealer.halign = Gtk.Align.START;
-            revealer.valign = Gtk.Align.CENTER;
-            revealer.add (task_buttons_box);
 
             var grid = new Gtk.Grid ();
-            grid.events |= Gdk.EventMask.ENTER_NOTIFY_MASK &
-                               Gdk.EventMask.LEAVE_NOTIFY_MASK &
-                               Gdk.EventMask.BUTTON_PRESS_MASK &
-                               Gdk.EventMask.BUTTON_RELEASE_MASK;
             grid.attach (task_box, 0, 0);
-            grid.attach (revealer, 1, 0);
+            grid.attach (task_delete_button, 1, 0);
 
             this.add (grid);
-
-            task_delete_button.clicked.connect (() => {
-                delete_requested ();
-            });
-
-            this.enter_notify_event.connect ((event) => {
-                revealer.set_reveal_child (this.show_button);
-                return false;
-            });
-
-            this.leave_notify_event.connect ((event) => {
-    	        revealer.set_reveal_child (this.show_button);
-    	        return false;
-            });
-
-            revealer.leave_notify_event.connect ((event) => {
-                revealer.set_reveal_child (false);
-	            return false;
-            });
-
-            task_delete_button.enter_notify_event.connect ((event) => {
-                revealer.set_reveal_child (this.show_button);
-                return false;
-            });
         }
     }
 }

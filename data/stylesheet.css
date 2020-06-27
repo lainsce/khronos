@@ -1,55 +1,39 @@
-@define-color accent_color #9696d4;
+@define-color accent_color #8080c5;
+@define-color accent_color_500 #8080c5;
+@define-color accent_color_300 #8080c5;
 
 window.unified decoration,
 window.unified decoration-overlay {
   border-radius: 8px;
 }
 
-.icon-shadow {
-    -gtk-icon-shadow: 0px 0px 3px black;
-    background-color: transparent;
-    background-image: none;
-    background: none;
-}
 .tt-column {
-    background: mix (@accent_color, @base_color, 0.9);
+    background: mix (@accent_color, @content_view_bg, 0.95);
     border-right: 1px solid alpha (black, 0.25);
     box-shadow: none;
     padding: 6px;
 }
 
 .tt-column list {
-    background: mix (@accent_color, @base_color, 0.9);
+    background: mix (@accent_color, @content_view_bg, 0.95);
 }
 
 .tt-box {
-    border-bottom: none;
-    border-top: none;
-    border-right: none;
+    padding: 2px;
+    margin: 6px;
     border-radius: 8px;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    background-color: mix (@accent_color, #FFF, 0.66);
-    color: shade (@accent_color, 0.5);
-    font-weight: 600;
+    border: 1px solid shade(mix (@accent_color, @content_view_bg, 0.95), 0.77);
+    background-color: mix (@accent_color, @content_view_bg, 0.95);
+    color: @fg_color;
 }
-.tt-box:backdrop {
-    color: shade (@accent_color, 0.88);
-}
-.tt-box:selected.activatable {
-    color: shade (@accent_color, 0.5);
-}
-.tt-box:selected.activatable:backdrop {
-    color: shade (@accent_color, 0.88);
-}
-.tt-box image {
-    color: shade (@accent_color, 0.5);
-    -gtk-icon-shadow: none;
-    border-image-width: 0;
-    box-shadow: transparent;
-}
-.tt-box image:backdrop {
-    color: shade (@accent_color, 0.88);
+
+.tt-box:hover {
+    padding: 2px;
+    margin: 6px;
+    border-radius: 8px;
+    border: 1px solid shade(mix (@accent_color, @content_view_bg, 0.95), 0.88);
+    background-color: shade(mix (@accent_color, @content_view_bg, 0.95), 0.88);
+    color: @fg_color;
 }
 
 .tt-button {
@@ -68,6 +52,10 @@ window.unified decoration-overlay {
 
 .tt-label {
     font-size: 2.66rem;
+}
+
+.tt-title {
+    font-weight: 700;
 }
 
 .tt-toolbar {

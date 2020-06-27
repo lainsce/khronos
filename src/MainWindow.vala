@@ -85,6 +85,20 @@ namespace Khronos {
                 this.resize (w, h);
             }
 
+            if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK) {
+                Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
+            } else if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.NO_PREFERENCE) {
+                Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = false;
+            }
+
+            Khronos.Application.grsettings.notify["prefers-color-scheme"].connect (() => {
+                if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK) {
+                    Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
+                } else if (Khronos.Application.grsettings.prefers_color_scheme == Granite.Settings.ColorScheme.NO_PREFERENCE) {
+                    Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = false;
+                }
+            });
+
             Khronos.Application.gsettings.changed.connect (() => {
                 if (Khronos.Application.gsettings.get_boolean("notification")) {
                     set_timeouts ();
