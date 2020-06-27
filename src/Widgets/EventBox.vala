@@ -10,7 +10,6 @@ namespace Khronos {
 
         public bool show_button = true;
         public bool show_popover = true;
-        public TaskEventBox evbox;
         public Gtk.Label task_label;
         public Gtk.Label task_time_label;
         public Gtk.Label task_date_label;
@@ -34,6 +33,8 @@ namespace Khronos {
             task_label.wrap = true;
             task_label.hexpand = true;
             task_label.label = tb.name;
+            task_label.max_width_chars = 20;
+            task_label.ellipsize = Pango.EllipsizeMode.END;
             var task_label_c = task_label.get_style_context ();
             task_label_c.add_class ("tt-title");
 
@@ -60,12 +61,13 @@ namespace Khronos {
             task_delete_button.has_tooltip = true;
             task_delete_button.vexpand = false;
             task_delete_button.valign = Gtk.Align.CENTER;
-            task_delete_button.set_image (new Gtk.Image.from_icon_name (
-                                             "edit-delete-symbolic",
-                                             Gtk.IconSize.BUTTON
-                                          ));
+            task_delete_button.set_image (new Gtk.Image.from_icon_name ("edit-delete-symbolic", Gtk.IconSize.BUTTON));
             task_delete_button.tooltip_text = (_("Delete Task"));
-
+            task_delete_button.clicked.connect (() => {
+                this.destroy ();
+                tb.destroy ();
+                win.tm.save_notes ();
+            });
 
             var grid = new Gtk.Grid ();
             grid.attach (task_box, 0, 0);

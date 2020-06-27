@@ -166,7 +166,7 @@ namespace Khronos {
 
             column_time_label = new Gtk.Label("");
             column_time_label.use_markup = true;
-            column_time_label.label = "0<span size=\"x-small\">H</span> 0<span size=\"x-small\">M</span> 0<span size=\"x-small\">S</span>";
+            column_time_label.label = "%02u<span size=\"x-small\">H</span> %02u<span size=\"x-small\">M</span> %02u<span size=\"x-small\">S</span>".printf(hrs, min, sec);
             column_time_label.margin_bottom = 12;
             var column_time_label_style_context = column_time_label.get_style_context ();
             column_time_label_style_context.add_class ("tt-label");
@@ -456,10 +456,10 @@ namespace Khronos {
         }
 
         public void reset_timer () {
-            column_time_label.label = "0<span size=\"x-small\">H</span> 0<span size=\"x-small\">M</span> 0<span size=\"x-small\">S</span>";
             sec = 0;
             min = 0;
             hrs = 0;
+            column_time_label.label = "%02u<span size=\"x-small\">H</span> %02u<span size=\"x-small\">M</span> %02u<span size=\"x-small\">S</span>".printf(hrs, min, sec);
             column_reset_button.sensitive = false;
             column_button.sensitive = false;
             column_entry.text = "";
@@ -482,15 +482,15 @@ namespace Khronos {
         public void timer () {
             if (start) {
                 sec += 1;
-                column_time_label.label = "%u<span size=\"x-small\">H</span> %u<span size=\"x-small\">M</span> %u<span size=\"x-small\">S</span>".printf(hrs, min, sec);
+                column_time_label.label = "%02u<span size=\"x-small\">H</span> %02u<span size=\"x-small\">M</span> %02u<span size=\"x-small\">S</span>".printf(hrs, min, sec);
                 if (sec >= 60) {
                     sec = 0;
                     min += 1;
-                    column_time_label.label = "%u<span size=\"x-small\">H</span> %u<span size=\"x-small\">M</span>".printf(hrs, min);
+                    column_time_label.label = "%02u<span size=\"x-small\">H</span> %02u<span size=\"x-small\">M</span> %02u<span size=\"x-small\">S</span>".printf(hrs, min, sec);
                     if (min >= 60) {
                         min = 0;
                         hrs += 1;
-                        column_time_label.label = "%u<span size=\"x-small\">H</span>".printf(hrs);
+                        column_time_label.label = "%02u<span size=\"x-small\">H</span> %02u<span size=\"x-small\">M</span> %02u<span size=\"x-small\">S</span>".printf(hrs, min, sec);
                     }
                 }
             }

@@ -15,7 +15,7 @@ namespace Khronos {
             rec_label.label = _("<span weight=\"bold\">LOGS</span>");
 
             column = new DayColumnListBox (day, win);
-            column.set_size_request (200,-1);
+            column.set_size_request (226,-1);
 
             this.row_spacing = 6;
             this.attach (rec_label, 0, 0);
