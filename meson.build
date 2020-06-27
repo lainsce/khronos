@@ -1,11 +1,18 @@
 # Name our project
 project('com.github.lainsce.khronos', ['vala', 'c'],
-    version: '1.0.8'
+    version: '2.0.0'
 )
 
 # Import main lib files
 gnome = import('gnome')
 i18n = import('i18n')
+
+add_global_arguments([
+        '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+        '-DHANDY_USE_UNSTABLE_API'
+    ],
+    language:'c'
+)
 
 # Compile the GResources for this project
 asresources = gnome.compile_resources(
@@ -25,7 +32,6 @@ pkgdatadir = join_paths([ get_option('prefix'),
 conf.set_quoted('PKGDATADIR', pkgdatadir)
 
 # Other configs
-conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf
 add_global_arguments('-DDATADIR="' + get_option('datadir') + '"', language: 'c')
 configure_file(output: 'config.h', configuration: conf)
@@ -60,6 +66,7 @@ executable(
         dependency('json-glib-1.0'),
         dependency('gee-0.8'),
         dependency('gtk+-3.0'),
+        dependency('libhandy-1', version: '>=0.80.0'),
         m_dep,
     ],
     vala_args: [

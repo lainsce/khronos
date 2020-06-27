@@ -21,6 +21,7 @@ namespace Khronos {
             this.win = win;
             this.uid = uid_counter++;
             this.tb = tb;
+            this.margin = 6;
 
             win.tm.save_notes ();
 
@@ -32,7 +33,7 @@ namespace Khronos {
             task_label.halign = Gtk.Align.START;
             task_label.wrap = true;
             task_label.hexpand = true;
-            task_label.set_markup (@"\n<span size=\"x-large\">"+tb.name+"</span>");
+            task_label.label = tb.name;
 
             task_time_label = new Gtk.Label ("");
             task_time_label.use_markup = true;
@@ -63,7 +64,7 @@ namespace Khronos {
             task_delete_button.valign = Gtk.Align.CENTER;
             task_delete_button.set_image (new Gtk.Image.from_icon_name (
                                              "edit-delete-symbolic",
-                                             Gtk.IconSize.LARGE_TOOLBAR
+                                             Gtk.IconSize.BUTTON
                                           ));
             task_delete_button.tooltip_text = (_("Delete Task"));
 

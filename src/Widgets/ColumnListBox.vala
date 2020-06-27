@@ -8,7 +8,6 @@ namespace Khronos {
 
         public DayColumnListBox (int day, MainWindow win) {
             this.win = win;
-            this.hexpand = true;
             this.vexpand = true;
             this.activate_on_single_click = false;
             this.selection_mode = Gtk.SelectionMode.SINGLE;
@@ -41,14 +40,12 @@ namespace Khronos {
             });
 
             this.build_drag_and_drop ();
-
-            var column_style_context = this.get_style_context ();
-            column_style_context.add_class ("tt-column");
+            this.margin = 6;
 
             var no_tasks = new Gtk.Label (_("No tasks…"));
             no_tasks.halign = Gtk.Align.CENTER;
             var no_tasks_style_context = no_tasks.get_style_context ();
-            no_tasks_style_context.add_class ("tt-label");
+            no_tasks_style_context.add_class ("h3");
             no_tasks.sensitive = false;
             no_tasks.margin = 12;
             no_tasks.show_all ();

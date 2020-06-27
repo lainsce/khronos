@@ -20,7 +20,7 @@ namespace Khronos.FileManager {
                 if (file == null) {
                     debug ("User cancelled operation. Aborting.");
                 } else {
-                    if (win.column.is_modified == true) {
+                    if (win.is_modified == true) {
                         buffer_text += "task,time,startdate\n";
                         buffer_text += get_column_tasks (win.column);
                         var buffer = buffer_text;
@@ -49,6 +49,6 @@ namespace Khronos.FileManager {
         }
 
         public void reset_modification_state (MainWindow win) {
-            win.column.is_modified = false;
+            win.is_modified = false;
         }
 }

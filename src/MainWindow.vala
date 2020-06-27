@@ -17,11 +17,25 @@
 * Boston, MA 02110-1301 USA
 */
 namespace Khronos {
-    public class MainWindow : Gtk.ApplicationWindow {
+    public class MainWindow : Hdy.ApplicationWindow {
         // Widgets
         public DayColumn column;
         public Gtk.Grid grid;
         public Gtk.Grid sort_type_grid;
+        public Gtk.Entry column_entry;
+        public Gtk.Label column_time_label;
+        public Gtk.Button column_button;
+        public Gtk.Button column_export_button;
+        public Gtk.Button column_reset_button;
+        public Gtk.Button column_play_button;
+
+        public bool is_modified {get; set; default = false;}
+        public bool start = false;
+        private uint timer_id;
+        private uint sec = 0;
+        private uint min = 0;
+        private uint hrs = 0;
+        private GLib.DateTime dt;
 
         public TaskManager tm;
         public Gtk.Application app { get; construct; }
@@ -54,6 +68,7 @@ namespace Khronos {
 
         construct {
             tm = new TaskManager (this);
+            dt = new GLib.DateTime.now_local ();
 
             int x = Khronos.Application.gsettings.get_int("window-x");
             int y = Khronos.Application.gsettings.get_int("window-y");
@@ -80,21 +95,132 @@ namespace Khronos {
 
             this.get_style_context ().add_class ("rounded");
 
-            var titlebar = new Gtk.HeaderBar ();
+            var titlebar = new Hdy.HeaderBar ();
             titlebar.show_close_button = true;
             var titlebar_style_context = titlebar.get_style_context ();
             titlebar_style_context.add_class ("tt-toolbar");
             titlebar_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
             titlebar.has_subtitle = false;
+            titlebar.title = " Khronos";
             titlebar.set_show_close_button (true);
-            titlebar.decoration_layout = "close:";
-            this.set_titlebar (titlebar);
+            titlebar.hexpand = true;
+            titlebar.decoration_layout = ":maximize";
+            titlebar.set_size_request (-1,45);
 
             column = new DayColumn (1, this);
+            column.column.hexpand = false;
 
-            var actionbar = new Gtk.ActionBar();
-            var actionbar_style_context = actionbar.get_style_context ();
-            actionbar_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
+            column_time_label = new Gtk.Label("");
+            column_time_label.label = "0 hrs, 0 mins, 0 secs";
+            column_time_label.margin_bottom = 12;
+            var column_time_label_style_context = column_time_label.get_style_context ();
+            column_time_label_style_context.add_class ("tt-label");
+
+            column_play_button = new Gtk.Button ();
+            column_play_button.has_tooltip = true;
+            column_play_button.tooltip_text = _("Start Timer…");
+            column_play_button.can_focus = false;
+            var column_play_button_style_context = column_play_button.get_style_context ();
+            column_play_button_style_context.add_class ("tt-button");
+            column_play_button_style_context.add_class ("image-button");
+            column_play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-start-symbolic", Gtk.IconSize.BUTTON));
+
+            column_reset_button = new Gtk.Button ();
+            column_reset_button.has_tooltip = true;
+            column_reset_button.tooltip_text = _("Reset Timer");
+            column_reset_button.sensitive = false;
+            column_reset_button.can_focus = false;
+            var column_reset_button_style_context = column_reset_button.get_style_context ();
+            column_reset_button_style_context.add_class ("tt-button");
+            column_reset_button_style_context.add_class ("image-button");
+            column_reset_button.set_image (new Gtk.Image.from_icon_name ("appointment-symbolic", Gtk.IconSize.BUTTON));
+
+            column_export_button = new Gtk.Button ();
+            column_export_button.has_tooltip = true;
+            column_export_button.tooltip_text = _("Export Log As…");
+            column_export_button.can_focus = false;
+            var column_export_button_style_context = column_export_button.get_style_context ();
+            column_export_button_style_context.add_class ("tt-button");
+            column_export_button_style_context.add_class ("image-button");
+            column_export_button.set_image (new Gtk.Image.from_icon_name ("document-export-symbolic", Gtk.IconSize.BUTTON));
+
+            column_button = new Gtk.Button ();
+            column_button.has_tooltip = true;
+            column_button.tooltip_text = _("Add Log");
+            column_button.can_focus = false;
+            column_button.sensitive = false;
+            var column_button_style_context = column_button.get_style_context ();
+            column_button_style_context.add_class ("tt-button");
+            column_button_style_context.add_class ("image-button");
+            column_button.set_image (new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.BUTTON));
+
+            column_button.clicked.connect (() => {
+                add_task (column_entry.text, column_time_label.label, _("%s").printf (dt.format ("%a %d/%m %H:%M")));
+                column_entry.text = "";
+            });
+
+            column_play_button.clicked.connect (() => {
+                if (start != true) {
+                    start = true;
+                    timer_id = GLib.Timeout.add_seconds (1, () => {
+                        timer ();
+                        return true;
+                    });;
+                    column_play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-stop-symbolic", Gtk.IconSize.BUTTON));
+                    column_play_button.tooltip_text = _("Stop Timer");
+                    column_reset_button.sensitive = false;
+                    column_button.sensitive = false;
+                } else {
+                    start = false;
+                    GLib.Source.remove(timer_id);
+                    column_play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-start-symbolic", Gtk.IconSize.BUTTON));
+                    column_play_button.tooltip_text = _("Start Timer");
+                    column_reset_button.sensitive = true;
+                    column_button.sensitive = true;
+                }
+            });
+
+            column_reset_button.clicked.connect (() => {
+                reset_timer ();
+            });
+
+            column_export_button.clicked.connect (() => {
+                try {
+                    FileManager.save_as (this);
+                } catch (Error e) {
+                    warning ("Unexpected error during export: " + e.message);
+                }
+            });
+
+            column_entry = new Gtk.Entry ();
+            column_entry.placeholder_text = _("New task name…");
+            column_entry.hexpand = true;
+            column_entry.margin_start = column_entry.margin_end = 12;
+            column_entry.valign = Gtk.Align.START;
+
+	        var custom_help = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.BUTTON);
+            custom_help.halign = Gtk.Align.START;
+            custom_help.margin_top = 6;
+	        custom_help.margin_end = 12;
+            custom_help.tooltip_text = _("You can log this task by starting the task's timer first.");
+
+	        var column_entry_and_help_grid = new Gtk.Grid ();
+	        column_entry_and_help_grid.add (column_entry);
+	        column_entry_and_help_grid.add (custom_help);
+
+            var main_frame = new Gtk.Grid ();
+            main_frame.orientation = Gtk.Orientation.VERTICAL;
+            main_frame.halign = Gtk.Align.CENTER;
+            main_frame.valign = Gtk.Align.CENTER;
+            main_frame.add (column_time_label);
+            main_frame.add (column_entry_and_help_grid);
+            main_frame.show_all ();
+
+            titlebar.pack_start (column_play_button);
+            titlebar.pack_start (column_button);
+            titlebar.pack_start (column_reset_button);
+
+            var notification_header = new Granite.HeaderLabel (_("Notifications"));
 
             var notification_label = new Gtk.Label (_("Notification Delay:"));
 
@@ -123,12 +249,12 @@ namespace Khronos {
             sort_type_menu_item ();
 
             var menu_grid = new Gtk.Grid ();
-            menu_grid.margin = 6;
+            menu_grid.margin = 12;
             menu_grid.row_spacing = 6;
             menu_grid.column_spacing = 12;
             menu_grid.orientation = Gtk.Orientation.VERTICAL;
             menu_grid.add (sort_type_grid);
-            menu_grid.add (separator);
+            menu_grid.add (notification_header);
             menu_grid.add (notification_box);
             menu_grid.show_all ();
 
@@ -141,28 +267,29 @@ namespace Khronos {
             menu_button.tooltip_text = (_("Settings"));
             menu_button.popover = menu;
 
-            actionbar.pack_end (menu_button);
+            titlebar.pack_end (menu_button);
+            titlebar.pack_end (column_export_button);
 
             tm.load_from_file ();
 
+            var fauxtitlebar = new Hdy.HeaderBar ();
+            fauxtitlebar.set_size_request (200,45);
+            fauxtitlebar.decoration_layout = "close:";
+            fauxtitlebar.show_close_button = true;
+            fauxtitlebar.has_subtitle = false;
+            fauxtitlebar.get_style_context ().add_class ("tt-column");
+            fauxtitlebar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+
             grid = new Gtk.Grid ();
-            grid.column_spacing = 12;
-            grid.margin = 12;
-            grid.set_column_homogeneous (true);
             grid.hexpand = true;
-            grid.attach (column, 0, 0, 1, 1);
-            grid.attach (actionbar, 0, 1, 1, 1);
+            grid.attach (fauxtitlebar, 0, 0, 1, 1);
+            grid.attach (titlebar, 1, 0, 1, 1);
+            grid.attach (main_frame, 1, 1, 1, 1);
+            grid.attach (column, 0, 1, 1, 1);
             grid.show_all ();
 
-            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            box.hexpand = true;
-            box.pack_start (grid, false, true, 0);
-
-            var scrwindow = new Gtk.ScrolledWindow (null, null);
-            scrwindow.add (box);
-
-            this.add (scrwindow);
-            this.set_size_request (600, 900);
+            this.add (grid);
+            this.set_size_request (600, 600);
             this.show_all ();
         }
 
@@ -195,6 +322,47 @@ namespace Khronos {
             return false;
         }
 
+        public void reset_timer () {
+            column_time_label.label = "0 hrs, 0 mins, 0 secs";
+            sec = 0;
+            min = 0;
+            hrs = 0;
+            column_reset_button.sensitive = false;
+            column_button.sensitive = false;
+            column_entry.text = "";
+        }
+
+        public void add_task (string name, string time, string date) {
+            var taskbox = new TaskBox (this, name, time, date);
+            column.column.insert (taskbox, -1);
+            tm.save_notes ();
+            is_modified = true;
+        }
+
+        public void clear_column () {
+            foreach (Gtk.Widget item in column.get_children ()) {
+                item.destroy ();
+            }
+            tm.save_notes ();
+        }
+
+        public void timer () {
+            if (start) {
+                sec += 1;
+                column_time_label.label = "%u hrs, %u mins, %u secs".printf(hrs, min, sec);
+                if (sec >= 60) {
+                    sec = 0;
+                    min += 1;
+                    column_time_label.label = "%u hrs, %u mins".printf(hrs, min);
+                    if (min >= 60) {
+                        min = 0;
+                        hrs += 1;
+                        column_time_label.label = "%u hrs".printf(hrs);
+                    }
+                }
+            }
+        }
+
         public void sort_type_menu_item () {
             var sort_time = new Gtk.RadioButton.with_label_from_widget (null, _("Sort By Time"));
 	        sort_time.toggled.connect (() => {
@@ -214,16 +382,19 @@ namespace Khronos {
 	            sort_time.set_active (true);
 	        }
 
+	        var sort_header = new Granite.HeaderLabel (_("Sorting"));
+
             sort_type_grid = new Gtk.Grid ();
             sort_type_grid.row_spacing = 12;
             sort_type_grid.orientation = Gtk.Orientation.VERTICAL;
+            sort_type_grid.add (sort_header);
             sort_type_grid.add (sort_time);
             sort_type_grid.add (sort_name);
             sort_type_grid.show_all ();
         }
 
         public void set_timeouts () {
-            if (column.start) {
+            if (start) {
                 id1 = Timeout.add_seconds (Khronos.Application.gsettings.get_int("notification-delay"), () => {
                     notification1 ();
                     GLib.Source.remove (this.id2);
