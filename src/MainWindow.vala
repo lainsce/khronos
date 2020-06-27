@@ -21,6 +21,7 @@ namespace Khronos {
         // Widgets
         public DayColumn column;
         public Gtk.Grid grid;
+        public Gtk.Grid sgrid;
         public Gtk.Grid sort_type_grid;
         public Gtk.Entry column_entry;
         public Gtk.Label column_time_label;
@@ -28,6 +29,9 @@ namespace Khronos {
         public Gtk.Button column_export_button;
         public Gtk.Button column_reset_button;
         public Gtk.Button column_play_button;
+        public Hdy.Leaflet leaflet;
+        public Hdy.HeaderBar titlebar;
+        public Hdy.HeaderBar fauxtitlebar;
 
         public bool is_modified {get; set; default = false;}
         public bool start = false;
@@ -95,7 +99,7 @@ namespace Khronos {
 
             this.get_style_context ().add_class ("rounded");
 
-            var titlebar = new Hdy.HeaderBar ();
+            titlebar = new Hdy.HeaderBar ();
             titlebar.show_close_button = true;
             var titlebar_style_context = titlebar.get_style_context ();
             titlebar_style_context.add_class ("tt-toolbar");
@@ -110,8 +114,13 @@ namespace Khronos {
             column = new DayColumn (1, this);
             column.column.hexpand = false;
 
+            var column_scroller = new Gtk.ScrolledWindow (null, null);
+            column_scroller.hscrollbar_policy = Gtk.PolicyType.NEVER;
+            column_scroller.add (column);
+
             column_time_label = new Gtk.Label("");
-            column_time_label.label = "0 hrs, 0 mins, 0 secs";
+            column_time_label.use_markup = true;
+            column_time_label.label = "0<span size=\"x-small\">H</span> 0<span size=\"x-small\">M</span> 0<span size=\"x-small\">S</span>";
             column_time_label.margin_bottom = 12;
             var column_time_label_style_context = column_time_label.get_style_context ();
             column_time_label_style_context.add_class ("tt-label");
@@ -135,14 +144,15 @@ namespace Khronos {
             column_reset_button_style_context.add_class ("image-button");
             column_reset_button.set_image (new Gtk.Image.from_icon_name ("appointment-symbolic", Gtk.IconSize.BUTTON));
 
-            column_export_button = new Gtk.Button ();
-            column_export_button.has_tooltip = true;
-            column_export_button.tooltip_text = _("Export Log As…");
+            column_export_button = new Gtk.ModelButton ();
+            column_export_button.get_child ().destroy ();
+            var column_export_button_accellabel = new Granite.AccelLabel.from_action_name (
+                _("Export Log As CSV"),
+                ""
+            );
+            column_export_button.add (column_export_button_accellabel);
+            column_export_button.halign = Gtk.Align.START;
             column_export_button.can_focus = false;
-            var column_export_button_style_context = column_export_button.get_style_context ();
-            column_export_button_style_context.add_class ("tt-button");
-            column_export_button_style_context.add_class ("image-button");
-            column_export_button.set_image (new Gtk.Image.from_icon_name ("document-export-symbolic", Gtk.IconSize.BUTTON));
 
             column_button = new Gtk.Button ();
             column_button.has_tooltip = true;
@@ -195,13 +205,12 @@ namespace Khronos {
             column_entry = new Gtk.Entry ();
             column_entry.placeholder_text = _("New task name…");
             column_entry.hexpand = true;
-            column_entry.margin_start = column_entry.margin_end = 12;
+            column_entry.margin = 12;
             column_entry.valign = Gtk.Align.START;
 
 	        var custom_help = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.BUTTON);
             custom_help.halign = Gtk.Align.START;
-            custom_help.margin_top = 6;
-	        custom_help.margin_end = 12;
+	        custom_help.margin = 12;
             custom_help.tooltip_text = _("You can log this task by starting the task's timer first.");
 
 	        var column_entry_and_help_grid = new Gtk.Grid ();
@@ -212,6 +221,7 @@ namespace Khronos {
             main_frame.orientation = Gtk.Orientation.VERTICAL;
             main_frame.halign = Gtk.Align.CENTER;
             main_frame.valign = Gtk.Align.CENTER;
+            main_frame.vexpand = true;
             main_frame.add (column_time_label);
             main_frame.add (column_entry_and_help_grid);
             main_frame.show_all ();
@@ -230,7 +240,6 @@ namespace Khronos {
 
             var notification_sb = new Gtk.SpinButton.with_range (30, 90, 1);
             notification_sb.set_text ("%i".printf((Khronos.Application.gsettings.get_int("notification-delay")/60)));
-
             notification_sb.sensitive = notification_sw.get_active ();
 
             notification_sb.value_changed.connect (() => {
@@ -245,6 +254,26 @@ namespace Khronos {
             notification_box.add (notification_sw);
             notification_box.add (notification_sb);
             notification_box.show_all ();
+
+            var export_menu_grid = new Gtk.Grid ();
+            export_menu_grid.margin = 12;
+            export_menu_grid.row_spacing = 6;
+            export_menu_grid.column_spacing = 12;
+            export_menu_grid.orientation = Gtk.Orientation.VERTICAL;
+            export_menu_grid.add (column_export_button);
+            export_menu_grid.show_all ();
+
+            var export_menu = new Gtk.Popover (null);
+            export_menu.add (export_menu_grid);
+
+            var export_menu_button = new Gtk.MenuButton ();
+            export_menu_button.set_image (new Gtk.Image.from_icon_name ("document-export-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
+            export_menu_button.has_tooltip = true;
+            export_menu_button.tooltip_text = (_("Export"));
+            export_menu_button.popover = export_menu;
+            var export_menu_button_style_context = export_menu_button.get_style_context ();
+            export_menu_button_style_context.add_class ("tt-button");
+            export_menu_button_style_context.add_class ("image-button");
 
             sort_type_menu_item ();
 
@@ -266,13 +295,16 @@ namespace Khronos {
             menu_button.has_tooltip = true;
             menu_button.tooltip_text = (_("Settings"));
             menu_button.popover = menu;
+            var menu_button_style_context = menu_button.get_style_context ();
+            menu_button_style_context.add_class ("tt-button");
+            menu_button_style_context.add_class ("image-button");
 
             titlebar.pack_end (menu_button);
-            titlebar.pack_end (column_export_button);
+            titlebar.pack_end (export_menu_button);
 
             tm.load_from_file ();
 
-            var fauxtitlebar = new Hdy.HeaderBar ();
+            fauxtitlebar = new Hdy.HeaderBar ();
             fauxtitlebar.set_size_request (200,45);
             fauxtitlebar.decoration_layout = "close:";
             fauxtitlebar.show_close_button = true;
@@ -280,16 +312,39 @@ namespace Khronos {
             fauxtitlebar.get_style_context ().add_class ("tt-column");
             fauxtitlebar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
+            sgrid = new Gtk.Grid ();
+            sgrid.attach (fauxtitlebar, 0, 0, 1, 1);
+            sgrid.attach (column_scroller, 0, 1, 1, 1);
+            sgrid.show_all ();
+
             grid = new Gtk.Grid ();
-            grid.hexpand = true;
-            grid.attach (fauxtitlebar, 0, 0, 1, 1);
             grid.attach (titlebar, 1, 0, 1, 1);
             grid.attach (main_frame, 1, 1, 1, 1);
-            grid.attach (column, 0, 1, 1, 1);
             grid.show_all ();
 
-            this.add (grid);
-            this.set_size_request (600, 600);
+            separator = new Gtk.Separator (Gtk.Orientation.VERTICAL);
+            var separator_cx = separator.get_style_context ();
+            separator_cx.add_class ("vsep");
+
+            update ();
+
+            leaflet = new Hdy.Leaflet ();
+            leaflet.add (sgrid);
+            leaflet.add (separator);
+            leaflet.add (grid);
+            leaflet.transition_type = Hdy.LeafletTransitionType.UNDER;
+            leaflet.show_all ();
+            leaflet.can_swipe_back = true;
+            leaflet.set_visible_child (grid);
+
+            leaflet.child_set_property (separator, "allow-visible", false);
+
+            leaflet.notify["folded"].connect (() => {
+                update ();
+            });
+
+            this.add (leaflet);
+            this.set_size_request (360, 435);
             this.show_all ();
         }
 
@@ -322,8 +377,20 @@ namespace Khronos {
             return false;
         }
 
+        private void update () {
+            if (leaflet != null && leaflet.get_folded ()) {
+                // On Mobile size, so.... have to have no buttons anywhere.
+                fauxtitlebar.set_decoration_layout (":");
+                titlebar.set_decoration_layout (":");
+            } else {
+                // Else you're on Desktop size, so business as usual.
+                fauxtitlebar.set_decoration_layout ("close:");
+                titlebar.set_decoration_layout (":maximize");
+            }
+        }
+
         public void reset_timer () {
-            column_time_label.label = "0 hrs, 0 mins, 0 secs";
+            column_time_label.label = "0<span size=\"x-small\">H</span> 0<span size=\"x-small\">M</span> 0<span size=\"x-small\">S</span>";
             sec = 0;
             min = 0;
             hrs = 0;
@@ -349,15 +416,15 @@ namespace Khronos {
         public void timer () {
             if (start) {
                 sec += 1;
-                column_time_label.label = "%u hrs, %u mins, %u secs".printf(hrs, min, sec);
+                column_time_label.label = "%u<span size=\"x-small\">H</span> %u<span size=\"x-small\">M</span> %u<span size=\"x-small\">S</span>".printf(hrs, min, sec);
                 if (sec >= 60) {
                     sec = 0;
                     min += 1;
-                    column_time_label.label = "%u hrs, %u mins".printf(hrs, min);
+                    column_time_label.label = "%u<span size=\"x-small\">H</span> %u<span size=\"x-small\">M</span>".printf(hrs, min);
                     if (min >= 60) {
                         min = 0;
                         hrs += 1;
-                        column_time_label.label = "%u hrs".printf(hrs);
+                        column_time_label.label = "%u<span size=\"x-small\">H</span>".printf(hrs);
                     }
                 }
             }
