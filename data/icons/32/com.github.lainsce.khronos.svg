@@ -13,7 +13,7 @@
    viewBox="0 0 32 32"
    id="svg2"
    version="1.1"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="com.github.lainsce.khronos.svg">
   <sodipodi:namedview
      pagecolor="#ffffff"
@@ -25,12 +25,12 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="2560"
-     inkscape:window-height="960"
+     inkscape:window-height="964"
      id="namedview40"
      showgrid="true"
      inkscape:zoom="14.75"
-     inkscape:cx="32.880564"
-     inkscape:cy="12.620432"
+     inkscape:cx="21.524632"
+     inkscape:cy="11.976364"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
@@ -307,17 +307,17 @@
   <rect
      style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:2.11514258;stroke-opacity:0.18947371"
      id="rect929"
-     width="12.727274"
-     height="2.4606054"
-     x="10.909091"
-     y="12.266663" />
+     width="13.000001"
+     height="1.066251"
+     x="11"
+     y="13" />
   <rect
      style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:2.89294648;stroke-opacity:0.18947371"
      id="rect931"
-     width="12.727274"
-     height="2.6303012"
-     x="10.909091"
-     y="22.278788" />
+     width="12.636365"
+     height="1"
+     x="11"
+     y="23" />
   <path
      style="fill:none;stroke:#273445;stroke-width:1.86666667px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
      d="M 16,16 23.466666,8.533333 Z"
@@ -329,31 +329,31 @@
      id="path935-6"
      inkscape:connector-curvature="0" />
   <ellipse
-     style="fill:#c6262e;fill-opacity:1;stroke:none;stroke-width:1.86666667;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.18947371"
+     style="fill:#a56de2;fill-opacity:1;stroke:none;stroke-width:1.86666667;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.18947371"
      id="path982"
-     cx="8.4093485"
-     cy="13.398859"
-     rx="0.93333328"
-     ry="0.9333334" />
+     cx="9"
+     cy="13"
+     rx="0.99999994"
+     ry="1" />
   <ellipse
-     style="fill:#c6262e;fill-opacity:1;stroke:none;stroke-width:1.86666667;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.18947371"
+     style="fill:#a56de2;fill-opacity:1;stroke:none;stroke-width:1.86666667;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.18947371"
      id="path984"
-     cx="8.3695755"
-     cy="23.649618"
-     rx="0.93333328"
-     ry="0.9333334" />
+     cx="9"
+     cy="23"
+     rx="0.99999994"
+     ry="1" />
   <rect
      style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:2.84590411;stroke-opacity:0.18947371"
      id="rect931-3"
-     width="12.727274"
-     height="2.545454"
-     x="10.909091"
-     y="17.272728" />
+     width="13.000002"
+     height="0.99999923"
+     x="11.000001"
+     y="18" />
   <ellipse
-     style="fill:#c6262e;fill-opacity:1;stroke:none;stroke-width:1.86666667;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.18947371"
+     style="fill:#a56de2;fill-opacity:1;stroke:none;stroke-width:1.86666667;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.18947371"
      id="path982-5"
-     cx="8.3298025"
-     cy="18.623579"
-     rx="0.93333328"
-     ry="0.9333334" />
+     cx="9"
+     cy="18"
+     rx="0.99999994"
+     ry="1" />
 </svg>

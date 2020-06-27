@@ -13,7 +13,7 @@
    viewBox="0 0 64 64"
    id="svg2"
    version="1.1"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="com.github.lainsce.khronos.svg"
    inkscape:export-filename="/home/lainsce/Documenti/Projects/khronos/data/icon.png"
    inkscape:export-xdpi="96"
@@ -28,12 +28,12 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="2560"
-     inkscape:window-height="960"
+     inkscape:window-height="964"
      id="namedview40"
      showgrid="true"
      inkscape:zoom="5.2149125"
-     inkscape:cx="-92.249692"
-     inkscape:cy="10.515637"
+     inkscape:cx="-123.20268"
+     inkscape:cy="8.6939382"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
@@ -696,17 +696,17 @@
   <rect
      style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.18947371"
      id="rect929"
-     width="22.402096"
-     height="2.5316999"
+     width="22"
+     height="2"
      x="25"
-     y="26.436985" />
+     y="27" />
   <rect
-     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.18947371"
+     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:0.99999994;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.18947371"
      id="rect931"
-     width="22.402096"
-     height="2.5316992"
+     width="22"
+     height="2"
      x="25"
-     y="45.064327" />
+     y="47" />
   <path
      style="fill:none;stroke:#273445;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      d="m 32.430159,32.178743 13.132143,-12.6585 z"
@@ -719,32 +719,29 @@
      id="path935-6"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="ccc" />
-  <ellipse
-     style="fill:#c6262e;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.18947371"
+  <circle
+     style="fill:#a56de2;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.18947371"
      id="path982"
-     cx="18.03315"
-     cy="27.702835"
-     rx="1.8107054"
-     ry="1.7963365" />
-  <ellipse
-     style="fill:#c6262e;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.18947371"
+     cx="17.5"
+     cy="26.5"
+     r="2.5" />
+  <circle
+     style="fill:#a56de2;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.18947371"
      id="path984"
-     cx="18.03315"
-     cy="46.330177"
-     rx="1.8107054"
-     ry="1.7963365" />
+     cx="17.5"
+     cy="46.5"
+     r="2.5" />
   <rect
      style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.18947371"
      id="rect931-3"
-     width="22.402096"
-     height="2.5316997"
+     width="22"
+     height="2"
      x="25"
-     y="35.583675" />
-  <ellipse
-     style="fill:#c6262e;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.18947371"
+     y="37" />
+  <circle
+     style="fill:#a56de2;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.18947371"
      id="path982-5"
-     cx="18.03315"
-     cy="36.849525"
-     rx="1.8107054"
-     ry="1.7963365" />
+     cx="17.5"
+     cy="36.5"
+     r="2.5" />
 </svg>

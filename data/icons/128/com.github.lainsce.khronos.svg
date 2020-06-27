@@ -13,7 +13,7 @@
    viewBox="0 0 128 128"
    id="svg2"
    version="1.1"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="com.github.lainsce.khronos.svg"
    inkscape:export-filename="/home/lainsce/Documenti/Projects/khronos/data/icon.png"
    inkscape:export-xdpi="96"
@@ -28,12 +28,12 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="2560"
-     inkscape:window-height="960"
+     inkscape:window-height="964"
      id="namedview40"
      showgrid="true"
      inkscape:zoom="5.2149125"
-     inkscape:cx="1.5374375"
-     inkscape:cy="61.139689"
+     inkscape:cx="-30.581989"
+     inkscape:cy="59.31799"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
@@ -941,14 +941,14 @@
      cy="50.451874"
      cx="32.488132"
      id="path982"
-     style="fill:#c6262e;fill-opacity:1;stroke:none;stroke-width:1.00000012;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.18947371" />
+     style="fill:#a56de2;fill-opacity:1;stroke:none;stroke-width:1.00000012;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.18947371" />
   <ellipse
      ry="3.8301613"
      rx="3.8849931"
      cy="90.210052"
      cx="32.488132"
      id="path984"
-     style="fill:#c6262e;fill-opacity:1;stroke:none;stroke-width:1.00000012;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.18947371" />
+     style="fill:#a56de2;fill-opacity:1;stroke:none;stroke-width:1.00000012;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.18947371" />
   <rect
      y="68"
      x="50"
@@ -962,5 +962,5 @@
      cy="70.910934"
      cx="32.488132"
      id="path982-5"
-     style="fill:#c6262e;fill-opacity:1;stroke:none;stroke-width:1.00000012;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.18947371" />
+     style="fill:#a56de2;fill-opacity:1;stroke:none;stroke-width:1.00000012;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.18947371" />
 </svg>
