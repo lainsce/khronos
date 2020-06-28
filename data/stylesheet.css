@@ -56,6 +56,9 @@ window.unified decoration-overlay {
 .tt-title {
     font-weight: 700;
 }
+.title {
+    font-weight: 700;
+}
 
 .tt-toolbar {
     box-shadow: none;
