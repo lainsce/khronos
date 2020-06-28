@@ -43,7 +43,6 @@ namespace Khronos {
             });
 
             this.build_drag_and_drop ();
-            this.margin = 6;
 
             var no_tasks = new Gtk.Label (_("No tasks…"));
             no_tasks.halign = Gtk.Align.CENTER;

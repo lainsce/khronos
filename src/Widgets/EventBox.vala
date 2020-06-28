@@ -21,6 +21,7 @@ namespace Khronos {
             this.uid = uid_counter++;
             this.tb = tb;
             this.margin = 6;
+            this.hexpand = true;
 
             win.tm.save_notes ();
 

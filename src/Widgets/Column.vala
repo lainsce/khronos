@@ -6,6 +6,7 @@ namespace Khronos {
         public DayColumn (int day, MainWindow win) {
             this.win = win;
             this.set_size_request (200,-1);
+            this.column_homogeneous =true;
 
             var rec_label = new Gtk.Label (null);
             rec_label.tooltip_text = _("Logged tasks will end up here.");
@@ -15,7 +16,6 @@ namespace Khronos {
             rec_label.label = _("<span weight=\"bold\">LOGS</span>");
 
             column = new DayColumnListBox (day, win);
-            column.set_size_request (226,-1);
 
             this.row_spacing = 6;
             this.attach (rec_label, 0, 0);
