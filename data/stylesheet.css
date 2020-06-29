@@ -27,6 +27,19 @@ window.unified decoration-overlay {
     color: @fg_color;
 }
 
+.tt-card {
+    box-shadow: none;
+    border-radius: 8px;
+    border: 1px solid alpha(black, 0.25);
+}
+
+.tt-entry {
+    border-radius: 8px;
+    box-shadow: none;
+    padding: 8px;
+    background: shade(@color_primary, 1.2);
+}
+
 .tt-box:hover {
     padding: 2px;
     margin: 6px;

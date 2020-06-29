@@ -167,7 +167,7 @@ namespace Khronos {
             column_time_label = new Gtk.Label("");
             column_time_label.use_markup = true;
             column_time_label.label = "%02u<span size=\"x-small\">H</span> %02u<span size=\"x-small\">M</span> %02u<span size=\"x-small\">S</span>".printf(hrs, min, sec);
-            column_time_label.margin_bottom = 12;
+            column_time_label.margin_top = 12;
             var column_time_label_style_context = column_time_label.get_style_context ();
             column_time_label_style_context.add_class ("tt-label");
 
@@ -253,6 +253,7 @@ namespace Khronos {
             column_entry.hexpand = true;
             column_entry.margin = 12;
             column_entry.valign = Gtk.Align.START;
+            column_entry.get_style_context ().add_class ("tt-entry");
 
 	        var custom_help = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.BUTTON);
             custom_help.halign = Gtk.Align.START;
@@ -266,9 +267,12 @@ namespace Khronos {
             var main_frame = new Gtk.Grid ();
             main_frame.orientation = Gtk.Orientation.VERTICAL;
             main_frame.valign = Gtk.Align.CENTER;
+            main_frame.margin = 12;
             main_frame.add (column_time_label);
             main_frame.add (column_entry_and_help_grid);
             main_frame.show_all ();
+            main_frame.get_style_context ().add_class ("card");
+            main_frame.get_style_context ().add_class ("tt-card");
 
             titlebar.pack_start (column_play_button);
             titlebar.pack_start (column_button);
