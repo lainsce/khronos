@@ -46,7 +46,7 @@ window.unified decoration-overlay {
 
 .tt-button:focus,
 .tt-button:hover {
-    background: shade(@colorPrimary, 0.95);
+    background: shade(@base_color, 0.95);
 }
 
 .tt-label {
