@@ -21,13 +21,13 @@ namespace Khronos {
     public class TaskManager {
         public MainWindow win;
         public Json.Builder builder;
-        private string app_dir = Environment.get_user_cache_dir () +
+        private string app_dir = Environment.get_user_data_dir () +
                                  "/com.github.lainsce.khronos";
         private string file_name;
 
         public TaskManager (MainWindow win) {
             this.win = win;
-            file_name = this.app_dir + "/saved_tasks.json";
+            file_name = this.app_dir + "/saved_logged_tasks.json";
             debug ("%s".printf(file_name));
         }
 
