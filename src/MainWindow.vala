@@ -193,7 +193,7 @@ namespace Khronos {
             column_export_button = new Gtk.ModelButton ();
             column_export_button.get_child ().destroy ();
             var column_export_button_accellabel = new Granite.AccelLabel.from_action_name (
-                _("Export Log As CSV"),
+                _("Export Log as CSV File…"),
                 ""
             );
             column_export_button.add (column_export_button_accellabel);
