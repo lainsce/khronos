@@ -249,7 +249,7 @@ namespace Khronos {
             });
 
             column_entry = new Gtk.Entry ();
-            column_entry.placeholder_text = _("New task name…");
+            column_entry.placeholder_text = _("New log name…");
             column_entry.hexpand = true;
             column_entry.margin = 12;
             column_entry.valign = Gtk.Align.START;
