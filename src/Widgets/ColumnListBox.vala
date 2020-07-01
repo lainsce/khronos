@@ -44,7 +44,7 @@ namespace Khronos {
 
             this.build_drag_and_drop ();
 
-            var no_tasks = new Gtk.Label (_("No tasks…"));
+            var no_tasks = new Gtk.Label (_("No logs…"));
             no_tasks.halign = Gtk.Align.CENTER;
             var no_tasks_style_context = no_tasks.get_style_context ();
             no_tasks_style_context.add_class (Granite.STYLE_CLASS_H2_LABEL);

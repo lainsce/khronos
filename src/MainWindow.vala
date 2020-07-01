@@ -258,7 +258,7 @@ namespace Khronos {
 	        var custom_help = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.BUTTON);
             custom_help.halign = Gtk.Align.START;
 	        custom_help.margin = 12;
-            custom_help.tooltip_text = _("You can log this task by starting the task's timer first.");
+            custom_help.tooltip_text = _("You can add a log by starting the timer first.");
 
 	        var column_entry_and_help_grid = new Gtk.Grid ();
 	        column_entry_and_help_grid.add (column_entry);
