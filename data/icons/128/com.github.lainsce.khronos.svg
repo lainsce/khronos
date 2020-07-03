@@ -32,8 +32,8 @@
      id="namedview40"
      showgrid="true"
      inkscape:zoom="5.2149125"
-     inkscape:cx="-30.581989"
-     inkscape:cy="59.31799"
+     inkscape:cx="-63.947841"
+     inkscape:cy="57.496291"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
@@ -858,16 +858,6 @@
        xlink:href="#linearGradient3924-2-2-5-8-0"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0.62162164,0,0,0.62162164,0.0810794,1.0810903)" />
-    <linearGradient
-       gradientUnits="userSpaceOnUse"
-       y2="15"
-       x2="8"
-       y1="1"
-       x1="8"
-       id="linearGradient902"
-       xlink:href="#linearGradient4658"
-       inkscape:collect="always"
-       gradientTransform="matrix(8.2515185,0,0,7.9043732,-2.7422547,-0.56923237)" />
     <filter
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
@@ -906,7 +896,7 @@
      cy="62.665749"
      cx="63.269897"
      id="path886"
-     style="fill:url(#linearGradient902);fill-opacity:1;stroke:#000000;stroke-width:1.00000012;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.36315792"
+     style="fill:#f7f7f7;fill-opacity:1;stroke:#000000;stroke-width:1.00000012;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.36315792"
      rx="57.760628"
      ry="55.330612" />
   <rect

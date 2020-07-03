@@ -31,8 +31,8 @@
      showguides="false"
      inkscape:guide-bbox="true"
      inkscape:zoom="11.313708"
-     inkscape:cx="8.8249531"
-     inkscape:cy="2.138111"
+     inkscape:cx="-6.9965618"
+     inkscape:cy="1.2984217"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
@@ -375,15 +375,6 @@
        x2="25.132275"
        y1="15.499894"
        x1="25.132275" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient4658-0"
-       id="linearGradient902"
-       x1="8"
-       y1="1"
-       x2="8"
-       y2="15"
-       gradientUnits="userSpaceOnUse" />
   </defs>
   <metadata
      id="metadata7">
@@ -398,25 +389,25 @@
     </rdf:RDF>
   </metadata>
   <circle
-     style="fill:url(#linearGradient902);fill-opacity:1;stroke:#000000;stroke-opacity:0.3631579"
+     style="fill:#f7f7f7;fill-opacity:1;stroke:#000000;stroke-opacity:0.3631579"
      id="path886"
      cx="8"
      cy="8"
      r="7" />
   <rect
-     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-opacity:0.18947371"
+     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:0.99999994;stroke-opacity:0.18947371"
      id="rect929"
-     width="7"
+     width="8.0924616"
      height="1"
-     x="5"
-     y="6" />
+     x="5.9075384"
+     y="8" />
   <rect
      style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1.32287562;stroke-opacity:0.18947371"
      id="rect931"
-     width="7"
-     height="1"
-     x="5"
-     y="10" />
+     width="6"
+     height="1.0000005"
+     x="6"
+     y="10.999999" />
   <path
      style="fill:none;stroke:#273445;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
      d="M 8,8 12,4 Z"
@@ -428,28 +419,15 @@
      id="path935-6"
      inkscape:connector-curvature="0" />
   <circle
-     style="fill:#a56de2;fill-opacity:1;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.18947371"
+     style="fill:#a56de2;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.18947371"
      id="path982"
-     cx="3.486136"
-     cy="6.5"
-     r="0.5" />
+     cx="3.7218804"
+     cy="8.3905983"
+     r="0.72188044" />
   <circle
-     style="fill:#a56de2;fill-opacity:1;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.18947371"
+     style="fill:#a56de2;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.18947371"
      id="path984"
-     cx="3.486136"
-     cy="10.5"
-     r="0.5" />
-  <rect
-     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1.32287562;stroke-opacity:0.18947371"
-     id="rect931-3"
-     width="7"
-     height="1"
-     x="5"
-     y="8.0745239" />
-  <circle
-     style="fill:#a56de2;fill-opacity:1;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.18947371"
-     id="path982-5"
-     cx="3.486136"
-     cy="8.5745239"
-     r="0.5" />
+     cx="3.7418969"
+     cy="11.27812"
+     r="0.72188044" />
 </svg>

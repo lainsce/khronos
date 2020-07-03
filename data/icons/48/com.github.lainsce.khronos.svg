@@ -29,8 +29,8 @@
      id="namedview37"
      showgrid="true"
      inkscape:zoom="16"
-     inkscape:cx="0.013043"
-     inkscape:cy="21.980401"
+     inkscape:cx="-11.174457"
+     inkscape:cy="21.386651"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
@@ -397,16 +397,6 @@
        xlink:href="#linearGradient3924-1"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0.62162164,0,0,0.62162164,0.0810794,1.0810903)" />
-    <linearGradient
-       gradientUnits="userSpaceOnUse"
-       y2="15"
-       x2="8"
-       y1="1"
-       x1="8"
-       id="linearGradient902"
-       xlink:href="#linearGradient4658-9"
-       inkscape:collect="always"
-       gradientTransform="matrix(2.9285715,0,0,2.9285715,0.5714287,0.57142996)" />
     <filter
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
@@ -442,7 +432,7 @@
      ry="1.5086653"
      transform="matrix(1,0,0,0.77109867,0,10.526666)" />
   <circle
-     style="fill:url(#linearGradient902);fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.36315792"
+     style="fill:#f7f7f7;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.36315792"
      id="path886"
      cx="24.000002"
      cy="24"
