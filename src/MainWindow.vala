@@ -188,7 +188,8 @@ namespace Khronos {
             var column_reset_button_style_context = column_reset_button.get_style_context ();
             column_reset_button_style_context.add_class ("tt-button");
             column_reset_button_style_context.add_class ("image-button");
-            column_reset_button.set_image (new Gtk.Image.from_icon_name ("appointment-symbolic", Gtk.IconSize.BUTTON));
+            // Using this icon since it looks like resetting time.
+            column_reset_button.set_image (new Gtk.Image.from_icon_name ("document-open-recent-symbolic", Gtk.IconSize.BUTTON));
 
             column_export_button = new Gtk.ModelButton ();
             column_export_button.get_child ().destroy ();
@@ -208,7 +209,7 @@ namespace Khronos {
             var column_button_style_context = column_button.get_style_context ();
             column_button_style_context.add_class ("tt-button");
             column_button_style_context.add_class ("image-button");
-            column_button.set_image (new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.BUTTON));
+            column_button.set_image (new Gtk.Image.from_icon_name ("appointment-new-symbolic", Gtk.IconSize.BUTTON));
 
             column_button.clicked.connect (() => {
                 add_task (column_entry.text, column_time_label.label, _("%s").printf (dt.format ("%a %d/%m %H:%M")));
@@ -280,15 +281,18 @@ namespace Khronos {
 
             var notification_header = new Granite.HeaderLabel (_("Notifications"));
 
-            var notification_label = new Gtk.Label (_("Notification Delay:"));
+            var notification_label = new Gtk.Label (_("Delay:"));
+            notification_label.halign = Gtk.Align.END;
 
             var notification_sw = new Gtk.Switch ();
             notification_sw.valign = Gtk.Align.CENTER;
+            notification_sw.halign = Gtk.Align.START;
             Khronos.Application.gsettings.bind ("notification", notification_sw, "active", GLib.SettingsBindFlags.DEFAULT);
 
             var notification_sb = new Gtk.SpinButton.with_range (30, 90, 1);
             notification_sb.set_text ("%i".printf((Khronos.Application.gsettings.get_int("notification-delay")/60)));
-            notification_sb.sensitive = notification_sw.get_active ();
+            Khronos.Application.gsettings.bind ("notification", notification_sb, "sensitive", GLib.SettingsBindFlags.DEFAULT);
+            notification_sb.halign = Gtk.Align.START;
 
             notification_sb.value_changed.connect (() => {
                 Khronos.Application.gsettings.set_int("notification-delay", ((int)notification_sb.value * 60));
@@ -297,25 +301,14 @@ namespace Khronos {
             var dark_header = new Granite.HeaderLabel (_("Interface"));
 
             var dark_label = new Gtk.Label (_("Dark Mode:"));
+            dark_label.halign = Gtk.Align.END;
 
             var dark_sw = new Gtk.Switch ();
+            dark_sw.halign = Gtk.Align.START;
             dark_sw.valign = Gtk.Align.CENTER;
             Khronos.Application.gsettings.bind ("dark-mode", dark_sw, "active", GLib.SettingsBindFlags.DEFAULT);
 
-            var dark_box = new Gtk.Grid ();
-            dark_box.column_spacing = 6;
-            dark_box.add (dark_label);
-            dark_box.add (dark_sw);
-            dark_box.show_all ();
-
             var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
-
-            var notification_box = new Gtk.Grid ();
-            notification_box.column_spacing = 6;
-            notification_box.add (notification_label);
-            notification_box.add (notification_sw);
-            notification_box.add (notification_sb);
-            notification_box.show_all ();
 
             var export_menu_grid = new Gtk.Grid ();
             export_menu_grid.margin = 12;
@@ -337,18 +330,44 @@ namespace Khronos {
             export_menu_button_style_context.add_class ("tt-button");
             export_menu_button_style_context.add_class ("image-button");
 
-            sort_type_menu_item ();
+            var sort_time = new Gtk.RadioButton.with_label_from_widget (null, _("Time"));
+	        sort_time.toggled.connect (() => {
+	            Khronos.Application.gsettings.set_string("sort-type", "time");
+	            column.column.invalidate_sort ();
+	        });
+
+	        var sort_name = new Gtk.RadioButton.with_label_from_widget (sort_time, _("Name"));
+	        sort_name.toggled.connect (() => {
+	            Khronos.Application.gsettings.set_string("sort-type", "name");
+	            column.column.invalidate_sort ();
+	        });
+
+	        if (Khronos.Application.gsettings.get_string("sort-type") == "name") {
+	            sort_name.set_active (true);
+	        } else {
+	            sort_time.set_active (true);
+	        }
+
+	        var sort_header = new Granite.HeaderLabel (_("Tasks"));
+	        var sort_label = new Gtk.Label (_("Sort By:"));
+            sort_label.halign = Gtk.Align.END;
 
             var menu_grid = new Gtk.Grid ();
             menu_grid.margin = 12;
             menu_grid.row_spacing = 6;
             menu_grid.column_spacing = 12;
             menu_grid.orientation = Gtk.Orientation.VERTICAL;
-            menu_grid.add (dark_header);
-            menu_grid.add (dark_box);
-            menu_grid.add (sort_type_grid);
-            menu_grid.add (notification_header);
-            menu_grid.add (notification_box);
+            menu_grid.attach (dark_header,0,0,1,1);
+            menu_grid.attach (dark_label,0,1,1,1);
+            menu_grid.attach (dark_sw,1,1,1,1);
+            menu_grid.attach (sort_header,0,2,1,1);
+            menu_grid.attach (sort_label,0,3,1,1);
+            menu_grid.attach (sort_time,1,3,1,1);
+            menu_grid.attach (sort_name,1,4,1,1);
+            menu_grid.attach (notification_header,0,5,1,1);
+            menu_grid.attach (notification_label,0,6,1,1);
+            menu_grid.attach (notification_sw,1,6,1,1);
+            menu_grid.attach (notification_sb,1,7,1,1);
             menu_grid.show_all ();
 
             var menu = new Gtk.Popover (null);
@@ -498,36 +517,6 @@ namespace Khronos {
                     }
                 }
             }
-        }
-
-        public void sort_type_menu_item () {
-            var sort_time = new Gtk.RadioButton.with_label_from_widget (null, _("Sort By Time"));
-	        sort_time.toggled.connect (() => {
-	            Khronos.Application.gsettings.set_string("sort-type", "time");
-	            column.column.invalidate_sort ();
-	        });
-
-	        var sort_name = new Gtk.RadioButton.with_label_from_widget (sort_time, _("Sort By Name"));
-	        sort_name.toggled.connect (() => {
-	            Khronos.Application.gsettings.set_string("sort-type", "name");
-	            column.column.invalidate_sort ();
-	        });
-
-	        if (Khronos.Application.gsettings.get_string("sort-type") == "name") {
-	            sort_name.set_active (true);
-	        } else {
-	            sort_time.set_active (true);
-	        }
-
-	        var sort_header = new Granite.HeaderLabel (_("Sorting"));
-
-            sort_type_grid = new Gtk.Grid ();
-            sort_type_grid.row_spacing = 12;
-            sort_type_grid.orientation = Gtk.Orientation.VERTICAL;
-            sort_type_grid.add (sort_header);
-            sort_type_grid.add (sort_time);
-            sort_type_grid.add (sort_name);
-            sort_type_grid.show_all ();
         }
 
         public void set_timeouts () {
