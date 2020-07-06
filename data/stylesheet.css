@@ -7,6 +7,10 @@ window.unified decoration-overlay {
   border-radius: 8px;
 }
 
+.destructive-button:hover {
+    color: #D07070;
+}
+
 .tt-column {
     background: mix (@accent_color, @base_color, 0.95);
     border-right: 1px solid alpha (black, 0.25);
