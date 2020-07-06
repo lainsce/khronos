@@ -9,11 +9,12 @@ namespace Khronos {
             this.column_homogeneous =true;
 
             var rec_label = new Gtk.Label (null);
+            rec_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
             rec_label.tooltip_text = _("Logged tasks will end up here.");
             rec_label.use_markup = true;
             rec_label.halign = Gtk.Align.START;
             rec_label.margin_start = 9;
-            rec_label.label = _("<span weight=\"bold\">LOGS</span>");
+            rec_label.label = _("LOGS");
 
             column = new DayColumnListBox (day, win);
 
