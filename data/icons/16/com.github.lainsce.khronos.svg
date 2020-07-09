@@ -30,9 +30,9 @@
      showgrid="true"
      showguides="false"
      inkscape:guide-bbox="true"
-     inkscape:zoom="11.313708"
-     inkscape:cx="-6.9965618"
-     inkscape:cy="1.2984217"
+     inkscape:zoom="63.999997"
+     inkscape:cx="0.52957723"
+     inkscape:cy="6.8508964"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
@@ -53,6 +53,18 @@
   </sodipodi:namedview>
   <defs
      id="defs4">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient891">
+      <stop
+         style="stop-color:#a56de2;stop-opacity:1;"
+         offset="0"
+         id="stop887" />
+      <stop
+         style="stop-color:#a56de2;stop-opacity:1"
+         offset="1"
+         id="stop889" />
+    </linearGradient>
     <linearGradient
        id="linearGradient1360">
       <stop
@@ -375,6 +387,26 @@
        x2="25.132275"
        y1="15.499894"
        x1="25.132275" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4658-0"
+       id="linearGradient885"
+       x1="8"
+       y1="1"
+       x2="8"
+       y2="15"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient891"
+       id="radialGradient893"
+       cx="2.7423801"
+       cy="8.7385168"
+       fx="2.7423801"
+       fy="8.7385168"
+       r="0.72188044"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-1.3851907,-0.01489418,0.02164439,-2.0129738,7.2814543,25.334376)" />
   </defs>
   <metadata
      id="metadata7">
@@ -389,7 +421,7 @@
     </rdf:RDF>
   </metadata>
   <circle
-     style="fill:#f7f7f7;fill-opacity:1;stroke:#000000;stroke-opacity:0.3631579"
+     style="fill:url(#linearGradient885);fill-opacity:1;stroke:#000000;stroke-opacity:0.3631579"
      id="path886"
      cx="8"
      cy="8"
@@ -419,7 +451,7 @@
      id="path935-6"
      inkscape:connector-curvature="0" />
   <circle
-     style="fill:#a56de2;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.18947371"
+     style="fill:url(#radialGradient893);fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.18947371"
      id="path982"
      cx="3.7218804"
      cy="8.3905983"

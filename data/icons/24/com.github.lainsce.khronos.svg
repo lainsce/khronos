@@ -29,8 +29,8 @@
      id="namedview33"
      showgrid="true"
      inkscape:zoom="32"
-     inkscape:cx="3.969365"
-     inkscape:cy="8.908488"
+     inkscape:cx="-1.624385"
+     inkscape:cy="13.642863"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
@@ -295,6 +295,15 @@
        x2="23.99999"
        y1="4.999989"
        x1="23.99999" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4658-0"
+       id="linearGradient876"
+       x1="12"
+       y1="1.5625"
+       x2="12"
+       y2="22.5"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <metadata
      id="metadata7">
@@ -309,7 +318,7 @@
     </rdf:RDF>
   </metadata>
   <circle
-     style="fill:#f7f7f7;fill-opacity:1;stroke:#000000;stroke-width:1.4666667;stroke-opacity:0.36315792"
+     style="fill:url(#linearGradient876);fill-opacity:1;stroke:#000000;stroke-width:1.4666667;stroke-opacity:0.36315792"
      id="path886"
      cx="12"
      cy="12"
