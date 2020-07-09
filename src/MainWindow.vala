@@ -142,8 +142,9 @@ namespace Khronos {
             Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (),
                                                       provider,
                                                       Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-
-            this.get_style_context ().add_class ("rounded");
+            // Ensure use of elementary theme and icons, accent color doesn't matter
+            Gtk.Settings.get_default().set_property("gtk-theme-name", "io.elementary.stylesheet.blueberry");
+            Gtk.Settings.get_default().set_property("gtk-icon-theme-name", "elementary");
 
             titlebar = new Hdy.HeaderBar ();
             titlebar.show_close_button = true;
