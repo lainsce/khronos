@@ -108,6 +108,7 @@ namespace Khronos {
         }
 
         construct {
+            Hdy.init ();
             tm = new TaskManager (this);
             dt = new GLib.DateTime.now_local ();
 
