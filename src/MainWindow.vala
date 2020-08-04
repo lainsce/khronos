@@ -177,6 +177,7 @@ namespace Khronos {
             column_play_button.has_tooltip = true;
             column_play_button.tooltip_text = _("Start Timer…");
             column_play_button.can_focus = false;
+            column_play_button.halign = Gtk.Align.CENTER;
             var column_play_button_style_context = column_play_button.get_style_context ();
             column_play_button_style_context.add_class ("tt-button");
             column_play_button_style_context.add_class ("image-button");
@@ -187,6 +188,7 @@ namespace Khronos {
             column_reset_button.tooltip_text = _("Reset Timer");
             column_reset_button.sensitive = false;
             column_reset_button.can_focus = false;
+            column_reset_button.halign = Gtk.Align.CENTER;
             var column_reset_button_style_context = column_reset_button.get_style_context ();
             column_reset_button_style_context.add_class ("tt-button");
             column_reset_button_style_context.add_class ("image-button");
@@ -208,6 +210,7 @@ namespace Khronos {
             column_button.tooltip_text = _("Add Log");
             column_button.can_focus = false;
             column_button.sensitive = false;
+            column_button.halign = Gtk.Align.CENTER;
             var column_button_style_context = column_button.get_style_context ();
             column_button_style_context.add_class ("tt-button");
             column_button_style_context.add_class ("image-button");
@@ -263,9 +266,18 @@ namespace Khronos {
 	        custom_help.margin = 12;
             custom_help.tooltip_text = _("You can add a log by starting the timer first.");
 
+            var column_buttons_grid = new Gtk.Grid ();
+            column_buttons_grid.hexpand = true;
+            column_buttons_grid.column_homogeneous = true;
+            column_buttons_grid.margin = 6;
+            column_buttons_grid.add (column_play_button);
+            column_buttons_grid.add (column_button);
+            column_buttons_grid.add (column_reset_button);
+
 	        var column_entry_and_help_grid = new Gtk.Grid ();
 	        column_entry_and_help_grid.add (column_entry);
-	        column_entry_and_help_grid.add (custom_help);
+            column_entry_and_help_grid.add (custom_help);
+            column_entry_and_help_grid.attach (column_buttons_grid, 0, 1, 2, 1);
 
             var main_frame = new Gtk.Grid ();
             main_frame.orientation = Gtk.Orientation.VERTICAL;
@@ -276,10 +288,6 @@ namespace Khronos {
             main_frame.show_all ();
             main_frame.get_style_context ().add_class ("card");
             main_frame.get_style_context ().add_class ("tt-card");
-
-            titlebar.pack_start (column_play_button);
-            titlebar.pack_start (column_button);
-            titlebar.pack_start (column_reset_button);
 
             var notification_header = new Granite.HeaderLabel (_("Notifications"));
 
