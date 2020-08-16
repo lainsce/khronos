@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-11 08:13+0100\n"
-"PO-Revision-Date: 2020-02-11 08:05+0100\n"
+"POT-Creation-Date: 2020-03-06 11:16+0100\n"
+"PO-Revision-Date: 2020-08-16 18:12+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -16,20 +16,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:6
 #: data/com.github.lainsce.khronos.desktop.in:3
 msgid "Khronos"
-msgstr "Tijdschema"
+msgstr "Khronos"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:7
 msgid "Track each task's time in a simple inobtrusive way"
-msgstr ""
+msgstr "Houd de tijd van elke taak bij op eenvoudige, niet-storende wijze"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:9
 msgid ""
-"Start tracking any task's \"during\" time and start &amp; stop as you go."
+"Start tracking any task's \"during\" time and start &amp; stop as you go, "
+"with notifications."
 msgstr ""
+"Houd de tijd van elke taak bij en start en stop wanneer je maar wilt. "
+"Ondersteunt meldingen."
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:11
 msgid "Quit anytime with the shortcut Ctrl + Q"
@@ -40,22 +44,45 @@ msgid "Lains"
 msgstr "Lains"
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:57
-msgid "Release: Initial Tracking"
-msgstr ""
+msgid "Release: Start Sorting"
+msgstr "Uitgave: \"Beginnen met sorteren\""
 
 #: data/com.github.lainsce.khronos.appdata.xml.in:59
-msgid "First stable release."
-msgstr ""
+msgid "Added: Sorting Options on Settings Menu"
+msgstr "Toegevoegd: sorteeropties in het instellingenmenu"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:65
+msgid "Release: Start Building Up"
+msgstr "Uitgave: \"Beginnen met opbouwen\""
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:67
+msgid "Added: Logging the start date of tasks"
+msgstr "Toegevoegd: de startdatum van taken wordt voortaan gelogd"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:68
+msgid "Added: Exporting the Task Log as CSV file"
+msgstr "Toegevoegd: het taaklog kan worden geëxporteerd als csv-bestand"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:69
+msgid "Added: Configurable notifications to go along with tasks"
+msgstr "Toegevoegd: instelbare meldingen bij taken"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:75
+msgid "Release: Initial Tracking"
+msgstr "Uitgave: \"Initiële bijhouding\""
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:77
+msgid "First stable release"
+msgstr "Eerste stabiele uitgave"
 
 #: data/com.github.lainsce.khronos.desktop.in:4
 msgid "Track each task time in a simple inobtrusive way"
-msgstr ""
+msgstr "Houd de tijd van elke taak bij op eenvoudige, niet-storende wijze"
 
 #: data/com.github.lainsce.khronos.desktop.in:6
 msgid "com.github.lainsce.khronos"
 msgstr "com.github.lainsce.khronos"
 
 #: data/com.github.lainsce.khronos.desktop.in:7
-#, fuzzy
 msgid "Plot;Planning;Time Tracking;"
 msgstr "Bepaal;Week;Plannen;Tijdschema;"
