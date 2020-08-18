@@ -1,0 +1,85 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.lainsce.khronos package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.lainsce.khronos\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-06 11:16+0100\n"
+"PO-Revision-Date: 2020-08-16 18:08+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl\n"
+
+#: src/MainWindow.vala:40
+msgid "Khronos"
+msgstr "Khronos"
+
+#: src/MainWindow.vala:99
+msgid "Notification Delay:"
+msgstr "Meldingsvertraging:"
+
+#: src/MainWindow.vala:141
+msgid "Settings"
+msgstr "Instellingen"
+
+#: src/MainWindow.vala:199
+msgid "Sort By Time"
+msgstr "Sorteren op tijdstip"
+
+#: src/MainWindow.vala:205
+msgid "Sort By Name"
+msgstr "Sorteren op naam"
+
+#: src/MainWindow.vala:272 src/MainWindow.vala:281 src/MainWindow.vala:290
+#: src/MainWindow.vala:299 src/MainWindow.vala:308
+msgid "Go rest for a while before continuing."
+msgstr "Neem even een pauze."
+
+#: src/Widgets/Column.vala:29
+msgid "New task name…"
+msgstr "Nieuwe taaknaam…"
+
+#: src/Widgets/Column.vala:44
+msgid "Start Timer…"
+msgstr "Tijdklok starten…"
+
+#: src/Widgets/Column.vala:57
+msgid "Reset Timer"
+msgstr "Tijdklop herstellen"
+
+#: src/Widgets/Column.vala:71
+msgid "Export Log As…"
+msgstr "Log exporteren als…"
+
+#: src/Widgets/Column.vala:84
+msgid "Add Log"
+msgstr "Log toevoegen"
+
+#: src/Widgets/Column.vala:97
+#, c-format
+msgid "Started on: %s"
+msgstr "Gestart om: %s"
+
+#: src/Widgets/Column.vala:109
+msgid "Stop Timer"
+msgstr "Tijdklok stoppen"
+
+#: src/Widgets/Column.vala:116
+msgid "Start Timer"
+msgstr "Tijdklok starten"
+
+#: src/Widgets/ColumnListBox.vala:48
+msgid "No tasks…"
+msgstr "Geen taken…"
+
+#: src/Widgets/EventBox.vala:68
+msgid "Delete Task"
+msgstr "Taak verwijderen"
