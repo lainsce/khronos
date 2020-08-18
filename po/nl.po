@@ -1,0 +1,130 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.lainsce.khronos package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.lainsce.khronos\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-17 19:01-0300\n"
+"PO-Revision-Date: 2020-08-18 21:38+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/MainWindow.vala:59
+msgid "Khronos"
+msgstr "Khronos"
+
+#: src/MainWindow.vala:178
+msgid "Start Timer…"
+msgstr "Tijdklok starten…"
+
+#: src/MainWindow.vala:188
+msgid "Reset Timer"
+msgstr "Tijdklop herstellen"
+
+#: src/MainWindow.vala:201
+msgid "Export Log as CSV File…"
+msgstr "Logboek exporteren naar csv-bestand…"
+
+#: src/MainWindow.vala:210
+msgid "Add Log"
+msgstr "Logboek aanleggen"
+
+#: src/MainWindow.vala:220
+#, c-format
+msgid "%s"
+msgstr "%s"
+
+#: src/MainWindow.vala:232
+msgid "Stop Timer"
+msgstr "Tijdklok stoppen"
+
+#: src/MainWindow.vala:239
+msgid "Start Timer"
+msgstr "Tijdklok starten"
+
+#: src/MainWindow.vala:258
+msgid "New log name…"
+msgstr "Nieuwe logboeknaam…"
+
+#: src/MainWindow.vala:267
+msgid "You can add a log by starting the timer first."
+msgstr "Je kunt een logboek aanleggen door de tijdklok te starten."
+
+#: src/MainWindow.vala:292
+msgid "Notifications"
+msgstr "Meldingen"
+
+#: src/MainWindow.vala:294
+msgid "Delay:"
+msgstr "Vertraging:"
+
+#: src/MainWindow.vala:311
+msgid "Interface"
+msgstr "Uiterlijk"
+
+#: src/MainWindow.vala:313
+msgid "Dark Mode:"
+msgstr "Donker thema:"
+
+#: src/MainWindow.vala:337
+msgid "Export"
+msgstr "Exporteren"
+
+#: src/MainWindow.vala:343
+msgid "Time"
+msgstr "Tijd"
+
+#: src/MainWindow.vala:349
+msgid "Name"
+msgstr "Naam"
+
+#: src/MainWindow.vala:361
+msgid "Tasks"
+msgstr "Taken"
+
+#: src/MainWindow.vala:362
+msgid "Sort By:"
+msgstr "Sorteren op:"
+
+#: src/MainWindow.vala:389
+msgid "Settings"
+msgstr "Instellingen"
+
+#: src/MainWindow.vala:579 src/MainWindow.vala:588 src/MainWindow.vala:597
+#: src/MainWindow.vala:606 src/MainWindow.vala:615
+msgid "Go rest for a while before continuing."
+msgstr "Neem even een pauze."
+
+#: src/Widgets/Column.vala:13
+msgid "Logged tasks will end up here."
+msgstr "Gelogde taken worden hier getoond."
+
+#: src/Widgets/Column.vala:17
+msgid "LOGS"
+msgstr "LOGBOEKEN"
+
+#: src/Widgets/ColumnListBox.vala:47
+msgid "No logs…"
+msgstr "Geen logboeken…"
+
+#: src/Widgets/EventBox.vala:68
+msgid "Delete Task"
+msgstr "Taak verwijderen"
+
+#~ msgid "Sort By Name"
+#~ msgstr "Sorteren op naam"
+
+#~ msgid "Started on: %s"
+#~ msgstr "Gestart om: %s"
+
+#~ msgid "No tasks…"
+#~ msgstr "Geen taken…"
