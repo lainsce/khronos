@@ -2,8 +2,7 @@
 @define-color accent_color_500 #6060c5;
 @define-color accent_color_300 #6060c5;
 
-window.unified decoration,
-window.unified decoration-overlay {
+window.unified {
   border-radius: 8px;
 }
 
