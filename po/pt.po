@@ -1,0 +1,85 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.lainsce.khronos package.
+# André Barata <andretiagob@protonmail.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.lainsce.khronos\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-06 11:16+0100\n"
+"PO-Revision-Date: 2020-08-26 15:43+0100\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"Last-Translator: André Barata <andretiagob@protonmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: pt\n"
+
+#: src/MainWindow.vala:40
+msgid "Khronos"
+msgstr "Khronos"
+
+#: src/MainWindow.vala:99
+msgid "Notification Delay:"
+msgstr "Atraso das Notificações:"
+
+#: src/MainWindow.vala:141
+msgid "Settings"
+msgstr "Definições"
+
+#: src/MainWindow.vala:199
+msgid "Sort By Time"
+msgstr "Ordenar Por Tempo"
+
+#: src/MainWindow.vala:205
+msgid "Sort By Name"
+msgstr "Ordenar Por Nome"
+
+#: src/MainWindow.vala:272 src/MainWindow.vala:281 src/MainWindow.vala:290
+#: src/MainWindow.vala:299 src/MainWindow.vala:308
+msgid "Go rest for a while before continuing."
+msgstr "Vá descansar um pouco antes de continuar."
+
+#: src/Widgets/Column.vala:29
+msgid "New task name…"
+msgstr "Novo nome de tarefa…"
+
+#: src/Widgets/Column.vala:44
+msgid "Start Timer…"
+msgstr "Iniciar Temporizador…"
+
+#: src/Widgets/Column.vala:57
+msgid "Reset Timer"
+msgstr "Repor Temporizador"
+
+#: src/Widgets/Column.vala:71
+msgid "Export Log As…"
+msgstr "Exportar Registo Como…"
+
+#: src/Widgets/Column.vala:84
+msgid "Add Log"
+msgstr "Adicionar Registo"
+
+#: src/Widgets/Column.vala:97
+#, c-format
+msgid "Started on: %s"
+msgstr "Começou em: %s"
+
+#: src/Widgets/Column.vala:109
+msgid "Stop Timer"
+msgstr "Parar Temporizador"
+
+#: src/Widgets/Column.vala:116
+msgid "Start Timer"
+msgstr "Iniciar Temporizador"
+
+#: src/Widgets/ColumnListBox.vala:48
+msgid "No tasks…"
+msgstr "Nenhuma tarefa…"
+
+#: src/Widgets/EventBox.vala:68
+msgid "Delete Task"
+msgstr "Apagar Tarefa"
