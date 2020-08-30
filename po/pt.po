@@ -1,0 +1,121 @@
+# Portuguese (Portugal) translations for com.github.lainsce.khronos package.
+# Copyright (C) 2020 THE com.github.lainsce.khronos'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.lainsce.khronos package.
+# André Barata <andretiagob@protonmail.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.lainsce.khronos\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-17 19:01-0300\n"
+"PO-Revision-Date: 2020-08-30 11:31+0100\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"Last-Translator: André Barata <andretiagob@protonmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: pt\n"
+
+#: src/MainWindow.vala:59
+msgid "Khronos"
+msgstr "Khronos"
+
+#: src/MainWindow.vala:178
+msgid "Start Timer…"
+msgstr "Iniciar Temporizador…"
+
+#: src/MainWindow.vala:188
+msgid "Reset Timer"
+msgstr "Repor Temporizador"
+
+#: src/MainWindow.vala:201
+msgid "Export Log as CSV File…"
+msgstr "Exportar Registo como Ficheiro CSV…"
+
+#: src/MainWindow.vala:210
+msgid "Add Log"
+msgstr "Adicionar Registo"
+
+#: src/MainWindow.vala:220
+#, c-format
+msgid "%s"
+msgstr "%s"
+
+#: src/MainWindow.vala:232
+msgid "Stop Timer"
+msgstr "Parar Temporizador"
+
+#: src/MainWindow.vala:239
+msgid "Start Timer"
+msgstr "Iniciar Temporizador"
+
+#: src/MainWindow.vala:258
+msgid "New log name…"
+msgstr "Novo nome de registo…"
+
+#: src/MainWindow.vala:267
+msgid "You can add a log by starting the timer first."
+msgstr "Pode adicionar um registo ao iniciar o temporizador primeiro."
+
+#: src/MainWindow.vala:292
+msgid "Notifications"
+msgstr "Notificações"
+
+#: src/MainWindow.vala:294
+msgid "Delay:"
+msgstr "Atraso:"
+
+#: src/MainWindow.vala:311
+msgid "Interface"
+msgstr "Interface"
+
+#: src/MainWindow.vala:313
+msgid "Dark Mode:"
+msgstr "Tema Escuro:"
+
+#: src/MainWindow.vala:337
+msgid "Export"
+msgstr "Exportar"
+
+#: src/MainWindow.vala:343
+msgid "Time"
+msgstr "Tempo"
+
+#: src/MainWindow.vala:349
+msgid "Name"
+msgstr "Nome"
+
+#: src/MainWindow.vala:361
+msgid "Tasks"
+msgstr "Tarefas"
+
+#: src/MainWindow.vala:362
+msgid "Sort By:"
+msgstr "Organizar por:"
+
+#: src/MainWindow.vala:389
+msgid "Settings"
+msgstr "Definições"
+
+#: src/MainWindow.vala:579 src/MainWindow.vala:588 src/MainWindow.vala:597
+#: src/MainWindow.vala:606 src/MainWindow.vala:615
+msgid "Go rest for a while before continuing."
+msgstr "Descanse um pouco antes de continuar."
+
+#: src/Widgets/Column.vala:13
+msgid "Logged tasks will end up here."
+msgstr "Tarefas registadas acabarão aqui."
+
+#: src/Widgets/Column.vala:17
+msgid "LOGS"
+msgstr "REGISTOS"
+
+#: src/Widgets/ColumnListBox.vala:47
+msgid "No logs…"
+msgstr "Sem registos…"
+
+#: src/Widgets/EventBox.vala:68
+msgid "Delete Task"
+msgstr "Apagar Tarefa"
