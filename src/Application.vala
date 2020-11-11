@@ -48,7 +48,6 @@ namespace Khronos {
 
         public static int main (string[] args) {
             Intl.setlocale (LocaleCategory.ALL, "");
-            Intl.textdomain (Build.GETTEXT_PACKAGE);
 
             var app = new Khronos.Application ();
             return app.run (args);
