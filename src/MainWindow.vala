@@ -157,7 +157,7 @@ namespace Khronos {
             titlebar.set_show_close_button (true);
             titlebar.hexpand = true;
             titlebar.decoration_layout = ":maximize";
-            titlebar.set_size_request (-1,45);
+            titlebar.set_size_request (-1,38);
 
             column = new DayColumn (1, this);
             column.column.hexpand = false;
@@ -398,7 +398,7 @@ namespace Khronos {
             tm.load_from_file ();
 
             fauxtitlebar = new Hdy.HeaderBar ();
-            fauxtitlebar.set_size_request (200,45);
+            fauxtitlebar.set_size_request (200,38);
             fauxtitlebar.decoration_layout = "close:";
             fauxtitlebar.show_close_button = true;
             fauxtitlebar.has_subtitle = false;
