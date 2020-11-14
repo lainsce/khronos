@@ -308,16 +308,6 @@ namespace Khronos {
                 Khronos.Application.gsettings.set_int("notification-delay", ((int)notification_sb.value * 60));
             });
 
-            var dark_header = new Granite.HeaderLabel (_("Interface"));
-
-            var dark_label = new Gtk.Label (_("Dark Mode:"));
-            dark_label.halign = Gtk.Align.END;
-
-            var dark_sw = new Gtk.Switch ();
-            dark_sw.halign = Gtk.Align.START;
-            dark_sw.valign = Gtk.Align.CENTER;
-            Khronos.Application.gsettings.bind ("dark-mode", dark_sw, "active", GLib.SettingsBindFlags.DEFAULT);
-
             var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
 
             var export_menu_grid = new Gtk.Grid ();
@@ -367,9 +357,6 @@ namespace Khronos {
             menu_grid.row_spacing = 6;
             menu_grid.column_spacing = 12;
             menu_grid.orientation = Gtk.Orientation.VERTICAL;
-            menu_grid.attach (dark_header,0,0,1,1);
-            menu_grid.attach (dark_label,0,1,1,1);
-            menu_grid.attach (dark_sw,1,1,1,1);
             menu_grid.attach (sort_header,0,2,1,1);
             menu_grid.attach (sort_label,0,3,1,1);
             menu_grid.attach (sort_time,1,3,1,1);
@@ -377,7 +364,7 @@ namespace Khronos {
             menu_grid.attach (notification_header,0,5,1,1);
             menu_grid.attach (notification_label,0,6,1,1);
             menu_grid.attach (notification_sw,1,6,1,1);
-            menu_grid.attach (notification_sb,1,7,1,1);
+            menu_grid.attach (notification_sb,2,6,1,1);
             menu_grid.show_all ();
 
             var menu = new Gtk.Popover (null);
