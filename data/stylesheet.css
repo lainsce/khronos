@@ -11,14 +11,14 @@ window.unified {
 }
 
 .tt-column {
-    background: mix (@accent_color, @base_color, 0.85);
+    background: mix (@accent_color, @base_color, 0.90);
     border-right: 1px solid alpha (black, 0.25);
     box-shadow: none;
     padding: 6px;
 }
 
 .tt-column list {
-    background: mix (@accent_color, @base_color, 0.85);
+    background: mix (@accent_color, @base_color, 0.90);
 }
 
 .tt-box {
@@ -26,7 +26,7 @@ window.unified {
     margin: 6px;
     border-radius: 8px;
     border: 1px solid shade(@accent_color, 1.4);
-    background-color: mix (@accent_color, @base_color, 0.85);
+    background-color: mix (@accent_color, @base_color, 0.90);
     color: @fg_color;
 }
 
