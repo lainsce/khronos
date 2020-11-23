@@ -407,22 +407,15 @@ namespace Khronos {
             grid.attach (main_frame_grid, 1, 1, 1, 1);
             grid.show_all ();
 
-            separator = new Gtk.Separator (Gtk.Orientation.VERTICAL);
-            var separator_cx = separator.get_style_context ();
-            separator_cx.add_class ("vsep");
-
             update ();
 
             leaflet = new Hdy.Leaflet ();
             leaflet.add (sgrid);
-            leaflet.add (separator);
             leaflet.add (grid);
             leaflet.transition_type = Hdy.LeafletTransitionType.UNDER;
             leaflet.show_all ();
             leaflet.can_swipe_back = true;
             leaflet.set_visible_child (grid);
-
-            leaflet.child_set_property (separator, "allow-visible", false);
 
             leaflet.notify["folded"].connect (() => {
                 update ();
