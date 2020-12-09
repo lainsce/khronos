@@ -38,6 +38,10 @@ window.unified {
     box-shadow: 0 1px 5px 5px alpha(black, 0.1);
 }
 
+.tt-card:backdrop {
+    background: shade(@color_primary, 1.1);
+}
+
 .tt-entry {
     border-radius: 8px;
     box-shadow: none;
@@ -83,15 +87,31 @@ window.unified {
     background: #F7F7F7;
 }
 
+.tt-toolbar:backdrop {
+    background: #F0F0F0;
+}
+
 .tt-toolbar-dark {
     background: #151515;
     box-shadow: none;
+}
+
+.tt-toolbar-dark:backdrop {
+    background: #333333;
 }
 
 .tt-view {
     background: #F7F7F7;
 }
 
+.tt-view:backdrop {
+    background: #F0F0F0;
+}
+
 .tt-view-dark {
     background: #151515;
+}
+
+.tt-view-dark:backdrop {
+    background: #333333;
 }
