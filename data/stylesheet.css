@@ -115,3 +115,27 @@ window.unified {
 .tt-view-dark:backdrop {
     background: #333333;
 }
+
+.tt-toolbar .image-button,
+.tt-toolbar .title,
+.tt-toolbar .titlebutton {
+    color: #000;
+}
+
+.tt-toolbar:backdrop .image-button,
+.tt-toolbar:backdrop .title,
+.tt-toolbar:backdrop .titlebutton {
+    color: #333;
+}
+
+.tt-toolbar-dark .image-button,
+.tt-toolbar-dark .title,
+.tt-toolbar-dark .titlebutton {
+    color: #FFF;
+}
+
+.tt-toolbar-dark:backdrop .image-button,
+.tt-toolbar-dark:backdrop .title,
+.tt-toolbar-dark:backdrop .titlebutton {
+    color: #CCC;
+}
