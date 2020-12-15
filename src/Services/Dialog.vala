@@ -16,16 +16,9 @@
  */
 namespace Khronos.Dialog {
     public MainWindow win;
-    public Gtk.FileChooserDialog create_file_chooser (Gtk.FileChooserAction action) {
-        var chooser = new Gtk.FileChooserDialog (null, null, action);
+    public Gtk.FileChooserNative create_file_chooser (Gtk.FileChooserAction action) {
+        var chooser = new Gtk.FileChooserNative (null, null, action, null, null);
         chooser.set_transient_for(win);
-        chooser.add_button ("_Cancel", Gtk.ResponseType.CANCEL);
-        if (action == Gtk.FileChooserAction.OPEN) {
-            chooser.add_button ("_Open", Gtk.ResponseType.ACCEPT);
-        } else if (action == Gtk.FileChooserAction.SAVE) {
-            chooser.add_button ("_Save", Gtk.ResponseType.ACCEPT);
-            chooser.set_do_overwrite_confirmation (true);
-        }
         var filter1 = new Gtk.FileFilter ();
         filter1.set_filter_name (_("CSV files"));
         filter1.add_pattern ("*.csv");
