@@ -146,6 +146,7 @@ namespace Khronos {
             // Ensure use of elementary theme and icons, accent color doesn't matter
             Gtk.Settings.get_default().set_property("gtk-theme-name", "io.elementary.stylesheet.blueberry");
             Gtk.Settings.get_default().set_property("gtk-icon-theme-name", "elementary");
+            Gtk.Settings.get_default().set_property("gtk-font-name", "Inter 9");
 
             titlebar = new Hdy.HeaderBar ();
             titlebar.show_close_button = true;
