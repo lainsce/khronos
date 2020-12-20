@@ -163,9 +163,9 @@ namespace Khronos {
             column = new DayColumn (1, this);
             column.column.hexpand = false;
 
-            var column_scroller = new Gtk.ScrolledWindow (null, null);
-            column_scroller.hscrollbar_policy = Gtk.PolicyType.NEVER;
-            column_scroller.add (column);
+            var sidebar_scroller = new Gtk.ScrolledWindow (null, null);
+            sidebar_scroller.hscrollbar_policy = Gtk.PolicyType.NEVER;
+            sidebar_scroller.add (column);
 
             column_time_label = new Gtk.Label("");
             column_time_label.use_markup = true;
@@ -325,10 +325,12 @@ namespace Khronos {
             var export_menu_button = new Gtk.MenuButton ();
             export_menu_button.set_image (new Gtk.Image.from_icon_name ("document-export-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             export_menu_button.has_tooltip = true;
+            export_menu_button.always_show_image = true;
+            export_menu_button.label = (_("Export…"));
             export_menu_button.tooltip_text = (_("Export"));
             export_menu_button.popover = export_menu;
             var export_menu_button_style_context = export_menu_button.get_style_context ();
-            export_menu_button_style_context.add_class ("tt-button");
+            export_menu_button_style_context.add_class ("tt-sabutton");
             export_menu_button_style_context.add_class ("image-button");
 
             var sort_time = new Gtk.RadioButton.with_label_from_widget (null, _("Time"));
@@ -380,8 +382,10 @@ namespace Khronos {
             menu_button_style_context.add_class ("tt-button");
             menu_button_style_context.add_class ("image-button");
 
-            titlebar.pack_end (menu_button);
-            titlebar.pack_end (export_menu_button);
+            var sidebar_actionbar = new Gtk.ActionBar ();
+            sidebar_actionbar.get_style_context ().add_class ("tt-sabar");
+            sidebar_actionbar.add (export_menu_button);
+            sidebar_actionbar.pack_end (menu_button);
 
             tm.load_from_file ();
 
@@ -395,7 +399,8 @@ namespace Khronos {
 
             sgrid = new Gtk.Grid ();
             sgrid.attach (fauxtitlebar, 0, 0, 1, 1);
-            sgrid.attach (column_scroller, 0, 1, 1, 1);
+            sgrid.attach (sidebar_scroller, 0, 1, 1, 1);
+            sgrid.attach (sidebar_actionbar, 0, 2, 1, 1);
             sgrid.show_all ();
 
             main_frame_grid = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);

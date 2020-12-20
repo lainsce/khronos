@@ -143,3 +143,24 @@ window.unified decoration-overlay {
 .tt-toolbar-dark:backdrop .titlebutton {
     color: #CCC;
 }
+
+.tt-sabar {
+  background-color: shade(mix (@accent_color, @base_color, 0.90), 0.95);
+  border-top: 1px solid alpha(black, 0.25);
+  border-right: 1px solid alpha(black, 0.25);
+  padding: 6px 10px;
+  box-shadow: none;
+}
+
+.tt-sabar .image-button,
+.tt-sabutton {
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.tt-sabar .image-button:focus,
+.tt-sabar .image-button:hover,
+.tt-sabutton:focus,
+.tt-sabutton:hover {
+  background: shade(mix (@accent_color, @base_color, 0.90), 0.88);
+}
