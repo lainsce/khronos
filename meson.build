@@ -33,11 +33,7 @@ sources = files(
 cc = meson.get_compiler('c')
 m_dep = cc.find_library('m', required: true)
 dependencies = [
-    dependency('gio-2.0'),
     dependency('gtk+-3.0'),
-    dependency('glib-2.0'),
-    dependency('gobject-2.0'),
-    dependency('gee-0.8'),
     dependency('libhandy-1'),
     dependency('granite'),
     dependency('json-glib-1.0'),

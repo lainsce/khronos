@@ -28,7 +28,6 @@ namespace Khronos {
         public Gtk.Label column_time_label;
         public Gtk.Button column_button;
         public Gtk.Button column_export_button;
-        public Gtk.Button column_reset_button;
         public Gtk.Button column_play_button;
         public Hdy.Leaflet leaflet;
         public Hdy.HeaderBar titlebar;
@@ -184,25 +183,19 @@ namespace Khronos {
             column_play_button_style_context.add_class ("image-button");
             column_play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-start-symbolic", Gtk.IconSize.BUTTON));
 
-            column_reset_button = new Gtk.Button ();
-            column_reset_button.has_tooltip = true;
-            column_reset_button.tooltip_text = _("Reset Timer");
-            column_reset_button.sensitive = false;
-            column_reset_button.can_focus = false;
-            column_reset_button.halign = Gtk.Align.CENTER;
-            var column_reset_button_style_context = column_reset_button.get_style_context ();
-            column_reset_button_style_context.add_class ("tt-button");
-            column_reset_button_style_context.add_class ("image-button");
-            // Using this icon since it looks like resetting time.
-            column_reset_button.set_image (new Gtk.Image.from_icon_name ("document-open-recent-symbolic", Gtk.IconSize.BUTTON));
-
             column_export_button = new Gtk.ModelButton ();
+            var column_export_image = new Gtk.Image.from_icon_name ("x-office-spreadsheet-symbolic", Gtk.IconSize.BUTTON);
             column_export_button.get_child ().destroy ();
             var column_export_button_accellabel = new Granite.AccelLabel.from_action_name (
                 _("Export Log as CSV File…"),
                 ""
             );
-            column_export_button.add (column_export_button_accellabel);
+
+            var column_export_button_box = new Gtk.Grid ();
+            column_export_button_box.column_spacing = 6;
+            column_export_button_box.add (column_export_image);
+            column_export_button_box.add (column_export_button_accellabel);
+            column_export_button.add (column_export_button_box);
             column_export_button.halign = Gtk.Align.START;
             column_export_button.can_focus = false;
 
@@ -231,20 +224,14 @@ namespace Khronos {
                     });;
                     column_play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-stop-symbolic", Gtk.IconSize.BUTTON));
                     column_play_button.tooltip_text = _("Stop Timer");
-                    column_reset_button.sensitive = false;
                     column_button.sensitive = false;
                 } else {
                     start = false;
                     GLib.Source.remove(timer_id);
                     column_play_button.set_image (new Gtk.Image.from_icon_name ("media-playback-start-symbolic", Gtk.IconSize.BUTTON));
                     column_play_button.tooltip_text = _("Start Timer");
-                    column_reset_button.sensitive = true;
                     column_button.sensitive = true;
                 }
-            });
-
-            column_reset_button.clicked.connect (() => {
-                reset_timer ();
             });
 
             column_export_button.clicked.connect (() => {
@@ -262,10 +249,18 @@ namespace Khronos {
             column_entry.valign = Gtk.Align.START;
             column_entry.get_style_context ().add_class ("tt-entry");
 
+            column_entry.changed.connect (() => {
+                if (column_entry.text_length != 0) {
+                    column_play_button.sensitive = true;
+                } else {
+                    column_play_button.sensitive = false;
+                }
+            });
+
 	        var custom_help = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.BUTTON);
             custom_help.halign = Gtk.Align.START;
 	        custom_help.margin = 12;
-            custom_help.tooltip_text = _("You can add a log by starting the timer first.");
+            custom_help.tooltip_text = _("You can add a log by typing the log name and then starting the timer.");
 
             var column_buttons_grid = new Gtk.Grid ();
             column_buttons_grid.hexpand = true;
@@ -273,7 +268,6 @@ namespace Khronos {
             column_buttons_grid.margin = 6;
             column_buttons_grid.add (column_play_button);
             column_buttons_grid.add (column_button);
-            column_buttons_grid.add (column_reset_button);
 
 	        var column_entry_and_help_grid = new Gtk.Grid ();
 	        column_entry_and_help_grid.add (column_entry);
@@ -479,7 +473,6 @@ namespace Khronos {
             min = 0;
             hrs = 0;
             column_time_label.label = "%02u<span size=\"x-small\">H</span> %02u<span size=\"x-small\">M</span> %02u<span size=\"x-small\">S</span>".printf(hrs, min, sec);
-            column_reset_button.sensitive = false;
             column_button.sensitive = false;
             column_entry.text = "";
         }
@@ -488,6 +481,7 @@ namespace Khronos {
             var taskbox = new TaskBox (this, name, time, date);
             column.column.insert (taskbox, -1);
             tm.save_notes ();
+            reset_timer ();
             is_modified = true;
         }
 

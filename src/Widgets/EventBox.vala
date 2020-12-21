@@ -60,7 +60,7 @@ namespace Khronos {
             task_delete_button_c.add_class ("flat");
             task_delete_button_c.add_class ("icon-shadow");
             task_delete_button_c.add_class ("destructive-button");
-            task_delete_button_c.add_class ("tt-button");
+            task_delete_button_c.add_class ("tt-sabutton");
             task_delete_button.has_tooltip = true;
             task_delete_button.vexpand = false;
             task_delete_button.valign = Gtk.Align.CENTER;
