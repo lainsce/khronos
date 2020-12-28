@@ -142,10 +142,6 @@ namespace Khronos {
             Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (),
                                                       provider,
                                                       Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-            // Ensure use of elementary theme and icons, accent color doesn't matter
-            Gtk.Settings.get_default().set_property("gtk-theme-name", "io.elementary.stylesheet.blueberry");
-            Gtk.Settings.get_default().set_property("gtk-icon-theme-name", "elementary");
-            Gtk.Settings.get_default().set_property("gtk-font-name", "Inter 9");
 
             titlebar = new Hdy.HeaderBar ();
             titlebar.show_close_button = true;
@@ -257,7 +253,7 @@ namespace Khronos {
                 }
             });
 
-	        var custom_help = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.BUTTON);
+	        var custom_help = new Gtk.Image.from_icon_name ("dialog-information-symbolic", Gtk.IconSize.BUTTON);
             custom_help.halign = Gtk.Align.START;
 	        custom_help.margin = 12;
             custom_help.tooltip_text = _("You can add a log by typing the log name and then starting the timer.");
@@ -317,11 +313,11 @@ namespace Khronos {
             export_menu.add (export_menu_grid);
 
             var export_menu_button = new Gtk.MenuButton ();
-            export_menu_button.set_image (new Gtk.Image.from_icon_name ("document-export-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
+            export_menu_button.set_image (new Gtk.Image.from_icon_name ("document-properties-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             export_menu_button.has_tooltip = true;
             export_menu_button.always_show_image = true;
             export_menu_button.label = (_("Export…"));
-            export_menu_button.tooltip_text = (_("Export"));
+            export_menu_button.tooltip_text = (_("Export the Logs to a File"));
             export_menu_button.popover = export_menu;
             var export_menu_button_style_context = export_menu_button.get_style_context ();
             export_menu_button_style_context.add_class ("tt-sabutton");

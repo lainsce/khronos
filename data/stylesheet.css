@@ -1,3 +1,4 @@
+@define-color accent #6060c5;
 @define-color accent_color #6060c5;
 @define-color accent_color_500 #6060c5;
 @define-color accent_color_300 #6060c5;
@@ -15,22 +16,23 @@ window.unified decoration-overlay {
 }
 
 .tt-column {
-    background: mix (@accent_color, @base_color, 0.90);
+    background: mix (@accent, @theme_bg_color, 0.90);
     border-right: 1px solid alpha (black, 0.25);
+    border-bottom: none;
     box-shadow: none;
     padding: 6px;
 }
 
 .tt-column list {
-    background: mix (@accent_color, @base_color, 0.90);
+    background: mix (@accent, @theme_bg_color, 0.90);
 }
 
 .tt-box {
     padding: 2px;
     margin: 6px;
     border-radius: 8px;
-    border: 1px solid shade(@accent_color, 1.4);
-    background-color: mix (@accent_color, @base_color, 0.90);
+    border: 1px solid shade(@accent, 1.4);
+    background-color: mix (@accent, @theme_bg_color, 0.90);
     color: @fg_color;
 }
 
@@ -57,13 +59,16 @@ window.unified decoration-overlay {
     padding: 2px;
     margin: 6px;
     border-radius: 8px;
-    border: 1px solid shade(@accent_color, 1.4);
-    background-color: shade(@accent_color, 1.4);
+    border: 1px solid shade(@accent, 1.4);
+    background-color: shade(@accent, 1.4);
     color: @fg_color;
 }
 
 .tt-button {
     border-radius: 8px;
+    background: none;
+    box-shadow: none;
+    border: none;
 }
 
 .tt-button image {
@@ -72,7 +77,7 @@ window.unified decoration-overlay {
 
 .tt-button:focus,
 .tt-button:hover {
-    background: shade(@base_color, 0.85);
+    background: shade(@theme_bg_color, 0.85);
 }
 
 .tt-label {
@@ -89,6 +94,7 @@ window.unified decoration-overlay {
 .tt-toolbar {
     box-shadow: none;
     background: #F7F7F7;
+    border-bottom: none;
 }
 
 .tt-toolbar:backdrop {
@@ -145,22 +151,35 @@ window.unified decoration-overlay {
 }
 
 .tt-sabar {
-  background-color: shade(mix (@accent_color, @base_color, 0.90), 0.95);
+  background-color: shade(mix (@accent, @theme_bg_color, 0.90), 0.95);
   border-top: 1px solid alpha(black, 0.25);
   border-right: 1px solid alpha(black, 0.25);
   padding: 6px 10px;
   box-shadow: none;
 }
 
+.tt-sabar box {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
 .tt-sabar .image-button,
 .tt-sabutton {
   border-radius: 8px;
   padding: 6px;
+  background: none;
+  box-shadow: none;
+  border: none;
+}
+
+.tt-sabutton label {
+  padding-left: 6px;
 }
 
 .tt-sabar .image-button:focus,
 .tt-sabar .image-button:hover,
 .tt-sabutton:focus,
 .tt-sabutton:hover {
-  background: shade(mix (@accent_color, @base_color, 0.90), 0.88);
+  background: shade(mix (@accent, @theme_bg_color, 0.90), 0.88);
 }
