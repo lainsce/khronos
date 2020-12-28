@@ -20,7 +20,6 @@ window.unified decoration-overlay {
     border-right: 1px solid alpha (black, 0.25);
     border-bottom: none;
     box-shadow: none;
-    padding: 6px;
 }
 
 .tt-column list {
