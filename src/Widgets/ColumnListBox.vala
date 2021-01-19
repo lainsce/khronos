@@ -8,7 +8,6 @@ namespace Khronos {
 
         public DayColumnListBox (int day, MainWindow win) {
             this.win = win;
-            this.hexpand = true;
             this.vexpand = true;
             this.activate_on_single_click = false;
             this.selection_mode = Gtk.SelectionMode.SINGLE;
@@ -17,17 +16,20 @@ namespace Khronos {
                     string task1 = ((TaskBox) row1).time;
                     string task2 = ((TaskBox) row2).time;
 
-                    var reg = new Regex("(?m)^\\d{2} hrs, (?<min>\\d{2}) mins, \\d{2} secs");
-                    GLib.MatchInfo match;
-
-                    if (reg.match (task1, 0, out match)) {
-                        do {
-                            if (match.fetch_named ("min") != "") {
-                                return task1.collate(task2);
-                            }
-                        } while (match.next ());
-                    } else {
-                        return task2.collate(task1);
+                    try {
+                        var reg = new Regex("(?m)^\\d{2} hrs, (?<min>\\d{2}) mins, \\d{2} secs");
+                        GLib.MatchInfo match;
+                        if (reg.match (task1, 0, out match)) {
+                            do {
+                                if (match.fetch_named ("min") != "") {
+                                    return task1.collate(task2);
+                                }
+                            } while (match.next ());
+                        } else {
+                            return task2.collate(task1);
+                        }
+                    } catch (GLib.Error e) {
+                        warning ("ERR: %s", e.message);
                     }
                 } else if (Khronos.Application.gsettings.get_string ("sort-type") == "name") {
                     string task1 = ((TaskBox) row1).name;
@@ -42,14 +44,11 @@ namespace Khronos {
 
             this.build_drag_and_drop ();
 
-            var column_style_context = this.get_style_context ();
-            column_style_context.add_class ("tt-column");
-
-            var no_tasks = new Gtk.Label (_("No tasks…"));
+            var no_tasks = new Gtk.Label (_("No logs…"));
             no_tasks.halign = Gtk.Align.CENTER;
             var no_tasks_style_context = no_tasks.get_style_context ();
-            no_tasks_style_context.add_class ("tt-label");
-            no_tasks.sensitive = false;
+            no_tasks_style_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
+            no_tasks_style_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
             no_tasks.margin = 12;
             no_tasks.show_all ();
             this.set_placeholder (no_tasks);

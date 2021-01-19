@@ -1,89 +1,184 @@
-@define-color colorAccent #9696d4;
+@define-color accent #6060c5;
+@define-color accent_color #6060c5;
+@define-color accent_color_500 #6060c5;
+@define-color accent_color_300 #6060c5;
 
-.icon-shadow {
-    -gtk-icon-shadow: 0px 0px 3px black;
-    background-color: transparent;
-    background-image: none;
-    background: none;
+window .csd:not(.popup):not(.menu) .titlebar,
+window:not(.popup):not(.menu) > decoration,
+window.unified,
+window.unified decoration,
+window.unified decoration-overlay {
+  border-radius: 8px;
 }
+
+.destructive-button:hover {
+    color: #D07070;
+}
+
 .tt-column {
-    background-color: shade (@bg_color, 1.05);
-    border: 1px solid alpha(#000, 0.25);
-    padding: 10px;
-    border-radius: 4px;
+    background: mix (@accent, @theme_bg_color, 0.90);
+    border-right: 1px solid alpha (black, 0.25);
+    border-bottom: none;
+    box-shadow: none;
+}
+
+.tt-column list {
+    background: mix (@accent, @theme_bg_color, 0.90);
 }
 
 .tt-box {
-    border-bottom: none;
-    border-top: none;
-    border-right: none;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    border-left: 3px solid @colorAccent;
-    background-color: mix (@colorAccent, #FFF, 0.7);
-    color: shade (@colorAccent, 0.5);
-    font-weight: 600;
-    box-shadow:
-        0 1px 3px alpha (shade (@colorAccent, 0.5), 0.12),
-        0 1px 2px alpha (shade (@colorAccent, 0.5), 0.24);
+    padding: 2px;
+    margin: 6px;
+    border-radius: 8px;
+    border: 1px solid shade(@accent, 1.4);
+    background-color: mix (@accent, @theme_bg_color, 0.90);
+    color: @fg_color;
 }
-.tt-box:backdrop {
-    color: shade (@colorAccent, 0.88);
+
+.tt-card {
+    margin: 0 24px;
+    box-shadow: none;
+    border-radius: 8px;
+    border: 1px solid alpha(black, 0.25);
+    box-shadow: 0 1px 5px 5px alpha(black, 0.1);
 }
-.tt-box:selected.activatable {
-    color: shade (@colorAccent, 0.5);
+
+.tt-card:backdrop {
+    background: shade(@color_primary, 1.1);
 }
-.tt-box:selected.activatable:backdrop {
-    color: shade (@colorAccent, 0.88);
+
+.tt-entry {
+    border-radius: 8px;
+    box-shadow: none;
+    padding: 8px;
+    background: shade(@color_primary, 1.2);
 }
-.tt-box image {
-    color: shade (@colorAccent, 0.5);
-    -gtk-icon-shadow: none;
-    border-image-width: 0;
-    box-shadow: transparent;
-}
-.tt-box image:backdrop {
-    color: shade (@colorAccent, 0.88);
+
+.tt-box:hover {
+    padding: 2px;
+    margin: 6px;
+    border-radius: 8px;
+    border: 1px solid shade(@accent, 1.4);
+    background-color: shade(@accent, 1.4);
+    color: @fg_color;
 }
 
 .tt-button {
-    background-image: linear-gradient(
-        to bottom,
-        shade (@bg_color, 1.05),
-        shade (@base_color, 0.9)
-    );
-    border: 1px solid alpha(#000, 0.25);
-    border-radius: 50px;
-    padding: 5px;
+    border-radius: 8px;
+    background: none;
+    box-shadow: none;
+    border: none;
 }
+
 .tt-button image {
-    -gtk-icon-shadow: 0px 0px 0px transparent;
-    border-image-width: 0;
-    box-shadow: transparent;
+    padding: 0 6px;
 }
+
 .tt-button:focus,
 .tt-button:hover {
-    box-shadow:
-        0 1px 3px alpha (@colorAccent, 0.24),
-        0 1px 2px alpha (@colorAccent, 0.32);
-}
-.tt-button:active {
-    background-image: linear-gradient(
-        to bottom,
-        shade (@base_color, 0.9),
-        shade (@bg_color, 1.05)
-    );
-    border: 1px solid alpha(#000, 0.5);
+    background: shade(@theme_bg_color, 0.85);
 }
 
 .tt-label {
-    font-size: 1.44em;
+    font-size: 2.66rem;
 }
 
-actionbar,
-.action-bar {
-    border-top: 1px solid transparent;
+.tt-title {
+    font-weight: 700;
+}
+.title {
+    font-weight: 700;
+}
+
+.tt-toolbar {
     box-shadow: none;
-    background-image: none;
-    padding: 3px;
+    background: #F7F7F7;
+    border-bottom: none;
+}
+
+.tt-toolbar:backdrop {
+    background: #F0F0F0;
+}
+
+.tt-toolbar-dark {
+    background: #151515;
+    box-shadow: none;
+}
+
+.tt-toolbar-dark:backdrop {
+    background: #333333;
+}
+
+.tt-view {
+    background: #F7F7F7;
+}
+
+.tt-view:backdrop {
+    background: #F0F0F0;
+}
+
+.tt-view-dark {
+    background: #151515;
+}
+
+.tt-view-dark:backdrop {
+    background: #333333;
+}
+
+.tt-toolbar .image-button,
+.tt-toolbar .title,
+.tt-toolbar .titlebutton {
+    color: #000;
+}
+
+.tt-toolbar:backdrop .image-button,
+.tt-toolbar:backdrop .title,
+.tt-toolbar:backdrop .titlebutton {
+    color: #333;
+}
+
+.tt-toolbar-dark .image-button,
+.tt-toolbar-dark .title,
+.tt-toolbar-dark .titlebutton {
+    color: #FFF;
+}
+
+.tt-toolbar-dark:backdrop .image-button,
+.tt-toolbar-dark:backdrop .title,
+.tt-toolbar-dark:backdrop .titlebutton {
+    color: #CCC;
+}
+
+.tt-sabar {
+  background-color: shade(mix (@accent, @theme_bg_color, 0.90), 0.95);
+  border-top: 1px solid alpha(black, 0.25);
+  border-right: 1px solid alpha(black, 0.25);
+  padding: 6px 10px;
+  box-shadow: none;
+}
+
+.tt-sabar box {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tt-sabar .image-button,
+.tt-sabutton {
+  border-radius: 8px;
+  padding: 6px;
+  background: none;
+  box-shadow: none;
+  border: none;
+}
+
+.tt-sabutton label {
+  padding-left: 6px;
+}
+
+.tt-sabar .image-button:focus,
+.tt-sabar .image-button:hover,
+.tt-sabutton:focus,
+.tt-sabutton:hover {
+  background: shade(mix (@accent, @theme_bg_color, 0.90), 0.88);
 }

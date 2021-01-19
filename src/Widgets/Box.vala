@@ -22,7 +22,7 @@ namespace Khronos {
             task_grid.hexpand = false;
             task_grid.row_spacing = 6;
             task_grid.row_homogeneous = true;
-            task_grid.margin = 12;
+            task_grid.margin_start = 4;
             task_grid.attach (evbox, 0, 0, 1, 2);
 
             evbox.delete_requested.connect (() => {

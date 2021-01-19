@@ -21,12 +21,17 @@ namespace Khronos {
     public class Application : Gtk.Application {
         public static MainWindow win = null;
         public static GLib.Settings gsettings;
+        public static Granite.Settings grsettings;
 
         public Application () {
             Object (
                 flags: ApplicationFlags.FLAGS_NONE,
                 application_id: "com.github.lainsce.khronos"
             );
+        }
+
+        construct {
+             grsettings = Granite.Settings.get_default ();
         }
 
         static construct {
@@ -43,7 +48,6 @@ namespace Khronos {
 
         public static int main (string[] args) {
             Intl.setlocale (LocaleCategory.ALL, "");
-            Intl.textdomain (Build.GETTEXT_PACKAGE);
 
             var app = new Khronos.Application ();
             return app.run (args);
