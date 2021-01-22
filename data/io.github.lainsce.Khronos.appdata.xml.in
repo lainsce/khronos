@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-    <id>com.github.lainsce.khronos</id>
+    <id>io.github.lainsce.Khronos</id>
     <metadata_license>CC0</metadata_license>
     <project_license>GPL-3.0+</project_license>
     <name>Khronos</name>
@@ -12,11 +12,12 @@
         </ul>
     </description>
     <provides>
-        <binary>com.github.lainsce.khronos</binary>
+        <binary>io.github.lainsce.Khronos</binary>
     </provides>
     <developer_name>Lains</developer_name>
     <url type="homepage">https://github.com/lainsce/khronos/</url>
     <url type="bugtracker">https://github.com/lainsce/khronos/issues</url>
+    <url type="donation">https://liberapay.com/Lains/</url>
     <screenshots>
         <screenshot type="default">
             <image>https://raw.githubusercontent.com/lainsce/khronos/master/data/shot.png</image>
@@ -52,52 +53,13 @@
         <content_attribute id="money-gambling">none</content_attribute>
     </content_rating>
     <releases>
-        <release version="2.0.0" date="2020-?-?">
+        <release version="2.0.0" date="2020-01-?">
             <description>
-                <p>Release: Hello, Odin!</p>
+                <p>Release: Hello, Flatpak!</p>
                 <ul>
                     <li>Changed: Major UI changes.</li>
                 </ul>
             </description>
         </release>
-        <release version="1.0.8" date="2020-04-04">
-            <description>
-                <p>Release: Helpful Tips</p>
-                <ul>
-                    <li>Added: Tooltip icon beside the entry to help users.</li>
-                </ul>
-            </description>
-        </release>
-        <release version="1.0.6" date="2020-03-06">
-            <description>
-                <p>Release: Start Sorting</p>
-                <ul>
-                    <li>Added: Sorting Options on Settings Menu</li>
-                </ul>
-            </description>
-        </release>
-        <release version="1.0.3" date="2020-02-21">
-            <description>
-                <p>Release: Start Building Up</p>
-                <ul>
-                    <li>Added: Logging the start date of tasks</li>
-                    <li>Added: Exporting the Task Log as CSV file</li>
-                    <li>Added: Configurable notifications to go along with tasks</li>
-                </ul>
-            </description>
-        </release>
-        <release version="1.0.0" date="2020-02-14">
-            <description>
-                <p>Release: Initial Tracking</p>
-                <ul>
-                    <li>First stable release</li>
-                </ul>
-            </description>
-        </release>
     </releases>
-    <custom>
-        <value key="x-appcenter-color-primary">#9696d4</value>
-        <value key="x-appcenter-color-primary-text">#000000</value>
-        <value key="x-appcenter-suggested-price">5</value>
-    </custom>
 </component>

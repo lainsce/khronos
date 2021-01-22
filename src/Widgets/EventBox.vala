@@ -36,18 +36,19 @@ namespace Khronos {
             task_label.label = tb.name;
             task_label.max_width_chars = 20;
             task_label.ellipsize = Pango.EllipsizeMode.END;
-            var task_label_c = task_label.get_style_context ();
-            task_label_c.add_class ("tt-title");
+            task_label.get_style_context ().add_class ("title");
 
             task_time_label = new Gtk.Label ("");
             task_time_label.use_markup = true;
             task_time_label.halign = Gtk.Align.START;
             task_time_label.label = tb.time;
+            task_time_label.get_style_context ().add_class ("dim-label");
 
             task_date_label = new Gtk.Label ("");
             task_date_label.use_markup = true;
             task_date_label.halign = Gtk.Align.START;
             task_date_label.label = tb.date;
+            task_date_label.get_style_context ().add_class ("dim-label");
 
             var task_box = new Gtk.Grid ();
             task_box.row_homogeneous = true;
@@ -56,11 +57,6 @@ namespace Khronos {
             task_box.attach (task_date_label, 0, 2);
 
             task_delete_button = new Gtk.Button();
-            var task_delete_button_c = task_delete_button.get_style_context ();
-            task_delete_button_c.add_class ("flat");
-            task_delete_button_c.add_class ("icon-shadow");
-            task_delete_button_c.add_class ("destructive-button");
-            task_delete_button_c.add_class ("tt-sabutton");
             task_delete_button.has_tooltip = true;
             task_delete_button.vexpand = false;
             task_delete_button.valign = Gtk.Align.CENTER;

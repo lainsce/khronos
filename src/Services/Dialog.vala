@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Lains
+ * Copyright (C) 2020-2021 Lains
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,12 +39,11 @@ namespace Khronos.Dialog {
         return file;
     }
 
-    public class Dialog : Granite.MessageDialog {
+    public class Dialog : Gtk.MessageDialog {
         public MainWindow win;
         public Dialog () {
             Object (
-                image_icon: new ThemedIcon ("dialog-information"),
-                primary_text: _("Save Khronos Log?"),
+                text: _("Save Khronos Log?"),
                 secondary_text: _("There are unsaved changes to the log. If you don't save, changes will be lost forever.")
             );
         }

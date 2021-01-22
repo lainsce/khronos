@@ -4,6 +4,7 @@
 
 [![Get it on AppCenter](https://appcenter.elementary.io/badge.svg)](https://appcenter.elementary.io/com.github.lainsce.khronos)
 
+[![Please do not theme this app](https://stopthemingmy.app/badge.svg)](https://stopthemingmy.app)
 [![Build Status](https://travis-ci.org/lainsce/khronos.svg?branch=master)](https://travis-ci.org/lainsce/khronos)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
@@ -20,8 +21,8 @@ Would you like to support the development of this app to new heights? Then:
 Please make sure you have these dependencies first before building.
 
 ```bash
-granite
 gtk+-3.0
+libhandy-1
 meson
 ```
 

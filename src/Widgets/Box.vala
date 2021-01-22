@@ -33,7 +33,7 @@ namespace Khronos {
             this.add (task_grid);
             this.hexpand = false;
             this.show_all ();
-            this.get_style_context ().add_class ("tt-box");
+            this.get_style_context ().add_class ("kh-box");
         }
     }
 }

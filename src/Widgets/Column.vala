@@ -5,26 +5,18 @@ namespace Khronos {
 
         public DayColumn (int day, MainWindow win) {
             this.win = win;
-            this.set_size_request (200,-1);
-            this.column_homogeneous =true;
+            this.column_homogeneous = true;
 
-            var rec_label = new Gtk.Label (null);
-            rec_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
-            rec_label.tooltip_text = _("Logged tasks will end up here.");
-            rec_label.use_markup = true;
-            rec_label.halign = Gtk.Align.START;
-            rec_label.margin_start = 9;
-            rec_label.label = _("LOGS");
+            var title_label =new Gtk.Label (_("Logs"));
+            title_label.get_style_context ().add_class ("title-1");
+            title_label.halign = Gtk.Align.START;
 
             column = new DayColumnListBox (day, win);
 
-            this.row_spacing = 6;
-            this.attach (rec_label, 0, 0);
+            this.row_spacing = 12;
+            this.margin = 24;
+            this.attach (title_label, 0, 0);
             this.attach (column, 0, 1);
-
-            var column_style_context = this.get_style_context ();
-            column_style_context.add_class ("tt-column");
-
             this.show_all ();
         }
 

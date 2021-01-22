@@ -1,184 +1,42 @@
-@define-color accent #6060c5;
-@define-color accent_color #6060c5;
-@define-color accent_color_500 #6060c5;
-@define-color accent_color_300 #6060c5;
-
-window .csd:not(.popup):not(.menu) .titlebar,
-window:not(.popup):not(.menu) > decoration,
-window.unified,
-window.unified decoration,
-window.unified decoration-overlay {
-  border-radius: 8px;
-}
-
-.destructive-button:hover {
-    color: #D07070;
-}
-
-.tt-column {
-    background: mix (@accent, @theme_bg_color, 0.90);
-    border-right: 1px solid alpha (black, 0.25);
-    border-bottom: none;
-    box-shadow: none;
-}
-
-.tt-column list {
-    background: mix (@accent, @theme_bg_color, 0.90);
-}
-
-.tt-box {
-    padding: 2px;
+.kh-box {
     margin: 6px;
+    padding: 4px 0;
+    margin-bottom: 0px;
     border-radius: 8px;
-    border: 1px solid shade(@accent, 1.4);
-    background-color: mix (@accent, @theme_bg_color, 0.90);
-    color: @fg_color;
+    color: @theme_fg_color;
 }
 
-.tt-card {
-    margin: 0 24px;
-    box-shadow: none;
+.kh-box:focus,
+.kh-box:selected,
+.kh-box:active,
+.kh-box:hover {
+    background: shade(@theme_base_color, 0.88);
+}
+
+.kh-box:active:backdrop,
+.kh-box:selected:backdrop,
+.kh-box:focus:backdrop,
+.kh-box:hover:backdrop  {
+    background: alpha(shade(@theme_base_color, 0.88), 0.88);
+}
+
+.kh-title {
+    font-size: 64px;
+    font-weight: 300;
+}
+
+.kh-frame {
     border-radius: 8px;
     border: 1px solid alpha(black, 0.25);
-    box-shadow: 0 1px 5px 5px alpha(black, 0.1);
 }
 
-.tt-card:backdrop {
-    background: shade(@color_primary, 1.1);
+.circular-button {
+    padding: 8px 20px;
+    border-radius: 99999px;
 }
 
-.tt-entry {
-    border-radius: 8px;
-    box-shadow: none;
-    padding: 8px;
-    background: shade(@color_primary, 1.2);
-}
-
-.tt-box:hover {
-    padding: 2px;
-    margin: 6px;
-    border-radius: 8px;
-    border: 1px solid shade(@accent, 1.4);
-    background-color: shade(@accent, 1.4);
-    color: @fg_color;
-}
-
-.tt-button {
-    border-radius: 8px;
-    background: none;
-    box-shadow: none;
-    border: none;
-}
-
-.tt-button image {
-    padding: 0 6px;
-}
-
-.tt-button:focus,
-.tt-button:hover {
-    background: shade(@theme_bg_color, 0.85);
-}
-
-.tt-label {
-    font-size: 2.66rem;
-}
-
-.tt-title {
+.title-5 {
+    font-size: 0.9rem;
     font-weight: 700;
-}
-.title {
-    font-weight: 700;
-}
-
-.tt-toolbar {
-    box-shadow: none;
-    background: #F7F7F7;
-    border-bottom: none;
-}
-
-.tt-toolbar:backdrop {
-    background: #F0F0F0;
-}
-
-.tt-toolbar-dark {
-    background: #151515;
-    box-shadow: none;
-}
-
-.tt-toolbar-dark:backdrop {
-    background: #333333;
-}
-
-.tt-view {
-    background: #F7F7F7;
-}
-
-.tt-view:backdrop {
-    background: #F0F0F0;
-}
-
-.tt-view-dark {
-    background: #151515;
-}
-
-.tt-view-dark:backdrop {
-    background: #333333;
-}
-
-.tt-toolbar .image-button,
-.tt-toolbar .title,
-.tt-toolbar .titlebutton {
-    color: #000;
-}
-
-.tt-toolbar:backdrop .image-button,
-.tt-toolbar:backdrop .title,
-.tt-toolbar:backdrop .titlebutton {
-    color: #333;
-}
-
-.tt-toolbar-dark .image-button,
-.tt-toolbar-dark .title,
-.tt-toolbar-dark .titlebutton {
-    color: #FFF;
-}
-
-.tt-toolbar-dark:backdrop .image-button,
-.tt-toolbar-dark:backdrop .title,
-.tt-toolbar-dark:backdrop .titlebutton {
-    color: #CCC;
-}
-
-.tt-sabar {
-  background-color: shade(mix (@accent, @theme_bg_color, 0.90), 0.95);
-  border-top: 1px solid alpha(black, 0.25);
-  border-right: 1px solid alpha(black, 0.25);
-  padding: 6px 10px;
-  box-shadow: none;
-}
-
-.tt-sabar box {
-  border: none;
-  margin: 0;
-  padding: 0;
-}
-
-.tt-sabar .image-button,
-.tt-sabutton {
-  border-radius: 8px;
-  padding: 6px;
-  background: none;
-  box-shadow: none;
-  border: none;
-}
-
-.tt-sabutton label {
-  padding-left: 6px;
-}
-
-.tt-sabar .image-button:focus,
-.tt-sabar .image-button:hover,
-.tt-sabutton:focus,
-.tt-sabutton:hover {
-  background: shade(mix (@accent, @theme_bg_color, 0.90), 0.88);
+    opacity: 0.66;
 }

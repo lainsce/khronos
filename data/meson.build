@@ -1,18 +1,12 @@
-icon_sizes = ['32', '48', '64', '128']
+install_data(
+    join_paths('icons', '128', meson.project_name() + '.svg'),
+    install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', 'scalable', 'apps')
+)
 
-foreach i : icon_sizes
-    install_data(
-        join_paths('icons', i, meson.project_name() + '.svg'),
-        install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', i + 'x' + i, 'apps')
-    )
-endforeach
-
-foreach i : icon_sizes
-    install_data(
-        join_paths('icons', i, meson.project_name() + '.svg'),
-        install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', i + 'x' + i + '@2', 'apps')
-    )
-endforeach
+install_data(
+    join_paths('icons', '128', meson.project_name() + '.Devel.svg'),
+    install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', 'scalable', 'apps')
+)
 
 install_data(
     join_paths('icons', '16', meson.project_name() + '-symbolic.svg'),

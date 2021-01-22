@@ -1,5 +1,5 @@
 <schemalist>
-	<schema id="com.github.lainsce.khronos" path="/com/github/lainsce/khronos/">
+	<schema id="io.github.lainsce.Khronos" path="/io/github/lainsce/Khronos/">
 		<key name="window-x" type="i">
 			<default>-1</default>
 			<summary>Window position</summary>
@@ -24,16 +24,6 @@
 				<default>1800</default>
 				<summary>Delay between notifications</summary>
 				<description>The delay between two notifications, default is 30min. in seconds.</description>
-		</key>
-	  <key name="dark-mode" type="b">
-				<default>false</default>
-				<summary>Use dark mode</summary>
-				<description>Whether the UI is dark or not.</description>
-		</key>
-	  <key name="notification" type="b">
-				<default>false</default>
-				<summary>Use notifications</summary>
-				<description>Whether to alert the user via notifications, default is false.</description>
 		</key>
 	  <key name="sort-type" type="s">
 				<default>'time'</default>

@@ -9,6 +9,7 @@ namespace Khronos {
         public DayColumnListBox (int day, MainWindow win) {
             this.win = win;
             this.vexpand = true;
+            this.get_style_context ().add_class ("kh-frame");
             this.activate_on_single_click = false;
             this.selection_mode = Gtk.SelectionMode.SINGLE;
             this.set_sort_func ((row1, row2) => {
@@ -47,7 +48,7 @@ namespace Khronos {
             var no_tasks = new Gtk.Label (_("No logs…"));
             no_tasks.halign = Gtk.Align.CENTER;
             var no_tasks_style_context = no_tasks.get_style_context ();
-            no_tasks_style_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
+            no_tasks_style_context.add_class ("title-2");
             no_tasks_style_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
             no_tasks.margin = 12;
             no_tasks.show_all ();
