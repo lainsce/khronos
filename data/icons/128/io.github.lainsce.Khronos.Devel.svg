@@ -36,7 +36,7 @@
                     <path d="m 48 98 h 53 v 4 h -53 z m 0 0" fill="#c0bfbc"/>
                     <use mask="url(#c)" transform="matrix(1 0 0 1 -8 -16)" xlink:href="#e"/>
                     <path d="m 64 236 l -18 -20" fill="none" stroke="#949390" stroke-linecap="round" stroke-width="4.00626" transform="matrix(1 0 0 1 0 -172)"/>
-                    <path d="m 64 236 l 26 -28" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="2.00313" transform="matrix(1 0 0 1 0 -172)"/>
+                    <path d="m 64 236 l 26 -28" fill="none" stroke="#3d3846" stroke-linecap="round" stroke-width="2.00313" transform="matrix(1 0 0 1 0 -172)"/>
                     <path d="m 64 236 l -14 36" fill="none" stroke="#c061cb" stroke-linecap="round" stroke-width="2.00313" transform="matrix(1 0 0 1 0 -172)"/>
                     <path d="m 69.480469 61.554688 c 1.347656 3.027343 -0.011719 6.574218 -3.035157 7.925781 c -3.027343 1.347656 -6.574218 -0.011719 -7.925781 -3.035157 c -1.347656 -3.027343 0.011719 -6.574218 3.035157 -7.925781 c 3.027343 -1.347656 6.574218 0.011719 7.925781 3.035157 z m 0 0" fill="#d5d3cf"/>
                     <path d="m 66.03125 64 c 0 1.105469 -0.894531 2.003906 -2.003906 2.003906 c -1.105469 0 -2 -0.898437 -2 -2.003906 s 0.894531 -2.003906 2 -2.003906 c 1.109375 0 2.003906 0.898437 2.003906 2.003906 z m 0 0" fill="#131c1a"/>
@@ -70,7 +70,7 @@
     <use mask="url(#b)" transform="matrix(1 0 0 1 -8 -16)" xlink:href="#e"/>
     <g fill="none" stroke-linecap="round">
         <path d="m 64 64 l -18 -20" stroke="#949390" stroke-width="4.00626"/>
-        <path d="m 64 64 l 26 -28" stroke="#ffffff" stroke-width="2.00313"/>
+        <path d="m 64 64 l 26 -28" stroke="#3d3846" stroke-width="2.00313"/>
         <path d="m 64 64 l -14 36" stroke="#c061cb" stroke-width="2.00313"/>
     </g>
     <path d="m 69.480469 61.554688 c 1.347656 3.027343 -0.011719 6.574218 -3.035157 7.925781 c -3.027343 1.347656 -6.574218 -0.011719 -7.925781 -3.035157 c -1.347656 -3.027343 0.011719 -6.574218 3.035157 -7.925781 c 3.027343 -1.347656 6.574218 0.011719 7.925781 3.035157 z m 0 0" fill="#d5d3cf"/>
