@@ -25,11 +25,6 @@ namespace Khronos {
             task_grid.margin_start = 4;
             task_grid.attach (evbox, 0, 0, 1, 2);
 
-            evbox.delete_requested.connect (() => {
-                this.destroy ();
-                win.tm.save_notes ();
-            });
-
             this.add (task_grid);
             this.hexpand = false;
             this.show_all ();

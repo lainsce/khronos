@@ -14,8 +14,6 @@ namespace Khronos {
         public Gtk.Label task_time_label;
         public Gtk.Label task_date_label;
 
-        public signal void delete_requested ();
-
         public TaskEventBox (MainWindow win, TaskBox tb) {
             this.win = win;
             this.uid = uid_counter++;
@@ -61,6 +59,7 @@ namespace Khronos {
             task_delete_button.vexpand = false;
             task_delete_button.valign = Gtk.Align.CENTER;
             task_delete_button.set_image (new Gtk.Image.from_icon_name ("edit-delete-symbolic", Gtk.IconSize.BUTTON));
+            task_delete_button.get_style_context ().add_class ("circular-button");
             task_delete_button.tooltip_text = (_("Delete Task"));
             task_delete_button.clicked.connect (() => {
                 this.destroy ();

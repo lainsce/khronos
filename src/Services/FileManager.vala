@@ -26,9 +26,12 @@ namespace Khronos.FileManager {
                         var buffer = buffer_text;
 
                         if (!file.get_basename ().down ().has_suffix (".csv")) {
-                            var file_final = File.new_for_path (file.get_path () + ".csv");
+                            var file_final = File.new_for_path (file.get_path ()
+                                                                + ".csv");
                             string file_path_final = file_final.get_path ();
                             save_file (file_path_final, buffer);
+                        } else {
+                            save_file (file.get_path (), buffer);
                         }
                         reset_modification_state (win);
                     }
@@ -43,7 +46,16 @@ namespace Khronos.FileManager {
         public string get_column_tasks (DayColumn column) {
             string task_string = "";
             foreach (var task in column.get_tasks ()) {
-                task_string += "\"" + task.name + "\",\"" + task.time + "\",\"" + task.date + "\"\n";
+                task_string += "\"" +
+                task.name + "\",\"" +
+                task.time.replace("<span font_features='tnum'>", "")
+                         .replace("</span>", "")
+                         .replace("∶", ":")
+                + "\",\"" +
+                task.date.replace("<span font_features='tnum'>", "")
+                         .replace("</span>", "")
+                         .replace("∶", ":")
+                + "\"\n";
             }
             return task_string;
         }

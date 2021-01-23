@@ -111,13 +111,14 @@ namespace Khronos {
 
             column_time_label = new Gtk.Label("");
             column_time_label.use_markup = true;
-            column_time_label.label = "<span font_features='tnum'>%02u:%02u:%02u</span>".printf(hrs, min, sec);
+            column_time_label.label = "<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec);
             column_time_label.get_style_context ().add_class ("kh-title");
 
             column_play_button = new Gtk.Button ();
             column_play_button.has_tooltip = true;
             column_play_button.label = _("Start Timer");
             column_play_button.can_focus = false;
+            column_play_button.sensitive = false;
             column_play_button.halign = Gtk.Align.CENTER;
             column_play_button.get_style_context ().add_class ("suggested-action");
             column_play_button.get_style_context ().add_class ("circular-button");
@@ -131,7 +132,7 @@ namespace Khronos {
             column_button.get_style_context ().add_class ("circular-button");
 
             column_button.clicked.connect (() => {
-                add_task (column_entry.text, column_time_label.label, _("%s").printf (dt.format ("%a %d/%m %H:%M")));
+                add_task (column_entry.text, column_time_label.label, _("<span font_features='tnum'>%s</span>").printf (dt.format ("%a %d/%m %H:%M")));
                 column_entry.text = "";
             });
 
@@ -334,7 +335,7 @@ namespace Khronos {
             sec = 0;
             min = 0;
             hrs = 0;
-            column_time_label.label = "<span font_features='tnum'>%02u:%02u:%02u</span>".printf(hrs, min, sec);
+            column_time_label.label = "<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec);
             column_button.sensitive = false;
             column_entry.text = "";
         }
@@ -357,15 +358,15 @@ namespace Khronos {
         public void timer () {
             if (start) {
                 sec += 1;
-                column_time_label.label = "<span font_features='tnum'>%02u:%02u:%02u</span>".printf(hrs, min, sec);
+                column_time_label.label = "<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec);
                 if (sec >= 60) {
                     sec = 0;
                     min += 1;
-                    column_time_label.label = "<span font_features='tnum'>%02u:%02u:%02u</span>".printf(hrs, min, sec);
+                    column_time_label.label = "<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec);
                     if (min >= 60) {
                         min = 0;
                         hrs += 1;
-                        column_time_label.label = "<span font_features='tnum'>%02u:%02u:%02u</span>".printf(hrs, min, sec);
+                        column_time_label.label = "<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec);
                     }
                 }
             }

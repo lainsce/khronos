@@ -1,8 +1,8 @@
 .kh-box {
     margin: 6px;
-    padding: 4px 0;
+    padding: 6px 0;
     margin-bottom: 0px;
-    border-radius: 8px;
+    border-radius: 6px;
     color: @theme_fg_color;
 }
 
@@ -21,22 +21,21 @@
 }
 
 .kh-title {
-    font-size: 64px;
+    font-size: 50px;
     font-weight: 300;
 }
 
 .kh-frame {
-    border-radius: 8px;
-    border: 1px solid alpha(black, 0.25);
+    border-radius: 6px;
+    border: 1px solid alpha(black, 0.24);
 }
 
 .circular-button {
-    padding: 8px 20px;
     border-radius: 99999px;
 }
 
 .title-5 {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 700;
     opacity: 0.66;
 }
