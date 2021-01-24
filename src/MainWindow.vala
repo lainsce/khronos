@@ -132,7 +132,7 @@ namespace Khronos {
             column_button.get_style_context ().add_class ("circular-button");
 
             column_button.clicked.connect (() => {
-                add_task (column_entry.text, column_time_label.label, _("<span font_features='tnum'>%s</span>").printf (dt.format ("%a %d/%m %H:%M")));
+                add_task (column_entry.text, column_time_label.label, _("<span font_features='tnum'>%s</span>").printf (dt.format ("%a %d/%m %H∶%M")));
                 column_entry.text = "";
             });
 
