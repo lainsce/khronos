@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 Lains
+* Copyright (c) 2020-2021 Lains
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -22,7 +22,7 @@ namespace Khronos {
         public MainWindow win;
         public Json.Builder builder;
         private string app_dir = Environment.get_user_data_dir () +
-                                 "/com.github.lainsce.khronos";
+                                 "/io.github.lainsce.Khronos";
         private string file_name;
 
         public TaskManager (MainWindow win) {
@@ -48,7 +48,7 @@ namespace Khronos {
                 var data_stream = new DataOutputStream (file_stream);
                 data_stream.put_string(json_string);
             } catch (Error e) {
-                warning ("Failed to save khronos: %s\n", e.message);
+                warning ("Failed to save Khronos: %s\n", e.message);
             }
 
         }

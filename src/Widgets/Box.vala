@@ -1,5 +1,5 @@
 namespace Khronos {
-    public class TaskBox : Gtk.ListBoxRow {
+    public class TaskBox : Hdy.ActionRow {
         private MainWindow win;
 
         public new string name;
@@ -16,19 +16,26 @@ namespace Khronos {
             this.time = time;
             this.date = date;
 
-            var evbox = new TaskEventBox (this.win, this);
+            set_title (name);
+            set_subtitle ("%s\n%s".printf(time.replace("<span font_features='tnum'>", "").replace("</span>", ""), date.replace("<span font_features='tnum'>", "").replace("</span>", "")));
 
-            var task_grid = new Gtk.Grid ();
-            task_grid.hexpand = false;
-            task_grid.row_spacing = 6;
-            task_grid.row_homogeneous = true;
-            task_grid.margin_start = 4;
-            task_grid.attach (evbox, 0, 0, 1, 2);
+            var task_delete_button = new Gtk.Button();
+            task_delete_button.has_tooltip = true;
+            task_delete_button.vexpand = false;
+            task_delete_button.valign = Gtk.Align.CENTER;
+            task_delete_button.set_image (new Gtk.Image.from_icon_name ("edit-delete-symbolic", Gtk.IconSize.BUTTON));
+            task_delete_button.get_style_context ().add_class ("circular-button");
+            task_delete_button.get_style_context ().add_class ("flat");
+            task_delete_button.tooltip_text = (_("Delete Task"));
+            task_delete_button.clicked.connect (() => {
+                this.destroy ();
+                win.tm.save_notes ();
+            });
 
-            this.add (task_grid);
+            this.add (task_delete_button);
             this.hexpand = false;
             this.show_all ();
-            this.get_style_context ().add_class ("kh-box");
+            this.selectable = false;
         }
     }
 }

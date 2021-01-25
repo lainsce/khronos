@@ -38,22 +38,5 @@ namespace Khronos.Dialog {
         chooser.destroy();
         return file;
     }
-
-    public class Dialog : Gtk.MessageDialog {
-        public MainWindow win;
-        public Dialog () {
-            Object (
-                text: _("Save Khronos Log?"),
-                secondary_text: _("There are unsaved changes to the log. If you don't save, changes will be lost forever.")
-            );
-        }
-        construct {
-            var save = add_button (_("Save"), Gtk.ResponseType.OK);
-            var cws = add_button (_("Close Without Saving"), Gtk.ResponseType.NO);
-            var cancel = add_button (_("Cancel"), Gtk.ResponseType.CANCEL) as Gtk.Button;
-            cancel.clicked.connect (() => { destroy (); });
-            this.show_all ();
-        }
-    }
 }
 
