@@ -108,6 +108,10 @@ namespace Khronos {
             var theme = Gtk.IconTheme.get_default ();
             theme.add_resource_path ("/io/github/lainsce/Khronos/");
 
+            Gtk.StyleContext style = get_style_context ();
+            if (Config.PROFILE == "Devel") {
+                style.add_class ("devel");
+            }
 
             titlebar = new Hdy.HeaderBar ();
             titlebar.show_close_button = true;
