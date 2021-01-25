@@ -4,6 +4,7 @@
     "runtime-version" : "3.38",
     "sdk" : "org.gnome.Sdk",
     "command" : "io.github.lainsce.Khronos",
+    "rename-icon" : "io.github.lainsce.Khronos.Devel",
     "finish-args" : [
         "--filesystem=xdg-documents",
         "--filesystem=xdg-download",
