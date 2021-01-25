@@ -47,11 +47,11 @@ else
   profile = ''
 endif
 
-app_id = 'io.github.lainsce.Quilter.@0@'.format(profile)
+app_id = 'io.github.lainsce.Khronos@0@'.format(profile)
 
 conf = configuration_data()
 conf.set_quoted('APP_ID', app_id)
-conf.set_quoted('G_LOG_DOMAIN', 'io.github.lainsce.Khronos.@0@'.format(profile))
+conf.set_quoted('G_LOG_DOMAIN', 'io.github.lainsce.Khronos@0@'.format(profile))
 conf.set_quoted('NAME_PREFIX', name_prefix)
 conf.set_quoted('PACKAGE_NAME', meson.project_name())
 conf.set_quoted('PACKAGE_VERSION', meson.project_version())
@@ -83,4 +83,4 @@ executable(
 subdir('data')
 subdir('po')
 
-meson.add_install_script('meson/post_install.py', join_paths(get_option('prefix'), get_option('datadir')))
+meson.add_install_script('build-aux/post_install.py', join_paths(get_option('prefix'), get_option('datadir')))
