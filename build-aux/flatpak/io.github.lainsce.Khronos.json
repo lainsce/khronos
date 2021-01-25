@@ -1,9 +1,9 @@
 {
-    "app-id" : "io.github.lainsce.KhronosDevel",
+    "app-id" : "io.github.lainsce.Khronos",
     "runtime" : "org.gnome.Sdk",
     "runtime-version" : "3.38",
     "sdk" : "org.gnome.Sdk",
-    "command" : "io.github.lainsce.KhronosDevel",
+    "command" : "io.github.lainsce.Khronos",
     "finish-args" : [
         "--filesystem=xdg-documents",
         "--filesystem=xdg-download",
