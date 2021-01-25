@@ -456,7 +456,7 @@ namespace Khronos {
             var program_name = Config.NAME_PREFIX + _("Khronos");
             Gtk.show_about_dialog (this,
                                    "program-name", program_name,
-                                   "logo-icon-name", "io.github.lainsce.Khronos",
+                                   "logo-icon-name", Config.APP_ID,
                                    "version", Config.VERSION,
                                    "comments", _("Track each task's time in a simple inobtrusive way."),
                                    "copyright", COPYRIGHT,
