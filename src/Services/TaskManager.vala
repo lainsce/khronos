@@ -101,7 +101,7 @@ namespace Khronos {
                         string name = task.get_string_element(0);
                         string timedate = task.get_string_element(1);
 
-                        win.add_task ();
+                        win.add_task (name, timedate);
                     }
                 }
             } catch (Error e) {
