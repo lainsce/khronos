@@ -74,9 +74,7 @@ namespace Khronos {
             for (i = 0; i < n; i++) {
                 var item = ls.get_item (i);
                 builder.add_string_value (((Log)item).name);
-                builder.add_string_value (((Log)item).timedate.replace("<span font_features='tnum'>", "")
-                                                              .replace("</span>", "")
-                                                              .replace("∶", ":"));
+                builder.add_string_value (((Log)item).timedate);
             }
 	        builder.end_array ();
         }

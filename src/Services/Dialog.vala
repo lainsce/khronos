@@ -17,7 +17,7 @@
 namespace Khronos.Dialog {
     public MainWindow win;
     public Gtk.FileChooserNative create_file_chooser (Gtk.FileChooserAction action) {
-        var chooser = new Gtk.FileChooserNative (null, null, action, null, null);
+        var chooser = new Gtk.FileChooserNative (null, win, action, null, null);
         chooser.set_transient_for(win);
         var filter1 = new Gtk.FileFilter ();
         filter1.set_filter_name (_("CSV files"));

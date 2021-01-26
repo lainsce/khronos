@@ -40,7 +40,6 @@ namespace Khronos {
         private GLib.DateTime dt;
 
         public TaskManager tm;
-        public FileManager fm;
         public Gtk.Application app { get; construct; }
 
         private uint id1 = 0; // 30min.
@@ -67,7 +66,6 @@ namespace Khronos {
         construct {
             Adw.init ();
             tm = new TaskManager (this);
-            fm = new FileManager (this);
             dt = new GLib.DateTime.now_local ();
 
             Khronos.Application.gsettings.changed.connect (() => {
@@ -198,11 +196,6 @@ namespace Khronos {
             column_export_button.set_label (_("Export Logs (CSV)…"));
 
             column_export_button.clicked.connect (() => {
-                try {
-                    fm.save_as (this);
-                } catch (Error e) {
-                    warning ("Unexpected error during export: " + e.message);
-                }
             });
 
             var prefs_button = new Gtk.Button();
@@ -247,11 +240,12 @@ namespace Khronos {
             var column_label = new Gtk.Label (_("Logs"));
             column_label.set_halign (Gtk.Align.START);
             column_label.set_hexpand (true);
+            column_label.set_margin_top (18);
             column_label.get_style_context ().add_class ("heading");
 
             var cgrid = new Gtk.Grid ();
-            cgrid.attach (column_label, 0, 2, 1, 1);
-            cgrid.attach (column, 0, 3, 1, 1);
+            cgrid.attach (column_label, 0, 0, 1, 1);
+            cgrid.attach (column, 0, 2, 1, 1);
 
             var clamp = new Adw.Clamp ();
             clamp.set_child (cgrid);
@@ -259,7 +253,7 @@ namespace Khronos {
             var mgrid = new Gtk.Grid ();
             mgrid.vexpand = true;
             mgrid.attach (main_frame, 0, 1, 1, 1);
-            mgrid.attach (clamp, 0, 3, 1, 1);
+            mgrid.attach (clamp, 0, 2, 1, 1);
 
             var scroller = new Gtk.ScrolledWindow ();
             scroller.hscrollbar_policy = Gtk.PolicyType.NEVER;
@@ -293,16 +287,16 @@ namespace Khronos {
                 var item = ls.get_item (i);
                 return new LogRow ((Log)item);
             }
+
+            return null;
         }
 
-        public LogRow? add_task (string name, string timedate) {
+        public void add_task (string name, string timedate) {
             var log = new Log ();
             log.name = name;
             log.timedate = timedate;
 
-            var task = new LogRow (log);
-
-            return task;
+            ls.append(log);
         }
 
         public void timer () {
@@ -410,6 +404,15 @@ namespace Khronos {
             notification5.set_icon (icon);
 
             application.send_notification ("io.github.lainsce.Khronos-symbolic", notification5);
+        }
+
+        public void action_export () {
+            var fm = new FileManager (this);
+            try {
+                fm.save_as (this);
+            } catch (Error e) {
+                warning ("Unexpected error during export: " + e.message);
+            }
         }
 
         public void action_prefs () {
