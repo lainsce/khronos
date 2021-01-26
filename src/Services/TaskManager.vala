@@ -57,7 +57,7 @@ namespace Khronos {
             builder = new Json.Builder ();
 
             builder.begin_array ();
-            save_column (builder, win.column);
+            save_column (builder, win.ls);
             builder.end_array ();
 
             Json.Generator generator = new Json.Generator ();
@@ -68,15 +68,14 @@ namespace Khronos {
         }
 
         private static void save_column (Json.Builder builder,
-                                         DayColumn column) {
+                                         GLib.ListStore ls) {
 	        builder.begin_array ();
-	        foreach (var task in column.get_tasks ()) {
-                builder.begin_array ();
-		        builder.add_string_value (task.name);
-                builder.add_string_value (task.time);
-                builder.add_string_value (task.date);
-                builder.end_array ();
-	        }
+	        uint i, n = ls.get_n_items ();
+            for (i = 0; i < n; i++) {
+                var item = ls.get_item (i);
+                builder.add_string_value (((Log)item).name);
+                builder.add_string_value (((Log)item).timedate);
+            }
 	        builder.end_array ();
         }
 
@@ -98,10 +97,13 @@ namespace Khronos {
                     foreach (var tasks in columns.get_elements()) {
                         var task = tasks.get_array ();
                         string name = task.get_string_element(0);
-                        string time = task.get_string_element(1);
-                        string date = task.get_string_element(2);
+                        string timedate = task.get_string_element(1);
 
-                        win.add_task (name,time,date);
+                        var log = new Log ();
+                        log.name = name;
+                        log.timedate = timedate;
+
+                        win.add_task (log);
                     }
                 }
             } catch (Error e) {

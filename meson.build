@@ -1,4 +1,4 @@
-project('io.github.lainsce.Khronos', ['vala', 'c'], version: '2.0.0')
+project('io.github.lainsce.Khronos', ['vala', 'c'], version: '2.5.0')
 gnome = import('gnome')
 i18n = import('i18n')
 
@@ -25,16 +25,15 @@ sources = files(
     'src/Services/TaskManager.vala',
     'src/Services/FileManager.vala',
     'src/Services/Dialog.vala',
-    'src/Widgets/Column.vala',
     'src/Widgets/Box.vala',
 )
 
 cc = meson.get_compiler('c')
 m_dep = cc.find_library('m', required: true)
 dependencies = [
-    dependency('gtk+-3.0'),
+    dependency('gtk4'),
     dependency('gee-0.8'),
-    dependency('libhandy-1'),
+    dependency('libadwaita-1'),
     dependency('json-glib-1.0'),
     m_dep,
 ]

@@ -33,8 +33,7 @@ namespace Khronos.Dialog {
     public File display_save_dialog () {
         var chooser = create_file_chooser (Gtk.FileChooserAction.SAVE);
         File file = null;
-        if (chooser.run () == Gtk.ResponseType.ACCEPT)
-            file = chooser.get_file ();
+        file = chooser.get_file ();
         chooser.destroy();
         return file;
     }

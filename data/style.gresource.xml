@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
     <gresource prefix="/io/github/lainsce/Khronos">
-        <file alias="stylesheet.css" compressed="true">stylesheet.css</file>
-        <file alias="prefs.ui" compressed="true">ui/prefs.ui</file>
-        <file alias="stopwatch-symbolic.svg" preprocess="xml-stripblanks">icons/16/stopwatch-symbolic.svg</file>
+      <file alias="stylesheet.css" compressed="true">stylesheet.css</file>
+      <file alias="prefs.ui" compressed="true">ui/prefs.ui</file>
+      <file alias="logrow.ui" compressed="true">ui/logrow.ui</file>
+      <file alias="stopwatch-symbolic.svg" preprocess="xml-stripblanks">icons/16/stopwatch-symbolic.svg</file>
     </gresource>
 </gresources>

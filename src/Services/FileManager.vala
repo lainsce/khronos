@@ -1,7 +1,13 @@
-namespace Khronos.FileManager {
+namespace Khronos {
+    public class FileManager {
         public MainWindow win;
         public File file;
         public string buffer_text;
+
+        public FileManager (MainWindow win) {
+            this.win = win;
+        }
+
         public void save_file (string path, string text) throws Error {
             try {
                 GLib.FileUtils.set_contents (path, text);
@@ -21,8 +27,8 @@ namespace Khronos.FileManager {
                     debug ("User cancelled operation. Aborting.");
                 } else {
                     if (win.is_modified == true) {
-                        buffer_text += "task,time,startdate\n";
-                        buffer_text += get_column_tasks (win.column);
+                        buffer_text += "task,timedate\n";
+                        buffer_text += get_column_tasks (win.ls);
                         var buffer = buffer_text;
 
                         if (!file.get_basename ().down ().has_suffix (".csv")) {
@@ -43,18 +49,16 @@ namespace Khronos.FileManager {
             file = null;
         }
 
-        public string get_column_tasks (DayColumn column) {
+        public string get_column_tasks (GLib.ListStore ls) {
             string task_string = "";
-            foreach (var task in column.get_tasks ()) {
+            uint i, n = ls.get_n_items ();
+            for (i = 0; i < n; i++) {
+                var item = ls.get_item (i);
                 task_string += "\"" +
-                task.name + "\",\"" +
-                task.time.replace("<span font_features='tnum'>", "")
-                         .replace("</span>", "")
-                         .replace("∶", ":")
-                + "\",\"" +
-                task.date.replace("<span font_features='tnum'>", "")
-                         .replace("</span>", "")
-                         .replace("∶", ":")
+                ((Log)item).name + "\",\"" +
+                ((Log)item).timedate.replace("<span font_features='tnum'>", "")
+                           .replace("</span>", "")
+                           .replace("∶", ":")
                 + "\"\n";
             }
             return task_string;
@@ -63,4 +67,5 @@ namespace Khronos.FileManager {
         public void reset_modification_state (MainWindow win) {
             win.is_modified = false;
         }
+    }
 }

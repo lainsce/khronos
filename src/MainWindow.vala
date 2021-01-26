@@ -17,9 +17,9 @@
 * Boston, MA 02110-1301 USA
 */
 namespace Khronos {
-    public class MainWindow : Hdy.ApplicationWindow {
+    public class MainWindow : Adw.ApplicationWindow {
         // Widgets
-        public DayColumn column;
+        public Gtk.ListBox column;
         public Gtk.Grid grid;
         public Gtk.Grid sgrid;
         public Gtk.Grid sort_type_grid;
@@ -28,9 +28,8 @@ namespace Khronos {
         public Gtk.Label column_time_label;
         public Gtk.Button column_button;
         public Gtk.Button column_play_button;
-        public Hdy.Leaflet leaflet;
-        public Hdy.HeaderBar titlebar;
-        public Hdy.HeaderBar fauxtitlebar;
+        public Adw.HeaderBar titlebar;
+        public GLib.ListStore ls;
 
         public bool is_modified {get; set; default = false;}
         public bool start = false;
@@ -41,13 +40,14 @@ namespace Khronos {
         private GLib.DateTime dt;
 
         public TaskManager tm;
+        public FileManager fm;
         public Gtk.Application app { get; construct; }
 
         private uint id1 = 0; // 30min.
         private uint id2 = 0; // 1h.
         private uint id3 = 0; // 1h30min.
         private uint id4 = 0; // 2h
-        private uint id5 = 0; // 2h40min.
+        private uint id5 = 0; // 2h30min.
 
         public MainWindow (Gtk.Application application) {
             GLib.Object (
@@ -57,17 +57,6 @@ namespace Khronos {
                 title: (_("Khronos"))
             );
 
-            key_press_event.connect ((e) => {
-                uint keycode = e.hardware_keycode;
-
-                if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-                    if (match_keycode (Gdk.Key.q, keycode)) {
-                        this.destroy ();
-                    }
-                }
-                return false;
-            });
-
             if (Khronos.Application.gsettings.get_boolean("dark-mode")) {
                 Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
             } else {
@@ -76,20 +65,10 @@ namespace Khronos {
         }
 
         construct {
-            Hdy.init ();
+            Adw.init ();
             tm = new TaskManager (this);
+            fm = new FileManager (this);
             dt = new GLib.DateTime.now_local ();
-
-            int x = Khronos.Application.gsettings.get_int("window-x");
-            int y = Khronos.Application.gsettings.get_int("window-y");
-            int h = Khronos.Application.gsettings.get_int("window-height");
-            int w = Khronos.Application.gsettings.get_int("window-width");
-            if (x != -1 && y != -1) {
-                this.move (x, y);
-            }
-            if (w != 0 && h != 0) {
-                this.resize (w, h);
-            }
 
             Khronos.Application.gsettings.changed.connect (() => {
                 if (Khronos.Application.gsettings.get_boolean("dark-mode")) {
@@ -101,11 +80,11 @@ namespace Khronos {
 
             var provider = new Gtk.CssProvider ();
             provider.load_from_resource ("/io/github/lainsce/Khronos/stylesheet.css");
-            Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (),
+            Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (),
                                                       provider,
                                                       Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-            var theme = Gtk.IconTheme.get_default ();
+            var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
             theme.add_resource_path ("/io/github/lainsce/Khronos/");
 
             Gtk.StyleContext style = get_style_context ();
@@ -113,40 +92,46 @@ namespace Khronos {
                 style.add_class ("devel");
             }
 
-            titlebar = new Hdy.HeaderBar ();
-            titlebar.show_close_button = true;
+            titlebar = new Adw.HeaderBar ();
             titlebar.get_style_context ().add_class ("flat-titlebar");
-            titlebar.has_subtitle = false;
-            titlebar.title = "Khronos";
-            titlebar.hexpand = true;
-            titlebar.set_show_close_button (true);
+            titlebar.set_hexpand (true);
 
-            column = new DayColumn (this);
+            ls = new GLib.ListStore (typeof (Log));
+
+            column = new Gtk.ListBox ();
+            column.set_margin_top (18);
+            column.set_margin_bottom (18);
+            column.get_style_context ().add_class ("content");
+            column.bind_model (ls, load_task);
+            column.set_selection_mode (Gtk.SelectionMode.NONE);
 
             column_time_label = new Gtk.Label("");
-            column_time_label.use_markup = true;
-            column_time_label.label = "<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec);
+            column_time_label.set_use_markup (true);
+            column_time_label.set_label ("<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec));
             column_time_label.get_style_context ().add_class ("kh-title");
 
             column_play_button = new Gtk.Button ();
-            column_play_button.has_tooltip = true;
-            column_play_button.label = _("Start Timer");
-            column_play_button.can_focus = false;
-            column_play_button.sensitive = false;
+            column_play_button.set_label (_("Start Timer"));
+            column_play_button.set_can_focus (false);
+            column_play_button.set_sensitive (false);
             column_play_button.halign = Gtk.Align.CENTER;
             column_play_button.get_style_context ().add_class ("suggested-action");
-            column_play_button.get_style_context ().add_class ("circular-button");
+            column_play_button.get_style_context ().add_class ("circular");
 
             column_button = new Gtk.Button ();
-            column_button.has_tooltip = true;
             column_button.label = _("Add Log");
             column_button.can_focus = false;
             column_button.sensitive = false;
             column_button.halign = Gtk.Align.CENTER;
-            column_button.get_style_context ().add_class ("circular-button");
+            column_button.get_style_context ().add_class ("circular");
 
             column_button.clicked.connect (() => {
-                add_task (column_entry.text, column_time_label.label, _("<span font_features='tnum'>%s</span>").printf (dt.format ("%a %d/%m %H∶%M")));
+                var log = new Log ();
+                log.name = column_entry.text;
+                log.timedate = "%s - %s".printf(column_time_label.label, ("<span font_features='tnum'>%s</span>").printf (dt.format ("%a %d/%m %H∶%M")));
+                add_task (log);
+                ls.append (log);
+
                 column_entry.text = "";
             });
 
@@ -184,8 +169,8 @@ namespace Khronos {
 
             var column_buttons_grid = new Gtk.Grid ();
             column_buttons_grid.column_spacing = 12;
-            column_buttons_grid.add (column_play_button);
-            column_buttons_grid.add (column_button);
+            column_buttons_grid.attach (column_play_button, 0, 0);
+            column_buttons_grid.attach (column_button, 1, 0);
 
             var size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
             size_group.add_widget (column_play_button);
@@ -196,55 +181,51 @@ namespace Khronos {
             main_frame.valign = Gtk.Align.CENTER;
             main_frame.halign = Gtk.Align.CENTER;
             main_frame.hexpand = true;
-            main_frame.row_spacing = 6;
-            main_frame.add (column_time_label);
-            main_frame.add (column_entry);
-            main_frame.add (column_buttons_grid);
-            main_frame.show_all ();
+            main_frame.attach (column_time_label, 0, 0);
+            main_frame.attach (column_entry, 0, 1);
+            main_frame.attach (column_buttons_grid, 0, 2);
 
             var sep = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
 
-            var column_export_button = new Gtk.ModelButton ();
-            column_export_button.text = _("Export Logs (CSV)…");
+            var column_export_button = new Gtk.Button ();
+            column_export_button.set_label (_("Export Logs (CSV)…"));
 
             column_export_button.clicked.connect (() => {
                 try {
-                    FileManager.save_as (this);
+                    fm.save_as (this);
                 } catch (Error e) {
                     warning ("Unexpected error during export: " + e.message);
                 }
             });
 
-            var prefs_button = new Gtk.ModelButton();
-            prefs_button.text = _("Preferences");
+            var prefs_button = new Gtk.Button();
+            prefs_button.set_label (_("Preferences"));
 
             prefs_button.clicked.connect (() => {
                action_prefs ();
             });
 
-            var about_button = new Gtk.ModelButton();
-            about_button.text = _("About Khronos");
+            var about_button = new Gtk.Button();
+            about_button.set_label (_("About Khronos"));
 
             about_button.clicked.connect (() => {
                action_about ();
             });
 
             var menu_grid = new Gtk.Grid ();
-            menu_grid.margin = 10;
-            menu_grid.row_spacing = 6;
-            menu_grid.column_spacing = 6;
-            menu_grid.orientation = Gtk.Orientation.VERTICAL;
-            menu_grid.attach (column_export_button,0,0,2,1);
-            menu_grid.attach (sep,0,1,2,1);
-            menu_grid.attach (prefs_button,0,2,2,1);
-            menu_grid.attach (about_button,0,3,2,1);
-            menu_grid.show_all ();
+            menu_grid.set_row_spacing (6);
+            menu_grid.set_orientation (Gtk.Orientation.VERTICAL);
+            menu_grid.attach (column_export_button, 0, 0, 2, 1);
+            menu_grid.attach (sep, 0, 1, 2, 1);
+            menu_grid.attach (prefs_button, 0, 2, 2, 1);
+            menu_grid.attach (about_button, 0, 3, 2, 1);
+            menu_grid.show ();
 
-            var menu = new Gtk.Popover (null);
-            menu.add (menu_grid);
+            var menu = new Gtk.Popover ();
+            menu.set_child (menu_grid);
 
             var menu_button = new Gtk.MenuButton ();
-            menu_button.set_image (new Gtk.Image.from_icon_name ("open-menu-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
+            menu_button.set_icon_name ("open-menu-symbolic");
             menu_button.has_tooltip = true;
             menu_button.tooltip_text = (_("Settings"));
             menu_button.popover = menu;
@@ -255,59 +236,39 @@ namespace Khronos {
 
             var tgrid = new Gtk.Grid ();
             tgrid.attach (titlebar, 0, 0, 2, 1);
-            tgrid.show_all ();
+
+            var column_label = new Gtk.Label (_("Logs"));
+            column_label.set_halign (Gtk.Align.START);
+            column_label.set_hexpand (true);
+            column_label.get_style_context ().add_class ("kh-listbox-title");
+
+            var cgrid = new Gtk.Grid ();
+            cgrid.attach (column_label, 0, 2, 1, 1);
+            cgrid.attach (column, 0, 3, 1, 1);
+
+            var clamp = new Adw.Clamp ();
+            clamp.set_child (cgrid);
 
             var mgrid = new Gtk.Grid ();
             mgrid.vexpand = true;
             mgrid.attach (main_frame, 0, 1, 1, 1);
-            mgrid.attach (column, 0, 2, 1, 1);
-            mgrid.show_all ();
+            mgrid.attach (clamp, 0, 3, 1, 1);
 
-            var scroller = new Gtk.ScrolledWindow (null, null);
+            var scroller = new Gtk.ScrolledWindow ();
             scroller.hscrollbar_policy = Gtk.PolicyType.NEVER;
-            scroller.add (mgrid);
+            scroller.set_child (mgrid);
 
             grid = new Gtk.Grid ();
-            grid.expand = true;
+            grid.set_hexpand (true);
+            grid.set_vexpand (true);
             grid.attach (tgrid, 0, 1, 1, 1);
             grid.attach (scroller, 0, 2, 1, 1);
-            grid.show_all ();
 
-            this.add (grid);
+            this.set_child (grid);
             this.set_size_request (360, 360);
-            this.show_all ();
+            this.show ();
 
             set_timeouts ();
-        }
-
-        #if VALA_0_42
-        protected bool match_keycode (uint keyval, uint code) {
-        #else
-        protected bool match_keycode (int keyval, uint code) {
-        #endif
-            Gdk.KeymapKey [] keys;
-            Gdk.Keymap keymap = Gdk.Keymap.get_for_display (Gdk.Display.get_default ());
-            if (keymap.get_entries_for_keyval (keyval, out keys)) {
-                foreach (var key in keys) {
-                    if (code == key.keycode)
-                        return true;
-                    }
-                }
-
-            return false;
-        }
-
-        public override bool delete_event (Gdk.EventAny event) {
-            int x, y, w, h;
-            get_position (out x, out y);
-            get_size (out w, out h);
-
-            Khronos.Application.gsettings.set_int("window-x", x);
-            Khronos.Application.gsettings.set_int("window-y", y);
-            Khronos.Application.gsettings.set_int("window-width", w);
-            Khronos.Application.gsettings.set_int("window-height", h);
-
-            return false;
         }
 
         public void reset_timer () {
@@ -319,19 +280,19 @@ namespace Khronos {
             column_entry.text = "";
         }
 
-        public void add_task (string name, string time, string date) {
-            var taskbox = new TaskBox (this, name, time, date);
-            column.add (taskbox);
+        public LogRow load_task () {
+            var taskbox = add_task (null);
+            return taskbox;
+        }
+
+        public LogRow add_task (Log? log) {
+            var task = new LogRow (log);
+
             tm.save_notes ();
             reset_timer ();
             is_modified = true;
-        }
 
-        public void clear_column () {
-            foreach (Gtk.Widget item in column.get_children ()) {
-                item.destroy ();
-            }
-            tm.save_notes ();
+            return task;
         }
 
         public void timer () {
@@ -443,7 +404,7 @@ namespace Khronos {
 
         public void action_prefs () {
             var prefs = new Prefs ();
-            prefs.show_all ();
+            prefs.show ();
             prefs.set_transient_for (this);
             prefs.delay = Khronos.Application.gsettings.get_int("notification-delay") / 60;
 
