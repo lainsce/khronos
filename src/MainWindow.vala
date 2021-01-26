@@ -462,7 +462,7 @@ namespace Khronos {
                                    "program-name", program_name,
                                    "logo-icon-name", Config.APP_ID,
                                    "version", Config.VERSION,
-                                   "comments", _("Track each task's time in a simple inobtrusive way."),
+                                   "comments", _("Track each task\'s time in a simple inobtrusive way."),
                                    "copyright", COPYRIGHT,
                                    "authors", AUTHORS,
                                    "license-type", Gtk.License.GPL_3_0,
