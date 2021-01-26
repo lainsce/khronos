@@ -129,7 +129,6 @@ namespace Khronos {
                 var log = new Log ();
                 log.name = column_entry.text;
                 log.timedate = "%s - %s".printf(column_time_label.label, ("<span font_features='tnum'>%s</span>").printf (dt.format ("%a %d/%m %H∶%M")));
-                add_task (log);
                 ls.append (log);
 
                 column_entry.text = "";
@@ -240,7 +239,7 @@ namespace Khronos {
             var column_label = new Gtk.Label (_("Logs"));
             column_label.set_halign (Gtk.Align.START);
             column_label.set_hexpand (true);
-            column_label.get_style_context ().add_class ("kh-listbox-title");
+            column_label.get_style_context ().add_class ("heading");
 
             var cgrid = new Gtk.Grid ();
             cgrid.attach (column_label, 0, 2, 1, 1);
@@ -281,18 +280,28 @@ namespace Khronos {
         }
 
         public LogRow load_task () {
-            var taskbox = add_task (null);
-            return taskbox;
+            uint i, n = ls.get_n_items ();
+            for (i = 0; i < n; i++) {
+                var item = ls.get_item (i);
+                return new LogRow ((Log)item);
+            }
+
+            return new LogRow (null);
         }
 
-        public LogRow add_task (Log? log) {
-            var task = new LogRow (log);
+        public LogRow? add_task () {
+            uint i, n = ls.get_n_items ();
+            for (i = 0; i < n; i++) {
+                var item = ls.get_item (i);
+                var task = new LogRow ((Log)item);
+                return task;
+            }
 
             tm.save_notes ();
             reset_timer ();
             is_modified = true;
 
-            return task;
+            return null;
         }
 
         public void timer () {

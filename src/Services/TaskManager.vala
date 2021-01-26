@@ -74,7 +74,9 @@ namespace Khronos {
             for (i = 0; i < n; i++) {
                 var item = ls.get_item (i);
                 builder.add_string_value (((Log)item).name);
-                builder.add_string_value (((Log)item).timedate);
+                builder.add_string_value (((Log)item).timedate.replace("<span font_features='tnum'>", "")
+                                                              .replace("</span>", "")
+                                                              .replace("∶", ":"));
             }
 	        builder.end_array ();
         }
@@ -99,11 +101,7 @@ namespace Khronos {
                         string name = task.get_string_element(0);
                         string timedate = task.get_string_element(1);
 
-                        var log = new Log ();
-                        log.name = name;
-                        log.timedate = timedate;
-
-                        win.add_task (log);
+                        win.add_task ();
                     }
                 }
             } catch (Error e) {
