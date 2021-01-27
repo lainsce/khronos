@@ -18,7 +18,6 @@ namespace Khronos.FileManager {
             GLib.FileUtils.set_contents (file.get_path(), tasks);
         }
 
-        file = null;
         debug ("Save as button pressed.");
     }
 }
