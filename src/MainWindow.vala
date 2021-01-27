@@ -129,7 +129,13 @@ namespace Khronos {
             column.set_margin_bottom (18);
             column.get_style_context ().add_class ("content");
             column.bind_model (ls, item => new LogRow (item as Log));
-            column.set_selection_mode (Gtk.SelectionMode.NONE);
+            column.set_selection_mode (Gtk.SelectionMode.SINGLE);
+
+            column.row_activated.connect ((actrow) => {
+                var row = ((LogRow)column.get_selected_row ());
+
+                column_entry.set_text (row.log.name);
+            });
 
             column_time_label = new Gtk.Label("");
             column_time_label.set_use_markup (true);
@@ -197,6 +203,7 @@ namespace Khronos {
                 } else {
                     column_play_button.sensitive = false;
                 }
+                column.unselect_all ();
             });
 
             var column_buttons_grid = new Gtk.Grid ();
@@ -405,7 +412,7 @@ namespace Khronos {
         }
 
         public void action_export () {
-            FileManager.save_as.begin (this);
+            FileManager.save_as.begin (ls);
         }
 
         public void action_prefs () {

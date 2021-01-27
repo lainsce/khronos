@@ -1,23 +1,43 @@
 namespace Khronos.FileManager {
-    public unowned MainWindow win;
-    public async void save_as (MainWindow win) throws Error {
+    public async void save_as (ListStore ls) throws Error {
         string tasks = "";
         debug ("Save as button pressed.");
         var file = yield Dialog.display_save_dialog ();
-        uint i, n = win.ls.get_n_items ();
+        uint i, n = ls.get_n_items ();
 
         tasks += "task,timedate\n";
         for (i = 0; i < n; i++) {
-            var item = win.ls.get_item (i);
-            tasks += "\"" + ((Log)item).name + "\",\"" + ((Log)item).timedate + "\"\n";
+            var item = ls.get_item (i);
+            var name = ((Log)item).name;
+            var timedate = ((Log)item).timedate.replace ("<span font_features='tnum'>", "").replace("</span>", "").replace("∶", ":");
+            tasks += "\"" + name + "\",\"" + timedate + "\"\n";
         }
 
         if (!file.get_basename ().down ().has_suffix (".csv")) {
             var file_final = File.new_for_path (file.get_path () + ".csv");
-            string file_path_final = file_final.get_path ();
-            GLib.FileUtils.set_contents (file_path_final, tasks);
+            try {
+                if (file_final.query_exists ()) {
+                    file_final.delete ();
+                }
+                var file_stream = file_final.create (FileCreateFlags.REPLACE_DESTINATION);
+                var data_stream = new DataOutputStream (file_stream);
+                data_stream.put_string(tasks);
+            } catch (Error e) {
+                warning ("Failed to save: %s\n", e.message);
+            }
+        } else {
+            try {
+                if (file.query_exists ()) {
+                    file.delete ();
+                }
+                var file_stream = file.create (FileCreateFlags.REPLACE_DESTINATION);
+                var data_stream = new DataOutputStream (file_stream);
+                data_stream.put_string(tasks);
+            } catch (Error e) {
+                warning ("Failed to save: %s\n", e.message);
+            }
         }
 
-        file = null;
+        yield;
     }
 }

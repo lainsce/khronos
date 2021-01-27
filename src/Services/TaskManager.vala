@@ -42,9 +42,7 @@ namespace Khronos {
                 if (file.query_exists ()) {
                     file.delete ();
                 }
-                var file_stream = file.create (
-                                        FileCreateFlags.REPLACE_DESTINATION
-                                        );
+                var file_stream = file.create (FileCreateFlags.REPLACE_DESTINATION);
                 var data_stream = new DataOutputStream (file_stream);
                 data_stream.put_string(json_string);
             } catch (Error e) {

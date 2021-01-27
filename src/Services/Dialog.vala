@@ -16,8 +16,8 @@
  */
 namespace Khronos.Dialog {
     public unowned MainWindow win;
-    public async Gtk.FileChooserNative create_file_chooser (Gtk.FileChooserAction action) {
-        var chooser = new Gtk.FileChooserNative (null, win, action, null, null);
+    public async File display_save_dialog () {
+        var chooser = new Gtk.FileChooserNative (null, win, Gtk.FileChooserAction.SAVE, null, null);
         chooser.set_transient_for(win);
         var filter1 = new Gtk.FileFilter ();
         filter1.set_filter_name (_("CSV files"));
@@ -27,17 +27,16 @@ namespace Khronos.Dialog {
         filter.set_filter_name (_("All files"));
         filter.add_pattern ("*");
         chooser.add_filter (filter);
-        return chooser;
-    }
 
-    public async File display_save_dialog () {
-        var chooser = yield create_file_chooser (Gtk.FileChooserAction.SAVE);
         var response = yield run_dialog_async (chooser);
 
         if (response == Gtk.ResponseType.ACCEPT) {
+
+            yield;
             return chooser.get_file ();
         }
 
+        yield;
         return (File)null;
     }
 
@@ -53,7 +52,6 @@ namespace Khronos.Dialog {
 		dialog.show ();
 
 		yield;
-
 		return response;
 	}
 
