@@ -123,7 +123,7 @@ namespace Khronos {
             column.set_margin_top (18);
             column.set_margin_bottom (18);
             column.get_style_context ().add_class ("content");
-            column.bind_model (ls, item => new LogRow ((Log) item);
+            column.bind_model (ls, item => new LogRow ((Log) item));
             column.set_selection_mode (Gtk.SelectionMode.SINGLE);
 
             column.row_activated.connect ((actrow) => {
