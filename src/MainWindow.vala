@@ -18,6 +18,7 @@
 */
 namespace Khronos {
     public class MainWindow : Adw.ApplicationWindow {
+        delegate void HookFunc ();
         // Widgets
         public Gtk.ListBox column;
         public Gtk.Grid grid;
@@ -40,13 +41,28 @@ namespace Khronos {
         private GLib.DateTime dt;
 
         public TaskManager tm;
-        public Gtk.Application app { get; construct; }
+        public unowned Gtk.Application app { get; construct; }
 
         private uint id1 = 0; // 30min.
         private uint id2 = 0; // 1h.
         private uint id3 = 0; // 1h30min.
         private uint id4 = 0; // 2h
         private uint id5 = 0; // 2h30min.
+
+        public SimpleActionGroup actions { get; set; }
+        public const string ACTION_PREFIX = "win.";
+        public const string ACTION_PREFS = "prefs";
+        public const string ACTION_ABOUT = "about";
+        public const string ACTION_EXPORT = "export";
+        public const string ACTION_DELETE_ROW = "delete_row";
+        public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
+
+        private const GLib.ActionEntry[] ACTION_ENTRIES = {
+            { ACTION_PREFS, action_prefs },
+            { ACTION_EXPORT, action_export },
+            { ACTION_DELETE_ROW, action_delete_row },
+            { ACTION_ABOUT, action_about }
+        };
 
         public MainWindow (Gtk.Application application) {
             GLib.Object (
@@ -60,6 +76,17 @@ namespace Khronos {
                 Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
             } else {
                 Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = false;
+            }
+
+            actions = new SimpleActionGroup ();
+            actions.add_action_entries (ACTION_ENTRIES, this);
+            insert_action_group ("win", actions);
+
+            foreach (var action in action_accelerators.get_keys ()) {
+                var accels_array = action_accelerators[action].to_array ();
+                accels_array += null;
+
+                app.set_accels_for_action (ACTION_PREFIX + action, accels_array);
             }
         }
 
@@ -95,16 +122,15 @@ namespace Khronos {
             titlebar.set_hexpand (true);
 
             ls = new GLib.ListStore (typeof (Log));
+            ls.items_changed.connect (() => {
+                tm.save_notes ();
+            });
 
             column = new Gtk.ListBox ();
             column.set_margin_top (18);
             column.set_margin_bottom (18);
             column.get_style_context ().add_class ("content");
-            column.bind_model (ls, item => {
-                var post = item as Log;
-
-                return new LogRow (post);
-            });
+            column.bind_model (ls, item => new LogRow (item as Log));
             column.set_selection_mode (Gtk.SelectionMode.NONE);
 
             column_time_label = new Gtk.Label("");
@@ -190,45 +216,13 @@ namespace Khronos {
             main_frame.attach (column_entry, 0, 1);
             main_frame.attach (column_buttons_grid, 0, 2);
 
-            var sep = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
-
-            var column_export_button = new Gtk.Button ();
-            column_export_button.set_label (_("Export Logs (CSV)…"));
-
-            column_export_button.clicked.connect (() => {
-            });
-
-            var prefs_button = new Gtk.Button();
-            prefs_button.set_label (_("Preferences"));
-
-            prefs_button.clicked.connect (() => {
-               action_prefs ();
-            });
-
-            var about_button = new Gtk.Button();
-            about_button.set_label (_("About Khronos"));
-
-            about_button.clicked.connect (() => {
-               action_about ();
-            });
-
-            var menu_grid = new Gtk.Grid ();
-            menu_grid.set_row_spacing (6);
-            menu_grid.set_orientation (Gtk.Orientation.VERTICAL);
-            menu_grid.attach (column_export_button, 0, 0, 2, 1);
-            menu_grid.attach (sep, 0, 1, 2, 1);
-            menu_grid.attach (prefs_button, 0, 2, 2, 1);
-            menu_grid.attach (about_button, 0, 3, 2, 1);
-            menu_grid.show ();
-
-            var menu = new Gtk.Popover ();
-            menu.set_child (menu_grid);
+            var builder = new Gtk.Builder.from_resource ("/io/github/lainsce/Khronos/mainmenu.ui");
 
             var menu_button = new Gtk.MenuButton ();
             menu_button.set_icon_name ("open-menu-symbolic");
             menu_button.has_tooltip = true;
             menu_button.tooltip_text = (_("Settings"));
-            menu_button.popover = menu;
+            menu_button.menu_model = (MenuModel)builder.get_object ("menu");
 
             titlebar.pack_end (menu_button);
 
@@ -270,6 +264,12 @@ namespace Khronos {
             this.show ();
 
             set_timeouts ();
+            listen_to_resize ();
+        }
+
+        public void listen_to_resize () {
+            Khronos.Application.gsettings.bind ("window-width", this, "default-width", GLib.SettingsBindFlags.DEFAULT);
+            Khronos.Application.gsettings.bind ("window-height", this, "default-height", GLib.SettingsBindFlags.DEFAULT);
         }
 
         public void reset_timer () {
@@ -279,16 +279,6 @@ namespace Khronos {
             column_time_label.label = "<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec);
             column_button.sensitive = false;
             column_entry.text = "";
-        }
-
-        public LogRow load_task () {
-            uint i, n = ls.get_n_items ();
-            for (i = 0; i < n; i++) {
-                var item = ls.get_item (i);
-                return new LogRow ((Log)item);
-            }
-
-            return null;
         }
 
         public void add_task (string name, string timedate) {
@@ -406,13 +396,15 @@ namespace Khronos {
             application.send_notification ("io.github.lainsce.Khronos-symbolic", notification5);
         }
 
-        public void action_export () {
-            var fm = new FileManager (this);
-            try {
-                fm.save_as (this);
-            } catch (Error e) {
-                warning ("Unexpected error during export: " + e.message);
+        public void action_delete_row () {
+            uint i, n = ls.get_n_items ();
+            for (i = 0; i < n; i++) {
+                ls.remove (i);
             }
+        }
+
+        public void action_export () {
+            FileManager.save_as.begin (this);
         }
 
         public void action_prefs () {

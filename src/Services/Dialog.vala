@@ -15,7 +15,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 namespace Khronos.Dialog {
-    public MainWindow win;
+    public unowned MainWindow win = null;
     public Gtk.FileChooserNative create_file_chooser (Gtk.FileChooserAction action) {
         var chooser = new Gtk.FileChooserNative (null, win, action, null, null);
         chooser.set_transient_for(win);
@@ -32,10 +32,25 @@ namespace Khronos.Dialog {
 
     public File display_save_dialog () {
         var chooser = create_file_chooser (Gtk.FileChooserAction.SAVE);
-        File file = null;
-        file = chooser.get_file ();
-        chooser.destroy();
-        return file;
+        run_dialog_async.begin (chooser);
+        return chooser.get_file ();
     }
+
+    private async Gtk.ResponseType run_dialog_async (Gtk.FileChooserNative dialog) {
+		var response = Gtk.ResponseType.CANCEL;
+
+		dialog.response.connect (r => {
+			response = (Gtk.ResponseType) r;
+
+			run_dialog_async.callback ();
+		});
+
+		dialog.show ();
+
+		yield;
+
+		return response;
+	}
+
 }
 

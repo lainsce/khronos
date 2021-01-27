@@ -19,7 +19,7 @@
 
 namespace Khronos {
     public class TaskManager {
-        public MainWindow win;
+        public unowned MainWindow win = null;
         public Json.Builder builder;
         private string app_dir = Environment.get_user_data_dir () +
                                  "/io.github.lainsce.Khronos";
@@ -57,7 +57,14 @@ namespace Khronos {
             builder = new Json.Builder ();
 
             builder.begin_array ();
-            save_column (builder, win.ls);
+	        uint i, n = win.ls.get_n_items ();
+            for (i = 0; i < n; i++) {
+                builder.begin_array ();
+                var item = win.ls.get_item (i);
+                builder.add_string_value (((Log)item).name);
+                builder.add_string_value (((Log)item).timedate);
+                builder.end_array ();
+            }
             builder.end_array ();
 
             Json.Generator generator = new Json.Generator ();
@@ -65,18 +72,6 @@ namespace Khronos {
             generator.set_root (root);
             string str = generator.to_data (null);
             return str;
-        }
-
-        private static void save_column (Json.Builder builder,
-                                         GLib.ListStore ls) {
-	        builder.begin_array ();
-	        uint i, n = ls.get_n_items ();
-            for (i = 0; i < n; i++) {
-                var item = ls.get_item (i);
-                builder.add_string_value (((Log)item).name);
-                builder.add_string_value (((Log)item).timedate);
-            }
-	        builder.end_array ();
         }
 
         public void load_from_file() {
@@ -93,8 +88,7 @@ namespace Khronos {
                     parser.load_from_data(json_string);
                     var root = parser.get_root();
                     var array = root.get_array();
-                    var columns = array.get_array_element (0);
-                    foreach (var tasks in columns.get_elements()) {
+                    foreach (var tasks in array.get_elements()) {
                         var task = tasks.get_array ();
                         string name = task.get_string_element(0);
                         string timedate = task.get_string_element(1);

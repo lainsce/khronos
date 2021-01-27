@@ -1,16 +1,6 @@
 <schemalist>
 	<schema id="io.github.lainsce.Khronos" path="/io/github/lainsce/Khronos/">
-		<key name="window-x" type="i">
-			<default>-1</default>
-			<summary>Window position</summary>
-			<description>The x axis of window position</description>
-		</key>
-		<key name="window-y" type="i">
-			<default>-1</default>
-			<summary>Window position</summary>
-			<description>The y axis of window position</description>
-		</key>
-        <key name="window-height" type="i">
+    <key name="window-height" type="i">
 				<default>700</default>
 				<summary>Window position</summary>
 				<description>The height of the window</description>

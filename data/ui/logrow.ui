@@ -42,9 +42,9 @@
           </object>
         </child>
         <child>
-          <object class="GtkButton">
-            <property name="receives-default">1</property>
+          <object class="GtkButton" id="delete_button">
             <property name="valign">center</property>
+            <property name="action-name">win.delete_row</property>
             <child>
               <object class="GtkImage">
                 <property name="icon-name">edit-delete-symbolic</property>
