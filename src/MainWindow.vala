@@ -21,15 +21,10 @@ namespace Khronos {
         delegate void HookFunc ();
         // Widgets
         public Gtk.ListBox column;
-        public Gtk.Grid grid;
-        public Gtk.Grid sgrid;
-        public Gtk.Grid sort_type_grid;
-        public Gtk.Box main_frame_grid;
         public Gtk.Entry column_entry;
         public Gtk.Label column_time_label;
         public Gtk.Button column_button;
         public Gtk.Button column_play_button;
-        public Adw.HeaderBar titlebar;
         public GLib.ListStore ls;
 
         public bool is_modified {get; set; default = false;}
@@ -115,7 +110,7 @@ namespace Khronos {
                 style.add_class ("devel");
             }
 
-            titlebar = new Adw.HeaderBar ();
+            var titlebar = new Adw.HeaderBar ();
             titlebar.get_style_context ().add_class ("flat-titlebar");
             titlebar.set_hexpand (true);
 
@@ -261,7 +256,7 @@ namespace Khronos {
             scroller.hscrollbar_policy = Gtk.PolicyType.NEVER;
             scroller.set_child (mgrid);
 
-            grid = new Gtk.Grid ();
+            var grid = new Gtk.Grid ();
             grid.set_hexpand (true);
             grid.set_vexpand (true);
             grid.attach (tgrid, 0, 1, 1, 1);

@@ -19,7 +19,7 @@
 */
 namespace Khronos {
     public class Application : Gtk.Application {
-        public static MainWindow win = null;
+        public static unowned MainWindow win = null;
         public static GLib.Settings gsettings;
 
         public Application () {
@@ -38,7 +38,8 @@ namespace Khronos {
                 win.present ();
                 return;
             }
-            win = new MainWindow (this);
+            var w = new MainWindow (this);
+            win = w;
         }
 
         public static int main (string[] args) {

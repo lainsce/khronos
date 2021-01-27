@@ -20,7 +20,7 @@
 namespace Khronos {
     public class TaskManager {
         public unowned MainWindow win = null;
-        public Json.Builder builder;
+        public unowned Json.Builder builder;
         private string app_dir = Environment.get_user_data_dir () +
                                  "/io.github.lainsce.Khronos";
         private string file_name;
@@ -33,7 +33,8 @@ namespace Khronos {
 
         public void save_to_file () {
             string json_string = "";
-            builder = new Json.Builder ();
+            var b = new Json.Builder ();
+            builder = b;
 
             builder.begin_array ();
 	        uint i, n = win.ls.get_n_items ();

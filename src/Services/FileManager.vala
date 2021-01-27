@@ -10,16 +10,10 @@ namespace Khronos.FileManager {
             tasks += "\"" + ((Log)item).name.replace("\"", "") +
             "\",\"" + ((Log)item).timedate.replace("\"", "")
                                           .replace("<span font_features=\'tnum\'>", "")
-                                          .replace("</span>", "")
-                                          .replace("∶", ":") + "\"\n";
+                                          .replace("</span>", "") + "\"\n";
         }
 
-        if (!file.get_basename ().down ().has_suffix (".csv")) {
-            GLib.FileUtils.set_contents (file.get_path() + ".csv", tasks);
-        } else {
-            GLib.FileUtils.set_contents (file.get_path(), tasks);
-        }
-
+        GLib.FileUtils.set_contents (file.get_path(), tasks);
         debug ("Save as button pressed.");
     }
 }

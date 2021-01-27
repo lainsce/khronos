@@ -6,7 +6,7 @@ namespace Khronos {
 
     [GtkTemplate (ui = "/io/github/lainsce/Khronos/logrow.ui")]
     public class LogRow : Gtk.ListBoxRow {
-        public Log log { get; construct; }
+        public unowned Log log { get; construct; }
         public LogRow (Log? log) {
             Object (log: log);
 
