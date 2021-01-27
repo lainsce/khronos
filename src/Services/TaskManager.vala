@@ -31,27 +31,8 @@ namespace Khronos {
             debug ("%s".printf(file_name));
         }
 
-        public void save_notes() {
-            string json_string = prepare_json_from_notes();
-            var dir = File.new_for_path(app_dir);
-            var file = File.new_for_path (file_name);
-            try {
-                if (!dir.query_exists()) {
-                    dir.make_directory();
-                }
-                if (file.query_exists ()) {
-                    file.delete ();
-                }
-                var file_stream = file.create (FileCreateFlags.REPLACE_DESTINATION);
-                var data_stream = new DataOutputStream (file_stream);
-                data_stream.put_string(json_string);
-            } catch (Error e) {
-                warning ("Failed to save Khronos: %s\n", e.message);
-            }
-
-        }
-
-        private string prepare_json_from_notes () {
+        public void save_to_file () {
+            string json_string = "";
             builder = new Json.Builder ();
 
             builder.begin_array ();
@@ -68,8 +49,22 @@ namespace Khronos {
             Json.Generator generator = new Json.Generator ();
             Json.Node root = builder.get_root ();
             generator.set_root (root);
-            string str = generator.to_data (null);
-            return str;
+            json_string = generator.to_data (null);
+
+            var dir = File.new_for_path(app_dir);
+            var file = File.new_for_path (file_name);
+            try {
+                if (!dir.query_exists()) {
+                    dir.make_directory();
+                }
+                if (file.query_exists ()) {
+                    file.delete ();
+                }
+                GLib.FileUtils.set_contents (file.get_path (), json_string);
+            } catch (Error e) {
+                warning ("Failed to save file: %s\n", e.message);
+            }
+
         }
 
         public void load_from_file() {
@@ -77,11 +72,7 @@ namespace Khronos {
                 var file = File.new_for_path(file_name);
                 var json_string = "";
                 if (file.query_exists()) {
-                    string line;
-                    var dis = new DataInputStream (file.read ());
-                    while ((line = dis.read_line (null)) != null) {
-                        json_string += line;
-                    }
+                    GLib.FileUtils.get_contents (file.get_path (), out json_string);
                     var parser = new Json.Parser();
                     parser.load_from_data(json_string);
                     var root = parser.get_root();

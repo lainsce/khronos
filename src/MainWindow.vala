@@ -121,7 +121,7 @@ namespace Khronos {
 
             ls = new GLib.ListStore (typeof (Log));
             ls.items_changed.connect (() => {
-                tm.save_notes ();
+                tm.save_to_file ();
             });
 
             column = new Gtk.ListBox ();
@@ -166,7 +166,7 @@ namespace Khronos {
                                                      ("<span font_features='tnum'>%s</span>").printf (dt.format ("%a, %d/%m %H∶%M∶%S")),
                                                      ("<span font_features='tnum'>%s</span>").printf (dt.add_full (0,0,0,(int)hrs,(int)min,(int)sec).format ("%H∶%M∶%S")));
                 ls.append (log);
-                tm.save_notes ();
+                tm.save_to_file ();
                 reset_timer ();
                 is_modified = true;
                 column_entry.text = "";
