@@ -1,7 +1,6 @@
 namespace Khronos.FileManager {
     public async void save_as (ListStore ls) throws Error {
         string tasks = "";
-        debug ("Save as button pressed.");
         var file = yield Dialog.display_save_dialog ();
         uint i, n = ls.get_n_items ();
 
@@ -15,8 +14,11 @@ namespace Khronos.FileManager {
             var file_final = File.new_for_path (file.get_path () + ".csv");
             string file_path_final = file_final.get_path ();
             GLib.FileUtils.set_contents (file_path_final, tasks);
+        } else {
+            GLib.FileUtils.set_contents (file.get_path(), tasks);
         }
 
         file = null;
+        debug ("Save as button pressed.");
     }
 }
