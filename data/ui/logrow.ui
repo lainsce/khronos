@@ -4,12 +4,12 @@
   <template class="KhronosLogRow" parent="GtkListBoxRow">
     <property name="visible">1</property>
     <property name="child">
-    <style>
-      <class name="kh-row"/>
-    </style>
       <object class="GtkBox">
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
+        <style>
+          <class name="kh-row"/>
+        </style>
         <child>
           <object class="GtkBox">
             <property name="valign">center</property>
