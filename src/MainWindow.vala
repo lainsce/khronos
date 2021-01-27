@@ -25,7 +25,7 @@ namespace Khronos {
         public Gtk.Label column_time_label;
         public Gtk.Button column_button;
         public Gtk.Button column_play_button;
-        public GLib.ListStore ls;
+        private GLib.ListStore ls;
 
         public bool is_modified {get; set; default = false;}
         public bool start = false;
@@ -116,14 +116,14 @@ namespace Khronos {
 
             ls = new GLib.ListStore (typeof (Log));
             ls.items_changed.connect (() => {
-                tm.save_to_file ();
+                tm.save_to_file (ls);
             });
 
             column = new Gtk.ListBox ();
             column.set_margin_top (18);
             column.set_margin_bottom (18);
             column.get_style_context ().add_class ("content");
-            column.bind_model (ls, item => new LogRow (item as Log));
+            column.bind_model (ls, item => new LogRow ((Log) item);
             column.set_selection_mode (Gtk.SelectionMode.SINGLE);
 
             column.row_activated.connect ((actrow) => {
@@ -161,7 +161,7 @@ namespace Khronos {
                                                      ("<span font_features='tnum'>%s</span>").printf (dt.format ("%a, %d/%m %H∶%M∶%S")),
                                                      ("<span font_features='tnum'>%s</span>").printf (dt.add_full (0,0,0,(int)hrs,(int)min,(int)sec).format ("%H∶%M∶%S")));
                 ls.append (log);
-                tm.save_to_file ();
+                tm.save_to_file (ls);
                 reset_timer ();
                 is_modified = true;
                 column_entry.text = "";
@@ -268,6 +268,11 @@ namespace Khronos {
 
             set_timeouts ();
             listen_to_resize ();
+        }
+
+        protected override void dispose () {
+            column.bind_model (null, null);
+            base.dispose ();
         }
 
         public void listen_to_resize () {

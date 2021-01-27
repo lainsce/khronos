@@ -1,5 +1,5 @@
 namespace Khronos.FileManager {
-    public async void save_as (ListStore ls) throws Error {
+    public async void save_as (GLib.ListStore ls) throws Error {
         string tasks = "";
         var file = yield Dialog.display_save_dialog ();
         uint i, n = ls.get_n_items ();
