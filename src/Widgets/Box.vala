@@ -9,8 +9,6 @@ namespace Khronos {
         public unowned Log log { get; construct; }
         public LogRow (Log? log) {
             Object (log: log);
-
-            this.get_style_context ().add_class ("kh-row");
         }
     }
 }
