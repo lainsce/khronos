@@ -38,7 +38,6 @@ namespace Khronos {
         private uint sec = 0;
         private uint min = 0;
         private uint hrs = 0;
-        private GLib.DateTime dt;
 
         public TaskManager tm;
         public unowned Gtk.Application app { get; construct; }
@@ -93,7 +92,6 @@ namespace Khronos {
         construct {
             Adw.init ();
             tm = new TaskManager (this);
-            dt = new GLib.DateTime.now_local ();
 
             Khronos.Application.gsettings.changed.connect (() => {
                 if (Khronos.Application.gsettings.get_boolean("dark-mode")) {
@@ -156,20 +154,23 @@ namespace Khronos {
             column_button.clicked.connect (() => {
                 var log = new Log ();
                 log.name = column_entry.text;
-                log.timedate = "%s - %s".printf(column_time_label.label, ("<span font_features='tnum'>%s</span>").printf (dt.format ("%a %d/%m %H∶%M")));
-                ls.append (log);
 
+                var dt = new GLib.DateTime.now_local ();
+                log.timedate = "%s\n%s - %s".printf(column_time_label.label,
+                                                     ("<span font_features='tnum'>%s</span>").printf (dt.format ("%a, %d/%m %H∶%M∶%S")),
+                                                     ("<span font_features='tnum'>%s</span>").printf (dt.add_full (0,0,0,(int)hrs,(int)min,(int)sec).format ("%H∶%M∶%S")));
+                ls.append (log);
                 tm.save_notes ();
                 reset_timer ();
                 is_modified = true;
-
                 column_entry.text = "";
             });
 
             column_play_button.clicked.connect (() => {
                 if (start != true) {
                     start = true;
-                    timer_id = GLib.Timeout.add_seconds (1, () => {
+                    // For some reason, add() is closer to real time than add_seconds()
+                    timer_id = GLib.Timeout.add (1000, () => {
                         timer ();
                         return true;
                     });;
@@ -354,46 +355,46 @@ namespace Khronos {
         public void notification1 () {
             var notification1 = new GLib.Notification ("%i minutes have passed".printf(Khronos.Application.gsettings.get_int("notification-delay")));
             notification1.set_body (_("Go rest for a while before continuing."));
-            var icon = new GLib.ThemedIcon ("appointment");
+            var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification1.set_icon (icon);
 
-            application.send_notification ("io.github.lainsce.Khronos-symbolic", notification1);
+            application.send_notification ("io.github.lainsce.Khronos", notification1);
         }
 
         public void notification2 () {
             var notification2 = new GLib.Notification ("%i minutes have passed".printf((int) GLib.Math.floor (Khronos.Application.gsettings.get_int("notification-delay")*1.5)));
             notification2.set_body (_("Go rest for a while before continuing."));
-            var icon = new GLib.ThemedIcon ("appointment");
+            var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification2.set_icon (icon);
 
-            application.send_notification ("io.github.lainsce.Khronos-symbolic", notification2);
+            application.send_notification ("io.github.lainsce.Khronos", notification2);
         }
 
         public void notification3 () {
             var notification3 = new GLib.Notification ("%i minutes have passed".printf(Khronos.Application.gsettings.get_int("notification-delay")*2));
             notification3.set_body (_("Go rest for a while before continuing."));
-            var icon = new GLib.ThemedIcon ("appointment");
+            var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification3.set_icon (icon);
 
-            application.send_notification ("io.github.lainsce.Khronos-symbolic", notification3);
+            application.send_notification ("io.github.lainsce.Khronos", notification3);
         }
 
         public void notification4 () {
             var notification4 = new GLib.Notification ("%i minutes have passed".printf((int) GLib.Math.floor (Khronos.Application.gsettings.get_int("notification-delay")*2.5)));
             notification4.set_body (_("Go rest for a while before continuing."));
-            var icon = new GLib.ThemedIcon ("appointment");
+            var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification4.set_icon (icon);
 
-            application.send_notification ("io.github.lainsce.Khronos-symbolic", notification4);
+            application.send_notification ("io.github.lainsce.Khronos", notification4);
         }
 
         public void notification5 () {
             var notification5 = new GLib.Notification ("%i minutes have passed".printf(Khronos.Application.gsettings.get_int("notification-delay")*3));
             notification5.set_body (_("Go rest for a while before continuing."));
-            var icon = new GLib.ThemedIcon ("appointment");
+            var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification5.set_icon (icon);
 
-            application.send_notification ("io.github.lainsce.Khronos-symbolic", notification5);
+            application.send_notification ("io.github.lainsce.Khronos", notification5);
         }
 
         public void action_delete_row () {

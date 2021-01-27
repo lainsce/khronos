@@ -1,9 +1,9 @@
 namespace Khronos.FileManager {
-    public unowned MainWindow win = null;
+    public unowned MainWindow win;
     public async void save_as (MainWindow win) throws Error {
         string tasks = "";
         debug ("Save as button pressed.");
-        var file = Dialog.display_save_dialog ();
+        var file = yield Dialog.display_save_dialog ();
         uint i, n = win.ls.get_n_items ();
 
         tasks += "task,timedate\n";
