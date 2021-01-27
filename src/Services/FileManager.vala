@@ -9,7 +9,7 @@ namespace Khronos.FileManager {
             var item = ls.get_item (i);
             tasks += "\"" + ((Log)item).name.replace("\"", "") +
             "\",\"" + ((Log)item).timedate.replace("\"", "")
-                                          .replace("<span font_features='tnum'>", "")
+                                          .replace("<span font_features=\'tnum\'>", "")
                                           .replace("</span>", "")
                                           .replace("∶", ":") + "\"\n";
         }
