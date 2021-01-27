@@ -2,7 +2,8 @@ namespace Khronos.FileManager {
     public async void save_as (ListStore ls) throws Error {
         string tasks = "";
         debug ("Save as button pressed.");
-        var file = yield Dialog.display_save_dialog ();
+        var path = yield Dialog.display_save_dialog ();
+        var file = File.new_for_path (path);
         uint i, n = ls.get_n_items ();
 
         tasks += "task,timedate\n";
@@ -25,6 +26,8 @@ namespace Khronos.FileManager {
             } catch (Error e) {
                 warning ("Failed to save: %s\n", e.message);
             }
+
+            file_final.unref ();
         } else {
             try {
                 if (file.query_exists ()) {
@@ -37,6 +40,8 @@ namespace Khronos.FileManager {
                 warning ("Failed to save: %s\n", e.message);
             }
         }
+
+        file.unref ();
 
         yield;
     }

@@ -16,7 +16,7 @@
  */
 namespace Khronos.Dialog {
     public unowned MainWindow win;
-    public async File display_save_dialog () {
+    public async string display_save_dialog () {
         var chooser = new Gtk.FileChooserNative (null, win, Gtk.FileChooserAction.SAVE, null, null);
         chooser.set_transient_for(win);
         var filter1 = new Gtk.FileFilter ();
@@ -33,11 +33,11 @@ namespace Khronos.Dialog {
         if (response == Gtk.ResponseType.ACCEPT) {
 
             yield;
-            return chooser.get_file ();
+            return chooser.get_file ().get_path ();
         }
 
         yield;
-        return (File)null;
+        return "";
     }
 
     private async Gtk.ResponseType run_dialog_async (Gtk.FileChooserNative dialog) {
