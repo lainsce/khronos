@@ -25,7 +25,7 @@ sources = files(
     'src/Services/TaskManager.vala',
     'src/Services/FileManager.vala',
     'src/Services/Dialog.vala',
-    'src/Widgets/Box.vala',
+    'src/Widgets/LogRow.vala',
 )
 
 cc = meson.get_compiler('c')
