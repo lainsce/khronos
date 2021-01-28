@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: com.github.lainsce.khronos\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-17 19:01-0300\n"
-"PO-Revision-Date: 2020-08-18 21:38+0200\n"
+"PO-Revision-Date: 2021-01-28 16:24+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/MainWindow.vala:59
@@ -28,7 +28,7 @@ msgstr "Tijdklok starten…"
 
 #: src/MainWindow.vala:188
 msgid "Reset Timer"
-msgstr "Tijdklop herstellen"
+msgstr "Tijdklok herstellen"
 
 #: src/MainWindow.vala:201
 msgid "Export Log as CSV File…"
@@ -57,7 +57,7 @@ msgstr "Nieuwe logboeknaam…"
 
 #: src/MainWindow.vala:267
 msgid "You can add a log by starting the timer first."
-msgstr "Je kunt een logboek aanleggen door de tijdklok te starten."
+msgstr "Start de tijdklok om een logboek aan te leggen."
 
 #: src/MainWindow.vala:292
 msgid "Notifications"
