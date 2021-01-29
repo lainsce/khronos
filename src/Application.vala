@@ -34,10 +34,6 @@ namespace Khronos {
         }
 
         protected override void activate () {
-            if (win != null) {
-                win.present ();
-                return;
-            }
             var w = new MainWindow (this);
             win = w;
         }
@@ -46,7 +42,8 @@ namespace Khronos {
             Intl.setlocale (LocaleCategory.ALL, "");
 
             var app = new Khronos.Application ();
-            return app.run (args);
+            int status = app.run (args);
+		    return status;
         }
     }
 }

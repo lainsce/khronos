@@ -31,16 +31,16 @@ namespace Khronos {
             debug ("%s".printf(file_name));
         }
 
-        public void save_to_file (ListStore ls) {
+        public void save_to_file (ListStore liststore) {
             string json_string = "";
             var b = new Json.Builder ();
             builder = b;
 
             builder.begin_array ();
-	        uint i, n = ls.get_n_items ();
+	        uint i, n = liststore.get_n_items ();
             for (i = 0; i < n; i++) {
                 builder.begin_array ();
-                var item = ls.get_item (i);
+                var item = liststore.get_item (i);
                 builder.add_string_value (((Log)item).name);
                 builder.add_string_value (((Log)item).timedate);
                 builder.end_array ();

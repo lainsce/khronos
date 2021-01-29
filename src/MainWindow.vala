@@ -25,7 +25,7 @@ namespace Khronos {
         public Gtk.Label column_time_label;
         public Gtk.Button column_button;
         public Gtk.Button column_play_button;
-        private GLib.ListStore ls;
+        private GLib.ListStore liststore;
 
         public bool is_modified {get; set; default = false;}
         public bool start = false;
@@ -114,16 +114,12 @@ namespace Khronos {
             titlebar.get_style_context ().add_class ("flat-titlebar");
             titlebar.set_hexpand (true);
 
-            ls = new GLib.ListStore (typeof (Log));
-            ls.items_changed.connect (() => {
-                tm.save_to_file (ls);
-            });
+            liststore = new GLib.ListStore (typeof (Log));
 
             column = new Gtk.ListBox ();
             column.set_margin_top (18);
             column.set_margin_bottom (18);
             column.get_style_context ().add_class ("content");
-            column.bind_model (ls, item => new LogRow ((Log) item));
             column.set_selection_mode (Gtk.SelectionMode.SINGLE);
 
             column.row_activated.connect ((actrow) => {
@@ -160,8 +156,8 @@ namespace Khronos {
                 log.timedate = "%s\n%s - %s".printf(column_time_label.label,
                                                      ("<span font_features='tnum'>%s</span>").printf (dt.format ("%a, %d/%m %H∶%M∶%S")),
                                                      ("<span font_features='tnum'>%s</span>").printf (dt.add_full (0,0,0,(int)hrs,(int)min,(int)sec).format ("%H∶%M∶%S")));
-                ls.append (log);
-                tm.save_to_file (ls);
+                liststore.append (log);
+                tm.save_to_file (liststore);
                 reset_timer ();
                 is_modified = true;
                 column_entry.text = "";
@@ -265,19 +261,30 @@ namespace Khronos {
             this.set_child (grid);
             this.set_size_request (360, 360);
             this.show ();
+            this.present ();
 
             set_timeouts ();
-            listen_to_resize ();
+            listen_to_changes ();
+            liststore.items_changed.connect (() => {
+                tm.save_to_file (liststore);
+            });
         }
 
-        protected override void dispose () {
+        protected override bool close_request () {
+            debug ("Exiting window... Disposing of stuff...");
             column.bind_model (null, null);
-            base.dispose ();
+            this.dispose ();
+            return true;
         }
 
-        public void listen_to_resize () {
+        public void listen_to_changes () {
+            column.bind_model (liststore, item => make_widgets (item));
             Khronos.Application.gsettings.bind ("window-width", this, "default-width", GLib.SettingsBindFlags.DEFAULT);
             Khronos.Application.gsettings.bind ("window-height", this, "default-height", GLib.SettingsBindFlags.DEFAULT);
+        }
+
+        public LogRow make_widgets (GLib.Object item) {
+            return new LogRow ((Log) item);
         }
 
         public void reset_timer () {
@@ -294,7 +301,7 @@ namespace Khronos {
             log.name = name;
             log.timedate = timedate;
 
-            ls.append(log);
+            liststore.append(log);
         }
 
         public void timer () {
@@ -405,14 +412,14 @@ namespace Khronos {
         }
 
         public void action_delete_row () {
-            uint i, n = ls.get_n_items ();
+            uint i, n = liststore.get_n_items ();
             for (i = 0; i < n; i++) {
-                ls.remove (i);
+                liststore.remove (i);
             }
         }
 
         public void action_export () {
-            FileManager.save_as.begin (ls);
+            FileManager.save_as.begin (liststore);
         }
 
         public void action_prefs () {
