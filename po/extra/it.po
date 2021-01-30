@@ -1,0 +1,86 @@
+# ITALIAN TRANSLATION.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# ALBANO BATTISTELLA <albano_battistella@hotmail.com>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-06 11:16+0100\n"
+"PO-Revision-Date: 2021-01-30 11:40+0100\n"
+"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
+"Language-Team: Italian <LL@li.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:6
+#: data/com.github.lainsce.khronos.desktop.in:3
+msgid "Khronos"
+msgstr "Khronos"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:7
+msgid "Track each task's time in a simple inobtrusive way"
+msgstr "Tieni traccia del tempo di ogni attività in modo semplice e non invadente"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:9
+msgid ""
+"Start tracking any task's \"during\" time and start &amp; stop as you go, "
+"with notifications."
+msgstr ""
+"Inizia a tenere traccia di qualsiasi attività \"durante\" il tempo e avvia &amp; interrompi man mano che procedi"
+"con le notifiche."
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:11
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Esci in qualsiasi momento con la scorciatoia Ctrl + Q"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:17
+msgid "Lains"
+msgstr ""
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:57
+msgid "Release: Start Sorting"
+msgstr "Rilascio: avvia Ordinamento"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:59
+msgid "Added: Sorting Options on Settings Menu"
+msgstr "Aggiunto: Opzioni di ordinamento nel menu Impostazioni"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:65
+msgid "Release: Start Building Up"
+msgstr "Rilascio: Inizio a Costruire"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:67
+msgid "Added: Logging the start date of tasks"
+msgstr "Aggiunto: registrazione della data di inizio delle attività"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:68
+msgid "Added: Exporting the Task Log as CSV file"
+msgstr "Aggiunto: esportazione del registro delle attività come file CSV"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:69
+msgid "Added: Configurable notifications to go along with tasks"
+msgstr "Aggiunto: notifiche configurabili per accompagnare le attività"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:75
+msgid "Release: Initial Tracking"
+msgstr "Versione: monitoraggio iniziale"
+
+#: data/com.github.lainsce.khronos.appdata.xml.in:77
+msgid "First stable release"
+msgstr "Prima versione stabile"
+
+#: data/com.github.lainsce.khronos.desktop.in:4
+msgid "Track each task time in a simple inobtrusive way"
+msgstr "Tieni traccia di ogni attività in modo semplice e non invadente"
+
+#: data/com.github.lainsce.khronos.desktop.in:6
+msgid "com.github.lainsce.khronos"
+msgstr "com.github.lainsce.khronos"
+
+#: data/com.github.lainsce.khronos.desktop.in:7
+msgid "Plot;Planning;Time Tracking;"
+msgstr "Tracciare, pianificazione, monitoraggio del tempo;"
