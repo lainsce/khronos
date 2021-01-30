@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.lainsce.khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-12 07:03+0900\n"
+"POT-Creation-Date: 2021-01-30 12:27-0300\n"
 "PO-Revision-Date: 2020-02-12 07:04+0900\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: none\n"
@@ -18,43 +18,93 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.4\n"
 
-#: src/MainWindow.vala:33
+#: src/MainWindow.vala:66 src/MainWindow.vala:441
 msgid "Khronos"
 msgstr "Khronos"
 
-#: src/Widgets/Column.vala:23
-msgid "New task name…"
-msgstr "新しいタスク名…"
-
-#: src/Widgets/Column.vala:36
-msgid "Start Timer…"
-msgstr "タイマーを開始…"
-
-#: src/Widgets/Column.vala:49
-msgid "Reset Timer"
-msgstr "タイマーをリセット"
-
-#: src/Widgets/Column.vala:63
-msgid "Add Log"
-msgstr "ログを追加"
-
-#: src/Widgets/Column.vala:76
-#, c-format
-msgid "Started on: %s"
-msgstr "開始時刻: %s"
-
-#: src/Widgets/Column.vala:88
-msgid "Stop Timer"
-msgstr "タイマーを停止"
-
-#: src/Widgets/Column.vala:95
+#: src/MainWindow.vala:137 src/MainWindow.vala:180
 msgid "Start Timer"
 msgstr "タイマーを開始"
 
-#: src/Widgets/ColumnListBox.vala:39
-msgid "No tasks…"
-msgstr "タスクがありません…"
+#: src/MainWindow.vala:145
+msgid "Add Log"
+msgstr "ログを追加"
 
-#: src/Widgets/EventBox.vala:68
-msgid "Delete Task"
-msgstr "タスクを削除"
+#: src/MainWindow.vala:174
+msgid "Stop Timer"
+msgstr "タイマーを停止"
+
+#: src/MainWindow.vala:189
+#, fuzzy
+msgid "New log name…"
+msgstr "新しいタスク名…"
+
+#: src/MainWindow.vala:223
+msgid "Settings"
+msgstr ""
+
+#: src/MainWindow.vala:233
+msgid "Logs"
+msgstr ""
+
+#: src/MainWindow.vala:371 src/MainWindow.vala:380 src/MainWindow.vala:389
+#: src/MainWindow.vala:398 src/MainWindow.vala:407
+msgid "Go rest for a while before continuing."
+msgstr ""
+
+#: src/MainWindow.vala:446
+msgid "Track each task's time in a simple inobtrusive way."
+msgstr ""
+
+#: src/MainWindow.vala:451
+msgid "translator-credits"
+msgstr ""
+
+#: src/Services/Dialog.vala:23
+msgid "CSV files"
+msgstr ""
+
+#: src/Services/Dialog.vala:27
+msgid "All files"
+msgstr ""
+
+#: data/ui/mainmenu.ui:5
+msgid "Export Logs (CSV)…"
+msgstr ""
+
+#: data/ui/mainmenu.ui:11
+msgid "Preferences"
+msgstr ""
+
+#: data/ui/mainmenu.ui:15
+#, fuzzy
+msgid "About Khronos"
+msgstr "Khronos"
+
+#: data/ui/prefs.ui:11 data/ui/prefs.ui:14
+msgid "General"
+msgstr ""
+
+#: data/ui/prefs.ui:18
+msgid "Notification Delay"
+msgstr ""
+
+#: data/ui/prefs.ui:45
+msgid "Dark Mode"
+msgstr ""
+
+#~ msgid "Start Timer…"
+#~ msgstr "タイマーを開始…"
+
+#~ msgid "Reset Timer"
+#~ msgstr "タイマーをリセット"
+
+#, c-format
+#~ msgid "Started on: %s"
+#~ msgstr "開始時刻: %s"
+
+#~ msgid "No tasks…"
+#~ msgstr "タスクがありません…"
+
+#~ msgid "Delete Task"
+#~ msgstr "タスクを削除"

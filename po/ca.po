@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.lainsce.khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-12 07:01+0900\n"
+"POT-Creation-Date: 2021-01-30 12:27-0300\n"
 "PO-Revision-Date: 2020-02-11 08:05+0100\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: none\n"
@@ -16,47 +16,86 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/MainWindow.vala:33
+#: src/MainWindow.vala:66 src/MainWindow.vala:441
 msgid "Khronos"
 msgstr "Horari"
 
-#: src/Widgets/Column.vala:23
-#, fuzzy
-msgid "New task name…"
-msgstr "No hi ha cap tasca…"
-
-#: src/Widgets/Column.vala:36
-msgid "Start Timer…"
-msgstr ""
-
-#: src/Widgets/Column.vala:49
-#, fuzzy
-msgid "Reset Timer"
-msgstr "Hora de la tasca"
-
-#: src/Widgets/Column.vala:63
-msgid "Add Log"
-msgstr ""
-
-#: src/Widgets/Column.vala:76
-#, c-format
-msgid "Started on: %s"
-msgstr ""
-
-#: src/Widgets/Column.vala:88
-msgid "Stop Timer"
-msgstr ""
-
-#: src/Widgets/Column.vala:95
+#: src/MainWindow.vala:137 src/MainWindow.vala:180
 #, fuzzy
 msgid "Start Timer"
 msgstr "Hora de la tasca"
 
-#: src/Widgets/ColumnListBox.vala:39
+#: src/MainWindow.vala:145
+msgid "Add Log"
+msgstr ""
+
+#: src/MainWindow.vala:174
+msgid "Stop Timer"
+msgstr ""
+
+#: src/MainWindow.vala:189
 #, fuzzy
-msgid "No tasks…"
+msgid "New log name…"
 msgstr "No hi ha cap tasca…"
 
-#: src/Widgets/EventBox.vala:68
-msgid "Delete Task"
+#: src/MainWindow.vala:223
+msgid "Settings"
 msgstr ""
+
+#: src/MainWindow.vala:233
+msgid "Logs"
+msgstr ""
+
+#: src/MainWindow.vala:371 src/MainWindow.vala:380 src/MainWindow.vala:389
+#: src/MainWindow.vala:398 src/MainWindow.vala:407
+msgid "Go rest for a while before continuing."
+msgstr ""
+
+#: src/MainWindow.vala:446
+msgid "Track each task's time in a simple inobtrusive way."
+msgstr ""
+
+#: src/MainWindow.vala:451
+msgid "translator-credits"
+msgstr ""
+
+#: src/Services/Dialog.vala:23
+msgid "CSV files"
+msgstr ""
+
+#: src/Services/Dialog.vala:27
+msgid "All files"
+msgstr ""
+
+#: data/ui/mainmenu.ui:5
+msgid "Export Logs (CSV)…"
+msgstr ""
+
+#: data/ui/mainmenu.ui:11
+msgid "Preferences"
+msgstr ""
+
+#: data/ui/mainmenu.ui:15
+#, fuzzy
+msgid "About Khronos"
+msgstr "Horari"
+
+#: data/ui/prefs.ui:11 data/ui/prefs.ui:14
+msgid "General"
+msgstr ""
+
+#: data/ui/prefs.ui:18
+msgid "Notification Delay"
+msgstr ""
+
+#: data/ui/prefs.ui:45
+msgid "Dark Mode"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Reset Timer"
+#~ msgstr "Hora de la tasca"
+
+#, fuzzy
+#~ msgid "No tasks…"
+#~ msgstr "No hi ha cap tasca…"

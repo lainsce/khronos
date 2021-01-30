@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-06 11:16+0100\n"
+"POT-Creation-Date: 2021-01-30 12:28-0300\n"
 "PO-Revision-Date: 2020-02-11 08:05+0100\n"
 "Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
 "Language-Team: none\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:6
-#: data/com.github.lainsce.khronos.desktop.in:3
+#: data/io.github.lainsce.Khronos.appdata.xml.in:6
+#: data/io.github.lainsce.Khronos.desktop.in:3
 msgid "Khronos"
 msgstr "Khronos"
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:7
+#: data/io.github.lainsce.Khronos.appdata.xml.in:7
 msgid "Track each task's time in a simple inobtrusive way"
 msgstr "Suivez le déroulement de chaque tâche de manière simple et discrète"
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:9
+#: data/io.github.lainsce.Khronos.appdata.xml.in:9
 msgid ""
 "Start tracking any task's \"during\" time and start &amp; stop as you go, "
 "with notifications."
@@ -34,54 +34,59 @@ msgstr ""
 "Commencez à suivre le déroulement de n'importe quelle tâche et continuez au "
 "fur et à mesure. Notifications incluses."
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:11
+#: data/io.github.lainsce.Khronos.appdata.xml.in:11
 msgid "Quit anytime with the shortcut Ctrl + Q"
 msgstr "Quittez à tout moment avec le raccourci Ctrl + Q"
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:17
+#: data/io.github.lainsce.Khronos.appdata.xml.in:17
 msgid "Lains"
 msgstr "Lains"
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:57
-msgid "Release: Start Sorting"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:58
+#, fuzzy
+msgid "Release: Port to GTK4"
 msgstr "Version : Démarrage du tri"
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:59
-msgid "Added: Sorting Options on Settings Menu"
-msgstr "Ajouté : Options de tri dans le menu des paramètres"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:60
+msgid "Changed: Rewritten for GTK4."
+msgstr ""
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:65
-msgid "Release: Start Building Up"
-msgstr "Version : Début de la construction"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:66
+msgid "Release: Hello, Flatpak!"
+msgstr ""
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:67
-msgid "Added: Logging the start date of tasks"
-msgstr "Ajouté : Journalisation de la date de démarrage des tâches"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:68
+msgid "Changed: Major UI changes."
+msgstr ""
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:68
-msgid "Added: Exporting the Task Log as CSV file"
-msgstr "Ajouté : Export des journaux de tâches au format CSV"
-
-#: data/com.github.lainsce.khronos.appdata.xml.in:69
-msgid "Added: Configurable notifications to go along with tasks"
-msgstr "Ajouté : Notifications configurables pour suivre les tâches"
-
-#: data/com.github.lainsce.khronos.appdata.xml.in:75
-msgid "Release: Initial Tracking"
-msgstr "Version : Suivi initial"
-
-#: data/com.github.lainsce.khronos.appdata.xml.in:77
-msgid "First stable release"
-msgstr "Première version stable"
-
-#: data/com.github.lainsce.khronos.desktop.in:4
+#: data/io.github.lainsce.Khronos.desktop.in:4
 msgid "Track each task time in a simple inobtrusive way"
 msgstr "Suivez le déroulement de chaque tâche de manière simple et discrète"
 
-#: data/com.github.lainsce.khronos.desktop.in:6
-msgid "com.github.lainsce.khronos"
-msgstr "com.github.lainsce.khronos"
-
-#: data/com.github.lainsce.khronos.desktop.in:7
+#: data/io.github.lainsce.Khronos.desktop.in:7
 msgid "Plot;Planning;Time Tracking;"
 msgstr "Planing;Suivi du temps;"
+
+#~ msgid "Added: Sorting Options on Settings Menu"
+#~ msgstr "Ajouté : Options de tri dans le menu des paramètres"
+
+#~ msgid "Release: Start Building Up"
+#~ msgstr "Version : Début de la construction"
+
+#~ msgid "Added: Logging the start date of tasks"
+#~ msgstr "Ajouté : Journalisation de la date de démarrage des tâches"
+
+#~ msgid "Added: Exporting the Task Log as CSV file"
+#~ msgstr "Ajouté : Export des journaux de tâches au format CSV"
+
+#~ msgid "Added: Configurable notifications to go along with tasks"
+#~ msgstr "Ajouté : Notifications configurables pour suivre les tâches"
+
+#~ msgid "Release: Initial Tracking"
+#~ msgstr "Version : Suivi initial"
+
+#~ msgid "First stable release"
+#~ msgstr "Première version stable"
+
+#~ msgid "com.github.lainsce.khronos"
+#~ msgstr "com.github.lainsce.khronos"
