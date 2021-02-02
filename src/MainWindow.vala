@@ -63,7 +63,7 @@ namespace Khronos {
                 application: application,
                 app: application,
                 icon_name: "io.github.lainsce.Khronos",
-                title: (_("Khronos"))
+                title: "Khronos"
             );
 
             if (Khronos.Application.gsettings.get_boolean("dark-mode")) {
@@ -186,7 +186,7 @@ namespace Khronos {
 
             column_entry = new Gtk.Entry ();
             column_entry.margin_bottom = column_entry.margin_top = 24;
-            column_entry.placeholder_text = _("New log name…");
+            column_entry.placeholder_text = _("New Log Name…");
 
             column_entry.changed.connect (() => {
                 if (column_entry.text_length != 0) {
@@ -446,6 +446,7 @@ namespace Khronos {
                                    "comments", _("Track each task\'s time in a simple inobtrusive way."),
                                    "copyright", COPYRIGHT,
                                    "authors", AUTHORS,
+                                   "artists": null,
                                    "license-type", Gtk.License.GPL_3_0,
                                    "wrap-license", false,
                                    "translator-credits", _("translator-credits"),
