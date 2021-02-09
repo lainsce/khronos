@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: com.github.lainsce.khronos\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-01-30 12:27-0300\n"
-"PO-Revision-Date: 2021-01-28 16:24+0100\n"
+"PO-Revision-Date: 2021-02-09 21:37+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -44,7 +44,7 @@ msgstr "Instellingen"
 
 #: src/MainWindow.vala:233
 msgid "Logs"
-msgstr ""
+msgstr "Logboeken"
 
 #: src/MainWindow.vala:371 src/MainWindow.vala:380 src/MainWindow.vala:389
 #: src/MainWindow.vala:398 src/MainWindow.vala:407
@@ -53,47 +53,43 @@ msgstr "Neem even een pauze."
 
 #: src/MainWindow.vala:446
 msgid "Track each task's time in a simple inobtrusive way."
-msgstr ""
+msgstr "Houd de tijd van elke taak bij op eenvoudige, niet-storende wijze."
 
 #: src/MainWindow.vala:451
 msgid "translator-credits"
-msgstr ""
+msgstr "Heimen Stoffels"
 
 #: src/Services/Dialog.vala:23
 msgid "CSV files"
-msgstr ""
+msgstr "CSV-bestanden"
 
 #: src/Services/Dialog.vala:27
 msgid "All files"
-msgstr ""
+msgstr "Alle bestanden"
 
 #: data/ui/mainmenu.ui:5
-#, fuzzy
 msgid "Export Logs (CSV)…"
-msgstr "Logboek exporteren naar csv-bestand…"
+msgstr "Logboeken exporteren (csv)…"
 
 #: data/ui/mainmenu.ui:11
 msgid "Preferences"
-msgstr ""
+msgstr "Voorkeuren"
 
 #: data/ui/mainmenu.ui:15
-#, fuzzy
 msgid "About Khronos"
-msgstr "Khronos"
+msgstr "Over Khronos"
 
 #: data/ui/prefs.ui:11 data/ui/prefs.ui:14
 msgid "General"
-msgstr ""
+msgstr "Algemeen"
 
 #: data/ui/prefs.ui:18
-#, fuzzy
 msgid "Notification Delay"
-msgstr "Meldingen"
+msgstr "Meldingsvertraging"
 
 #: data/ui/prefs.ui:45
-#, fuzzy
 msgid "Dark Mode"
-msgstr "Donker thema:"
+msgstr "Donker thema"
 
 #~ msgid "Start Timer…"
 #~ msgstr "Tijdklok starten…"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-01-30 12:28-0300\n"
-"PO-Revision-Date: 2020-08-16 18:12+0200\n"
+"PO-Revision-Date: 2021-02-09 21:38+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:6
 #: data/io.github.lainsce.Khronos.desktop.in:3
@@ -44,21 +44,20 @@ msgid "Lains"
 msgstr "Lains"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:58
-#, fuzzy
 msgid "Release: Port to GTK4"
-msgstr "Uitgave: \"Beginnen met sorteren\""
+msgstr "Uitgave: \"Klaar voor GTK4\""
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:60
 msgid "Changed: Rewritten for GTK4."
-msgstr ""
+msgstr "Nieuw: herschreven om te werken met GTK4."
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:66
 msgid "Release: Hello, Flatpak!"
-msgstr ""
+msgstr "Uitgave: \"Hallo, Flatpak!\""
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:68
 msgid "Changed: Major UI changes."
-msgstr ""
+msgstr "Gewijzigd: veel aanpassingen aan de vormgeving."
 
 #: data/io.github.lainsce.Khronos.desktop.in:4
 msgid "Track each task time in a simple inobtrusive way"
