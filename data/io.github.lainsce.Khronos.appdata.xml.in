@@ -53,6 +53,14 @@
         <content_attribute id="money-gambling">none</content_attribute>
     </content_rating>
     <releases>
+        <release version="3.5.0" date="2020-02-09">
+            <description>
+                <p>Release: UI Refreshments</p>
+                <ul>
+                    <li>Changed: The UI is now with a better layout.</li>
+                </ul>
+            </description>
+        </release>
         <release version="3.0.0" date="2020-01-29">
             <description>
                 <p>Release: Port to GTK4</p>
