@@ -45,6 +45,8 @@ namespace Khronos {
         public Gtk.Stack title_stack;
         [GtkChild]
         public Gtk.Stack win_stack;
+        [GtkChild]
+        public Gtk.Box placeholder;
 
         private GLib.ListStore liststore;
 
@@ -154,6 +156,7 @@ namespace Khronos {
                 reset_timer ();
                 is_modified = true;
                 column_entry.text = "";
+                placeholder.visible = false;
             });
 
             column_play_button.clicked.connect (() => {
@@ -200,6 +203,7 @@ namespace Khronos {
 
             trash_button.clicked.connect (() => {
                 liststore.remove_all ();
+                placeholder.visible = true;
             });
 
             tm.load_from_file ();
@@ -212,6 +216,10 @@ namespace Khronos {
             listen_to_changes ();
             liststore.items_changed.connect (() => {
                 tm.save_to_file (liststore);
+
+                if (liststore.get_n_items () == 0) {
+                    placeholder.visible = true;
+                }
             });
         }
 
