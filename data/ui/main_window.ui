@@ -16,22 +16,15 @@
                 <property name="name">main_title</property>
                 <property name="child">
                   <object class="AdwHeaderBar" id="timer_header">
-                    <style>
-                      <class name="flat-header"/>
-                    </style>
                     <child type="title">
                       <object class="AdwViewSwitcher" id="win_switcher">
                         <property name="stack">win_stack</property>
-                        <style>
-                          <class name="circular-viewswitcher"/>
-                        </style>
                       </object>
                     </child>
-                    <child type="start">
+                    <child type="end">
                       <object class="GtkMenuButton" id="menu_button">
                         <property name="icon-name">open-menu-symbolic</property>
                         <style>
-                          <class name="circular-menubutton"/>
                           <class name="image-button"/>
                         </style>
                       </object>
@@ -105,9 +98,6 @@
                     <child>
                       <object class="GtkEntry" id="column_entry">
                         <property name="placeholder-text" translatable="yes">Log name…</property>
-                        <style>
-                          <class name="circular-entry"/>
-                        </style>
                       </object>
                     </child>
                     <child>
