@@ -28,10 +28,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <gee.h>
-#include <glib/gi18n-lib.h>
-#include <math.h>
-#include "config.h"
 #include <gdk/gdk.h>
+#include "config.h"
+#include <math.h>
+#include <glib/gi18n-lib.h>
 #include <float.h>
 
 #define KHRONOS_TYPE_MAIN_WINDOW (khronos_main_window_get_type ())
@@ -107,6 +107,13 @@ struct _KhronosMainWindow {
 	GtkLabel* column_time_label;
 	GtkButton* column_button;
 	GtkButton* column_play_button;
+	GtkMenuButton* menu_button;
+	GtkButton* trash_button;
+	GtkMenuButton* menu_button2;
+	AdwViewSwitcher* win_switcher;
+	AdwViewSwitcher* win_switcher2;
+	GtkStack* title_stack;
+	GtkStack* win_stack;
 	gboolean start;
 	KhronosTaskManager* tm;
 };
@@ -283,9 +290,16 @@ static void __khronos_main_window___lambda14__gtk_button_clicked (GtkButton* _se
 static void _khronos_main_window___lambda16_ (KhronosMainWindow* self);
 static void __khronos_main_window___lambda16__gtk_editable_changed (GtkEditable* _sender,
                                                              gpointer self);
-void khronos_task_manager_load_from_file (KhronosTaskManager* self);
 static void _khronos_main_window___lambda17_ (KhronosMainWindow* self);
-static void __khronos_main_window___lambda17__g_list_model_items_changed (GListModel* _sender,
+static void __khronos_main_window___lambda17__g_object_notify (GObject* _sender,
+                                                        GParamSpec* pspec,
+                                                        gpointer self);
+static void _khronos_main_window___lambda18_ (KhronosMainWindow* self);
+static void __khronos_main_window___lambda18__gtk_button_clicked (GtkButton* _sender,
+                                                           gpointer self);
+void khronos_task_manager_load_from_file (KhronosTaskManager* self);
+static void _khronos_main_window___lambda19_ (KhronosMainWindow* self);
+static void __khronos_main_window___lambda19__g_list_model_items_changed (GListModel* _sender,
                                                                    guint position,
                                                                    guint removed,
                                                                    guint added,
@@ -320,9 +334,9 @@ _khronos_main_window_action_prefs_gsimple_action_activate_callback (GSimpleActio
                                                                     GVariant* parameter,
                                                                     gpointer self)
 {
-#line 54 "../src/MainWindow.vala"
+#line 75 "../src/MainWindow.vala"
 	khronos_main_window_action_prefs ((KhronosMainWindow*) self);
-#line 326 "MainWindow.c"
+#line 340 "MainWindow.c"
 }
 
 static void
@@ -330,9 +344,9 @@ _khronos_main_window_action_export_gsimple_action_activate_callback (GSimpleActi
                                                                      GVariant* parameter,
                                                                      gpointer self)
 {
-#line 54 "../src/MainWindow.vala"
+#line 75 "../src/MainWindow.vala"
 	khronos_main_window_action_export ((KhronosMainWindow*) self);
-#line 336 "MainWindow.c"
+#line 350 "MainWindow.c"
 }
 
 static void
@@ -340,9 +354,9 @@ _khronos_main_window_action_delete_row_gsimple_action_activate_callback (GSimple
                                                                          GVariant* parameter,
                                                                          gpointer self)
 {
-#line 54 "../src/MainWindow.vala"
+#line 75 "../src/MainWindow.vala"
 	khronos_main_window_action_delete_row ((KhronosMainWindow*) self);
-#line 346 "MainWindow.c"
+#line 360 "MainWindow.c"
 }
 
 static void
@@ -350,9 +364,9 @@ _khronos_main_window_action_about_gsimple_action_activate_callback (GSimpleActio
                                                                     GVariant* parameter,
                                                                     gpointer self)
 {
-#line 54 "../src/MainWindow.vala"
+#line 75 "../src/MainWindow.vala"
 	khronos_main_window_action_about ((KhronosMainWindow*) self);
-#line 356 "MainWindow.c"
+#line 370 "MainWindow.c"
 }
 
 static void
@@ -361,19 +375,27 @@ _vala_array_add1 (gchar** * array,
                   gint* size,
                   gchar* value)
 {
-#line 81 "../src/MainWindow.vala"
+#line 102 "../src/MainWindow.vala"
 	if ((*length) == (*size)) {
-#line 81 "../src/MainWindow.vala"
+#line 102 "../src/MainWindow.vala"
 		*size = (*size) ? (2 * (*size)) : 4;
-#line 81 "../src/MainWindow.vala"
+#line 102 "../src/MainWindow.vala"
 		*array = g_renew (gchar*, *array, (*size) + 1);
-#line 371 "MainWindow.c"
+#line 385 "MainWindow.c"
 	}
-#line 81 "../src/MainWindow.vala"
+#line 102 "../src/MainWindow.vala"
 	(*array)[(*length)++] = value;
-#line 81 "../src/MainWindow.vala"
+#line 102 "../src/MainWindow.vala"
 	(*array)[*length] = NULL;
-#line 377 "MainWindow.c"
+#line 391 "MainWindow.c"
+}
+
+static gpointer
+_g_object_ref0 (gpointer self)
+{
+#line 113 "../src/MainWindow.vala"
+	return self ? g_object_ref (self) : NULL;
+#line 399 "MainWindow.c"
 }
 
 KhronosMainWindow*
@@ -386,46 +408,59 @@ khronos_main_window_construct (GType object_type,
 	GSimpleActionGroup* _tmp4_;
 	GSimpleActionGroup* _tmp5_;
 	GSimpleActionGroup* _tmp6_;
-#line 61 "../src/MainWindow.vala"
+	GtkCssProvider* provider = NULL;
+	GtkCssProvider* _tmp27_;
+	GtkCssProvider* _tmp28_;
+	GdkDisplay* _tmp29_;
+	GtkCssProvider* _tmp30_;
+	GtkIconTheme* theme = NULL;
+	GdkDisplay* _tmp31_;
+	GtkIconTheme* _tmp32_;
+	GtkIconTheme* _tmp33_;
+	GtkIconTheme* _tmp34_;
+	GtkStyleContext* style = NULL;
+	GtkStyleContext* _tmp35_;
+	GtkStyleContext* _tmp36_;
+#line 82 "../src/MainWindow.vala"
 	g_return_val_if_fail (application != NULL, NULL);
-#line 62 "../src/MainWindow.vala"
-	self = (KhronosMainWindow*) g_object_new (object_type, "application", application, "app", application, "icon-name", "io.github.lainsce.Khronos", "title", _ ("Khronos"), NULL);
-#line 69 "../src/MainWindow.vala"
+#line 83 "../src/MainWindow.vala"
+	self = (KhronosMainWindow*) g_object_new (object_type, "application", application, "app", application, "icon-name", "io.github.lainsce.Khronos", "title", "Khronos", NULL);
+#line 90 "../src/MainWindow.vala"
 	_tmp0_ = khronos_application_gsettings;
-#line 69 "../src/MainWindow.vala"
+#line 90 "../src/MainWindow.vala"
 	if (g_settings_get_boolean (_tmp0_, "dark-mode")) {
-#line 398 "MainWindow.c"
+#line 433 "MainWindow.c"
 		GtkSettings* _tmp1_;
-#line 70 "../src/MainWindow.vala"
+#line 91 "../src/MainWindow.vala"
 		_tmp1_ = gtk_settings_get_default ();
-#line 70 "../src/MainWindow.vala"
+#line 91 "../src/MainWindow.vala"
 		g_object_set (_tmp1_, "gtk-application-prefer-dark-theme", TRUE, NULL);
-#line 404 "MainWindow.c"
+#line 439 "MainWindow.c"
 	} else {
 		GtkSettings* _tmp2_;
-#line 72 "../src/MainWindow.vala"
+#line 93 "../src/MainWindow.vala"
 		_tmp2_ = gtk_settings_get_default ();
-#line 72 "../src/MainWindow.vala"
+#line 93 "../src/MainWindow.vala"
 		g_object_set (_tmp2_, "gtk-application-prefer-dark-theme", FALSE, NULL);
-#line 411 "MainWindow.c"
+#line 446 "MainWindow.c"
 	}
-#line 75 "../src/MainWindow.vala"
+#line 96 "../src/MainWindow.vala"
 	_tmp3_ = g_simple_action_group_new ();
-#line 75 "../src/MainWindow.vala"
+#line 96 "../src/MainWindow.vala"
 	_tmp4_ = _tmp3_;
-#line 75 "../src/MainWindow.vala"
+#line 96 "../src/MainWindow.vala"
 	khronos_main_window_set_actions (self, _tmp4_);
-#line 75 "../src/MainWindow.vala"
+#line 96 "../src/MainWindow.vala"
 	_g_object_unref0 (_tmp4_);
-#line 76 "../src/MainWindow.vala"
+#line 97 "../src/MainWindow.vala"
 	_tmp5_ = self->priv->_actions;
-#line 76 "../src/MainWindow.vala"
+#line 97 "../src/MainWindow.vala"
 	g_action_map_add_action_entries ((GActionMap*) _tmp5_, KHRONOS_MAIN_WINDOW_ACTION_ENTRIES, (gint) G_N_ELEMENTS (KHRONOS_MAIN_WINDOW_ACTION_ENTRIES), self);
-#line 77 "../src/MainWindow.vala"
+#line 98 "../src/MainWindow.vala"
 	_tmp6_ = self->priv->_actions;
-#line 77 "../src/MainWindow.vala"
+#line 98 "../src/MainWindow.vala"
 	gtk_widget_insert_action_group ((GtkWidget*) self, "win", (GActionGroup*) _tmp6_);
-#line 429 "MainWindow.c"
+#line 464 "MainWindow.c"
 	{
 		GeeIterator* _action_it = NULL;
 		GeeMultiMap* _tmp7_;
@@ -433,23 +468,23 @@ khronos_main_window_construct (GType object_type,
 		GeeSet* _tmp9_;
 		GeeIterator* _tmp10_;
 		GeeIterator* _tmp11_;
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 		_tmp7_ = khronos_main_window_action_accelerators;
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 		_tmp8_ = gee_multi_map_get_keys (_tmp7_);
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 		_tmp9_ = _tmp8_;
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 		_tmp10_ = gee_iterable_iterator ((GeeIterable*) _tmp9_);
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 		_tmp11_ = _tmp10_;
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 		_g_object_unref0 (_tmp9_);
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 		_action_it = _tmp11_;
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 		while (TRUE) {
-#line 453 "MainWindow.c"
+#line 488 "MainWindow.c"
 			GeeIterator* _tmp12_;
 			gchar* action = NULL;
 			GeeIterator* _tmp13_;
@@ -471,81 +506,129 @@ khronos_main_window_construct (GType object_type,
 			gchar* _tmp25_;
 			gchar** _tmp26_;
 			gint _tmp26__length1;
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 			_tmp12_ = _action_it;
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 			if (!gee_iterator_next (_tmp12_)) {
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 				break;
-#line 481 "MainWindow.c"
+#line 516 "MainWindow.c"
 			}
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 			_tmp13_ = _action_it;
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 			_tmp14_ = gee_iterator_get (_tmp13_);
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 			action = (gchar*) _tmp14_;
-#line 80 "../src/MainWindow.vala"
+#line 101 "../src/MainWindow.vala"
 			_tmp15_ = khronos_main_window_action_accelerators;
-#line 80 "../src/MainWindow.vala"
+#line 101 "../src/MainWindow.vala"
 			_tmp16_ = action;
-#line 80 "../src/MainWindow.vala"
+#line 101 "../src/MainWindow.vala"
 			_tmp17_ = gee_multi_map_get (_tmp15_, _tmp16_);
-#line 80 "../src/MainWindow.vala"
+#line 101 "../src/MainWindow.vala"
 			_tmp18_ = _tmp17_;
-#line 80 "../src/MainWindow.vala"
+#line 101 "../src/MainWindow.vala"
 			_tmp20_ = gee_collection_to_array (_tmp18_, &_tmp19_);
-#line 80 "../src/MainWindow.vala"
+#line 101 "../src/MainWindow.vala"
 			_tmp21_ = _tmp20_;
-#line 80 "../src/MainWindow.vala"
+#line 101 "../src/MainWindow.vala"
 			_tmp21__length1 = _tmp19_;
-#line 80 "../src/MainWindow.vala"
+#line 101 "../src/MainWindow.vala"
 			_g_object_unref0 (_tmp18_);
-#line 80 "../src/MainWindow.vala"
+#line 101 "../src/MainWindow.vala"
 			accels_array = _tmp21_;
-#line 80 "../src/MainWindow.vala"
+#line 101 "../src/MainWindow.vala"
 			accels_array_length1 = _tmp21__length1;
-#line 80 "../src/MainWindow.vala"
+#line 101 "../src/MainWindow.vala"
 			_accels_array_size_ = accels_array_length1;
-#line 81 "../src/MainWindow.vala"
+#line 102 "../src/MainWindow.vala"
 			_vala_array_add1 (&accels_array, &accels_array_length1, &_accels_array_size_, NULL);
-#line 83 "../src/MainWindow.vala"
+#line 104 "../src/MainWindow.vala"
 			_tmp22_ = self->priv->_app;
-#line 83 "../src/MainWindow.vala"
+#line 104 "../src/MainWindow.vala"
 			_tmp23_ = action;
-#line 83 "../src/MainWindow.vala"
+#line 104 "../src/MainWindow.vala"
 			_tmp24_ = g_strconcat (KHRONOS_MAIN_WINDOW_ACTION_PREFIX, _tmp23_, NULL);
-#line 83 "../src/MainWindow.vala"
+#line 104 "../src/MainWindow.vala"
 			_tmp25_ = _tmp24_;
-#line 83 "../src/MainWindow.vala"
+#line 104 "../src/MainWindow.vala"
 			_tmp26_ = accels_array;
-#line 83 "../src/MainWindow.vala"
+#line 104 "../src/MainWindow.vala"
 			_tmp26__length1 = accels_array_length1;
-#line 83 "../src/MainWindow.vala"
+#line 104 "../src/MainWindow.vala"
 			gtk_application_set_accels_for_action (_tmp22_, _tmp25_, _tmp26_);
-#line 83 "../src/MainWindow.vala"
+#line 104 "../src/MainWindow.vala"
 			_g_free0 (_tmp25_);
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 			accels_array = (_vala_array_free (accels_array, accels_array_length1, (GDestroyNotify) g_free), NULL);
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 			_g_free0 (action);
-#line 533 "MainWindow.c"
+#line 568 "MainWindow.c"
 		}
-#line 79 "../src/MainWindow.vala"
+#line 100 "../src/MainWindow.vala"
 		_g_object_unref0 (_action_it);
-#line 537 "MainWindow.c"
+#line 572 "MainWindow.c"
 	}
-#line 61 "../src/MainWindow.vala"
+#line 107 "../src/MainWindow.vala"
+	_tmp27_ = gtk_css_provider_new ();
+#line 107 "../src/MainWindow.vala"
+	provider = _tmp27_;
+#line 108 "../src/MainWindow.vala"
+	_tmp28_ = provider;
+#line 108 "../src/MainWindow.vala"
+	gtk_css_provider_load_from_resource (_tmp28_, "/io/github/lainsce/Khronos/stylesheet.css");
+#line 109 "../src/MainWindow.vala"
+	_tmp29_ = gdk_display_get_default ();
+#line 109 "../src/MainWindow.vala"
+	_tmp30_ = provider;
+#line 109 "../src/MainWindow.vala"
+	gtk_style_context_add_provider_for_display (_tmp29_, (GtkStyleProvider*) _tmp30_, (guint) GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+#line 113 "../src/MainWindow.vala"
+	_tmp31_ = gdk_display_get_default ();
+#line 113 "../src/MainWindow.vala"
+	_tmp32_ = gtk_icon_theme_get_for_display (_tmp31_);
+#line 113 "../src/MainWindow.vala"
+	_tmp33_ = _g_object_ref0 (_tmp32_);
+#line 113 "../src/MainWindow.vala"
+	theme = _tmp33_;
+#line 114 "../src/MainWindow.vala"
+	_tmp34_ = theme;
+#line 114 "../src/MainWindow.vala"
+	gtk_icon_theme_add_resource_path (_tmp34_, "/io/github/lainsce/Khronos/");
+#line 116 "../src/MainWindow.vala"
+	_tmp35_ = gtk_widget_get_style_context ((GtkWidget*) self);
+#line 116 "../src/MainWindow.vala"
+	_tmp36_ = _g_object_ref0 (_tmp35_);
+#line 116 "../src/MainWindow.vala"
+	style = _tmp36_;
+#line 117 "../src/MainWindow.vala"
+	if (g_strcmp0 (PROFILE, "Devel") == 0) {
+#line 608 "MainWindow.c"
+		GtkStyleContext* _tmp37_;
+#line 118 "../src/MainWindow.vala"
+		_tmp37_ = style;
+#line 118 "../src/MainWindow.vala"
+		gtk_style_context_add_class (_tmp37_, "devel");
+#line 614 "MainWindow.c"
+	}
+#line 82 "../src/MainWindow.vala"
+	_g_object_unref0 (style);
+#line 82 "../src/MainWindow.vala"
+	_g_object_unref0 (theme);
+#line 82 "../src/MainWindow.vala"
+	_g_object_unref0 (provider);
+#line 82 "../src/MainWindow.vala"
 	return self;
-#line 541 "MainWindow.c"
+#line 624 "MainWindow.c"
 }
 
 KhronosMainWindow*
 khronos_main_window_new (GtkApplication* application)
 {
-#line 61 "../src/MainWindow.vala"
+#line 82 "../src/MainWindow.vala"
 	return khronos_main_window_construct (KHRONOS_TYPE_MAIN_WINDOW, application);
-#line 549 "MainWindow.c"
+#line 632 "MainWindow.c"
 }
 
 static gboolean
@@ -554,21 +637,21 @@ khronos_main_window_real_close_request (GtkWindow* base)
 	KhronosMainWindow * self;
 	GtkListBox* _tmp0_;
 	gboolean result = FALSE;
-#line 273 "../src/MainWindow.vala"
+#line 218 "../src/MainWindow.vala"
 	self = (KhronosMainWindow*) base;
-#line 274 "../src/MainWindow.vala"
-	g_debug ("MainWindow.vala:274: Exiting window... Disposing of stuff...");
-#line 275 "../src/MainWindow.vala"
+#line 219 "../src/MainWindow.vala"
+	g_debug ("MainWindow.vala:219: Exiting window... Disposing of stuff...");
+#line 220 "../src/MainWindow.vala"
 	_tmp0_ = self->column;
-#line 275 "../src/MainWindow.vala"
+#line 220 "../src/MainWindow.vala"
 	gtk_list_box_bind_model (_tmp0_, NULL, NULL, NULL, NULL);
-#line 276 "../src/MainWindow.vala"
+#line 221 "../src/MainWindow.vala"
 	g_object_run_dispose ((GObject*) self);
-#line 277 "../src/MainWindow.vala"
+#line 222 "../src/MainWindow.vala"
 	result = TRUE;
-#line 277 "../src/MainWindow.vala"
+#line 222 "../src/MainWindow.vala"
 	return result;
-#line 572 "MainWindow.c"
+#line 655 "MainWindow.c"
 }
 
 static GtkWidget*
@@ -577,15 +660,15 @@ __lambda5_ (KhronosMainWindow* self,
 {
 	KhronosLogRow* _tmp0_;
 	GtkWidget* result = NULL;
-#line 281 "../src/MainWindow.vala"
+#line 226 "../src/MainWindow.vala"
 	g_return_val_if_fail (item != NULL, NULL);
-#line 281 "../src/MainWindow.vala"
+#line 226 "../src/MainWindow.vala"
 	_tmp0_ = khronos_main_window_make_widgets (self, item);
-#line 281 "../src/MainWindow.vala"
+#line 226 "../src/MainWindow.vala"
 	result = (GtkWidget*) _tmp0_;
-#line 281 "../src/MainWindow.vala"
+#line 226 "../src/MainWindow.vala"
 	return result;
-#line 589 "MainWindow.c"
+#line 672 "MainWindow.c"
 }
 
 static GtkWidget*
@@ -594,9 +677,9 @@ ___lambda5__gtk_list_box_create_widget_func (GObject* item,
 {
 	GtkWidget* result;
 	result = __lambda5_ ((KhronosMainWindow*) self, item);
-#line 281 "../src/MainWindow.vala"
+#line 226 "../src/MainWindow.vala"
 	return result;
-#line 600 "MainWindow.c"
+#line 683 "MainWindow.c"
 }
 
 void
@@ -606,23 +689,23 @@ khronos_main_window_listen_to_changes (KhronosMainWindow* self)
 	GListStore* _tmp1_;
 	GSettings* _tmp2_;
 	GSettings* _tmp3_;
-#line 280 "../src/MainWindow.vala"
+#line 225 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 281 "../src/MainWindow.vala"
+#line 226 "../src/MainWindow.vala"
 	_tmp0_ = self->column;
-#line 281 "../src/MainWindow.vala"
+#line 226 "../src/MainWindow.vala"
 	_tmp1_ = self->priv->liststore;
-#line 281 "../src/MainWindow.vala"
+#line 226 "../src/MainWindow.vala"
 	gtk_list_box_bind_model (_tmp0_, (GListModel*) _tmp1_, ___lambda5__gtk_list_box_create_widget_func, g_object_ref (self), g_object_unref);
-#line 282 "../src/MainWindow.vala"
+#line 227 "../src/MainWindow.vala"
 	_tmp2_ = khronos_application_gsettings;
-#line 282 "../src/MainWindow.vala"
+#line 227 "../src/MainWindow.vala"
 	g_settings_bind (_tmp2_, "window-width", (GObject*) self, "default-width", G_SETTINGS_BIND_DEFAULT);
-#line 283 "../src/MainWindow.vala"
+#line 228 "../src/MainWindow.vala"
 	_tmp3_ = khronos_application_gsettings;
-#line 283 "../src/MainWindow.vala"
+#line 228 "../src/MainWindow.vala"
 	g_settings_bind (_tmp3_, "window-height", (GObject*) self, "default-height", G_SETTINGS_BIND_DEFAULT);
-#line 626 "MainWindow.c"
+#line 709 "MainWindow.c"
 }
 
 KhronosLogRow*
@@ -631,19 +714,19 @@ khronos_main_window_make_widgets (KhronosMainWindow* self,
 {
 	KhronosLogRow* _tmp0_;
 	KhronosLogRow* result = NULL;
-#line 286 "../src/MainWindow.vala"
+#line 231 "../src/MainWindow.vala"
 	g_return_val_if_fail (self != NULL, NULL);
-#line 286 "../src/MainWindow.vala"
+#line 231 "../src/MainWindow.vala"
 	g_return_val_if_fail (item != NULL, NULL);
-#line 287 "../src/MainWindow.vala"
+#line 232 "../src/MainWindow.vala"
 	_tmp0_ = khronos_log_row_new (G_TYPE_CHECK_INSTANCE_CAST (item, KHRONOS_TYPE_LOG, KhronosLog));
-#line 287 "../src/MainWindow.vala"
+#line 232 "../src/MainWindow.vala"
 	g_object_ref_sink (_tmp0_);
-#line 287 "../src/MainWindow.vala"
+#line 232 "../src/MainWindow.vala"
 	result = _tmp0_;
-#line 287 "../src/MainWindow.vala"
+#line 232 "../src/MainWindow.vala"
 	return result;
-#line 647 "MainWindow.c"
+#line 730 "MainWindow.c"
 }
 
 void
@@ -654,33 +737,33 @@ khronos_main_window_reset_timer (KhronosMainWindow* self)
 	gchar* _tmp2_;
 	GtkButton* _tmp3_;
 	GtkEntry* _tmp4_;
-#line 290 "../src/MainWindow.vala"
+#line 235 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 291 "../src/MainWindow.vala"
+#line 236 "../src/MainWindow.vala"
 	self->priv->sec = (guint) 0;
-#line 292 "../src/MainWindow.vala"
+#line 237 "../src/MainWindow.vala"
 	self->priv->min = (guint) 0;
-#line 293 "../src/MainWindow.vala"
+#line 238 "../src/MainWindow.vala"
 	self->priv->hrs = (guint) 0;
-#line 294 "../src/MainWindow.vala"
+#line 239 "../src/MainWindow.vala"
 	_tmp0_ = self->column_time_label;
-#line 294 "../src/MainWindow.vala"
+#line 239 "../src/MainWindow.vala"
 	_tmp1_ = g_strdup_printf ("<span font_features='tnum'>%02u∶%02u∶%02u</span>", self->priv->hrs, self->priv->min, self->priv->sec);
-#line 294 "../src/MainWindow.vala"
+#line 239 "../src/MainWindow.vala"
 	_tmp2_ = _tmp1_;
-#line 294 "../src/MainWindow.vala"
+#line 239 "../src/MainWindow.vala"
 	gtk_label_set_label (_tmp0_, _tmp2_);
-#line 294 "../src/MainWindow.vala"
+#line 239 "../src/MainWindow.vala"
 	_g_free0 (_tmp2_);
-#line 295 "../src/MainWindow.vala"
+#line 240 "../src/MainWindow.vala"
 	_tmp3_ = self->column_button;
-#line 295 "../src/MainWindow.vala"
+#line 240 "../src/MainWindow.vala"
 	gtk_widget_set_sensitive ((GtkWidget*) _tmp3_, FALSE);
-#line 296 "../src/MainWindow.vala"
+#line 241 "../src/MainWindow.vala"
 	_tmp4_ = self->column_entry;
-#line 296 "../src/MainWindow.vala"
+#line 241 "../src/MainWindow.vala"
 	gtk_editable_set_text ((GtkEditable*) _tmp4_, "");
-#line 684 "MainWindow.c"
+#line 767 "MainWindow.c"
 }
 
 void
@@ -691,93 +774,93 @@ khronos_main_window_add_task (KhronosMainWindow* self,
 	KhronosLog* log = NULL;
 	KhronosLog* _tmp0_;
 	GListStore* _tmp1_;
-#line 299 "../src/MainWindow.vala"
+#line 244 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 299 "../src/MainWindow.vala"
+#line 244 "../src/MainWindow.vala"
 	g_return_if_fail (name != NULL);
-#line 299 "../src/MainWindow.vala"
+#line 244 "../src/MainWindow.vala"
 	g_return_if_fail (timedate != NULL);
-#line 300 "../src/MainWindow.vala"
+#line 245 "../src/MainWindow.vala"
 	_tmp0_ = khronos_log_new ();
-#line 300 "../src/MainWindow.vala"
+#line 245 "../src/MainWindow.vala"
 	log = _tmp0_;
-#line 301 "../src/MainWindow.vala"
+#line 246 "../src/MainWindow.vala"
 	khronos_log_set_name (log, name);
-#line 302 "../src/MainWindow.vala"
+#line 247 "../src/MainWindow.vala"
 	khronos_log_set_timedate (log, timedate);
-#line 304 "../src/MainWindow.vala"
+#line 249 "../src/MainWindow.vala"
 	_tmp1_ = self->priv->liststore;
-#line 304 "../src/MainWindow.vala"
+#line 249 "../src/MainWindow.vala"
 	g_list_store_append (_tmp1_, (GObject*) log);
-#line 299 "../src/MainWindow.vala"
+#line 244 "../src/MainWindow.vala"
 	_g_object_unref0 (log);
-#line 715 "MainWindow.c"
+#line 798 "MainWindow.c"
 }
 
 void
 khronos_main_window_timer (KhronosMainWindow* self)
 {
-#line 307 "../src/MainWindow.vala"
+#line 252 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 308 "../src/MainWindow.vala"
+#line 253 "../src/MainWindow.vala"
 	if (self->start) {
-#line 725 "MainWindow.c"
+#line 808 "MainWindow.c"
 		GtkLabel* _tmp0_;
 		gchar* _tmp1_;
 		gchar* _tmp2_;
-#line 309 "../src/MainWindow.vala"
+#line 254 "../src/MainWindow.vala"
 		self->priv->sec = self->priv->sec + 1;
-#line 310 "../src/MainWindow.vala"
+#line 255 "../src/MainWindow.vala"
 		_tmp0_ = self->column_time_label;
-#line 310 "../src/MainWindow.vala"
+#line 255 "../src/MainWindow.vala"
 		_tmp1_ = g_strdup_printf ("<span font_features='tnum'>%02u∶%02u∶%02u</span>", self->priv->hrs, self->priv->min, self->priv->sec);
-#line 310 "../src/MainWindow.vala"
+#line 255 "../src/MainWindow.vala"
 		_tmp2_ = _tmp1_;
-#line 310 "../src/MainWindow.vala"
+#line 255 "../src/MainWindow.vala"
 		gtk_label_set_label (_tmp0_, _tmp2_);
-#line 310 "../src/MainWindow.vala"
+#line 255 "../src/MainWindow.vala"
 		_g_free0 (_tmp2_);
-#line 311 "../src/MainWindow.vala"
+#line 256 "../src/MainWindow.vala"
 		if (self->priv->sec >= ((guint) 60)) {
-#line 743 "MainWindow.c"
+#line 826 "MainWindow.c"
 			GtkLabel* _tmp3_;
 			gchar* _tmp4_;
 			gchar* _tmp5_;
-#line 312 "../src/MainWindow.vala"
+#line 257 "../src/MainWindow.vala"
 			self->priv->sec = (guint) 0;
-#line 313 "../src/MainWindow.vala"
+#line 258 "../src/MainWindow.vala"
 			self->priv->min = self->priv->min + 1;
-#line 314 "../src/MainWindow.vala"
+#line 259 "../src/MainWindow.vala"
 			_tmp3_ = self->column_time_label;
-#line 314 "../src/MainWindow.vala"
+#line 259 "../src/MainWindow.vala"
 			_tmp4_ = g_strdup_printf ("<span font_features='tnum'>%02u∶%02u∶%02u</span>", self->priv->hrs, self->priv->min, self->priv->sec);
-#line 314 "../src/MainWindow.vala"
+#line 259 "../src/MainWindow.vala"
 			_tmp5_ = _tmp4_;
-#line 314 "../src/MainWindow.vala"
+#line 259 "../src/MainWindow.vala"
 			gtk_label_set_label (_tmp3_, _tmp5_);
-#line 314 "../src/MainWindow.vala"
+#line 259 "../src/MainWindow.vala"
 			_g_free0 (_tmp5_);
-#line 315 "../src/MainWindow.vala"
+#line 260 "../src/MainWindow.vala"
 			if (self->priv->min >= ((guint) 60)) {
-#line 763 "MainWindow.c"
+#line 846 "MainWindow.c"
 				GtkLabel* _tmp6_;
 				gchar* _tmp7_;
 				gchar* _tmp8_;
-#line 316 "../src/MainWindow.vala"
+#line 261 "../src/MainWindow.vala"
 				self->priv->min = (guint) 0;
-#line 317 "../src/MainWindow.vala"
+#line 262 "../src/MainWindow.vala"
 				self->priv->hrs = self->priv->hrs + 1;
-#line 318 "../src/MainWindow.vala"
+#line 263 "../src/MainWindow.vala"
 				_tmp6_ = self->column_time_label;
-#line 318 "../src/MainWindow.vala"
+#line 263 "../src/MainWindow.vala"
 				_tmp7_ = g_strdup_printf ("<span font_features='tnum'>%02u∶%02u∶%02u</span>", self->priv->hrs, self->priv->min, self->priv->sec);
-#line 318 "../src/MainWindow.vala"
+#line 263 "../src/MainWindow.vala"
 				_tmp8_ = _tmp7_;
-#line 318 "../src/MainWindow.vala"
+#line 263 "../src/MainWindow.vala"
 				gtk_label_set_label (_tmp6_, _tmp8_);
-#line 318 "../src/MainWindow.vala"
+#line 263 "../src/MainWindow.vala"
 				_g_free0 (_tmp8_);
-#line 781 "MainWindow.c"
+#line 864 "MainWindow.c"
 			}
 		}
 	}
@@ -787,21 +870,21 @@ static gboolean
 ___lambda6_ (KhronosMainWindow* self)
 {
 	gboolean result = FALSE;
-#line 327 "../src/MainWindow.vala"
+#line 272 "../src/MainWindow.vala"
 	khronos_main_window_notification1 (self);
-#line 328 "../src/MainWindow.vala"
+#line 273 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id2);
-#line 329 "../src/MainWindow.vala"
+#line 274 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id3);
-#line 330 "../src/MainWindow.vala"
+#line 275 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id4);
-#line 331 "../src/MainWindow.vala"
+#line 276 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id5);
-#line 332 "../src/MainWindow.vala"
+#line 277 "../src/MainWindow.vala"
 	result = TRUE;
-#line 332 "../src/MainWindow.vala"
+#line 277 "../src/MainWindow.vala"
 	return result;
-#line 805 "MainWindow.c"
+#line 888 "MainWindow.c"
 }
 
 static gboolean
@@ -809,30 +892,30 @@ ____lambda6__gsource_func (gpointer self)
 {
 	gboolean result;
 	result = ___lambda6_ ((KhronosMainWindow*) self);
-#line 326 "../src/MainWindow.vala"
+#line 271 "../src/MainWindow.vala"
 	return result;
-#line 815 "MainWindow.c"
+#line 898 "MainWindow.c"
 }
 
 static gboolean
 ___lambda7_ (KhronosMainWindow* self)
 {
 	gboolean result = FALSE;
-#line 335 "../src/MainWindow.vala"
+#line 280 "../src/MainWindow.vala"
 	khronos_main_window_notification2 (self);
-#line 336 "../src/MainWindow.vala"
+#line 281 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id1);
-#line 337 "../src/MainWindow.vala"
+#line 282 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id3);
-#line 338 "../src/MainWindow.vala"
+#line 283 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id4);
-#line 339 "../src/MainWindow.vala"
+#line 284 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id5);
-#line 340 "../src/MainWindow.vala"
+#line 285 "../src/MainWindow.vala"
 	result = TRUE;
-#line 340 "../src/MainWindow.vala"
+#line 285 "../src/MainWindow.vala"
 	return result;
-#line 836 "MainWindow.c"
+#line 919 "MainWindow.c"
 }
 
 static gboolean
@@ -840,30 +923,30 @@ ____lambda7__gsource_func (gpointer self)
 {
 	gboolean result;
 	result = ___lambda7_ ((KhronosMainWindow*) self);
-#line 334 "../src/MainWindow.vala"
+#line 279 "../src/MainWindow.vala"
 	return result;
-#line 846 "MainWindow.c"
+#line 929 "MainWindow.c"
 }
 
 static gboolean
 ___lambda8_ (KhronosMainWindow* self)
 {
 	gboolean result = FALSE;
-#line 343 "../src/MainWindow.vala"
+#line 288 "../src/MainWindow.vala"
 	khronos_main_window_notification3 (self);
-#line 344 "../src/MainWindow.vala"
+#line 289 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id2);
-#line 345 "../src/MainWindow.vala"
+#line 290 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id1);
-#line 346 "../src/MainWindow.vala"
+#line 291 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id4);
-#line 347 "../src/MainWindow.vala"
+#line 292 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id5);
-#line 348 "../src/MainWindow.vala"
+#line 293 "../src/MainWindow.vala"
 	result = TRUE;
-#line 348 "../src/MainWindow.vala"
+#line 293 "../src/MainWindow.vala"
 	return result;
-#line 867 "MainWindow.c"
+#line 950 "MainWindow.c"
 }
 
 static gboolean
@@ -871,30 +954,30 @@ ____lambda8__gsource_func (gpointer self)
 {
 	gboolean result;
 	result = ___lambda8_ ((KhronosMainWindow*) self);
-#line 342 "../src/MainWindow.vala"
+#line 287 "../src/MainWindow.vala"
 	return result;
-#line 877 "MainWindow.c"
+#line 960 "MainWindow.c"
 }
 
 static gboolean
 ___lambda9_ (KhronosMainWindow* self)
 {
 	gboolean result = FALSE;
-#line 351 "../src/MainWindow.vala"
+#line 296 "../src/MainWindow.vala"
 	khronos_main_window_notification4 (self);
-#line 352 "../src/MainWindow.vala"
+#line 297 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id2);
-#line 353 "../src/MainWindow.vala"
+#line 298 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id1);
-#line 354 "../src/MainWindow.vala"
+#line 299 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id3);
-#line 355 "../src/MainWindow.vala"
+#line 300 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id5);
-#line 356 "../src/MainWindow.vala"
+#line 301 "../src/MainWindow.vala"
 	result = TRUE;
-#line 356 "../src/MainWindow.vala"
+#line 301 "../src/MainWindow.vala"
 	return result;
-#line 898 "MainWindow.c"
+#line 981 "MainWindow.c"
 }
 
 static gboolean
@@ -902,30 +985,30 @@ ____lambda9__gsource_func (gpointer self)
 {
 	gboolean result;
 	result = ___lambda9_ ((KhronosMainWindow*) self);
-#line 350 "../src/MainWindow.vala"
+#line 295 "../src/MainWindow.vala"
 	return result;
-#line 908 "MainWindow.c"
+#line 991 "MainWindow.c"
 }
 
 static gboolean
 ___lambda10_ (KhronosMainWindow* self)
 {
 	gboolean result = FALSE;
-#line 359 "../src/MainWindow.vala"
+#line 304 "../src/MainWindow.vala"
 	khronos_main_window_notification5 (self);
-#line 360 "../src/MainWindow.vala"
+#line 305 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id1);
-#line 361 "../src/MainWindow.vala"
+#line 306 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id2);
-#line 362 "../src/MainWindow.vala"
+#line 307 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id3);
-#line 363 "../src/MainWindow.vala"
+#line 308 "../src/MainWindow.vala"
 	g_source_remove (self->priv->id4);
-#line 364 "../src/MainWindow.vala"
+#line 309 "../src/MainWindow.vala"
 	result = TRUE;
-#line 364 "../src/MainWindow.vala"
+#line 309 "../src/MainWindow.vala"
 	return result;
-#line 929 "MainWindow.c"
+#line 1012 "MainWindow.c"
 }
 
 static gboolean
@@ -933,45 +1016,45 @@ ____lambda10__gsource_func (gpointer self)
 {
 	gboolean result;
 	result = ___lambda10_ ((KhronosMainWindow*) self);
-#line 358 "../src/MainWindow.vala"
+#line 303 "../src/MainWindow.vala"
 	return result;
-#line 939 "MainWindow.c"
+#line 1022 "MainWindow.c"
 }
 
 void
 khronos_main_window_set_timeouts (KhronosMainWindow* self)
 {
-#line 324 "../src/MainWindow.vala"
+#line 269 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 325 "../src/MainWindow.vala"
+#line 270 "../src/MainWindow.vala"
 	if (self->start) {
-#line 949 "MainWindow.c"
+#line 1032 "MainWindow.c"
 		GSettings* _tmp0_;
 		GSettings* _tmp1_;
 		GSettings* _tmp2_;
 		GSettings* _tmp3_;
 		GSettings* _tmp4_;
-#line 326 "../src/MainWindow.vala"
+#line 271 "../src/MainWindow.vala"
 		_tmp0_ = khronos_application_gsettings;
-#line 326 "../src/MainWindow.vala"
+#line 271 "../src/MainWindow.vala"
 		self->priv->id1 = g_timeout_add_seconds_full (G_PRIORITY_DEFAULT, (guint) g_settings_get_int (_tmp0_, "notification-delay"), ____lambda6__gsource_func, g_object_ref (self), g_object_unref);
-#line 334 "../src/MainWindow.vala"
+#line 279 "../src/MainWindow.vala"
 		_tmp1_ = khronos_application_gsettings;
-#line 334 "../src/MainWindow.vala"
+#line 279 "../src/MainWindow.vala"
 		self->priv->id2 = g_timeout_add_seconds_full (G_PRIORITY_DEFAULT, (guint) ((gint) floor (g_settings_get_int (_tmp1_, "notification-delay") * 1.5)), ____lambda7__gsource_func, g_object_ref (self), g_object_unref);
-#line 342 "../src/MainWindow.vala"
+#line 287 "../src/MainWindow.vala"
 		_tmp2_ = khronos_application_gsettings;
-#line 342 "../src/MainWindow.vala"
+#line 287 "../src/MainWindow.vala"
 		self->priv->id3 = g_timeout_add_seconds_full (G_PRIORITY_DEFAULT, (guint) (g_settings_get_int (_tmp2_, "notification-delay") * 2), ____lambda8__gsource_func, g_object_ref (self), g_object_unref);
-#line 350 "../src/MainWindow.vala"
+#line 295 "../src/MainWindow.vala"
 		_tmp3_ = khronos_application_gsettings;
-#line 350 "../src/MainWindow.vala"
+#line 295 "../src/MainWindow.vala"
 		self->priv->id4 = g_timeout_add_seconds_full (G_PRIORITY_DEFAULT, (guint) ((gint) floor (g_settings_get_int (_tmp3_, "notification-delay") * 2.5)), ____lambda9__gsource_func, g_object_ref (self), g_object_unref);
-#line 358 "../src/MainWindow.vala"
+#line 303 "../src/MainWindow.vala"
 		_tmp4_ = khronos_application_gsettings;
-#line 358 "../src/MainWindow.vala"
+#line 303 "../src/MainWindow.vala"
 		self->priv->id5 = g_timeout_add_seconds_full (G_PRIORITY_DEFAULT, (guint) (g_settings_get_int (_tmp4_, "notification-delay") * 3), ____lambda10__gsource_func, g_object_ref (self), g_object_unref);
-#line 975 "MainWindow.c"
+#line 1058 "MainWindow.c"
 	}
 }
 
@@ -988,41 +1071,41 @@ khronos_main_window_notification1 (KhronosMainWindow* self)
 	GThemedIcon* _tmp5_;
 	GtkApplication* _tmp6_;
 	GtkApplication* _tmp7_;
-#line 369 "../src/MainWindow.vala"
+#line 314 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 370 "../src/MainWindow.vala"
+#line 315 "../src/MainWindow.vala"
 	_tmp0_ = khronos_application_gsettings;
-#line 370 "../src/MainWindow.vala"
+#line 315 "../src/MainWindow.vala"
 	_tmp1_ = g_strdup_printf ("%i minutes have passed", g_settings_get_int (_tmp0_, "notification-delay"));
-#line 370 "../src/MainWindow.vala"
+#line 315 "../src/MainWindow.vala"
 	_tmp2_ = _tmp1_;
-#line 370 "../src/MainWindow.vala"
+#line 315 "../src/MainWindow.vala"
 	_tmp3_ = g_notification_new (_tmp2_);
-#line 370 "../src/MainWindow.vala"
+#line 315 "../src/MainWindow.vala"
 	_tmp4_ = _tmp3_;
-#line 370 "../src/MainWindow.vala"
+#line 315 "../src/MainWindow.vala"
 	_g_free0 (_tmp2_);
-#line 370 "../src/MainWindow.vala"
+#line 315 "../src/MainWindow.vala"
 	notification1 = _tmp4_;
-#line 371 "../src/MainWindow.vala"
+#line 316 "../src/MainWindow.vala"
 	g_notification_set_body (notification1, _ ("Go rest for a while before continuing."));
-#line 372 "../src/MainWindow.vala"
+#line 317 "../src/MainWindow.vala"
 	_tmp5_ = (GThemedIcon*) g_themed_icon_new ("appointment-symbolic");
-#line 372 "../src/MainWindow.vala"
+#line 317 "../src/MainWindow.vala"
 	icon = _tmp5_;
-#line 373 "../src/MainWindow.vala"
+#line 318 "../src/MainWindow.vala"
 	g_notification_set_icon (notification1, (GIcon*) icon);
-#line 375 "../src/MainWindow.vala"
+#line 320 "../src/MainWindow.vala"
 	_tmp6_ = gtk_window_get_application ((GtkWindow*) self);
-#line 375 "../src/MainWindow.vala"
+#line 320 "../src/MainWindow.vala"
 	_tmp7_ = _tmp6_;
-#line 375 "../src/MainWindow.vala"
+#line 320 "../src/MainWindow.vala"
 	g_application_send_notification ((GApplication*) _tmp7_, "io.github.lainsce.Khronos", notification1);
-#line 369 "../src/MainWindow.vala"
+#line 314 "../src/MainWindow.vala"
 	_g_object_unref0 (icon);
-#line 369 "../src/MainWindow.vala"
+#line 314 "../src/MainWindow.vala"
 	_g_object_unref0 (notification1);
-#line 1026 "MainWindow.c"
+#line 1109 "MainWindow.c"
 }
 
 void
@@ -1038,41 +1121,41 @@ khronos_main_window_notification2 (KhronosMainWindow* self)
 	GThemedIcon* _tmp5_;
 	GtkApplication* _tmp6_;
 	GtkApplication* _tmp7_;
-#line 378 "../src/MainWindow.vala"
+#line 323 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 379 "../src/MainWindow.vala"
+#line 324 "../src/MainWindow.vala"
 	_tmp0_ = khronos_application_gsettings;
-#line 379 "../src/MainWindow.vala"
+#line 324 "../src/MainWindow.vala"
 	_tmp1_ = g_strdup_printf ("%i minutes have passed", (gint) floor (g_settings_get_int (_tmp0_, "notification-delay") * 1.5));
-#line 379 "../src/MainWindow.vala"
+#line 324 "../src/MainWindow.vala"
 	_tmp2_ = _tmp1_;
-#line 379 "../src/MainWindow.vala"
+#line 324 "../src/MainWindow.vala"
 	_tmp3_ = g_notification_new (_tmp2_);
-#line 379 "../src/MainWindow.vala"
+#line 324 "../src/MainWindow.vala"
 	_tmp4_ = _tmp3_;
-#line 379 "../src/MainWindow.vala"
+#line 324 "../src/MainWindow.vala"
 	_g_free0 (_tmp2_);
-#line 379 "../src/MainWindow.vala"
+#line 324 "../src/MainWindow.vala"
 	notification2 = _tmp4_;
-#line 380 "../src/MainWindow.vala"
+#line 325 "../src/MainWindow.vala"
 	g_notification_set_body (notification2, _ ("Go rest for a while before continuing."));
-#line 381 "../src/MainWindow.vala"
+#line 326 "../src/MainWindow.vala"
 	_tmp5_ = (GThemedIcon*) g_themed_icon_new ("appointment-symbolic");
-#line 381 "../src/MainWindow.vala"
+#line 326 "../src/MainWindow.vala"
 	icon = _tmp5_;
-#line 382 "../src/MainWindow.vala"
+#line 327 "../src/MainWindow.vala"
 	g_notification_set_icon (notification2, (GIcon*) icon);
-#line 384 "../src/MainWindow.vala"
+#line 329 "../src/MainWindow.vala"
 	_tmp6_ = gtk_window_get_application ((GtkWindow*) self);
-#line 384 "../src/MainWindow.vala"
+#line 329 "../src/MainWindow.vala"
 	_tmp7_ = _tmp6_;
-#line 384 "../src/MainWindow.vala"
+#line 329 "../src/MainWindow.vala"
 	g_application_send_notification ((GApplication*) _tmp7_, "io.github.lainsce.Khronos", notification2);
-#line 378 "../src/MainWindow.vala"
+#line 323 "../src/MainWindow.vala"
 	_g_object_unref0 (icon);
-#line 378 "../src/MainWindow.vala"
+#line 323 "../src/MainWindow.vala"
 	_g_object_unref0 (notification2);
-#line 1076 "MainWindow.c"
+#line 1159 "MainWindow.c"
 }
 
 void
@@ -1088,41 +1171,41 @@ khronos_main_window_notification3 (KhronosMainWindow* self)
 	GThemedIcon* _tmp5_;
 	GtkApplication* _tmp6_;
 	GtkApplication* _tmp7_;
-#line 387 "../src/MainWindow.vala"
+#line 332 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 388 "../src/MainWindow.vala"
+#line 333 "../src/MainWindow.vala"
 	_tmp0_ = khronos_application_gsettings;
-#line 388 "../src/MainWindow.vala"
+#line 333 "../src/MainWindow.vala"
 	_tmp1_ = g_strdup_printf ("%i minutes have passed", g_settings_get_int (_tmp0_, "notification-delay") * 2);
-#line 388 "../src/MainWindow.vala"
+#line 333 "../src/MainWindow.vala"
 	_tmp2_ = _tmp1_;
-#line 388 "../src/MainWindow.vala"
+#line 333 "../src/MainWindow.vala"
 	_tmp3_ = g_notification_new (_tmp2_);
-#line 388 "../src/MainWindow.vala"
+#line 333 "../src/MainWindow.vala"
 	_tmp4_ = _tmp3_;
-#line 388 "../src/MainWindow.vala"
+#line 333 "../src/MainWindow.vala"
 	_g_free0 (_tmp2_);
-#line 388 "../src/MainWindow.vala"
+#line 333 "../src/MainWindow.vala"
 	notification3 = _tmp4_;
-#line 389 "../src/MainWindow.vala"
+#line 334 "../src/MainWindow.vala"
 	g_notification_set_body (notification3, _ ("Go rest for a while before continuing."));
-#line 390 "../src/MainWindow.vala"
+#line 335 "../src/MainWindow.vala"
 	_tmp5_ = (GThemedIcon*) g_themed_icon_new ("appointment-symbolic");
-#line 390 "../src/MainWindow.vala"
+#line 335 "../src/MainWindow.vala"
 	icon = _tmp5_;
-#line 391 "../src/MainWindow.vala"
+#line 336 "../src/MainWindow.vala"
 	g_notification_set_icon (notification3, (GIcon*) icon);
-#line 393 "../src/MainWindow.vala"
+#line 338 "../src/MainWindow.vala"
 	_tmp6_ = gtk_window_get_application ((GtkWindow*) self);
-#line 393 "../src/MainWindow.vala"
+#line 338 "../src/MainWindow.vala"
 	_tmp7_ = _tmp6_;
-#line 393 "../src/MainWindow.vala"
+#line 338 "../src/MainWindow.vala"
 	g_application_send_notification ((GApplication*) _tmp7_, "io.github.lainsce.Khronos", notification3);
-#line 387 "../src/MainWindow.vala"
+#line 332 "../src/MainWindow.vala"
 	_g_object_unref0 (icon);
-#line 387 "../src/MainWindow.vala"
+#line 332 "../src/MainWindow.vala"
 	_g_object_unref0 (notification3);
-#line 1126 "MainWindow.c"
+#line 1209 "MainWindow.c"
 }
 
 void
@@ -1138,41 +1221,41 @@ khronos_main_window_notification4 (KhronosMainWindow* self)
 	GThemedIcon* _tmp5_;
 	GtkApplication* _tmp6_;
 	GtkApplication* _tmp7_;
-#line 396 "../src/MainWindow.vala"
+#line 341 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 397 "../src/MainWindow.vala"
+#line 342 "../src/MainWindow.vala"
 	_tmp0_ = khronos_application_gsettings;
-#line 397 "../src/MainWindow.vala"
+#line 342 "../src/MainWindow.vala"
 	_tmp1_ = g_strdup_printf ("%i minutes have passed", (gint) floor (g_settings_get_int (_tmp0_, "notification-delay") * 2.5));
-#line 397 "../src/MainWindow.vala"
+#line 342 "../src/MainWindow.vala"
 	_tmp2_ = _tmp1_;
-#line 397 "../src/MainWindow.vala"
+#line 342 "../src/MainWindow.vala"
 	_tmp3_ = g_notification_new (_tmp2_);
-#line 397 "../src/MainWindow.vala"
+#line 342 "../src/MainWindow.vala"
 	_tmp4_ = _tmp3_;
-#line 397 "../src/MainWindow.vala"
+#line 342 "../src/MainWindow.vala"
 	_g_free0 (_tmp2_);
-#line 397 "../src/MainWindow.vala"
+#line 342 "../src/MainWindow.vala"
 	notification4 = _tmp4_;
-#line 398 "../src/MainWindow.vala"
+#line 343 "../src/MainWindow.vala"
 	g_notification_set_body (notification4, _ ("Go rest for a while before continuing."));
-#line 399 "../src/MainWindow.vala"
+#line 344 "../src/MainWindow.vala"
 	_tmp5_ = (GThemedIcon*) g_themed_icon_new ("appointment-symbolic");
-#line 399 "../src/MainWindow.vala"
+#line 344 "../src/MainWindow.vala"
 	icon = _tmp5_;
-#line 400 "../src/MainWindow.vala"
+#line 345 "../src/MainWindow.vala"
 	g_notification_set_icon (notification4, (GIcon*) icon);
-#line 402 "../src/MainWindow.vala"
+#line 347 "../src/MainWindow.vala"
 	_tmp6_ = gtk_window_get_application ((GtkWindow*) self);
-#line 402 "../src/MainWindow.vala"
+#line 347 "../src/MainWindow.vala"
 	_tmp7_ = _tmp6_;
-#line 402 "../src/MainWindow.vala"
+#line 347 "../src/MainWindow.vala"
 	g_application_send_notification ((GApplication*) _tmp7_, "io.github.lainsce.Khronos", notification4);
-#line 396 "../src/MainWindow.vala"
+#line 341 "../src/MainWindow.vala"
 	_g_object_unref0 (icon);
-#line 396 "../src/MainWindow.vala"
+#line 341 "../src/MainWindow.vala"
 	_g_object_unref0 (notification4);
-#line 1176 "MainWindow.c"
+#line 1259 "MainWindow.c"
 }
 
 void
@@ -1188,41 +1271,41 @@ khronos_main_window_notification5 (KhronosMainWindow* self)
 	GThemedIcon* _tmp5_;
 	GtkApplication* _tmp6_;
 	GtkApplication* _tmp7_;
-#line 405 "../src/MainWindow.vala"
+#line 350 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 406 "../src/MainWindow.vala"
+#line 351 "../src/MainWindow.vala"
 	_tmp0_ = khronos_application_gsettings;
-#line 406 "../src/MainWindow.vala"
+#line 351 "../src/MainWindow.vala"
 	_tmp1_ = g_strdup_printf ("%i minutes have passed", g_settings_get_int (_tmp0_, "notification-delay") * 3);
-#line 406 "../src/MainWindow.vala"
+#line 351 "../src/MainWindow.vala"
 	_tmp2_ = _tmp1_;
-#line 406 "../src/MainWindow.vala"
+#line 351 "../src/MainWindow.vala"
 	_tmp3_ = g_notification_new (_tmp2_);
-#line 406 "../src/MainWindow.vala"
+#line 351 "../src/MainWindow.vala"
 	_tmp4_ = _tmp3_;
-#line 406 "../src/MainWindow.vala"
+#line 351 "../src/MainWindow.vala"
 	_g_free0 (_tmp2_);
-#line 406 "../src/MainWindow.vala"
+#line 351 "../src/MainWindow.vala"
 	notification5 = _tmp4_;
-#line 407 "../src/MainWindow.vala"
+#line 352 "../src/MainWindow.vala"
 	g_notification_set_body (notification5, _ ("Go rest for a while before continuing."));
-#line 408 "../src/MainWindow.vala"
+#line 353 "../src/MainWindow.vala"
 	_tmp5_ = (GThemedIcon*) g_themed_icon_new ("appointment-symbolic");
-#line 408 "../src/MainWindow.vala"
+#line 353 "../src/MainWindow.vala"
 	icon = _tmp5_;
-#line 409 "../src/MainWindow.vala"
+#line 354 "../src/MainWindow.vala"
 	g_notification_set_icon (notification5, (GIcon*) icon);
-#line 411 "../src/MainWindow.vala"
+#line 356 "../src/MainWindow.vala"
 	_tmp6_ = gtk_window_get_application ((GtkWindow*) self);
-#line 411 "../src/MainWindow.vala"
+#line 356 "../src/MainWindow.vala"
 	_tmp7_ = _tmp6_;
-#line 411 "../src/MainWindow.vala"
+#line 356 "../src/MainWindow.vala"
 	g_application_send_notification ((GApplication*) _tmp7_, "io.github.lainsce.Khronos", notification5);
-#line 405 "../src/MainWindow.vala"
+#line 350 "../src/MainWindow.vala"
 	_g_object_unref0 (icon);
-#line 405 "../src/MainWindow.vala"
+#line 350 "../src/MainWindow.vala"
 	_g_object_unref0 (notification5);
-#line 1226 "MainWindow.c"
+#line 1309 "MainWindow.c"
 }
 
 void
@@ -1231,46 +1314,46 @@ khronos_main_window_action_delete_row (KhronosMainWindow* self)
 	guint i = 0U;
 	guint n = 0U;
 	GListStore* _tmp0_;
-#line 414 "../src/MainWindow.vala"
+#line 359 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 415 "../src/MainWindow.vala"
+#line 360 "../src/MainWindow.vala"
 	_tmp0_ = self->priv->liststore;
-#line 415 "../src/MainWindow.vala"
+#line 360 "../src/MainWindow.vala"
 	n = g_list_model_get_n_items ((GListModel*) _tmp0_);
-#line 1241 "MainWindow.c"
+#line 1324 "MainWindow.c"
 	{
 		gboolean _tmp1_ = FALSE;
-#line 416 "../src/MainWindow.vala"
+#line 361 "../src/MainWindow.vala"
 		i = (guint) 0;
-#line 416 "../src/MainWindow.vala"
+#line 361 "../src/MainWindow.vala"
 		_tmp1_ = TRUE;
-#line 416 "../src/MainWindow.vala"
+#line 361 "../src/MainWindow.vala"
 		while (TRUE) {
-#line 1250 "MainWindow.c"
+#line 1333 "MainWindow.c"
 			GListStore* _tmp3_;
-#line 416 "../src/MainWindow.vala"
+#line 361 "../src/MainWindow.vala"
 			if (!_tmp1_) {
-#line 1254 "MainWindow.c"
+#line 1337 "MainWindow.c"
 				guint _tmp2_;
-#line 416 "../src/MainWindow.vala"
+#line 361 "../src/MainWindow.vala"
 				_tmp2_ = i;
-#line 416 "../src/MainWindow.vala"
+#line 361 "../src/MainWindow.vala"
 				i = _tmp2_ + 1;
-#line 1260 "MainWindow.c"
+#line 1343 "MainWindow.c"
 			}
-#line 416 "../src/MainWindow.vala"
+#line 361 "../src/MainWindow.vala"
 			_tmp1_ = FALSE;
-#line 416 "../src/MainWindow.vala"
+#line 361 "../src/MainWindow.vala"
 			if (!(i < n)) {
-#line 416 "../src/MainWindow.vala"
+#line 361 "../src/MainWindow.vala"
 				break;
-#line 1268 "MainWindow.c"
+#line 1351 "MainWindow.c"
 			}
-#line 417 "../src/MainWindow.vala"
+#line 362 "../src/MainWindow.vala"
 			_tmp3_ = self->priv->liststore;
-#line 417 "../src/MainWindow.vala"
+#line 362 "../src/MainWindow.vala"
 			g_list_store_remove (_tmp3_, i);
-#line 1274 "MainWindow.c"
+#line 1357 "MainWindow.c"
 		}
 	}
 }
@@ -1279,13 +1362,13 @@ void
 khronos_main_window_action_export (KhronosMainWindow* self)
 {
 	GListStore* _tmp0_;
-#line 421 "../src/MainWindow.vala"
+#line 366 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 422 "../src/MainWindow.vala"
+#line 367 "../src/MainWindow.vala"
 	_tmp0_ = self->priv->liststore;
-#line 422 "../src/MainWindow.vala"
+#line 367 "../src/MainWindow.vala"
 	khronos_file_manager_save_as (_tmp0_, NULL, NULL);
-#line 1289 "MainWindow.c"
+#line 1372 "MainWindow.c"
 }
 
 void
@@ -1296,82 +1379,82 @@ khronos_main_window_action_prefs (KhronosMainWindow* self)
 	GSettings* _tmp1_;
 	GSettings* _tmp2_;
 	GtkSwitch* _tmp3_;
-#line 425 "../src/MainWindow.vala"
+#line 370 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 426 "../src/MainWindow.vala"
+#line 371 "../src/MainWindow.vala"
 	_tmp0_ = khronos_prefs_new ();
-#line 426 "../src/MainWindow.vala"
+#line 371 "../src/MainWindow.vala"
 	g_object_ref_sink (_tmp0_);
-#line 426 "../src/MainWindow.vala"
+#line 371 "../src/MainWindow.vala"
 	prefs = _tmp0_;
-#line 427 "../src/MainWindow.vala"
+#line 372 "../src/MainWindow.vala"
 	gtk_widget_show ((GtkWidget*) prefs);
-#line 428 "../src/MainWindow.vala"
+#line 373 "../src/MainWindow.vala"
 	gtk_window_set_transient_for ((GtkWindow*) prefs, (GtkWindow*) self);
-#line 429 "../src/MainWindow.vala"
+#line 374 "../src/MainWindow.vala"
 	_tmp1_ = khronos_application_gsettings;
-#line 429 "../src/MainWindow.vala"
+#line 374 "../src/MainWindow.vala"
 	khronos_prefs_set_delay (prefs, g_settings_get_int (_tmp1_, "notification-delay") / 60);
-#line 431 "../src/MainWindow.vala"
+#line 376 "../src/MainWindow.vala"
 	_tmp2_ = khronos_application_gsettings;
-#line 431 "../src/MainWindow.vala"
+#line 376 "../src/MainWindow.vala"
 	_tmp3_ = prefs->darkmode;
-#line 431 "../src/MainWindow.vala"
+#line 376 "../src/MainWindow.vala"
 	g_settings_bind (_tmp2_, "dark-mode", (GObject*) _tmp3_, "active", G_SETTINGS_BIND_DEFAULT);
-#line 425 "../src/MainWindow.vala"
+#line 370 "../src/MainWindow.vala"
 	_g_object_unref0 (prefs);
-#line 1324 "MainWindow.c"
+#line 1407 "MainWindow.c"
 }
 
 void
 khronos_main_window_action_about (KhronosMainWindow* self)
 {
-#line 435 "../src/MainWindow.vala"
+#line 380 "../src/MainWindow.vala"
 	static const char COPYRIGHT[] = "Copyright \xc2\xa9 2019-2021 Paulo \"Lains\" Galardi\n";
-#line 437 "../src/MainWindow.vala"
+#line 382 "../src/MainWindow.vala"
 	static const gchar* AUTHORS[1] = {"Paulo \"Lains\" Galardi"};
-#line 1334 "MainWindow.c"
+#line 1417 "MainWindow.c"
 	gchar* program_name = NULL;
 	gchar* _tmp0_;
-#line 434 "../src/MainWindow.vala"
+#line 379 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 441 "../src/MainWindow.vala"
+#line 386 "../src/MainWindow.vala"
 	_tmp0_ = g_strconcat (NAME_PREFIX, _ ("Khronos"), NULL);
-#line 441 "../src/MainWindow.vala"
+#line 386 "../src/MainWindow.vala"
 	program_name = _tmp0_;
-#line 442 "../src/MainWindow.vala"
-	gtk_show_about_dialog ((GtkWindow*) self, "program-name", program_name, "logo-icon-name", APP_ID, "version", VERSION, "comments", _ ("Track each task\'s time in a simple inobtrusive way."), "copyright", COPYRIGHT, "authors", AUTHORS, "license-type", GTK_LICENSE_GPL_3_0, "wrap-license", FALSE, "translator-credits", _ ("translator-credits"), NULL, NULL);
-#line 434 "../src/MainWindow.vala"
+#line 387 "../src/MainWindow.vala"
+	gtk_show_about_dialog ((GtkWindow*) self, "program-name", program_name, "logo-icon-name", APP_ID, "version", VERSION, "comments", _ ("Track each task\'s time in a simple inobtrusive way."), "copyright", COPYRIGHT, "authors", AUTHORS, "artists", NULL, "license-type", GTK_LICENSE_GPL_3_0, "wrap-license", FALSE, "translator-credits", _ ("translator-credits"), NULL, NULL);
+#line 379 "../src/MainWindow.vala"
 	_g_free0 (program_name);
-#line 1347 "MainWindow.c"
+#line 1430 "MainWindow.c"
 }
 
 gboolean
 khronos_main_window_get_is_modified (KhronosMainWindow* self)
 {
 	gboolean result;
-#line 30 "../src/MainWindow.vala"
+#line 51 "../src/MainWindow.vala"
 	g_return_val_if_fail (self != NULL, FALSE);
-#line 30 "../src/MainWindow.vala"
+#line 51 "../src/MainWindow.vala"
 	result = self->priv->_is_modified;
-#line 30 "../src/MainWindow.vala"
+#line 51 "../src/MainWindow.vala"
 	return result;
-#line 1360 "MainWindow.c"
+#line 1443 "MainWindow.c"
 }
 
 void
 khronos_main_window_set_is_modified (KhronosMainWindow* self,
                                      gboolean value)
 {
-#line 30 "../src/MainWindow.vala"
+#line 51 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 30 "../src/MainWindow.vala"
+#line 51 "../src/MainWindow.vala"
 	if (khronos_main_window_get_is_modified (self) != value) {
-#line 30 "../src/MainWindow.vala"
+#line 51 "../src/MainWindow.vala"
 		self->priv->_is_modified = value;
-#line 30 "../src/MainWindow.vala"
+#line 51 "../src/MainWindow.vala"
 		g_object_notify_by_pspec ((GObject *) self, khronos_main_window_properties[KHRONOS_MAIN_WINDOW_IS_MODIFIED_PROPERTY]);
-#line 1375 "MainWindow.c"
+#line 1458 "MainWindow.c"
 	}
 }
 
@@ -1380,30 +1463,30 @@ khronos_main_window_get_app (KhronosMainWindow* self)
 {
 	GtkApplication* result;
 	GtkApplication* _tmp0_;
-#line 38 "../src/MainWindow.vala"
+#line 59 "../src/MainWindow.vala"
 	g_return_val_if_fail (self != NULL, NULL);
-#line 38 "../src/MainWindow.vala"
+#line 59 "../src/MainWindow.vala"
 	_tmp0_ = self->priv->_app;
-#line 38 "../src/MainWindow.vala"
+#line 59 "../src/MainWindow.vala"
 	result = _tmp0_;
-#line 38 "../src/MainWindow.vala"
+#line 59 "../src/MainWindow.vala"
 	return result;
-#line 1392 "MainWindow.c"
+#line 1475 "MainWindow.c"
 }
 
 static void
 khronos_main_window_set_app (KhronosMainWindow* self,
                              GtkApplication* value)
 {
-#line 38 "../src/MainWindow.vala"
+#line 59 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 38 "../src/MainWindow.vala"
+#line 59 "../src/MainWindow.vala"
 	if (khronos_main_window_get_app (self) != value) {
-#line 38 "../src/MainWindow.vala"
+#line 59 "../src/MainWindow.vala"
 		self->priv->_app = value;
-#line 38 "../src/MainWindow.vala"
+#line 59 "../src/MainWindow.vala"
 		g_object_notify_by_pspec ((GObject *) self, khronos_main_window_properties[KHRONOS_MAIN_WINDOW_APP_PROPERTY]);
-#line 1407 "MainWindow.c"
+#line 1490 "MainWindow.c"
 	}
 }
 
@@ -1412,44 +1495,36 @@ khronos_main_window_get_actions (KhronosMainWindow* self)
 {
 	GSimpleActionGroup* result;
 	GSimpleActionGroup* _tmp0_;
-#line 46 "../src/MainWindow.vala"
+#line 67 "../src/MainWindow.vala"
 	g_return_val_if_fail (self != NULL, NULL);
-#line 46 "../src/MainWindow.vala"
+#line 67 "../src/MainWindow.vala"
 	_tmp0_ = self->priv->_actions;
-#line 46 "../src/MainWindow.vala"
+#line 67 "../src/MainWindow.vala"
 	result = _tmp0_;
-#line 46 "../src/MainWindow.vala"
+#line 67 "../src/MainWindow.vala"
 	return result;
-#line 1424 "MainWindow.c"
-}
-
-static gpointer
-_g_object_ref0 (gpointer self)
-{
-#line 46 "../src/MainWindow.vala"
-	return self ? g_object_ref (self) : NULL;
-#line 1432 "MainWindow.c"
+#line 1507 "MainWindow.c"
 }
 
 void
 khronos_main_window_set_actions (KhronosMainWindow* self,
                                  GSimpleActionGroup* value)
 {
-#line 46 "../src/MainWindow.vala"
+#line 67 "../src/MainWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 46 "../src/MainWindow.vala"
+#line 67 "../src/MainWindow.vala"
 	if (khronos_main_window_get_actions (self) != value) {
-#line 1443 "MainWindow.c"
+#line 1518 "MainWindow.c"
 		GSimpleActionGroup* _tmp0_;
-#line 46 "../src/MainWindow.vala"
+#line 67 "../src/MainWindow.vala"
 		_tmp0_ = _g_object_ref0 (value);
-#line 46 "../src/MainWindow.vala"
+#line 67 "../src/MainWindow.vala"
 		_g_object_unref0 (self->priv->_actions);
-#line 46 "../src/MainWindow.vala"
+#line 67 "../src/MainWindow.vala"
 		self->priv->_actions = _tmp0_;
-#line 46 "../src/MainWindow.vala"
+#line 67 "../src/MainWindow.vala"
 		g_object_notify_by_pspec ((GObject *) self, khronos_main_window_properties[KHRONOS_MAIN_WINDOW_ACTIONS_PROPERTY]);
-#line 1453 "MainWindow.c"
+#line 1528 "MainWindow.c"
 	}
 }
 
@@ -1457,24 +1532,24 @@ static void
 _khronos_main_window___lambda11_ (KhronosMainWindow* self)
 {
 	GSettings* _tmp0_;
-#line 92 "../src/MainWindow.vala"
+#line 127 "../src/MainWindow.vala"
 	_tmp0_ = khronos_application_gsettings;
-#line 92 "../src/MainWindow.vala"
+#line 127 "../src/MainWindow.vala"
 	if (g_settings_get_boolean (_tmp0_, "dark-mode")) {
-#line 1465 "MainWindow.c"
+#line 1540 "MainWindow.c"
 		GtkSettings* _tmp1_;
-#line 93 "../src/MainWindow.vala"
+#line 128 "../src/MainWindow.vala"
 		_tmp1_ = gtk_settings_get_default ();
-#line 93 "../src/MainWindow.vala"
+#line 128 "../src/MainWindow.vala"
 		g_object_set (_tmp1_, "gtk-application-prefer-dark-theme", TRUE, NULL);
-#line 1471 "MainWindow.c"
+#line 1546 "MainWindow.c"
 	} else {
 		GtkSettings* _tmp2_;
-#line 95 "../src/MainWindow.vala"
+#line 130 "../src/MainWindow.vala"
 		_tmp2_ = gtk_settings_get_default ();
-#line 95 "../src/MainWindow.vala"
+#line 130 "../src/MainWindow.vala"
 		g_object_set (_tmp2_, "gtk-application-prefer-dark-theme", FALSE, NULL);
-#line 1478 "MainWindow.c"
+#line 1553 "MainWindow.c"
 	}
 }
 
@@ -1483,9 +1558,9 @@ __khronos_main_window___lambda11__g_settings_changed (GSettings* _sender,
                                                       const gchar* key,
                                                       gpointer self)
 {
-#line 91 "../src/MainWindow.vala"
+#line 126 "../src/MainWindow.vala"
 	_khronos_main_window___lambda11_ ((KhronosMainWindow*) self);
-#line 1489 "MainWindow.c"
+#line 1564 "MainWindow.c"
 }
 
 static void
@@ -1502,33 +1577,33 @@ _khronos_main_window___lambda12_ (KhronosMainWindow* self,
 	KhronosLog* _tmp6_;
 	const gchar* _tmp7_;
 	const gchar* _tmp8_;
-#line 125 "../src/MainWindow.vala"
+#line 138 "../src/MainWindow.vala"
 	g_return_if_fail (actrow != NULL);
-#line 126 "../src/MainWindow.vala"
+#line 139 "../src/MainWindow.vala"
 	_tmp0_ = self->column;
-#line 126 "../src/MainWindow.vala"
+#line 139 "../src/MainWindow.vala"
 	_tmp1_ = gtk_list_box_get_selected_row (_tmp0_);
-#line 126 "../src/MainWindow.vala"
+#line 139 "../src/MainWindow.vala"
 	_tmp2_ = _g_object_ref0 (G_TYPE_CHECK_INSTANCE_CAST (_tmp1_, KHRONOS_TYPE_LOG_ROW, KhronosLogRow));
-#line 126 "../src/MainWindow.vala"
+#line 139 "../src/MainWindow.vala"
 	row = _tmp2_;
-#line 128 "../src/MainWindow.vala"
+#line 141 "../src/MainWindow.vala"
 	_tmp3_ = self->column_entry;
-#line 128 "../src/MainWindow.vala"
+#line 141 "../src/MainWindow.vala"
 	_tmp4_ = row;
-#line 128 "../src/MainWindow.vala"
+#line 141 "../src/MainWindow.vala"
 	_tmp5_ = khronos_log_row_get_log (_tmp4_);
-#line 128 "../src/MainWindow.vala"
+#line 141 "../src/MainWindow.vala"
 	_tmp6_ = _tmp5_;
-#line 128 "../src/MainWindow.vala"
+#line 141 "../src/MainWindow.vala"
 	_tmp7_ = khronos_log_get_name (_tmp6_);
-#line 128 "../src/MainWindow.vala"
+#line 141 "../src/MainWindow.vala"
 	_tmp8_ = _tmp7_;
-#line 128 "../src/MainWindow.vala"
+#line 141 "../src/MainWindow.vala"
 	gtk_editable_set_text ((GtkEditable*) _tmp3_, _tmp8_);
-#line 125 "../src/MainWindow.vala"
+#line 138 "../src/MainWindow.vala"
 	_g_object_unref0 (row);
-#line 1532 "MainWindow.c"
+#line 1607 "MainWindow.c"
 }
 
 static void
@@ -1536,9 +1611,9 @@ __khronos_main_window___lambda12__gtk_list_box_row_activated (GtkListBox* _sende
                                                               GtkListBoxRow* row,
                                                               gpointer self)
 {
-#line 125 "../src/MainWindow.vala"
+#line 138 "../src/MainWindow.vala"
 	_khronos_main_window___lambda12_ ((KhronosMainWindow*) self, row);
-#line 1542 "MainWindow.c"
+#line 1617 "MainWindow.c"
 }
 
 static void
@@ -1575,121 +1650,121 @@ _khronos_main_window___lambda13_ (KhronosMainWindow* self)
 	KhronosTaskManager* _tmp26_;
 	GListStore* _tmp27_;
 	GtkEntry* _tmp28_;
-#line 152 "../src/MainWindow.vala"
+#line 145 "../src/MainWindow.vala"
 	_tmp0_ = khronos_log_new ();
-#line 152 "../src/MainWindow.vala"
+#line 145 "../src/MainWindow.vala"
 	log = _tmp0_;
-#line 153 "../src/MainWindow.vala"
+#line 146 "../src/MainWindow.vala"
 	_tmp1_ = log;
-#line 153 "../src/MainWindow.vala"
+#line 146 "../src/MainWindow.vala"
 	_tmp2_ = self->column_entry;
-#line 153 "../src/MainWindow.vala"
+#line 146 "../src/MainWindow.vala"
 	_tmp3_ = gtk_editable_get_text ((GtkEditable*) _tmp2_);
-#line 153 "../src/MainWindow.vala"
+#line 146 "../src/MainWindow.vala"
 	_tmp4_ = _tmp3_;
-#line 153 "../src/MainWindow.vala"
+#line 146 "../src/MainWindow.vala"
 	khronos_log_set_name (_tmp1_, _tmp4_);
-#line 155 "../src/MainWindow.vala"
+#line 148 "../src/MainWindow.vala"
 	_tmp5_ = g_date_time_new_now_local ();
-#line 155 "../src/MainWindow.vala"
+#line 148 "../src/MainWindow.vala"
 	dt = _tmp5_;
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp6_ = log;
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp7_ = self->column_time_label;
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp8_ = gtk_label_get_label (_tmp7_);
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp9_ = _tmp8_;
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp10_ = dt;
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp11_ = g_date_time_format (_tmp10_, "%a, %d/%m %H∶%M∶%S");
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp12_ = _tmp11_;
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp13_ = g_strdup_printf ("<span font_features='tnum'>%s</span>", _tmp12_);
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp14_ = _tmp13_;
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp15_ = dt;
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp16_ = g_date_time_add_full (_tmp15_, 0, 0, 0, (gint) self->priv->hrs, (gint) self->priv->min, (gdouble) ((gint) self->priv->sec));
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp17_ = _tmp16_;
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp18_ = g_date_time_format (_tmp17_, "%H∶%M∶%S");
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp19_ = _tmp18_;
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp20_ = g_strdup_printf ("<span font_features='tnum'>%s</span>", _tmp19_);
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp21_ = _tmp20_;
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp22_ = g_strdup_printf ("%s\n%s - %s", _tmp9_, _tmp14_, _tmp21_);
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_tmp23_ = _tmp22_;
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	khronos_log_set_timedate (_tmp6_, _tmp23_);
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_g_free0 (_tmp23_);
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_g_free0 (_tmp21_);
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_g_free0 (_tmp19_);
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_g_date_time_unref0 (_tmp17_);
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_g_free0 (_tmp14_);
-#line 156 "../src/MainWindow.vala"
+#line 149 "../src/MainWindow.vala"
 	_g_free0 (_tmp12_);
-#line 159 "../src/MainWindow.vala"
+#line 152 "../src/MainWindow.vala"
 	_tmp24_ = self->priv->liststore;
-#line 159 "../src/MainWindow.vala"
+#line 152 "../src/MainWindow.vala"
 	_tmp25_ = log;
-#line 159 "../src/MainWindow.vala"
+#line 152 "../src/MainWindow.vala"
 	g_list_store_append (_tmp24_, (GObject*) _tmp25_);
-#line 160 "../src/MainWindow.vala"
+#line 153 "../src/MainWindow.vala"
 	_tmp26_ = self->tm;
-#line 160 "../src/MainWindow.vala"
+#line 153 "../src/MainWindow.vala"
 	_tmp27_ = self->priv->liststore;
-#line 160 "../src/MainWindow.vala"
+#line 153 "../src/MainWindow.vala"
 	khronos_task_manager_save_to_file (_tmp26_, _tmp27_);
-#line 161 "../src/MainWindow.vala"
+#line 154 "../src/MainWindow.vala"
 	khronos_main_window_reset_timer (self);
-#line 162 "../src/MainWindow.vala"
+#line 155 "../src/MainWindow.vala"
 	khronos_main_window_set_is_modified (self, TRUE);
-#line 163 "../src/MainWindow.vala"
+#line 156 "../src/MainWindow.vala"
 	_tmp28_ = self->column_entry;
-#line 163 "../src/MainWindow.vala"
+#line 156 "../src/MainWindow.vala"
 	gtk_editable_set_text ((GtkEditable*) _tmp28_, "");
-#line 151 "../src/MainWindow.vala"
+#line 144 "../src/MainWindow.vala"
 	_g_date_time_unref0 (dt);
-#line 151 "../src/MainWindow.vala"
+#line 144 "../src/MainWindow.vala"
 	_g_object_unref0 (log);
-#line 1671 "MainWindow.c"
+#line 1746 "MainWindow.c"
 }
 
 static void
 __khronos_main_window___lambda13__gtk_button_clicked (GtkButton* _sender,
                                                       gpointer self)
 {
-#line 151 "../src/MainWindow.vala"
+#line 144 "../src/MainWindow.vala"
 	_khronos_main_window___lambda13_ ((KhronosMainWindow*) self);
-#line 1680 "MainWindow.c"
+#line 1755 "MainWindow.c"
 }
 
 static gboolean
 ___lambda15_ (KhronosMainWindow* self)
 {
 	gboolean result = FALSE;
-#line 171 "../src/MainWindow.vala"
+#line 164 "../src/MainWindow.vala"
 	khronos_main_window_timer (self);
-#line 172 "../src/MainWindow.vala"
+#line 165 "../src/MainWindow.vala"
 	result = TRUE;
-#line 172 "../src/MainWindow.vala"
+#line 165 "../src/MainWindow.vala"
 	return result;
-#line 1693 "MainWindow.c"
+#line 1768 "MainWindow.c"
 }
 
 static gboolean
@@ -1697,40 +1772,40 @@ ____lambda15__gsource_func (gpointer self)
 {
 	gboolean result;
 	result = ___lambda15_ ((KhronosMainWindow*) self);
-#line 170 "../src/MainWindow.vala"
+#line 163 "../src/MainWindow.vala"
 	return result;
-#line 1703 "MainWindow.c"
+#line 1778 "MainWindow.c"
 }
 
 static void
 _khronos_main_window___lambda14_ (KhronosMainWindow* self)
 {
-#line 167 "../src/MainWindow.vala"
+#line 160 "../src/MainWindow.vala"
 	if (self->start != TRUE) {
-#line 1711 "MainWindow.c"
+#line 1786 "MainWindow.c"
 		GtkButton* _tmp0_;
 		GtkButton* _tmp1_;
 		GtkStyleContext* _tmp2_;
 		GtkButton* _tmp3_;
-#line 168 "../src/MainWindow.vala"
+#line 161 "../src/MainWindow.vala"
 		self->start = TRUE;
-#line 170 "../src/MainWindow.vala"
+#line 163 "../src/MainWindow.vala"
 		self->priv->timer_id = g_timeout_add_full (G_PRIORITY_DEFAULT, (guint) 1000, ____lambda15__gsource_func, g_object_ref (self), g_object_unref);
-#line 174 "../src/MainWindow.vala"
+#line 167 "../src/MainWindow.vala"
 		_tmp0_ = self->column_play_button;
-#line 174 "../src/MainWindow.vala"
+#line 167 "../src/MainWindow.vala"
 		gtk_button_set_label (_tmp0_, _ ("Stop Timer"));
-#line 175 "../src/MainWindow.vala"
+#line 168 "../src/MainWindow.vala"
 		_tmp1_ = self->column_play_button;
-#line 175 "../src/MainWindow.vala"
+#line 168 "../src/MainWindow.vala"
 		_tmp2_ = gtk_widget_get_style_context ((GtkWidget*) _tmp1_);
-#line 175 "../src/MainWindow.vala"
+#line 168 "../src/MainWindow.vala"
 		gtk_style_context_add_class (_tmp2_, "destructive-action");
-#line 176 "../src/MainWindow.vala"
+#line 169 "../src/MainWindow.vala"
 		_tmp3_ = self->column_button;
-#line 176 "../src/MainWindow.vala"
+#line 169 "../src/MainWindow.vala"
 		gtk_widget_set_sensitive ((GtkWidget*) _tmp3_, FALSE);
-#line 1734 "MainWindow.c"
+#line 1809 "MainWindow.c"
 	} else {
 		GtkButton* _tmp4_;
 		GtkButton* _tmp5_;
@@ -1738,31 +1813,31 @@ _khronos_main_window___lambda14_ (KhronosMainWindow* self)
 		GtkButton* _tmp7_;
 		GtkStyleContext* _tmp8_;
 		GtkButton* _tmp9_;
-#line 178 "../src/MainWindow.vala"
+#line 171 "../src/MainWindow.vala"
 		self->start = FALSE;
-#line 179 "../src/MainWindow.vala"
+#line 172 "../src/MainWindow.vala"
 		g_source_remove (self->priv->timer_id);
-#line 180 "../src/MainWindow.vala"
+#line 173 "../src/MainWindow.vala"
 		_tmp4_ = self->column_play_button;
-#line 180 "../src/MainWindow.vala"
+#line 173 "../src/MainWindow.vala"
 		gtk_button_set_label (_tmp4_, _ ("Start Timer"));
-#line 181 "../src/MainWindow.vala"
+#line 174 "../src/MainWindow.vala"
 		_tmp5_ = self->column_play_button;
-#line 181 "../src/MainWindow.vala"
+#line 174 "../src/MainWindow.vala"
 		_tmp6_ = gtk_widget_get_style_context ((GtkWidget*) _tmp5_);
-#line 181 "../src/MainWindow.vala"
+#line 174 "../src/MainWindow.vala"
 		gtk_style_context_remove_class (_tmp6_, "destructive-action");
-#line 182 "../src/MainWindow.vala"
+#line 175 "../src/MainWindow.vala"
 		_tmp7_ = self->column_play_button;
-#line 182 "../src/MainWindow.vala"
+#line 175 "../src/MainWindow.vala"
 		_tmp8_ = gtk_widget_get_style_context ((GtkWidget*) _tmp7_);
-#line 182 "../src/MainWindow.vala"
+#line 175 "../src/MainWindow.vala"
 		gtk_style_context_add_class (_tmp8_, "suggested-action");
-#line 183 "../src/MainWindow.vala"
+#line 176 "../src/MainWindow.vala"
 		_tmp9_ = self->column_button;
-#line 183 "../src/MainWindow.vala"
+#line 176 "../src/MainWindow.vala"
 		gtk_widget_set_sensitive ((GtkWidget*) _tmp9_, TRUE);
-#line 1766 "MainWindow.c"
+#line 1841 "MainWindow.c"
 	}
 }
 
@@ -1770,9 +1845,9 @@ static void
 __khronos_main_window___lambda14__gtk_button_clicked (GtkButton* _sender,
                                                       gpointer self)
 {
-#line 166 "../src/MainWindow.vala"
+#line 159 "../src/MainWindow.vala"
 	_khronos_main_window___lambda14_ ((KhronosMainWindow*) self);
-#line 1776 "MainWindow.c"
+#line 1851 "MainWindow.c"
 }
 
 static void
@@ -1782,69 +1857,127 @@ _khronos_main_window___lambda16_ (KhronosMainWindow* self)
 	guint _tmp1_;
 	guint _tmp2_;
 	GtkListBox* _tmp5_;
-#line 192 "../src/MainWindow.vala"
+#line 181 "../src/MainWindow.vala"
 	_tmp0_ = self->column_entry;
-#line 192 "../src/MainWindow.vala"
+#line 181 "../src/MainWindow.vala"
 	_tmp1_ = gtk_entry_get_text_length (_tmp0_);
-#line 192 "../src/MainWindow.vala"
+#line 181 "../src/MainWindow.vala"
 	_tmp2_ = _tmp1_;
-#line 192 "../src/MainWindow.vala"
+#line 181 "../src/MainWindow.vala"
 	if (_tmp2_ != ((guint) 0)) {
-#line 1794 "MainWindow.c"
+#line 1869 "MainWindow.c"
 		GtkButton* _tmp3_;
-#line 193 "../src/MainWindow.vala"
+#line 182 "../src/MainWindow.vala"
 		_tmp3_ = self->column_play_button;
-#line 193 "../src/MainWindow.vala"
+#line 182 "../src/MainWindow.vala"
 		gtk_widget_set_sensitive ((GtkWidget*) _tmp3_, TRUE);
-#line 1800 "MainWindow.c"
+#line 1875 "MainWindow.c"
 	} else {
 		GtkButton* _tmp4_;
-#line 195 "../src/MainWindow.vala"
+#line 184 "../src/MainWindow.vala"
 		_tmp4_ = self->column_play_button;
-#line 195 "../src/MainWindow.vala"
+#line 184 "../src/MainWindow.vala"
 		gtk_widget_set_sensitive ((GtkWidget*) _tmp4_, FALSE);
-#line 1807 "MainWindow.c"
+#line 1882 "MainWindow.c"
 	}
-#line 197 "../src/MainWindow.vala"
+#line 186 "../src/MainWindow.vala"
 	_tmp5_ = self->column;
-#line 197 "../src/MainWindow.vala"
+#line 186 "../src/MainWindow.vala"
 	gtk_list_box_unselect_all (_tmp5_);
-#line 1813 "MainWindow.c"
+#line 1888 "MainWindow.c"
 }
 
 static void
 __khronos_main_window___lambda16__gtk_editable_changed (GtkEditable* _sender,
                                                         gpointer self)
 {
-#line 191 "../src/MainWindow.vala"
+#line 180 "../src/MainWindow.vala"
 	_khronos_main_window___lambda16_ ((KhronosMainWindow*) self);
-#line 1822 "MainWindow.c"
+#line 1897 "MainWindow.c"
 }
 
 static void
 _khronos_main_window___lambda17_ (KhronosMainWindow* self)
 {
-	KhronosTaskManager* _tmp0_;
-	GListStore* _tmp1_;
-#line 269 "../src/MainWindow.vala"
-	_tmp0_ = self->tm;
-#line 269 "../src/MainWindow.vala"
-	_tmp1_ = self->priv->liststore;
-#line 269 "../src/MainWindow.vala"
-	khronos_task_manager_save_to_file (_tmp0_, _tmp1_);
-#line 1836 "MainWindow.c"
+	GtkStack* _tmp0_;
+	const gchar* _tmp1_;
+#line 190 "../src/MainWindow.vala"
+	_tmp0_ = self->win_stack;
+#line 190 "../src/MainWindow.vala"
+	_tmp1_ = gtk_stack_get_visible_child_name (_tmp0_);
+#line 190 "../src/MainWindow.vala"
+	if (g_strcmp0 (_tmp1_, "main") == 0) {
+#line 1911 "MainWindow.c"
+		GtkStack* _tmp2_;
+#line 191 "../src/MainWindow.vala"
+		_tmp2_ = self->title_stack;
+#line 191 "../src/MainWindow.vala"
+		gtk_stack_set_visible_child_name (_tmp2_, "main_title");
+#line 1917 "MainWindow.c"
+	} else {
+		GtkStack* _tmp3_;
+#line 193 "../src/MainWindow.vala"
+		_tmp3_ = self->title_stack;
+#line 193 "../src/MainWindow.vala"
+		gtk_stack_set_visible_child_name (_tmp3_, "logs_title");
+#line 1924 "MainWindow.c"
+	}
 }
 
 static void
-__khronos_main_window___lambda17__g_list_model_items_changed (GListModel* _sender,
+__khronos_main_window___lambda17__g_object_notify (GObject* _sender,
+                                                   GParamSpec* pspec,
+                                                   gpointer self)
+{
+#line 189 "../src/MainWindow.vala"
+	_khronos_main_window___lambda17_ ((KhronosMainWindow*) self);
+#line 1935 "MainWindow.c"
+}
+
+static void
+_khronos_main_window___lambda18_ (KhronosMainWindow* self)
+{
+	GListStore* _tmp0_;
+#line 202 "../src/MainWindow.vala"
+	_tmp0_ = self->priv->liststore;
+#line 202 "../src/MainWindow.vala"
+	g_list_store_remove_all (_tmp0_);
+#line 1946 "MainWindow.c"
+}
+
+static void
+__khronos_main_window___lambda18__gtk_button_clicked (GtkButton* _sender,
+                                                      gpointer self)
+{
+#line 201 "../src/MainWindow.vala"
+	_khronos_main_window___lambda18_ ((KhronosMainWindow*) self);
+#line 1955 "MainWindow.c"
+}
+
+static void
+_khronos_main_window___lambda19_ (KhronosMainWindow* self)
+{
+	KhronosTaskManager* _tmp0_;
+	GListStore* _tmp1_;
+#line 214 "../src/MainWindow.vala"
+	_tmp0_ = self->tm;
+#line 214 "../src/MainWindow.vala"
+	_tmp1_ = self->priv->liststore;
+#line 214 "../src/MainWindow.vala"
+	khronos_task_manager_save_to_file (_tmp0_, _tmp1_);
+#line 1969 "MainWindow.c"
+}
+
+static void
+__khronos_main_window___lambda19__g_list_model_items_changed (GListModel* _sender,
                                                               guint position,
                                                               guint removed,
                                                               guint added,
                                                               gpointer self)
 {
-#line 268 "../src/MainWindow.vala"
-	_khronos_main_window___lambda17_ ((KhronosMainWindow*) self);
-#line 1848 "MainWindow.c"
+#line 213 "../src/MainWindow.vala"
+	_khronos_main_window___lambda19_ ((KhronosMainWindow*) self);
+#line 1981 "MainWindow.c"
 }
 
 static GObject *
@@ -1857,682 +1990,127 @@ khronos_main_window_constructor (GType type,
 	KhronosMainWindow * self;
 	KhronosTaskManager* _tmp0_;
 	GSettings* _tmp1_;
-	GtkCssProvider* provider = NULL;
-	GtkCssProvider* _tmp2_;
-	GtkCssProvider* _tmp3_;
-	GdkDisplay* _tmp4_;
-	GtkCssProvider* _tmp5_;
-	GtkIconTheme* theme = NULL;
-	GdkDisplay* _tmp6_;
-	GtkIconTheme* _tmp7_;
-	GtkIconTheme* _tmp8_;
-	GtkIconTheme* _tmp9_;
-	GtkStyleContext* style = NULL;
-	GtkStyleContext* _tmp10_;
-	GtkStyleContext* _tmp11_;
-	AdwHeaderBar* titlebar = NULL;
-	AdwHeaderBar* _tmp13_;
-	AdwHeaderBar* _tmp14_;
-	GtkStyleContext* _tmp15_;
-	AdwHeaderBar* _tmp16_;
-	GListStore* _tmp17_;
-	GtkListBox* _tmp18_;
-	GtkListBox* _tmp19_;
-	GtkListBox* _tmp20_;
-	GtkListBox* _tmp21_;
-	GtkStyleContext* _tmp22_;
-	GtkListBox* _tmp23_;
-	GtkListBox* _tmp24_;
-	GtkLabel* _tmp25_;
-	GtkLabel* _tmp26_;
-	GtkLabel* _tmp27_;
-	gchar* _tmp28_;
-	gchar* _tmp29_;
-	GtkLabel* _tmp30_;
-	GtkStyleContext* _tmp31_;
-	GtkButton* _tmp32_;
-	GtkButton* _tmp33_;
-	GtkButton* _tmp34_;
-	GtkButton* _tmp35_;
-	GtkButton* _tmp36_;
-	GtkButton* _tmp37_;
-	GtkStyleContext* _tmp38_;
-	GtkButton* _tmp39_;
-	GtkStyleContext* _tmp40_;
-	GtkButton* _tmp41_;
-	GtkButton* _tmp42_;
-	GtkButton* _tmp43_;
-	GtkButton* _tmp44_;
-	GtkButton* _tmp45_;
-	GtkButton* _tmp46_;
-	GtkStyleContext* _tmp47_;
-	GtkButton* _tmp48_;
-	GtkButton* _tmp49_;
-	GtkEntry* _tmp50_;
-	GtkEntry* _tmp51_;
-	GtkEntry* _tmp52_;
-	GtkEntry* _tmp53_;
-	GtkEntry* _tmp54_;
-	GtkGrid* column_buttons_grid = NULL;
-	GtkGrid* _tmp55_;
-	GtkGrid* _tmp56_;
-	GtkGrid* _tmp57_;
-	GtkButton* _tmp58_;
-	GtkGrid* _tmp59_;
-	GtkButton* _tmp60_;
-	GtkSizeGroup* size_group = NULL;
-	GtkSizeGroup* _tmp61_;
-	GtkSizeGroup* _tmp62_;
-	GtkButton* _tmp63_;
-	GtkSizeGroup* _tmp64_;
-	GtkButton* _tmp65_;
-	GtkGrid* main_frame = NULL;
-	GtkGrid* _tmp66_;
-	GtkGrid* _tmp67_;
-	GtkGrid* _tmp68_;
-	GtkGrid* _tmp69_;
-	GtkGrid* _tmp70_;
-	GtkGrid* _tmp71_;
-	GtkLabel* _tmp72_;
-	GtkGrid* _tmp73_;
-	GtkEntry* _tmp74_;
-	GtkGrid* _tmp75_;
-	GtkGrid* _tmp76_;
+	GListStore* _tmp2_;
+	GtkLabel* _tmp3_;
+	gchar* _tmp4_;
+	gchar* _tmp5_;
+	GtkListBox* _tmp6_;
+	GtkButton* _tmp7_;
+	GtkButton* _tmp8_;
+	GtkEntry* _tmp9_;
+	GtkStack* _tmp10_;
 	GtkBuilder* builder = NULL;
-	GtkBuilder* _tmp77_;
-	GtkMenuButton* menu_button = NULL;
-	GtkMenuButton* _tmp78_;
-	GtkMenuButton* _tmp79_;
-	GtkMenuButton* _tmp80_;
-	GtkMenuButton* _tmp81_;
-	GtkMenuButton* _tmp82_;
-	GtkBuilder* _tmp83_;
-	GObject* _tmp84_;
-	AdwHeaderBar* _tmp85_;
-	GtkMenuButton* _tmp86_;
-	KhronosTaskManager* _tmp87_;
-	GtkGrid* tgrid = NULL;
-	GtkGrid* _tmp88_;
-	GtkGrid* _tmp89_;
-	AdwHeaderBar* _tmp90_;
-	GtkLabel* column_label = NULL;
-	GtkLabel* _tmp91_;
-	GtkLabel* _tmp92_;
-	GtkLabel* _tmp93_;
-	GtkLabel* _tmp94_;
-	GtkLabel* _tmp95_;
-	GtkStyleContext* _tmp96_;
-	GtkGrid* cgrid = NULL;
-	GtkGrid* _tmp97_;
-	GtkGrid* _tmp98_;
-	GtkLabel* _tmp99_;
-	GtkGrid* _tmp100_;
-	GtkListBox* _tmp101_;
-	AdwClamp* clamp = NULL;
-	AdwClamp* _tmp102_;
-	AdwClamp* _tmp103_;
-	GtkGrid* _tmp104_;
-	GtkGrid* mgrid = NULL;
-	GtkGrid* _tmp105_;
-	GtkGrid* _tmp106_;
-	GtkGrid* _tmp107_;
-	GtkGrid* _tmp108_;
-	GtkGrid* _tmp109_;
-	AdwClamp* _tmp110_;
-	GtkScrolledWindow* scroller = NULL;
-	GtkScrolledWindow* _tmp111_;
-	GtkScrolledWindow* _tmp112_;
-	GtkScrolledWindow* _tmp113_;
-	GtkGrid* _tmp114_;
-	GtkGrid* grid = NULL;
-	GtkGrid* _tmp115_;
-	GtkGrid* _tmp116_;
-	GtkGrid* _tmp117_;
-	GtkGrid* _tmp118_;
-	GtkGrid* _tmp119_;
-	GtkGrid* _tmp120_;
-	GtkScrolledWindow* _tmp121_;
-	GtkGrid* _tmp122_;
-	GListStore* _tmp123_;
-#line 87 "../src/MainWindow.vala"
+	GtkBuilder* _tmp11_;
+	GtkMenuButton* _tmp12_;
+	GtkBuilder* _tmp13_;
+	GObject* _tmp14_;
+	GtkMenuButton* _tmp15_;
+	GtkBuilder* _tmp16_;
+	GObject* _tmp17_;
+	GtkButton* _tmp18_;
+	KhronosTaskManager* _tmp19_;
+	GListStore* _tmp20_;
+#line 122 "../src/MainWindow.vala"
 	parent_class = G_OBJECT_CLASS (khronos_main_window_parent_class);
-#line 87 "../src/MainWindow.vala"
+#line 122 "../src/MainWindow.vala"
 	obj = parent_class->constructor (type, n_construct_properties, construct_properties);
-#line 87 "../src/MainWindow.vala"
+#line 122 "../src/MainWindow.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, KHRONOS_TYPE_MAIN_WINDOW, KhronosMainWindow);
-#line 88 "../src/MainWindow.vala"
+#line 123 "../src/MainWindow.vala"
 	adw_init ();
-#line 89 "../src/MainWindow.vala"
+#line 124 "../src/MainWindow.vala"
 	_tmp0_ = khronos_task_manager_new (self);
-#line 89 "../src/MainWindow.vala"
+#line 124 "../src/MainWindow.vala"
 	_khronos_task_manager_unref0 (self->tm);
-#line 89 "../src/MainWindow.vala"
+#line 124 "../src/MainWindow.vala"
 	self->tm = _tmp0_;
-#line 91 "../src/MainWindow.vala"
+#line 126 "../src/MainWindow.vala"
 	_tmp1_ = khronos_application_gsettings;
-#line 91 "../src/MainWindow.vala"
+#line 126 "../src/MainWindow.vala"
 	g_signal_connect_object (_tmp1_, "changed", (GCallback) __khronos_main_window___lambda11__g_settings_changed, self, 0);
-#line 99 "../src/MainWindow.vala"
-	_tmp2_ = gtk_css_provider_new ();
-#line 99 "../src/MainWindow.vala"
-	provider = _tmp2_;
-#line 100 "../src/MainWindow.vala"
-	_tmp3_ = provider;
-#line 100 "../src/MainWindow.vala"
-	gtk_css_provider_load_from_resource (_tmp3_, "/io/github/lainsce/Khronos/stylesheet.css");
-#line 101 "../src/MainWindow.vala"
-	_tmp4_ = gdk_display_get_default ();
-#line 101 "../src/MainWindow.vala"
-	_tmp5_ = provider;
-#line 101 "../src/MainWindow.vala"
-	gtk_style_context_add_provider_for_display (_tmp4_, (GtkStyleProvider*) _tmp5_, (guint) GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-#line 105 "../src/MainWindow.vala"
-	_tmp6_ = gdk_display_get_default ();
-#line 105 "../src/MainWindow.vala"
-	_tmp7_ = gtk_icon_theme_get_for_display (_tmp6_);
-#line 105 "../src/MainWindow.vala"
-	_tmp8_ = _g_object_ref0 (_tmp7_);
-#line 105 "../src/MainWindow.vala"
-	theme = _tmp8_;
-#line 106 "../src/MainWindow.vala"
-	_tmp9_ = theme;
-#line 106 "../src/MainWindow.vala"
-	gtk_icon_theme_add_resource_path (_tmp9_, "/io/github/lainsce/Khronos/");
-#line 108 "../src/MainWindow.vala"
-	_tmp10_ = gtk_widget_get_style_context ((GtkWidget*) self);
-#line 108 "../src/MainWindow.vala"
-	_tmp11_ = _g_object_ref0 (_tmp10_);
-#line 108 "../src/MainWindow.vala"
-	style = _tmp11_;
-#line 109 "../src/MainWindow.vala"
-	if (g_strcmp0 (PROFILE, "Devel") == 0) {
-#line 2050 "MainWindow.c"
-		GtkStyleContext* _tmp12_;
-#line 110 "../src/MainWindow.vala"
-		_tmp12_ = style;
-#line 110 "../src/MainWindow.vala"
-		gtk_style_context_add_class (_tmp12_, "devel");
-#line 2056 "MainWindow.c"
-	}
-#line 113 "../src/MainWindow.vala"
-	_tmp13_ = (AdwHeaderBar*) adw_header_bar_new ();
-#line 113 "../src/MainWindow.vala"
-	g_object_ref_sink (_tmp13_);
-#line 113 "../src/MainWindow.vala"
-	titlebar = _tmp13_;
-#line 114 "../src/MainWindow.vala"
-	_tmp14_ = titlebar;
-#line 114 "../src/MainWindow.vala"
-	_tmp15_ = gtk_widget_get_style_context ((GtkWidget*) _tmp14_);
-#line 114 "../src/MainWindow.vala"
-	gtk_style_context_add_class (_tmp15_, "flat-titlebar");
-#line 115 "../src/MainWindow.vala"
-	_tmp16_ = titlebar;
-#line 115 "../src/MainWindow.vala"
-	gtk_widget_set_hexpand ((GtkWidget*) _tmp16_, TRUE);
-#line 117 "../src/MainWindow.vala"
-	_tmp17_ = g_list_store_new (KHRONOS_TYPE_LOG);
-#line 117 "../src/MainWindow.vala"
+#line 134 "../src/MainWindow.vala"
+	_tmp2_ = g_list_store_new (KHRONOS_TYPE_LOG);
+#line 134 "../src/MainWindow.vala"
 	_g_object_unref0 (self->priv->liststore);
-#line 117 "../src/MainWindow.vala"
-	self->priv->liststore = _tmp17_;
-#line 119 "../src/MainWindow.vala"
-	_tmp18_ = (GtkListBox*) gtk_list_box_new ();
-#line 119 "../src/MainWindow.vala"
-	g_object_ref_sink (_tmp18_);
-#line 119 "../src/MainWindow.vala"
-	_g_object_unref0 (self->column);
-#line 119 "../src/MainWindow.vala"
-	self->column = _tmp18_;
-#line 120 "../src/MainWindow.vala"
-	_tmp19_ = self->column;
-#line 120 "../src/MainWindow.vala"
-	gtk_widget_set_margin_top ((GtkWidget*) _tmp19_, 18);
-#line 121 "../src/MainWindow.vala"
-	_tmp20_ = self->column;
-#line 121 "../src/MainWindow.vala"
-	gtk_widget_set_margin_bottom ((GtkWidget*) _tmp20_, 18);
-#line 122 "../src/MainWindow.vala"
-	_tmp21_ = self->column;
-#line 122 "../src/MainWindow.vala"
-	_tmp22_ = gtk_widget_get_style_context ((GtkWidget*) _tmp21_);
-#line 122 "../src/MainWindow.vala"
-	gtk_style_context_add_class (_tmp22_, "content");
-#line 123 "../src/MainWindow.vala"
-	_tmp23_ = self->column;
-#line 123 "../src/MainWindow.vala"
-	gtk_list_box_set_selection_mode (_tmp23_, GTK_SELECTION_SINGLE);
-#line 125 "../src/MainWindow.vala"
-	_tmp24_ = self->column;
-#line 125 "../src/MainWindow.vala"
-	g_signal_connect_object (_tmp24_, "row-activated", (GCallback) __khronos_main_window___lambda12__gtk_list_box_row_activated, self, 0);
-#line 131 "../src/MainWindow.vala"
-	_tmp25_ = (GtkLabel*) gtk_label_new ("");
-#line 131 "../src/MainWindow.vala"
-	g_object_ref_sink (_tmp25_);
-#line 131 "../src/MainWindow.vala"
-	_g_object_unref0 (self->column_time_label);
-#line 131 "../src/MainWindow.vala"
-	self->column_time_label = _tmp25_;
-#line 132 "../src/MainWindow.vala"
-	_tmp26_ = self->column_time_label;
-#line 132 "../src/MainWindow.vala"
-	gtk_label_set_use_markup (_tmp26_, TRUE);
-#line 133 "../src/MainWindow.vala"
-	_tmp27_ = self->column_time_label;
-#line 133 "../src/MainWindow.vala"
-	_tmp28_ = g_strdup_printf ("<span font_features='tnum'>%02u∶%02u∶%02u</span>", self->priv->hrs, self->priv->min, self->priv->sec);
-#line 133 "../src/MainWindow.vala"
-	_tmp29_ = _tmp28_;
-#line 133 "../src/MainWindow.vala"
-	gtk_label_set_label (_tmp27_, _tmp29_);
-#line 133 "../src/MainWindow.vala"
-	_g_free0 (_tmp29_);
 #line 134 "../src/MainWindow.vala"
-	_tmp30_ = self->column_time_label;
-#line 134 "../src/MainWindow.vala"
-	_tmp31_ = gtk_widget_get_style_context ((GtkWidget*) _tmp30_);
-#line 134 "../src/MainWindow.vala"
-	gtk_style_context_add_class (_tmp31_, "kh-title");
+	self->priv->liststore = _tmp2_;
 #line 136 "../src/MainWindow.vala"
-	_tmp32_ = (GtkButton*) gtk_button_new ();
+	_tmp3_ = self->column_time_label;
 #line 136 "../src/MainWindow.vala"
-	g_object_ref_sink (_tmp32_);
+	_tmp4_ = g_strdup_printf ("<span font_features='tnum'>%02u∶%02u∶%02u</span>", self->priv->hrs, self->priv->min, self->priv->sec);
 #line 136 "../src/MainWindow.vala"
-	_g_object_unref0 (self->column_play_button);
+	_tmp5_ = _tmp4_;
 #line 136 "../src/MainWindow.vala"
-	self->column_play_button = _tmp32_;
-#line 137 "../src/MainWindow.vala"
-	_tmp33_ = self->column_play_button;
-#line 137 "../src/MainWindow.vala"
-	gtk_button_set_label (_tmp33_, _ ("Start Timer"));
+	gtk_label_set_label (_tmp3_, _tmp5_);
+#line 136 "../src/MainWindow.vala"
+	_g_free0 (_tmp5_);
 #line 138 "../src/MainWindow.vala"
-	_tmp34_ = self->column_play_button;
+	_tmp6_ = self->column;
 #line 138 "../src/MainWindow.vala"
-	gtk_widget_set_can_focus ((GtkWidget*) _tmp34_, FALSE);
-#line 139 "../src/MainWindow.vala"
-	_tmp35_ = self->column_play_button;
-#line 139 "../src/MainWindow.vala"
-	gtk_widget_set_sensitive ((GtkWidget*) _tmp35_, FALSE);
-#line 140 "../src/MainWindow.vala"
-	_tmp36_ = self->column_play_button;
-#line 140 "../src/MainWindow.vala"
-	gtk_widget_set_halign ((GtkWidget*) _tmp36_, GTK_ALIGN_CENTER);
-#line 141 "../src/MainWindow.vala"
-	_tmp37_ = self->column_play_button;
-#line 141 "../src/MainWindow.vala"
-	_tmp38_ = gtk_widget_get_style_context ((GtkWidget*) _tmp37_);
-#line 141 "../src/MainWindow.vala"
-	gtk_style_context_add_class (_tmp38_, "suggested-action");
-#line 142 "../src/MainWindow.vala"
-	_tmp39_ = self->column_play_button;
-#line 142 "../src/MainWindow.vala"
-	_tmp40_ = gtk_widget_get_style_context ((GtkWidget*) _tmp39_);
-#line 142 "../src/MainWindow.vala"
-	gtk_style_context_add_class (_tmp40_, "circular");
+	g_signal_connect_object (_tmp6_, "row-activated", (GCallback) __khronos_main_window___lambda12__gtk_list_box_row_activated, self, 0);
 #line 144 "../src/MainWindow.vala"
-	_tmp41_ = (GtkButton*) gtk_button_new ();
+	_tmp7_ = self->column_button;
 #line 144 "../src/MainWindow.vala"
-	g_object_ref_sink (_tmp41_);
-#line 144 "../src/MainWindow.vala"
-	_g_object_unref0 (self->column_button);
-#line 144 "../src/MainWindow.vala"
-	self->column_button = _tmp41_;
-#line 145 "../src/MainWindow.vala"
-	_tmp42_ = self->column_button;
-#line 145 "../src/MainWindow.vala"
-	gtk_button_set_label (_tmp42_, _ ("Add Log"));
-#line 146 "../src/MainWindow.vala"
-	_tmp43_ = self->column_button;
-#line 146 "../src/MainWindow.vala"
-	gtk_widget_set_can_focus ((GtkWidget*) _tmp43_, FALSE);
-#line 147 "../src/MainWindow.vala"
-	_tmp44_ = self->column_button;
-#line 147 "../src/MainWindow.vala"
-	gtk_widget_set_sensitive ((GtkWidget*) _tmp44_, FALSE);
-#line 148 "../src/MainWindow.vala"
-	_tmp45_ = self->column_button;
-#line 148 "../src/MainWindow.vala"
-	gtk_widget_set_halign ((GtkWidget*) _tmp45_, GTK_ALIGN_CENTER);
-#line 149 "../src/MainWindow.vala"
-	_tmp46_ = self->column_button;
-#line 149 "../src/MainWindow.vala"
-	_tmp47_ = gtk_widget_get_style_context ((GtkWidget*) _tmp46_);
-#line 149 "../src/MainWindow.vala"
-	gtk_style_context_add_class (_tmp47_, "circular");
-#line 151 "../src/MainWindow.vala"
-	_tmp48_ = self->column_button;
-#line 151 "../src/MainWindow.vala"
-	g_signal_connect_object (_tmp48_, "clicked", (GCallback) __khronos_main_window___lambda13__gtk_button_clicked, self, 0);
-#line 166 "../src/MainWindow.vala"
-	_tmp49_ = self->column_play_button;
-#line 166 "../src/MainWindow.vala"
-	g_signal_connect_object (_tmp49_, "clicked", (GCallback) __khronos_main_window___lambda14__gtk_button_clicked, self, 0);
-#line 187 "../src/MainWindow.vala"
-	_tmp50_ = (GtkEntry*) gtk_entry_new ();
-#line 187 "../src/MainWindow.vala"
-	g_object_ref_sink (_tmp50_);
-#line 187 "../src/MainWindow.vala"
-	_g_object_unref0 (self->column_entry);
-#line 187 "../src/MainWindow.vala"
-	self->column_entry = _tmp50_;
-#line 188 "../src/MainWindow.vala"
-	_tmp51_ = self->column_entry;
-#line 188 "../src/MainWindow.vala"
-	_tmp52_ = self->column_entry;
-#line 188 "../src/MainWindow.vala"
-	gtk_widget_set_margin_top ((GtkWidget*) _tmp52_, 24);
-#line 188 "../src/MainWindow.vala"
-	gtk_widget_set_margin_bottom ((GtkWidget*) _tmp51_, 24);
+	g_signal_connect_object (_tmp7_, "clicked", (GCallback) __khronos_main_window___lambda13__gtk_button_clicked, self, 0);
+#line 159 "../src/MainWindow.vala"
+	_tmp8_ = self->column_play_button;
+#line 159 "../src/MainWindow.vala"
+	g_signal_connect_object (_tmp8_, "clicked", (GCallback) __khronos_main_window___lambda14__gtk_button_clicked, self, 0);
+#line 180 "../src/MainWindow.vala"
+	_tmp9_ = self->column_entry;
+#line 180 "../src/MainWindow.vala"
+	g_signal_connect_object ((GtkEditable*) _tmp9_, "changed", (GCallback) __khronos_main_window___lambda16__gtk_editable_changed, self, 0);
 #line 189 "../src/MainWindow.vala"
-	_tmp53_ = self->column_entry;
+	_tmp10_ = self->win_stack;
 #line 189 "../src/MainWindow.vala"
-	gtk_entry_set_placeholder_text (_tmp53_, _ ("New log name…"));
-#line 191 "../src/MainWindow.vala"
-	_tmp54_ = self->column_entry;
-#line 191 "../src/MainWindow.vala"
-	g_signal_connect_object ((GtkEditable*) _tmp54_, "changed", (GCallback) __khronos_main_window___lambda16__gtk_editable_changed, self, 0);
-#line 200 "../src/MainWindow.vala"
-	_tmp55_ = (GtkGrid*) gtk_grid_new ();
-#line 200 "../src/MainWindow.vala"
-	g_object_ref_sink (_tmp55_);
-#line 200 "../src/MainWindow.vala"
-	column_buttons_grid = _tmp55_;
+	g_signal_connect_object ((GObject*) _tmp10_, "notify::visible-child-name", (GCallback) __khronos_main_window___lambda17__g_object_notify, self, 0);
+#line 197 "../src/MainWindow.vala"
+	_tmp11_ = gtk_builder_new_from_resource ("/io/github/lainsce/Khronos/mainmenu.ui");
+#line 197 "../src/MainWindow.vala"
+	builder = _tmp11_;
+#line 198 "../src/MainWindow.vala"
+	_tmp12_ = self->menu_button;
+#line 198 "../src/MainWindow.vala"
+	_tmp13_ = builder;
+#line 198 "../src/MainWindow.vala"
+	_tmp14_ = gtk_builder_get_object (_tmp13_, "menu");
+#line 198 "../src/MainWindow.vala"
+	gtk_menu_button_set_menu_model (_tmp12_, G_TYPE_CHECK_INSTANCE_CAST (_tmp14_, g_menu_model_get_type (), GMenuModel));
+#line 199 "../src/MainWindow.vala"
+	_tmp15_ = self->menu_button2;
+#line 199 "../src/MainWindow.vala"
+	_tmp16_ = builder;
+#line 199 "../src/MainWindow.vala"
+	_tmp17_ = gtk_builder_get_object (_tmp16_, "menu");
+#line 199 "../src/MainWindow.vala"
+	gtk_menu_button_set_menu_model (_tmp15_, G_TYPE_CHECK_INSTANCE_CAST (_tmp17_, g_menu_model_get_type (), GMenuModel));
 #line 201 "../src/MainWindow.vala"
-	_tmp56_ = column_buttons_grid;
+	_tmp18_ = self->trash_button;
 #line 201 "../src/MainWindow.vala"
-	gtk_grid_set_column_spacing (_tmp56_, 12);
-#line 202 "../src/MainWindow.vala"
-	_tmp57_ = column_buttons_grid;
-#line 202 "../src/MainWindow.vala"
-	_tmp58_ = self->column_play_button;
-#line 202 "../src/MainWindow.vala"
-	gtk_grid_attach (_tmp57_, (GtkWidget*) _tmp58_, 0, 0, 1, 1);
-#line 203 "../src/MainWindow.vala"
-	_tmp59_ = column_buttons_grid;
-#line 203 "../src/MainWindow.vala"
-	_tmp60_ = self->column_button;
-#line 203 "../src/MainWindow.vala"
-	gtk_grid_attach (_tmp59_, (GtkWidget*) _tmp60_, 1, 0, 1, 1);
+	g_signal_connect_object (_tmp18_, "clicked", (GCallback) __khronos_main_window___lambda18__gtk_button_clicked, self, 0);
 #line 205 "../src/MainWindow.vala"
-	_tmp61_ = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+	_tmp19_ = self->tm;
 #line 205 "../src/MainWindow.vala"
-	size_group = _tmp61_;
-#line 206 "../src/MainWindow.vala"
-	_tmp62_ = size_group;
-#line 206 "../src/MainWindow.vala"
-	_tmp63_ = self->column_play_button;
-#line 206 "../src/MainWindow.vala"
-	gtk_size_group_add_widget (_tmp62_, (GtkWidget*) _tmp63_);
+	khronos_task_manager_load_from_file (_tmp19_);
 #line 207 "../src/MainWindow.vala"
-	_tmp64_ = size_group;
-#line 207 "../src/MainWindow.vala"
-	_tmp65_ = self->column_button;
-#line 207 "../src/MainWindow.vala"
-	gtk_size_group_add_widget (_tmp64_, (GtkWidget*) _tmp65_);
-#line 209 "../src/MainWindow.vala"
-	_tmp66_ = (GtkGrid*) gtk_grid_new ();
-#line 209 "../src/MainWindow.vala"
-	g_object_ref_sink (_tmp66_);
-#line 209 "../src/MainWindow.vala"
-	main_frame = _tmp66_;
-#line 210 "../src/MainWindow.vala"
-	_tmp67_ = main_frame;
-#line 210 "../src/MainWindow.vala"
-	gtk_orientable_set_orientation ((GtkOrientable*) _tmp67_, GTK_ORIENTATION_VERTICAL);
-#line 211 "../src/MainWindow.vala"
-	_tmp68_ = main_frame;
-#line 211 "../src/MainWindow.vala"
-	gtk_widget_set_valign ((GtkWidget*) _tmp68_, GTK_ALIGN_CENTER);
-#line 212 "../src/MainWindow.vala"
-	_tmp69_ = main_frame;
-#line 212 "../src/MainWindow.vala"
-	gtk_widget_set_halign ((GtkWidget*) _tmp69_, GTK_ALIGN_CENTER);
-#line 213 "../src/MainWindow.vala"
-	_tmp70_ = main_frame;
-#line 213 "../src/MainWindow.vala"
-	gtk_widget_set_hexpand ((GtkWidget*) _tmp70_, TRUE);
-#line 214 "../src/MainWindow.vala"
-	_tmp71_ = main_frame;
-#line 214 "../src/MainWindow.vala"
-	_tmp72_ = self->column_time_label;
-#line 214 "../src/MainWindow.vala"
-	gtk_grid_attach (_tmp71_, (GtkWidget*) _tmp72_, 0, 0, 1, 1);
-#line 215 "../src/MainWindow.vala"
-	_tmp73_ = main_frame;
-#line 215 "../src/MainWindow.vala"
-	_tmp74_ = self->column_entry;
-#line 215 "../src/MainWindow.vala"
-	gtk_grid_attach (_tmp73_, (GtkWidget*) _tmp74_, 0, 1, 1, 1);
-#line 216 "../src/MainWindow.vala"
-	_tmp75_ = main_frame;
-#line 216 "../src/MainWindow.vala"
-	_tmp76_ = column_buttons_grid;
-#line 216 "../src/MainWindow.vala"
-	gtk_grid_attach (_tmp75_, (GtkWidget*) _tmp76_, 0, 2, 1, 1);
-#line 218 "../src/MainWindow.vala"
-	_tmp77_ = gtk_builder_new_from_resource ("/io/github/lainsce/Khronos/mainmenu.ui");
-#line 218 "../src/MainWindow.vala"
-	builder = _tmp77_;
-#line 220 "../src/MainWindow.vala"
-	_tmp78_ = (GtkMenuButton*) gtk_menu_button_new ();
-#line 220 "../src/MainWindow.vala"
-	g_object_ref_sink (_tmp78_);
-#line 220 "../src/MainWindow.vala"
-	menu_button = _tmp78_;
-#line 221 "../src/MainWindow.vala"
-	_tmp79_ = menu_button;
-#line 221 "../src/MainWindow.vala"
-	gtk_menu_button_set_icon_name (_tmp79_, "open-menu-symbolic");
-#line 222 "../src/MainWindow.vala"
-	_tmp80_ = menu_button;
-#line 222 "../src/MainWindow.vala"
-	gtk_widget_set_has_tooltip ((GtkWidget*) _tmp80_, TRUE);
-#line 223 "../src/MainWindow.vala"
-	_tmp81_ = menu_button;
-#line 223 "../src/MainWindow.vala"
-	gtk_widget_set_tooltip_text ((GtkWidget*) _tmp81_, _ ("Settings"));
-#line 224 "../src/MainWindow.vala"
-	_tmp82_ = menu_button;
-#line 224 "../src/MainWindow.vala"
-	_tmp83_ = builder;
-#line 224 "../src/MainWindow.vala"
-	_tmp84_ = gtk_builder_get_object (_tmp83_, "menu");
-#line 224 "../src/MainWindow.vala"
-	gtk_menu_button_set_menu_model (_tmp82_, G_TYPE_CHECK_INSTANCE_CAST (_tmp84_, g_menu_model_get_type (), GMenuModel));
-#line 226 "../src/MainWindow.vala"
-	_tmp85_ = titlebar;
-#line 226 "../src/MainWindow.vala"
-	_tmp86_ = menu_button;
-#line 226 "../src/MainWindow.vala"
-	adw_header_bar_pack_end (_tmp85_, (GtkWidget*) _tmp86_);
-#line 228 "../src/MainWindow.vala"
-	_tmp87_ = self->tm;
-#line 228 "../src/MainWindow.vala"
-	khronos_task_manager_load_from_file (_tmp87_);
-#line 230 "../src/MainWindow.vala"
-	_tmp88_ = (GtkGrid*) gtk_grid_new ();
-#line 230 "../src/MainWindow.vala"
-	g_object_ref_sink (_tmp88_);
-#line 230 "../src/MainWindow.vala"
-	tgrid = _tmp88_;
-#line 231 "../src/MainWindow.vala"
-	_tmp89_ = tgrid;
-#line 231 "../src/MainWindow.vala"
-	_tmp90_ = titlebar;
-#line 231 "../src/MainWindow.vala"
-	gtk_grid_attach (_tmp89_, (GtkWidget*) _tmp90_, 0, 0, 2, 1);
-#line 233 "../src/MainWindow.vala"
-	_tmp91_ = (GtkLabel*) gtk_label_new (_ ("Logs"));
-#line 233 "../src/MainWindow.vala"
-	g_object_ref_sink (_tmp91_);
-#line 233 "../src/MainWindow.vala"
-	column_label = _tmp91_;
-#line 234 "../src/MainWindow.vala"
-	_tmp92_ = column_label;
-#line 234 "../src/MainWindow.vala"
-	gtk_widget_set_halign ((GtkWidget*) _tmp92_, GTK_ALIGN_START);
-#line 235 "../src/MainWindow.vala"
-	_tmp93_ = column_label;
-#line 235 "../src/MainWindow.vala"
-	gtk_widget_set_hexpand ((GtkWidget*) _tmp93_, TRUE);
-#line 236 "../src/MainWindow.vala"
-	_tmp94_ = column_label;
-#line 236 "../src/MainWindow.vala"
-	gtk_widget_set_margin_top ((GtkWidget*) _tmp94_, 18);
-#line 237 "../src/MainWindow.vala"
-	_tmp95_ = column_label;
-#line 237 "../src/MainWindow.vala"
-	_tmp96_ = gtk_widget_get_style_context ((GtkWidget*) _tmp95_);
-#line 237 "../src/MainWindow.vala"
-	gtk_style_context_add_class (_tmp96_, "heading");
-#line 239 "../src/MainWindow.vala"
-	_tmp97_ = (GtkGrid*) gtk_grid_new ();
-#line 239 "../src/MainWindow.vala"
-	g_object_ref_sink (_tmp97_);
-#line 239 "../src/MainWindow.vala"
-	cgrid = _tmp97_;
-#line 240 "../src/MainWindow.vala"
-	_tmp98_ = cgrid;
-#line 240 "../src/MainWindow.vala"
-	_tmp99_ = column_label;
-#line 240 "../src/MainWindow.vala"
-	gtk_grid_attach (_tmp98_, (GtkWidget*) _tmp99_, 0, 0, 1, 1);
-#line 241 "../src/MainWindow.vala"
-	_tmp100_ = cgrid;
-#line 241 "../src/MainWindow.vala"
-	_tmp101_ = self->column;
-#line 241 "../src/MainWindow.vala"
-	gtk_grid_attach (_tmp100_, (GtkWidget*) _tmp101_, 0, 2, 1, 1);
-#line 243 "../src/MainWindow.vala"
-	_tmp102_ = (AdwClamp*) adw_clamp_new ();
-#line 243 "../src/MainWindow.vala"
-	g_object_ref_sink (_tmp102_);
-#line 243 "../src/MainWindow.vala"
-	clamp = _tmp102_;
-#line 244 "../src/MainWindow.vala"
-	_tmp103_ = clamp;
-#line 244 "../src/MainWindow.vala"
-	_tmp104_ = cgrid;
-#line 244 "../src/MainWindow.vala"
-	adw_clamp_set_child (_tmp103_, (GtkWidget*) _tmp104_);
-#line 246 "../src/MainWindow.vala"
-	_tmp105_ = (GtkGrid*) gtk_grid_new ();
-#line 246 "../src/MainWindow.vala"
-	g_object_ref_sink (_tmp105_);
-#line 246 "../src/MainWindow.vala"
-	mgrid = _tmp105_;
-#line 247 "../src/MainWindow.vala"
-	_tmp106_ = mgrid;
-#line 247 "../src/MainWindow.vala"
-	gtk_widget_set_vexpand ((GtkWidget*) _tmp106_, TRUE);
-#line 248 "../src/MainWindow.vala"
-	_tmp107_ = mgrid;
-#line 248 "../src/MainWindow.vala"
-	_tmp108_ = main_frame;
-#line 248 "../src/MainWindow.vala"
-	gtk_grid_attach (_tmp107_, (GtkWidget*) _tmp108_, 0, 1, 1, 1);
-#line 249 "../src/MainWindow.vala"
-	_tmp109_ = mgrid;
-#line 249 "../src/MainWindow.vala"
-	_tmp110_ = clamp;
-#line 249 "../src/MainWindow.vala"
-	gtk_grid_attach (_tmp109_, (GtkWidget*) _tmp110_, 0, 2, 1, 1);
-#line 251 "../src/MainWindow.vala"
-	_tmp111_ = (GtkScrolledWindow*) gtk_scrolled_window_new ();
-#line 251 "../src/MainWindow.vala"
-	g_object_ref_sink (_tmp111_);
-#line 251 "../src/MainWindow.vala"
-	scroller = _tmp111_;
-#line 252 "../src/MainWindow.vala"
-	_tmp112_ = scroller;
-#line 252 "../src/MainWindow.vala"
-	g_object_set (_tmp112_, "hscrollbar-policy", GTK_POLICY_NEVER, NULL);
-#line 253 "../src/MainWindow.vala"
-	_tmp113_ = scroller;
-#line 253 "../src/MainWindow.vala"
-	_tmp114_ = mgrid;
-#line 253 "../src/MainWindow.vala"
-	gtk_scrolled_window_set_child (_tmp113_, (GtkWidget*) _tmp114_);
-#line 255 "../src/MainWindow.vala"
-	_tmp115_ = (GtkGrid*) gtk_grid_new ();
-#line 255 "../src/MainWindow.vala"
-	g_object_ref_sink (_tmp115_);
-#line 255 "../src/MainWindow.vala"
-	grid = _tmp115_;
-#line 256 "../src/MainWindow.vala"
-	_tmp116_ = grid;
-#line 256 "../src/MainWindow.vala"
-	gtk_widget_set_hexpand ((GtkWidget*) _tmp116_, TRUE);
-#line 257 "../src/MainWindow.vala"
-	_tmp117_ = grid;
-#line 257 "../src/MainWindow.vala"
-	gtk_widget_set_vexpand ((GtkWidget*) _tmp117_, TRUE);
-#line 258 "../src/MainWindow.vala"
-	_tmp118_ = grid;
-#line 258 "../src/MainWindow.vala"
-	_tmp119_ = tgrid;
-#line 258 "../src/MainWindow.vala"
-	gtk_grid_attach (_tmp118_, (GtkWidget*) _tmp119_, 0, 1, 1, 1);
-#line 259 "../src/MainWindow.vala"
-	_tmp120_ = grid;
-#line 259 "../src/MainWindow.vala"
-	_tmp121_ = scroller;
-#line 259 "../src/MainWindow.vala"
-	gtk_grid_attach (_tmp120_, (GtkWidget*) _tmp121_, 0, 2, 1, 1);
-#line 261 "../src/MainWindow.vala"
-	_tmp122_ = grid;
-#line 261 "../src/MainWindow.vala"
-	adw_application_window_set_child ((AdwApplicationWindow*) self, (GtkWidget*) _tmp122_);
-#line 262 "../src/MainWindow.vala"
 	gtk_widget_set_size_request ((GtkWidget*) self, 360, 360);
-#line 263 "../src/MainWindow.vala"
+#line 208 "../src/MainWindow.vala"
 	gtk_widget_show ((GtkWidget*) self);
-#line 264 "../src/MainWindow.vala"
+#line 209 "../src/MainWindow.vala"
 	gtk_window_present ((GtkWindow*) self);
-#line 266 "../src/MainWindow.vala"
+#line 211 "../src/MainWindow.vala"
 	khronos_main_window_set_timeouts (self);
-#line 267 "../src/MainWindow.vala"
+#line 212 "../src/MainWindow.vala"
 	khronos_main_window_listen_to_changes (self);
-#line 268 "../src/MainWindow.vala"
-	_tmp123_ = self->priv->liststore;
-#line 268 "../src/MainWindow.vala"
-	g_signal_connect_object ((GListModel*) _tmp123_, "items-changed", (GCallback) __khronos_main_window___lambda17__g_list_model_items_changed, self, 0);
-#line 87 "../src/MainWindow.vala"
-	_g_object_unref0 (grid);
-#line 87 "../src/MainWindow.vala"
-	_g_object_unref0 (scroller);
-#line 87 "../src/MainWindow.vala"
-	_g_object_unref0 (mgrid);
-#line 87 "../src/MainWindow.vala"
-	_g_object_unref0 (clamp);
-#line 87 "../src/MainWindow.vala"
-	_g_object_unref0 (cgrid);
-#line 87 "../src/MainWindow.vala"
-	_g_object_unref0 (column_label);
-#line 87 "../src/MainWindow.vala"
-	_g_object_unref0 (tgrid);
-#line 87 "../src/MainWindow.vala"
-	_g_object_unref0 (menu_button);
-#line 87 "../src/MainWindow.vala"
+#line 213 "../src/MainWindow.vala"
+	_tmp20_ = self->priv->liststore;
+#line 213 "../src/MainWindow.vala"
+	g_signal_connect_object ((GListModel*) _tmp20_, "items-changed", (GCallback) __khronos_main_window___lambda19__g_list_model_items_changed, self, 0);
+#line 122 "../src/MainWindow.vala"
 	_g_object_unref0 (builder);
-#line 87 "../src/MainWindow.vala"
-	_g_object_unref0 (main_frame);
-#line 87 "../src/MainWindow.vala"
-	_g_object_unref0 (size_group);
-#line 87 "../src/MainWindow.vala"
-	_g_object_unref0 (column_buttons_grid);
-#line 87 "../src/MainWindow.vala"
-	_g_object_unref0 (titlebar);
-#line 87 "../src/MainWindow.vala"
-	_g_object_unref0 (style);
-#line 87 "../src/MainWindow.vala"
-	_g_object_unref0 (theme);
-#line 87 "../src/MainWindow.vala"
-	_g_object_unref0 (provider);
-#line 87 "../src/MainWindow.vala"
+#line 122 "../src/MainWindow.vala"
 	return obj;
-#line 2536 "MainWindow.c"
+#line 2114 "MainWindow.c"
 }
 
 static void
@@ -2540,87 +2118,129 @@ khronos_main_window_class_init (KhronosMainWindowClass * klass,
                                 gpointer klass_data)
 {
 	GeeHashMultiMap* _tmp0_;
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 	khronos_main_window_parent_class = g_type_class_peek_parent (klass);
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 	g_type_class_adjust_private_offset (klass, &KhronosMainWindow_private_offset);
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 	((GtkWindowClass *) klass)->close_request = (gboolean (*) (GtkWindow*)) khronos_main_window_real_close_request;
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 	G_OBJECT_CLASS (klass)->get_property = _vala_khronos_main_window_get_property;
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 	G_OBJECT_CLASS (klass)->set_property = _vala_khronos_main_window_set_property;
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 	G_OBJECT_CLASS (klass)->constructor = khronos_main_window_constructor;
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 	G_OBJECT_CLASS (klass)->finalize = khronos_main_window_finalize;
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 	g_object_class_install_property (G_OBJECT_CLASS (klass), KHRONOS_MAIN_WINDOW_IS_MODIFIED_PROPERTY, khronos_main_window_properties[KHRONOS_MAIN_WINDOW_IS_MODIFIED_PROPERTY] = g_param_spec_boolean ("is-modified", "is-modified", "is-modified", FALSE, G_PARAM_STATIC_STRINGS | G_PARAM_READABLE | G_PARAM_WRITABLE));
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 	g_object_class_install_property (G_OBJECT_CLASS (klass), KHRONOS_MAIN_WINDOW_APP_PROPERTY, khronos_main_window_properties[KHRONOS_MAIN_WINDOW_APP_PROPERTY] = g_param_spec_object ("app", "app", "app", gtk_application_get_type (), G_PARAM_STATIC_STRINGS | G_PARAM_READABLE | G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 	g_object_class_install_property (G_OBJECT_CLASS (klass), KHRONOS_MAIN_WINDOW_ACTIONS_PROPERTY, khronos_main_window_properties[KHRONOS_MAIN_WINDOW_ACTIONS_PROPERTY] = g_param_spec_object ("actions", "actions", "actions", g_simple_action_group_get_type (), G_PARAM_STATIC_STRINGS | G_PARAM_READABLE | G_PARAM_WRITABLE));
-#line 52 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
+	gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (klass), "/io/github/lainsce/Khronos/main_window.ui");
+#line 21 "../src/MainWindow.vala"
+	gtk_widget_class_bind_template_child_full (GTK_WIDGET_CLASS (klass), "column", FALSE, G_STRUCT_OFFSET (KhronosMainWindow, column));
+#line 21 "../src/MainWindow.vala"
+	gtk_widget_class_bind_template_child_full (GTK_WIDGET_CLASS (klass), "column_entry", FALSE, G_STRUCT_OFFSET (KhronosMainWindow, column_entry));
+#line 21 "../src/MainWindow.vala"
+	gtk_widget_class_bind_template_child_full (GTK_WIDGET_CLASS (klass), "column_time_label", FALSE, G_STRUCT_OFFSET (KhronosMainWindow, column_time_label));
+#line 21 "../src/MainWindow.vala"
+	gtk_widget_class_bind_template_child_full (GTK_WIDGET_CLASS (klass), "column_button", FALSE, G_STRUCT_OFFSET (KhronosMainWindow, column_button));
+#line 21 "../src/MainWindow.vala"
+	gtk_widget_class_bind_template_child_full (GTK_WIDGET_CLASS (klass), "column_play_button", FALSE, G_STRUCT_OFFSET (KhronosMainWindow, column_play_button));
+#line 21 "../src/MainWindow.vala"
+	gtk_widget_class_bind_template_child_full (GTK_WIDGET_CLASS (klass), "menu_button", FALSE, G_STRUCT_OFFSET (KhronosMainWindow, menu_button));
+#line 21 "../src/MainWindow.vala"
+	gtk_widget_class_bind_template_child_full (GTK_WIDGET_CLASS (klass), "trash_button", FALSE, G_STRUCT_OFFSET (KhronosMainWindow, trash_button));
+#line 21 "../src/MainWindow.vala"
+	gtk_widget_class_bind_template_child_full (GTK_WIDGET_CLASS (klass), "menu_button2", FALSE, G_STRUCT_OFFSET (KhronosMainWindow, menu_button2));
+#line 21 "../src/MainWindow.vala"
+	gtk_widget_class_bind_template_child_full (GTK_WIDGET_CLASS (klass), "win_switcher", FALSE, G_STRUCT_OFFSET (KhronosMainWindow, win_switcher));
+#line 21 "../src/MainWindow.vala"
+	gtk_widget_class_bind_template_child_full (GTK_WIDGET_CLASS (klass), "win_switcher2", FALSE, G_STRUCT_OFFSET (KhronosMainWindow, win_switcher2));
+#line 21 "../src/MainWindow.vala"
+	gtk_widget_class_bind_template_child_full (GTK_WIDGET_CLASS (klass), "title_stack", FALSE, G_STRUCT_OFFSET (KhronosMainWindow, title_stack));
+#line 21 "../src/MainWindow.vala"
+	gtk_widget_class_bind_template_child_full (GTK_WIDGET_CLASS (klass), "win_stack", FALSE, G_STRUCT_OFFSET (KhronosMainWindow, win_stack));
+#line 73 "../src/MainWindow.vala"
 	_tmp0_ = gee_hash_multi_map_new (G_TYPE_STRING, (GBoxedCopyFunc) g_strdup, (GDestroyNotify) g_free, G_TYPE_STRING, (GBoxedCopyFunc) g_strdup, (GDestroyNotify) g_free, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-#line 52 "../src/MainWindow.vala"
+#line 73 "../src/MainWindow.vala"
 	khronos_main_window_action_accelerators = (GeeMultiMap*) _tmp0_;
-#line 2568 "MainWindow.c"
+#line 2172 "MainWindow.c"
 }
 
 static void
 khronos_main_window_instance_init (KhronosMainWindow * self,
                                    gpointer klass)
 {
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 	self->priv = khronos_main_window_get_instance_private (self);
-#line 30 "../src/MainWindow.vala"
+#line 51 "../src/MainWindow.vala"
 	self->priv->_is_modified = FALSE;
-#line 31 "../src/MainWindow.vala"
+#line 52 "../src/MainWindow.vala"
 	self->start = FALSE;
-#line 33 "../src/MainWindow.vala"
+#line 54 "../src/MainWindow.vala"
 	self->priv->sec = (guint) 0;
-#line 34 "../src/MainWindow.vala"
+#line 55 "../src/MainWindow.vala"
 	self->priv->min = (guint) 0;
-#line 35 "../src/MainWindow.vala"
+#line 56 "../src/MainWindow.vala"
 	self->priv->hrs = (guint) 0;
-#line 40 "../src/MainWindow.vala"
+#line 61 "../src/MainWindow.vala"
 	self->priv->id1 = (guint) 0;
-#line 41 "../src/MainWindow.vala"
+#line 62 "../src/MainWindow.vala"
 	self->priv->id2 = (guint) 0;
-#line 42 "../src/MainWindow.vala"
+#line 63 "../src/MainWindow.vala"
 	self->priv->id3 = (guint) 0;
-#line 43 "../src/MainWindow.vala"
+#line 64 "../src/MainWindow.vala"
 	self->priv->id4 = (guint) 0;
-#line 44 "../src/MainWindow.vala"
+#line 65 "../src/MainWindow.vala"
 	self->priv->id5 = (guint) 0;
-#line 2597 "MainWindow.c"
+#line 21 "../src/MainWindow.vala"
+	gtk_widget_init_template (GTK_WIDGET (self));
+#line 2203 "MainWindow.c"
 }
 
 static void
 khronos_main_window_finalize (GObject * obj)
 {
 	KhronosMainWindow * self;
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, KHRONOS_TYPE_MAIN_WINDOW, KhronosMainWindow);
-#line 23 "../src/MainWindow.vala"
-	_g_object_unref0 (self->column);
-#line 24 "../src/MainWindow.vala"
-	_g_object_unref0 (self->column_entry);
 #line 25 "../src/MainWindow.vala"
-	_g_object_unref0 (self->column_time_label);
-#line 26 "../src/MainWindow.vala"
-	_g_object_unref0 (self->column_button);
+	_g_object_unref0 (self->column);
 #line 27 "../src/MainWindow.vala"
+	_g_object_unref0 (self->column_entry);
+#line 29 "../src/MainWindow.vala"
+	_g_object_unref0 (self->column_time_label);
+#line 31 "../src/MainWindow.vala"
+	_g_object_unref0 (self->column_button);
+#line 33 "../src/MainWindow.vala"
 	_g_object_unref0 (self->column_play_button);
-#line 28 "../src/MainWindow.vala"
-	_g_object_unref0 (self->priv->liststore);
+#line 35 "../src/MainWindow.vala"
+	_g_object_unref0 (self->menu_button);
 #line 37 "../src/MainWindow.vala"
+	_g_object_unref0 (self->trash_button);
+#line 39 "../src/MainWindow.vala"
+	_g_object_unref0 (self->menu_button2);
+#line 41 "../src/MainWindow.vala"
+	_g_object_unref0 (self->win_switcher);
+#line 43 "../src/MainWindow.vala"
+	_g_object_unref0 (self->win_switcher2);
+#line 45 "../src/MainWindow.vala"
+	_g_object_unref0 (self->title_stack);
+#line 47 "../src/MainWindow.vala"
+	_g_object_unref0 (self->win_stack);
+#line 49 "../src/MainWindow.vala"
+	_g_object_unref0 (self->priv->liststore);
+#line 58 "../src/MainWindow.vala"
 	_khronos_task_manager_unref0 (self->tm);
-#line 46 "../src/MainWindow.vala"
+#line 67 "../src/MainWindow.vala"
 	_g_object_unref0 (self->priv->_actions);
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 	G_OBJECT_CLASS (khronos_main_window_parent_class)->finalize (obj);
-#line 2624 "MainWindow.c"
+#line 2244 "MainWindow.c"
 }
 
 static GType
@@ -2653,33 +2273,33 @@ _vala_khronos_main_window_get_property (GObject * object,
 {
 	KhronosMainWindow * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (object, KHRONOS_TYPE_MAIN_WINDOW, KhronosMainWindow);
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 	switch (property_id) {
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		case KHRONOS_MAIN_WINDOW_IS_MODIFIED_PROPERTY:
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		g_value_set_boolean (value, khronos_main_window_get_is_modified (self));
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		break;
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		case KHRONOS_MAIN_WINDOW_APP_PROPERTY:
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		g_value_set_object (value, khronos_main_window_get_app (self));
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		break;
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		case KHRONOS_MAIN_WINDOW_ACTIONS_PROPERTY:
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		g_value_set_object (value, khronos_main_window_get_actions (self));
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		break;
-#line 2677 "MainWindow.c"
+#line 2297 "MainWindow.c"
 		default:
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		break;
-#line 2683 "MainWindow.c"
+#line 2303 "MainWindow.c"
 	}
 }
 
@@ -2691,33 +2311,33 @@ _vala_khronos_main_window_set_property (GObject * object,
 {
 	KhronosMainWindow * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (object, KHRONOS_TYPE_MAIN_WINDOW, KhronosMainWindow);
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 	switch (property_id) {
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		case KHRONOS_MAIN_WINDOW_IS_MODIFIED_PROPERTY:
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		khronos_main_window_set_is_modified (self, g_value_get_boolean (value));
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		break;
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		case KHRONOS_MAIN_WINDOW_APP_PROPERTY:
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		khronos_main_window_set_app (self, g_value_get_object (value));
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		break;
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		case KHRONOS_MAIN_WINDOW_ACTIONS_PROPERTY:
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		khronos_main_window_set_actions (self, g_value_get_object (value));
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		break;
-#line 2715 "MainWindow.c"
+#line 2335 "MainWindow.c"
 		default:
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-#line 20 "../src/MainWindow.vala"
+#line 21 "../src/MainWindow.vala"
 		break;
-#line 2721 "MainWindow.c"
+#line 2341 "MainWindow.c"
 	}
 }
 

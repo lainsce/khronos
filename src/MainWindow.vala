@@ -17,14 +17,35 @@
 * Boston, MA 02110-1301 USA
 */
 namespace Khronos {
+    [GtkTemplate (ui = "/io/github/lainsce/Khronos/main_window.ui")]
     public class MainWindow : Adw.ApplicationWindow {
         delegate void HookFunc ();
         // Widgets
+        [GtkChild]
         public Gtk.ListBox column;
+        [GtkChild]
         public Gtk.Entry column_entry;
+        [GtkChild]
         public Gtk.Label column_time_label;
+        [GtkChild]
         public Gtk.Button column_button;
+        [GtkChild]
         public Gtk.Button column_play_button;
+        [GtkChild]
+        public Gtk.MenuButton menu_button;
+        [GtkChild]
+        public Gtk.Button trash_button;
+        [GtkChild]
+        public Gtk.MenuButton menu_button2;
+        [GtkChild]
+        public Adw.ViewSwitcher win_switcher;
+        [GtkChild]
+        public Adw.ViewSwitcher win_switcher2;
+        [GtkChild]
+        public Gtk.Stack title_stack;
+        [GtkChild]
+        public Gtk.Stack win_stack;
+
         private GLib.ListStore liststore;
 
         public bool is_modified {get; set; default = false;}
@@ -82,19 +103,6 @@ namespace Khronos {
 
                 app.set_accels_for_action (ACTION_PREFIX + action, accels_array);
             }
-        }
-
-        construct {
-            Adw.init ();
-            tm = new TaskManager (this);
-
-            Khronos.Application.gsettings.changed.connect (() => {
-                if (Khronos.Application.gsettings.get_boolean("dark-mode")) {
-                    Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
-                } else {
-                    Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = false;
-                }
-            });
 
             var provider = new Gtk.CssProvider ();
             provider.load_from_resource ("/io/github/lainsce/Khronos/stylesheet.css");
@@ -109,44 +117,29 @@ namespace Khronos {
             if (Config.PROFILE == "Devel") {
                 style.add_class ("devel");
             }
+        }
 
-            var titlebar = new Adw.HeaderBar ();
-            titlebar.get_style_context ().add_class ("flat-titlebar");
-            titlebar.set_hexpand (true);
+        construct {
+            Adw.init ();
+            tm = new TaskManager (this);
+
+            Khronos.Application.gsettings.changed.connect (() => {
+                if (Khronos.Application.gsettings.get_boolean("dark-mode")) {
+                    Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
+                } else {
+                    Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = false;
+                }
+            });
 
             liststore = new GLib.ListStore (typeof (Log));
 
-            column = new Gtk.ListBox ();
-            column.set_margin_top (18);
-            column.set_margin_bottom (18);
-            column.get_style_context ().add_class ("content");
-            column.set_selection_mode (Gtk.SelectionMode.SINGLE);
+            column_time_label.set_label ("<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec));
 
             column.row_activated.connect ((actrow) => {
                 var row = ((LogRow)column.get_selected_row ());
 
                 column_entry.set_text (row.log.name);
             });
-
-            column_time_label = new Gtk.Label("");
-            column_time_label.set_use_markup (true);
-            column_time_label.set_label ("<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec));
-            column_time_label.get_style_context ().add_class ("kh-title");
-
-            column_play_button = new Gtk.Button ();
-            column_play_button.set_label (_("Start Timer"));
-            column_play_button.set_can_focus (false);
-            column_play_button.set_sensitive (false);
-            column_play_button.halign = Gtk.Align.CENTER;
-            column_play_button.get_style_context ().add_class ("suggested-action");
-            column_play_button.get_style_context ().add_class ("circular");
-
-            column_button = new Gtk.Button ();
-            column_button.label = _("Add Log");
-            column_button.can_focus = false;
-            column_button.sensitive = false;
-            column_button.halign = Gtk.Align.CENTER;
-            column_button.get_style_context ().add_class ("circular");
 
             column_button.clicked.connect (() => {
                 var log = new Log ();
@@ -184,10 +177,6 @@ namespace Khronos {
                 }
             });
 
-            column_entry = new Gtk.Entry ();
-            column_entry.margin_bottom = column_entry.margin_top = 24;
-            column_entry.placeholder_text = _("New Log Name…");
-
             column_entry.changed.connect (() => {
                 if (column_entry.text_length != 0) {
                     column_play_button.sensitive = true;
@@ -197,68 +186,24 @@ namespace Khronos {
                 column.unselect_all ();
             });
 
-            var column_buttons_grid = new Gtk.Grid ();
-            column_buttons_grid.column_spacing = 12;
-            column_buttons_grid.attach (column_play_button, 0, 0);
-            column_buttons_grid.attach (column_button, 1, 0);
-
-            var size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
-            size_group.add_widget (column_play_button);
-            size_group.add_widget (column_button);
-
-            var main_frame = new Gtk.Grid ();
-            main_frame.orientation = Gtk.Orientation.VERTICAL;
-            main_frame.valign = Gtk.Align.CENTER;
-            main_frame.halign = Gtk.Align.CENTER;
-            main_frame.hexpand = true;
-            main_frame.attach (column_time_label, 0, 0);
-            main_frame.attach (column_entry, 0, 1);
-            main_frame.attach (column_buttons_grid, 0, 2);
+            win_stack.notify["visible-child-name"].connect (() => {
+                if (win_stack.get_visible_child_name () == "main") {
+                    title_stack.set_visible_child_name ("main_title");
+                } else {
+                    title_stack.set_visible_child_name ("logs_title");
+                }
+            });
 
             var builder = new Gtk.Builder.from_resource ("/io/github/lainsce/Khronos/mainmenu.ui");
-
-            var menu_button = new Gtk.MenuButton ();
-            menu_button.set_icon_name ("open-menu-symbolic");
-            menu_button.has_tooltip = true;
-            menu_button.tooltip_text = (_("Settings"));
             menu_button.menu_model = (MenuModel)builder.get_object ("menu");
+            menu_button2.menu_model = (MenuModel)builder.get_object ("menu");
 
-            titlebar.pack_end (menu_button);
+            trash_button.clicked.connect (() => {
+                liststore.remove_all ();
+            });
 
             tm.load_from_file ();
 
-            var tgrid = new Gtk.Grid ();
-            tgrid.attach (titlebar, 0, 0, 2, 1);
-
-            var column_label = new Gtk.Label (_("Logs"));
-            column_label.set_halign (Gtk.Align.START);
-            column_label.set_hexpand (true);
-            column_label.set_margin_top (18);
-            column_label.get_style_context ().add_class ("heading");
-
-            var cgrid = new Gtk.Grid ();
-            cgrid.attach (column_label, 0, 0, 1, 1);
-            cgrid.attach (column, 0, 2, 1, 1);
-
-            var clamp = new Adw.Clamp ();
-            clamp.set_child (cgrid);
-
-            var mgrid = new Gtk.Grid ();
-            mgrid.vexpand = true;
-            mgrid.attach (main_frame, 0, 1, 1, 1);
-            mgrid.attach (clamp, 0, 2, 1, 1);
-
-            var scroller = new Gtk.ScrolledWindow ();
-            scroller.hscrollbar_policy = Gtk.PolicyType.NEVER;
-            scroller.set_child (mgrid);
-
-            var grid = new Gtk.Grid ();
-            grid.set_hexpand (true);
-            grid.set_vexpand (true);
-            grid.attach (tgrid, 0, 1, 1, 1);
-            grid.attach (scroller, 0, 2, 1, 1);
-
-            this.set_child (grid);
             this.set_size_request (360, 360);
             this.show ();
             this.present ();
@@ -446,7 +391,7 @@ namespace Khronos {
                                    "comments", _("Track each task\'s time in a simple inobtrusive way."),
                                    "copyright", COPYRIGHT,
                                    "authors", AUTHORS,
-                                   "artists": null,
+                                   "artists", null,
                                    "license-type", Gtk.License.GPL_3_0,
                                    "wrap-license", false,
                                    "translator-credits", _("translator-credits"),
