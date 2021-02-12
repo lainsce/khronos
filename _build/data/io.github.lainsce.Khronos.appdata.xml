@@ -4,6 +4,7 @@
   <metadata_license>CC0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>Khronos</name>
+  <name xml:lang="pt_BR">Khronos</name>
   <name xml:lang="pt">Khronos</name>
   <name xml:lang="nl">Khronos</name>
   <name xml:lang="lt">Tvarkaraštis</name>
@@ -12,6 +13,7 @@
   <name xml:lang="de">Khronos</name>
   <name xml:lang="da">Tidsplan</name>
   <summary>Track each task's time in a simple inobtrusive way</summary>
+  <summary xml:lang="pt_BR">Monitore o tempo de cada tarefa de uma forma simples e discreta</summary>
   <summary xml:lang="pt">Siga o tempo de cada tarefa de um modo simples e não intrusivo</summary>
   <summary xml:lang="nl">Houd de tijd van elke taak bij op eenvoudige, niet-storende wijze</summary>
   <summary xml:lang="ja">シンプルで目障りにならない方法で、タスクにかかった時間を計測しましょう</summary>
@@ -19,11 +21,13 @@
   <summary xml:lang="de">Verfolgen Sie jede Aufgabenzeit auf einfache, unaufdringliche Weise</summary>
   <description>
     <p>Start tracking any task's "during" time and start &amp; stop as you go, with notifications.</p>
+    <p xml:lang="pt_BR">Comece a monitorar qualquer tarefa "durante" o tempo e inicie &amp;amp; pare enquanto avança, com notificações.</p>
     <p xml:lang="pt">Começe a seguir uma tarefa qualquer "durante" o tempo e inicie &amp;amp; pare enquanto for trabalhando, com notificações.</p>
     <p xml:lang="nl">Houd de tijd van elke taak bij en start en stop wanneer je maar wilt. Ondersteunt meldingen.</p>
     <p xml:lang="fr">Commencez à suivre le déroulement de n'importe quelle tâche et continuez au fur et à mesure. Notifications incluses.</p>
     <ul>
       <li>Quit anytime with the shortcut Ctrl + Q</li>
+      <li xml:lang="pt_BR">Saia a qualquer momento com o atalho Ctrl + Q</li>
       <li xml:lang="pt">Saía quando quiser com o atalho Ctrl + Q</li>
       <li xml:lang="nl">Sluit af met Ctrl + Q</li>
       <li xml:lang="lt">Išeikite bet kuriuo metu, naudodami klavišų susiejimą Ctrl (Vald) + Q</li>
@@ -37,6 +41,7 @@
     <binary>io.github.lainsce.Khronos</binary>
   </provides>
   <developer_name>Lains</developer_name>
+  <developer_name xml:lang="pt_BR">Lains</developer_name>
   <developer_name xml:lang="pt">Lains</developer_name>
   <developer_name xml:lang="nl">Lains</developer_name>
   <developer_name xml:lang="lt">Lains</developer_name>
@@ -82,19 +87,31 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="3.5.0" date="2020-02-09">
+      <description>
+        <p>Release: UI Refreshments</p>
+        <ul>
+          <li>Changed: The UI is now with a better layout.</li>
+        </ul>
+      </description>
+    </release>
     <release version="3.0.0" date="2020-01-29">
       <description>
         <p>Release: Port to GTK4</p>
+        <p xml:lang="pt_BR">Lançamento: Mudança para GTK4</p>
         <ul>
           <li>Changed: Rewritten for GTK4.</li>
+          <li xml:lang="pt_BR">Alterado: Reescrito para GTK4.</li>
         </ul>
       </description>
     </release>
     <release version="2.0.0" date="2020-01-25">
       <description>
         <p>Release: Hello, Flatpak!</p>
+        <p xml:lang="pt_BR">Lançamento: Hello, Flatpak!</p>
         <ul>
           <li>Changed: Major UI changes.</li>
+          <li xml:lang="pt_BR">Alterado: Principais alterações da IU.</li>
         </ul>
       </description>
     </release>

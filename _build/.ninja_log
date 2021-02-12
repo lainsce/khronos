@@ -34,3 +34,15 @@
 993	2124	1612891315746717473	io.github.lainsce.Khronos.p/meson-generated_src_MainWindow.c.o	58ec5dfebf603281
 2124	2404	1612891316027718820	io.github.lainsce.Khronos	d3ab88ffae1c6d99
 3	1036	0	meson-install	9bd7faa9472bf40f
+0	1095	1612916847624253039	build.ninja	c42c4452c21dd6ca
+7	566	1612916848216256151	data/io.github.lainsce.Khronos.appdata.xml	4ec962186dae9594
+3	3430	1612916851111271370	io.github.lainsce.Khronos.p/meson-generated_.._as-resources.c.o	64766733a9414259
+5	6866	1612916854540289397	io.github.lainsce.Khronos.p/meson-generated_src_Widgets_LogRow.c.o	2a0decb5ef2f4337
+6866	7504	1612916855175292736	io.github.lainsce.Khronos.p/meson-generated_src_Services_FileManager.c.o	ccc91dae2cc66856
+4	8305	1612916855912296610	io.github.lainsce.Khronos.p/meson-generated_src_Services_Dialog.c.o	6d394bc5399f1fd8
+4	8392	1612916856089297541	io.github.lainsce.Khronos.p/meson-generated_src_MainWindow.c.o	58ec5dfebf603281
+566	8394	1612916856074297462	io.github.lainsce.Khronos.p/meson-generated_src_Prefs.c.o	9f3274a07819240f
+4	8408	1612916856106297630	io.github.lainsce.Khronos.p/meson-generated_src_Application.c.o	7c360a0632c9297
+3430	8597	1612916856295298624	io.github.lainsce.Khronos.p/meson-generated_src_Services_TaskManager.c.o	d2cc4503d2743b26
+8597	9087	1612916856790301226	io.github.lainsce.Khronos	d3ab88ffae1c6d99
+4	1307	0	meson-install	9bd7faa9472bf40f

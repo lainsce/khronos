@@ -19,9 +19,9 @@
 
 #define PACKAGE_NAME "io.github.lainsce.Khronos"
 
-#define PACKAGE_VERSION "3.0.0"
+#define PACKAGE_VERSION "3.5.0"
 
 #define PROFILE "Devel"
 
-#define VERSION "3.0.0"
+#define VERSION "3.5.0"
 

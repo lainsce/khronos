@@ -1,4 +1,4 @@
-Build started at 2021-02-09T12:06:17.024367
+Build started at 2021-02-09T21:27:26.981413
 Main binary: /usr/bin/python3
 Build Options: -Dprofile=development -Dprefix=/app -Dbackend=ninja
 Python system: Linux
@@ -12,7 +12,7 @@ WARNING: PKG_CONFIG_PATH environment variable has changed between configurations
 Using 'PKG_CONFIG_PATH' from environment with value: '/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig'
 WARNING: PKG_CONFIG_PATH environment variable has changed between configurations, meson ignores this. Use -Dpkg_config_path to change pkg-config search path instead.
 Project name: io.github.lainsce.Khronos
-Project version: 3.0.0
+Project version: 3.5.0
 C compiler for the build machine: ccache cc (gcc 10.2.0 "cc (GCC) 10.2.0")
 C linker for the build machine: cc ld.bfd 2.35.1
 None of 'AR' are defined in the environment, not changing global flags.
@@ -48,8 +48,8 @@ Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
 Using 'PKG_CONFIG_PATH' from environment with value: '/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig'
 None of 'CC_LD' are defined in the environment, not changing global flags.
 Running compile:
-Working directory:  /home/lains/Projects/khronos/_build/meson-private/tmpkdcoek6c
-Command line:  ccache cc -L/app/lib /home/lains/Projects/khronos/_build/meson-private/tmpkdcoek6c/testfile.c -o /home/lains/Projects/khronos/_build/meson-private/tmpkdcoek6c/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
+Working directory:  /home/lains/Projects/khronos/_build/meson-private/tmp090yo5bu
+Command line:  ccache cc -L/app/lib /home/lains/Projects/khronos/_build/meson-private/tmp090yo5bu/testfile.c -o /home/lains/Projects/khronos/_build/meson-private/tmp090yo5bu/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
 
 Code:
  #include<stdio.h>
@@ -70,8 +70,8 @@ Program stderr:
 
 
 Running compile:
-Working directory:  /home/lains/Projects/khronos/_build/meson-private/tmpoy5rpbad
-Command line:  ccache cc /home/lains/Projects/khronos/_build/meson-private/tmpoy5rpbad/testfile.c -o /home/lains/Projects/khronos/_build/meson-private/tmpoy5rpbad/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+Working directory:  /home/lains/Projects/khronos/_build/meson-private/tmprl1a36sw
+Command line:  ccache cc /home/lains/Projects/khronos/_build/meson-private/tmprl1a36sw/testfile.c -o /home/lains/Projects/khronos/_build/meson-private/tmprl1a36sw/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
 
 Code:
  
@@ -84,8 +84,8 @@ Compiler stderr:
  
 None of 'CC_LD' are defined in the environment, not changing global flags.
 Running compile:
-Working directory:  /home/lains/Projects/khronos/_build/meson-private/tmput1ni94g
-Command line:  ccache cc -L/app/lib /home/lains/Projects/khronos/_build/meson-private/tmput1ni94g/testfile.c -o /home/lains/Projects/khronos/_build/meson-private/tmput1ni94g/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lm -Wl,--end-group -Wl,--allow-shlib-undefined 
+Working directory:  /home/lains/Projects/khronos/_build/meson-private/tmpea4pu18f
+Command line:  ccache cc -L/app/lib /home/lains/Projects/khronos/_build/meson-private/tmpea4pu18f/testfile.c -o /home/lains/Projects/khronos/_build/meson-private/tmpea4pu18f/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -Wl,--start-group -lm -Wl,--end-group -Wl,--allow-shlib-undefined 
 
 Code:
  int main(void) { return 0; }
@@ -105,8 +105,8 @@ Build targets in project: 11
 
 Found ninja-1.10.1 at /usr/bin/ninja
 Running compile:
-Working directory:  /home/lains/Projects/khronos/_build/meson-private/tmpd7f7q5j7
-Command line:  ccache cc /home/lains/Projects/khronos/_build/meson-private/tmpd7f7q5j7/testfile.c -o /home/lains/Projects/khronos/_build/meson-private/tmpd7f7q5j7/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+Working directory:  /home/lains/Projects/khronos/_build/meson-private/tmpi80pksbv
+Command line:  ccache cc /home/lains/Projects/khronos/_build/meson-private/tmpi80pksbv/testfile.c -o /home/lains/Projects/khronos/_build/meson-private/tmpi80pksbv/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
 
 Code:
  

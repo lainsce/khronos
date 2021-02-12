@@ -7,3 +7,11 @@
 /app/share/icons/hicolor/scalable/apps/io.github.lainsce.Khronos.Devel.svg
 /app/share/icons/hicolor/symbolic/apps/io.github.lainsce.Khronos-symbolic.svg
 /app/share/glib-2.0/schemas/io.github.lainsce.Khronos.gschema.xml
+/app/share/icons/hicolor/symbolic/apps
+/app/share/icons/hicolor/symbolic
+/app/share/icons/hicolor/scalable/apps
+/app/share/icons/hicolor/scalable
+/app/share/icons/hicolor
+/app/share/icons
+/app/share/metainfo
+/app/share/applications
