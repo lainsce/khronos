@@ -117,14 +117,13 @@
         {
             "name" : "khronos",
             "buildsystem" : "meson",
-	    "config-opts" : [
+	        "config-opts" : [
                 "-Dprofile=development"
             ],
             "sources" : [
                 {
-                    "type" : "git",
-                    "url" : "https://github.com/lainsce/khronos",
-                    "branch" : "master"
+                    "type" : "dir",
+                    "path": "../../"
                 }
             ]
         }
