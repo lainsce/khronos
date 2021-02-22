@@ -19,5 +19,10 @@
 				<default>false</default>
 				<summary>Whether the UI is in Dark Mode or not</summary>
 		</key>
+	  <key name="sort-type" type="s">
+				<default>'time'</default>
+				<summary>Sorting type for the task list</summary>
+				<description>The user-preferred sorting of tasks to use in Khronos, default is time</description>
+		</key>
 	</schema>
 </schemalist>

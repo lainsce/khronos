@@ -48,7 +48,7 @@ namespace Khronos {
         [GtkChild]
         public Gtk.Box placeholder;
 
-        private GLib.ListStore liststore;
+        public GLib.ListStore liststore;
 
         public bool is_modified {get; set; default = false;}
         public bool start = false;
@@ -133,7 +133,12 @@ namespace Khronos {
                 }
             });
 
+            var action_sort = Khronos.Application.gsettings.create_action ("sort-type");
+            app.add_action(action_sort);
+
             liststore = new GLib.ListStore (typeof (Log));
+
+            placeholder.set_visible (false);
 
             column_time_label.set_label ("<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec));
 
@@ -143,20 +148,85 @@ namespace Khronos {
                 column_entry.set_text (row.log.name);
             });
 
+            column.set_sort_func ((row1, row2) => {
+                if (Khronos.Application.gsettings.get_string ("sort-type") == "'time'") {
+                    string task1 = ((LogRow) row1).log.timedate;
+                    string task2 = ((LogRow) row2).log.timedate;
+
+                    try {
+                        var reg = new Regex("(?m)\\d{2}∶(?<min>\\d{2})∶\\d{2} –");
+                        GLib.MatchInfo match;
+                        if (reg.match (task1, 0, out match)) {
+                            do {
+                                if (match.fetch_named ("min") != "") {
+                                    return task1.collate(task2);
+                                }
+                            } while (match.next ());
+                        } else {
+                            return task2.collate(task1);
+                        }
+                    } catch (GLib.Error e) {
+                        warning ("ERR: %s", e.message);
+                    }
+                } else if (Khronos.Application.gsettings.get_string ("sort-type") == "'name'") {
+                    string task1 = ((LogRow) row1).log.name;
+                    string task2 = ((LogRow) row2).log.name;
+
+                    return task1.collate(task2);
+                } else {
+                    return 0;
+                }
+                return 0;
+            });
+
+            Khronos.Application.gsettings.changed.connect (() => {
+                column.set_sort_func ((row1, row2) => {
+                    if (Khronos.Application.gsettings.get_string ("sort-type") == "'time'") {
+                        string task1 = ((LogRow) row1).log.timedate;
+                        string task2 = ((LogRow) row2).log.timedate;
+
+                        try {
+                            var reg = new Regex("(?m)\\d{2}∶(?<min>\\d{2})∶\\d{2} –");
+                            GLib.MatchInfo match;
+                            if (reg.match (task1, 0, out match)) {
+                                do {
+                                    if (match.fetch_named ("min") != "") {
+                                        return task1.collate(task2);
+                                    }
+                                } while (match.next ());
+                            } else {
+                                return task2.collate(task1);
+                            }
+                        } catch (GLib.Error e) {
+                            warning ("ERR: %s", e.message);
+                        }
+                    } else if (Khronos.Application.gsettings.get_string ("sort-type") == "'name'") {
+                        string task1 = ((LogRow) row1).log.name;
+                        string task2 = ((LogRow) row2).log.name;
+
+                        return task1.collate(task2);
+                    } else {
+                        return 0;
+                    }
+                    return 0;
+                });
+            });
+
             column_button.clicked.connect (() => {
                 var log = new Log ();
                 log.name = column_entry.text;
 
                 var dt = new GLib.DateTime.now_local ();
-                log.timedate = "%s\n%s - %s".printf(column_time_label.label,
-                                                     ("<span font_features='tnum'>%s</span>").printf (dt.format ("%a, %d/%m %H∶%M∶%S")),
-                                                     ("<span font_features='tnum'>%s</span>").printf (dt.add_full (0,0,0,(int)hrs,(int)min,(int)sec).format ("%H∶%M∶%S")));
+                log.timedate = "%s\n%s – %s".printf(column_time_label.label,
+                                                    ("<span font_features='tnum'>%s</span>").printf (dt.format ("%a, %d/%m %H∶%M∶%S")),
+                                                    ("<span font_features='tnum'>%s</span>").printf (dt.add_full (0,0,0,(int)hrs,(int)min,(int)sec).format ("%H∶%M∶%S")));
+
                 liststore.append (log);
                 tm.save_to_file (liststore);
                 reset_timer ();
                 is_modified = true;
                 column_entry.text = "";
-                placeholder.visible = false;
+                placeholder.set_visible(false);
             });
 
             column_play_button.clicked.connect (() => {
@@ -202,8 +272,39 @@ namespace Khronos {
             menu_button2.menu_model = (MenuModel)builder.get_object ("menu");
 
             trash_button.clicked.connect (() => {
-                liststore.remove_all ();
-                placeholder.visible = true;
+                var flags = Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL;
+                var dialog = new Gtk.MessageDialog (this, flags, Gtk.MessageType.WARNING, Gtk.ButtonsType.NONE, null, null);
+                dialog.set_transient_for (this);
+                dialog.resizable = false;
+
+                dialog.text = _("Empty the Logs List?");
+                dialog.secondary_text = _("Emptying this list means all the logs in it will be permanently lost with no recovery.");
+
+                dialog.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
+                var ok_button = dialog.add_button (_("Empty List"), Gtk.ResponseType.OK);
+                ok_button.get_style_context ().add_class ("destructive-action");
+
+                dialog.show ();
+
+                dialog.response.connect ((response_id) => {
+                    switch (response_id) {
+                        case Gtk.ResponseType.OK:
+                            liststore.remove_all ();
+                            dialog.close ();
+                            break;
+                        case Gtk.ResponseType.NO:
+                            dialog.close ();
+                            break;
+                        case Gtk.ResponseType.CANCEL:
+                        case Gtk.ResponseType.CLOSE:
+                        case Gtk.ResponseType.DELETE_EVENT:
+                            dialog.close ();
+                            return;
+                        default:
+                            assert_not_reached ();
+                    }
+                });
+                placeholder.set_visible (false);
             });
 
             tm.load_from_file ();
@@ -218,7 +319,7 @@ namespace Khronos {
                 tm.save_to_file (liststore);
 
                 if (liststore.get_n_items () == 0) {
-                    placeholder.visible = true;
+                    placeholder.set_visible (false);
                 }
             });
         }
