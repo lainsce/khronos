@@ -7,54 +7,105 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.lainsce.khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-12 07:01+0900\n"
-"PO-Revision-Date: 2020-02-13 19:43+0100\n"
+"POT-Creation-Date: 2021-01-30 12:27-0300\n"
+"PO-Revision-Date: 2021-03-02 13:19+0100\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
-"Last-Translator: \n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: de\n"
 
-#: src/MainWindow.vala:33
+#: src/MainWindow.vala:66 src/MainWindow.vala:441
 msgid "Khronos"
 msgstr "Khronos"
 
-#: src/Widgets/Column.vala:23
-msgid "New task name…"
-msgstr "Neuer Aufgabenname..."
-
-#: src/Widgets/Column.vala:36
-msgid "Start Timer…"
-msgstr "Zeiterfassung starten..."
-
-#: src/Widgets/Column.vala:49
-msgid "Reset Timer"
-msgstr "Zeiterfassung zurücksetzen"
-
-#: src/Widgets/Column.vala:63
-msgid "Add Log"
-msgstr "Log hinzufügen"
-
-#: src/Widgets/Column.vala:76
-#, c-format
-msgid "Started on: %s"
-msgstr "Gestartet am: %s"
-
-#: src/Widgets/Column.vala:88
-msgid "Stop Timer"
-msgstr "Zeiterfassung beenden"
-
-#: src/Widgets/Column.vala:95
+#: src/MainWindow.vala:137 src/MainWindow.vala:180
 msgid "Start Timer"
-msgstr "Zeiterfassung starten"
+msgstr "Timer starten"
 
-#: src/Widgets/ColumnListBox.vala:39
-msgid "No tasks…"
-msgstr "Keine Aufgaben..."
+#: src/MainWindow.vala:145
+msgid "Add Log"
+msgstr "Protokoll hinzufügen"
 
-#: src/Widgets/EventBox.vala:68
-msgid "Delete Task"
-msgstr "Aufgabe löschen"
+#: src/MainWindow.vala:174
+msgid "Stop Timer"
+msgstr "Timer stoppen"
+
+#: src/MainWindow.vala:189
+msgid "New log name…"
+msgstr "Name des neuen Protokolls …"
+
+#: src/MainWindow.vala:223
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: src/MainWindow.vala:233
+msgid "Logs"
+msgstr "Protokolle"
+
+#: src/MainWindow.vala:371 src/MainWindow.vala:380 src/MainWindow.vala:389
+#: src/MainWindow.vala:398 src/MainWindow.vala:407
+msgid "Go rest for a while before continuing."
+msgstr "Mach eine Pause, bevor du fortfährst."
+
+#: src/MainWindow.vala:446
+msgid "Track each task's time in a simple inobtrusive way."
+msgstr "Erfasse die benutzte Zeit für deine Aufgaben auf einfache und störungsfreie Weise."
+
+#: src/MainWindow.vala:451
+msgid "translator-credits"
+msgstr "Milo Ivir <mail@milotype.de>, 2021."
+
+#: src/Services/Dialog.vala:23
+msgid "CSV files"
+msgstr "CSV Dateien"
+
+#: src/Services/Dialog.vala:27
+msgid "All files"
+msgstr "Alle Dateien"
+
+#: data/ui/mainmenu.ui:5
+msgid "Export Logs (CSV)…"
+msgstr "Protokolle exportieren (CSV) …"
+
+#: data/ui/mainmenu.ui:11
+msgid "Preferences"
+msgstr "Einstellungen"
+
+#: data/ui/mainmenu.ui:15
+msgid "About Khronos"
+msgstr "Über Khronos"
+
+#: data/ui/prefs.ui:11 data/ui/prefs.ui:14
+msgid "General"
+msgstr "Allgemein"
+
+#: data/ui/prefs.ui:18
+msgid "Notification Delay"
+msgstr "Verzögerung der Benachrichtigungen"
+
+#: data/ui/prefs.ui:45
+msgid "Dark Mode"
+msgstr "Dunkler Modus"
+
+#~ msgid "New task name…"
+#~ msgstr "Neuer Aufgabenname..."
+
+#~ msgid "Start Timer…"
+#~ msgstr "Zeiterfassung starten..."
+
+#~ msgid "Reset Timer"
+#~ msgstr "Zeiterfassung zurücksetzen"
+
+#, c-format
+#~ msgid "Started on: %s"
+#~ msgstr "Gestartet am: %s"
+
+#~ msgid "No tasks…"
+#~ msgstr "Keine Aufgaben..."
+
+#~ msgid "Delete Task"
+#~ msgstr "Aufgabe löschen"
