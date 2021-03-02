@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.lainsce.Khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-30 12:27-0300\n"
+"POT-Creation-Date: 2021-03-02 21:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,44 +17,46 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/MainWindow.vala:66 src/MainWindow.vala:441
-msgid "Khronos"
-msgstr ""
-
-#: src/MainWindow.vala:137 src/MainWindow.vala:180
-msgid "Start Timer"
-msgstr ""
-
-#: src/MainWindow.vala:145
-msgid "Add Log"
-msgstr ""
-
-#: src/MainWindow.vala:174
+#: src/MainWindow.vala:240
 msgid "Stop Timer"
 msgstr ""
 
-#: src/MainWindow.vala:189
-msgid "New log name…"
+#: src/MainWindow.vala:246 data/ui/main_window.ui:108
+msgid "Start Timer"
 msgstr ""
 
-#: src/MainWindow.vala:223
-msgid "Settings"
+#: src/MainWindow.vala:280
+msgid "Empty the Logs List?"
 msgstr ""
 
-#: src/MainWindow.vala:233
-msgid "Logs"
+#: src/MainWindow.vala:281
+msgid ""
+"Emptying this list means all the logs in it will be permanently lost with no "
+"recovery."
 msgstr ""
 
-#: src/MainWindow.vala:371 src/MainWindow.vala:380 src/MainWindow.vala:389
-#: src/MainWindow.vala:398 src/MainWindow.vala:407
+#: src/MainWindow.vala:283
+msgid "Cancel"
+msgstr ""
+
+#: src/MainWindow.vala:284
+msgid "Empty List"
+msgstr ""
+
+#: src/MainWindow.vala:425 src/MainWindow.vala:434 src/MainWindow.vala:443
+#: src/MainWindow.vala:452 src/MainWindow.vala:461
 msgid "Go rest for a while before continuing."
 msgstr ""
 
-#: src/MainWindow.vala:446
+#: src/MainWindow.vala:496
+msgid "Khronos"
+msgstr ""
+
+#: src/MainWindow.vala:501
 msgid "Track each task's time in a simple inobtrusive way."
 msgstr ""
 
-#: src/MainWindow.vala:451
+#: src/MainWindow.vala:507
 msgid "translator-credits"
 msgstr ""
 
@@ -67,15 +69,63 @@ msgid "All files"
 msgstr ""
 
 #: data/ui/mainmenu.ui:5
+msgid "Sort Tasks"
+msgstr ""
+
+#: data/ui/mainmenu.ui:9
+msgid "By Time"
+msgstr ""
+
+#: data/ui/mainmenu.ui:14
+msgid "By Name"
+msgstr ""
+
+#: data/ui/mainmenu.ui:21
 msgid "Export Logs (CSV)…"
 msgstr ""
 
-#: data/ui/mainmenu.ui:11
+#: data/ui/mainmenu.ui:27
 msgid "Preferences"
 msgstr ""
 
-#: data/ui/mainmenu.ui:15
+#: data/ui/mainmenu.ui:31
 msgid "About Khronos"
+msgstr ""
+
+#: data/ui/main_window.ui:57
+msgid "Removes all logs from the list"
+msgstr ""
+
+#: data/ui/main_window.ui:78
+msgid "Timer"
+msgstr ""
+
+#: data/ui/main_window.ui:100
+msgid "Log name…"
+msgstr ""
+
+#: data/ui/main_window.ui:109
+msgid "Starts a log's timer"
+msgstr ""
+
+#: data/ui/main_window.ui:118
+msgid "Add Log"
+msgstr ""
+
+#: data/ui/main_window.ui:119
+msgid "Adds a log to the list"
+msgstr ""
+
+#: data/ui/main_window.ui:134
+msgid "Logs"
+msgstr ""
+
+#: data/ui/main_window.ui:172
+msgid "No Logs"
+msgstr ""
+
+#: data/ui/main_window.ui:180
+msgid "Add a log on Timer tab and check later."
 msgstr ""
 
 #: data/ui/prefs.ui:11 data/ui/prefs.ui:14
