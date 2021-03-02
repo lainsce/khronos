@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: com.github.lainsce.khronos\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-01-30 12:27-0300\n"
-"PO-Revision-Date: 2021-03-02 13:19+0100\n"
+"PO-Revision-Date: 2021-03-02 13:42+0100\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -90,22 +90,3 @@ msgstr "Verzögerung der Benachrichtigungen"
 #: data/ui/prefs.ui:45
 msgid "Dark Mode"
 msgstr "Dunkler Modus"
-
-#~ msgid "New task name…"
-#~ msgstr "Neuer Aufgabenname..."
-
-#~ msgid "Start Timer…"
-#~ msgstr "Zeiterfassung starten..."
-
-#~ msgid "Reset Timer"
-#~ msgstr "Zeiterfassung zurücksetzen"
-
-#, c-format
-#~ msgid "Started on: %s"
-#~ msgstr "Gestartet am: %s"
-
-#~ msgid "No tasks…"
-#~ msgstr "Keine Aufgaben..."
-
-#~ msgid "Delete Task"
-#~ msgstr "Aufgabe löschen"
