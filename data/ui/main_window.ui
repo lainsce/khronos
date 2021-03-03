@@ -23,6 +23,7 @@
                     </child>
                     <child type="end">
                       <object class="GtkMenuButton" id="menu_button">
+                        <property name="can-focus">True</property>
                         <property name="icon-name">open-menu-symbolic</property>
                         <style>
                           <class name="image-button"/>
@@ -45,6 +46,7 @@
                     </child>
                     <child type="end">
                       <object class="GtkMenuButton" id="menu_button2">
+                        <property name="can-focus">True</property>
                         <property name="icon-name">open-menu-symbolic</property>
                         <style>
                           <class name="image-button"/>
@@ -53,6 +55,7 @@
                     </child>
                     <child type="start">
                       <object class="GtkButton" id="trash_button">
+                        <property name="can-focus">True</property>
                         <property name="icon-name">user-trash-symbolic</property>
                         <property name="tooltip-text" translatable="yes">Removes all logs from the list</property>
                         <style>
