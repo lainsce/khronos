@@ -4,9 +4,9 @@
     <metadata_license>CC0</metadata_license>
     <project_license>GPL-3.0+</project_license>
     <name>Khronos</name>
-    <summary>Track each task's time in a simple inobtrusive way</summary>
+    <summary>Log each task's time in a simple inobtrusive way</summary>
     <description>
-        <p>Start tracking any task's "during" time and start &amp; stop as you go, with notifications.</p>
+        <p>Start logging any task's time to completion, with the ability to stop the timer at any moment, with notifications for longer task sessions.</p>
         <ul>
             <li>Quit anytime with the shortcut Ctrl + Q</li>
         </ul>
