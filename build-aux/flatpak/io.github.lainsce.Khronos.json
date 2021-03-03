@@ -94,8 +94,8 @@
             "sources" :  [
                 {
                     "type" : "archive",
-                    "url" : "https://download.gnome.org/sources/gtk/4.1/gtk-4.1.0.tar.xz",
-                    "sha256" : "973f651722a847e91e12be0a1c1c610aae0961f2f8d55c5d1fa39e17267d7ada"
+                    "url" : "https://download.gnome.org/sources/gtk/4.1/gtk-4.1.1.tar.xz",
+                    "sha256" : "f7e1789f6c637b091cffb17de08bd9c3986543282eecdff0750dd04f1673b737"
                 }
             ]
         },
