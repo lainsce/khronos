@@ -33,14 +33,18 @@ namespace Khronos {
             gsettings = new GLib.Settings ("io.github.lainsce.Khronos");
         }
 
+        construct {
+            Intl.setlocale (LocaleCategory.ALL, "");
+            Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
+            Intl.textdomain (Config.GETTEXT_PACKAGE);
+        }
+
         protected override void activate () {
             var w = new MainWindow (this);
             win = w;
         }
 
         public static int main (string[] args) {
-            Intl.setlocale (LocaleCategory.ALL, "");
-
             var app = new Khronos.Application ();
             int status = app.run (args);
 		    return status;
