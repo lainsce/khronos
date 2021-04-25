@@ -238,6 +238,7 @@ namespace Khronos {
                         return true;
                     });;
                     column_play_button.label = _("Stop Timer");
+                    column_play_button.get_style_context ().remove_class ("suggested-action");
                     column_play_button.get_style_context ().add_class ("destructive-action");
                     column_button.sensitive = false;
                 } else {
@@ -309,7 +310,7 @@ namespace Khronos {
 
             tm.load_from_file ();
 
-            this.set_size_request (360, 360);
+            this.set_size_request (300, 360);
             this.show ();
             this.present ();
 
