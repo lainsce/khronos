@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.lainsce.khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-30 12:27-0300\n"
-"PO-Revision-Date: 2021-02-09 21:37+0100\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"POT-Creation-Date: 2021-03-02 21:52+0100\n"
+"PO-Revision-Date: 2021-04-26 18:19+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -18,44 +18,46 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/MainWindow.vala:66 src/MainWindow.vala:441
-msgid "Khronos"
-msgstr "Khronos"
-
-#: src/MainWindow.vala:137 src/MainWindow.vala:180
-msgid "Start Timer"
-msgstr "Tijdklok starten"
-
-#: src/MainWindow.vala:145
-msgid "Add Log"
-msgstr "Logboek aanleggen"
-
-#: src/MainWindow.vala:174
+#: src/MainWindow.vala:240
 msgid "Stop Timer"
 msgstr "Tijdklok stoppen"
 
-#: src/MainWindow.vala:189
-msgid "New log name…"
-msgstr "Nieuwe logboeknaam…"
+#: src/MainWindow.vala:246 data/ui/main_window.ui:108
+msgid "Start Timer"
+msgstr "Tijdklok starten"
 
-#: src/MainWindow.vala:223
-msgid "Settings"
-msgstr "Instellingen"
+#: src/MainWindow.vala:280
+msgid "Empty the Logs List?"
+msgstr "Logboek wissen?"
 
-#: src/MainWindow.vala:233
-msgid "Logs"
-msgstr "Logboeken"
+#: src/MainWindow.vala:281
+msgid ""
+"Emptying this list means all the logs in it will be permanently lost with no "
+"recovery."
+msgstr "Door het logboek te wissen, worden alle logs permanent verwijderd."
 
-#: src/MainWindow.vala:371 src/MainWindow.vala:380 src/MainWindow.vala:389
-#: src/MainWindow.vala:398 src/MainWindow.vala:407
+#: src/MainWindow.vala:283
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: src/MainWindow.vala:284
+msgid "Empty List"
+msgstr "Logboek wissen"
+
+#: src/MainWindow.vala:425 src/MainWindow.vala:434 src/MainWindow.vala:443
+#: src/MainWindow.vala:452 src/MainWindow.vala:461
 msgid "Go rest for a while before continuing."
 msgstr "Neem even een pauze."
 
-#: src/MainWindow.vala:446
+#: src/MainWindow.vala:496
+msgid "Khronos"
+msgstr "Khronos"
+
+#: src/MainWindow.vala:501
 msgid "Track each task's time in a simple inobtrusive way."
 msgstr "Houd de tijd van elke taak bij op eenvoudige, niet-storende wijze."
 
-#: src/MainWindow.vala:451
+#: src/MainWindow.vala:507
 msgid "translator-credits"
 msgstr "Heimen Stoffels"
 
@@ -68,16 +70,64 @@ msgid "All files"
 msgstr "Alle bestanden"
 
 #: data/ui/mainmenu.ui:5
+msgid "Sort Tasks"
+msgstr "Taken sorteren"
+
+#: data/ui/mainmenu.ui:9
+msgid "By Time"
+msgstr "Op tijd"
+
+#: data/ui/mainmenu.ui:14
+msgid "By Name"
+msgstr "Op naam"
+
+#: data/ui/mainmenu.ui:21
 msgid "Export Logs (CSV)…"
 msgstr "Logboeken exporteren (csv)…"
 
-#: data/ui/mainmenu.ui:11
+#: data/ui/mainmenu.ui:27
 msgid "Preferences"
 msgstr "Voorkeuren"
 
-#: data/ui/mainmenu.ui:15
+#: data/ui/mainmenu.ui:31
 msgid "About Khronos"
 msgstr "Over Khronos"
+
+#: data/ui/main_window.ui:57
+msgid "Removes all logs from the list"
+msgstr "Wis alle logs uit het logboek"
+
+#: data/ui/main_window.ui:78
+msgid "Timer"
+msgstr "Tijdklok"
+
+#: data/ui/main_window.ui:100
+msgid "Log name…"
+msgstr "Lognaam…"
+
+#: data/ui/main_window.ui:109
+msgid "Starts a log's timer"
+msgstr "Tijdklok van log starten"
+
+#: data/ui/main_window.ui:118
+msgid "Add Log"
+msgstr "Log bijhouden"
+
+#: data/ui/main_window.ui:119
+msgid "Adds a log to the list"
+msgstr "Voeg een log toe aan de lijst"
+
+#: data/ui/main_window.ui:134
+msgid "Logs"
+msgstr "Log"
+
+#: data/ui/main_window.ui:172
+msgid "No Logs"
+msgstr "Geen log"
+
+#: data/ui/main_window.ui:180
+msgid "Add a log on Timer tab and check later."
+msgstr "Voeg een log toe op het tabblad ‘Tijdklok’ en kom later terug."
 
 #: data/ui/prefs.ui:11 data/ui/prefs.ui:14
 msgid "General"
@@ -90,6 +140,9 @@ msgstr "Meldingsvertraging"
 #: data/ui/prefs.ui:45
 msgid "Dark Mode"
 msgstr "Donker thema"
+
+#~ msgid "Settings"
+#~ msgstr "Instellingen"
 
 #~ msgid "Start Timer…"
 #~ msgstr "Tijdklok starten…"
@@ -113,14 +166,8 @@ msgstr "Donker thema"
 #~ msgid "Export"
 #~ msgstr "Exporteren"
 
-#~ msgid "Time"
-#~ msgstr "Tijd"
-
 #~ msgid "Name"
 #~ msgstr "Naam"
-
-#~ msgid "Tasks"
-#~ msgstr "Taken"
 
 #~ msgid "Sort By:"
 #~ msgstr "Sorteren op:"
@@ -136,9 +183,6 @@ msgstr "Donker thema"
 
 #~ msgid "Delete Task"
 #~ msgstr "Taak verwijderen"
-
-#~ msgid "Sort By Name"
-#~ msgstr "Sorteren op naam"
 
 #~ msgid "Started on: %s"
 #~ msgstr "Gestart om: %s"
