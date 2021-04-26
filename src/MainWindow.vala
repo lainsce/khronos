@@ -138,6 +138,8 @@ namespace Khronos {
 
             liststore = new GLib.ListStore (typeof (Log));
 
+            column.bind_model (liststore, item => make_widgets (item));
+
             placeholder.set_visible (false);
 
             column_time_label.set_label ("<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec));
@@ -310,12 +312,11 @@ namespace Khronos {
 
             tm.load_from_file ();
 
-            this.set_size_request (300, 360);
+            this.set_size_request (360, 360);
             this.show ();
             this.present ();
 
             set_timeouts ();
-            listen_to_changes ();
             liststore.items_changed.connect (() => {
                 tm.save_to_file (liststore);
 
@@ -330,12 +331,6 @@ namespace Khronos {
             column.bind_model (null, null);
             this.dispose ();
             return true;
-        }
-
-        public void listen_to_changes () {
-            column.bind_model (liststore, item => make_widgets (item));
-            Khronos.Application.gsettings.bind ("window-width", this, "default-width", GLib.SettingsBindFlags.DEFAULT);
-            Khronos.Application.gsettings.bind ("window-height", this, "default-height", GLib.SettingsBindFlags.DEFAULT);
         }
 
         public LogRow make_widgets (GLib.Object item) {
