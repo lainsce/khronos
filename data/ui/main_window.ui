@@ -7,18 +7,13 @@
       <object class="GtkBox">
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkStack" id="title_stack">
-            <property name="transition-duration">200</property>
-            <property name="transition-type">crossfade</property>
+          <object class="AdwViewStack" id="title_stack">
             <property name="visible-child-name">main_title</property>
             <child>
-              <object class="GtkStackPage" id="main_title">
+              <object class="AdwViewStackPage" id="main_title">
                 <property name="name">main_title</property>
                 <property name="child">
                   <object class="AdwHeaderBar" id="timer_header">
-                    <style>
-                      <class name="flat"/>
-                    </style>
                     <child type="title">
                       <object class="AdwViewSwitcher" id="win_switcher">
                         <property name="stack">win_stack</property>
@@ -38,13 +33,10 @@
               </object>
             </child>
             <child>
-              <object class="GtkStackPage" id="logs_title">
+              <object class="AdwViewStackPage" id="logs_title">
                 <property name="name">logs_title</property>
                 <property name="child">
                   <object class="AdwHeaderBar" id="list_header">
-                    <style>
-                      <class name="flat"/>
-                    </style>
                     <child type="title">
                       <object class="AdwViewSwitcher" id="win_switcher2">
                         <property name="stack">win_stack</property>
@@ -77,13 +69,11 @@
           </object>
         </child>
         <child>
-          <object class="GtkStack" id="win_stack">
+          <object class="AdwViewStack" id="win_stack">
             <property name="vexpand">1</property>
-            <property name="transition-duration">200</property>
-            <property name="transition-type">crossfade</property>
             <property name="visible-child-name">main</property>
             <child>
-              <object class="GtkStackPage" id="main">
+              <object class="AdwViewStackPage" id="main">
                 <property name="name">main</property>
                 <property name="title" translatable="yes">Timer</property>
                 <property name="icon-name">stopwatch-symbolic</property>
@@ -136,7 +126,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkStackPage" id="logs">
+              <object class="AdwViewStackPage" id="logs">
                 <property name="name">logs</property>
                 <property name="title" translatable="yes">Logs</property>
                 <property name="icon-name">view-list-symbolic</property>

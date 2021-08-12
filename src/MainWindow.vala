@@ -22,31 +22,31 @@ namespace Khronos {
         delegate void HookFunc ();
         // Widgets
         [GtkChild]
-        public Gtk.ListBox column;
+        public unowned Gtk.ListBox column;
         [GtkChild]
-        public Gtk.Entry column_entry;
+        public unowned Gtk.Entry column_entry;
         [GtkChild]
-        public Gtk.Label column_time_label;
+        public unowned Gtk.Label column_time_label;
         [GtkChild]
-        public Gtk.Button column_button;
+        public unowned Gtk.Button column_button;
         [GtkChild]
-        public Gtk.Button column_play_button;
+        public unowned Gtk.Button column_play_button;
         [GtkChild]
-        public Gtk.MenuButton menu_button;
+        public unowned Gtk.MenuButton menu_button;
         [GtkChild]
-        public Gtk.Button trash_button;
+        public unowned Gtk.Button trash_button;
         [GtkChild]
-        public Gtk.MenuButton menu_button2;
+        public unowned Gtk.MenuButton menu_button2;
         [GtkChild]
-        public Adw.ViewSwitcher win_switcher;
+        public unowned Adw.ViewSwitcher win_switcher;
         [GtkChild]
-        public Adw.ViewSwitcher win_switcher2;
+        public unowned Adw.ViewSwitcher win_switcher2;
         [GtkChild]
-        public Gtk.Stack title_stack;
+        public unowned Adw.ViewStack title_stack;
         [GtkChild]
-        public Gtk.Stack win_stack;
+        public unowned Adw.ViewStack win_stack;
         [GtkChild]
-        public Gtk.Box placeholder;
+        public unowned Gtk.Box placeholder;
 
         public GLib.ListStore liststore;
 
@@ -58,6 +58,7 @@ namespace Khronos {
         private uint hrs = 0;
 
         public TaskManager tm;
+        public GLib.DateTime dt;
         public unowned Gtk.Application app { get; construct; }
 
         private uint id1 = 0; // 30min.
@@ -114,11 +115,6 @@ namespace Khronos {
 
             var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
             theme.add_resource_path ("/io/github/lainsce/Khronos/");
-
-            Gtk.StyleContext style = get_style_context ();
-            if (Config.PROFILE == "Devel") {
-                style.add_class ("devel");
-            }
         }
 
         construct {
@@ -217,11 +213,15 @@ namespace Khronos {
             column_button.clicked.connect (() => {
                 var log = new Log ();
                 log.name = column_entry.text;
-
-                var dt = new GLib.DateTime.now_local ();
                 log.timedate = "%s\n%s – %s".printf(column_time_label.label,
-                                                    ("<span font_features='tnum'>%s</span>").printf (dt.format ("%a, %d/%m %H∶%M∶%S")),
-                                                    ("<span font_features='tnum'>%s</span>").printf (dt.add_full (0,0,0,(int)hrs,(int)min,(int)sec).format ("%H∶%M∶%S")));
+                                                   ("<span font_features='tnum'>%s</span>").printf (dt.format ("%a, %d/%m %H∶%M∶%S")),
+                                                   ("<span font_features='tnum'>%s</span>").printf (dt.add_full (0,
+                                                                                                                 0,
+                                                                                                                 0,
+                                                                                                                 (int)hrs,
+                                                                                                                 (int)min,
+                                                                                                                 (int)sec)
+                                                                                                                 .format ("%H∶%M∶%S")));
 
                 liststore.append (log);
                 tm.save_to_file (liststore);
@@ -326,13 +326,6 @@ namespace Khronos {
             });
         }
 
-        protected override bool close_request () {
-            debug ("Exiting window... Disposing of stuff...");
-            column.bind_model (null, null);
-            this.dispose ();
-            return true;
-        }
-
         public LogRow make_widgets (GLib.Object item) {
             return new LogRow ((Log) item);
         }
@@ -356,6 +349,7 @@ namespace Khronos {
 
         public void timer () {
             if (start) {
+                dt = new GLib.DateTime.now_local ();
                 sec += 1;
                 column_time_label.label = "<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec);
                 if (sec >= 60) {
@@ -368,6 +362,8 @@ namespace Khronos {
                         column_time_label.label = "<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec);
                     }
                 }
+            } else {
+                dt = null;
             }
         }
 
