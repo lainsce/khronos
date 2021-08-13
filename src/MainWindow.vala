@@ -28,9 +28,9 @@ namespace Khronos {
         [GtkChild]
         public unowned Gtk.Label column_time_label;
         [GtkChild]
-        public unowned Gtk.Button column_button;
+        public unowned Gtk.Button add_log_button;
         [GtkChild]
-        public unowned Gtk.Button column_play_button;
+        public unowned Gtk.Button timer_button;
         [GtkChild]
         public unowned Gtk.MenuButton menu_button;
         [GtkChild]
@@ -210,7 +210,7 @@ namespace Khronos {
                 });
             });
 
-            column_button.clicked.connect (() => {
+            add_log_button.clicked.connect (() => {
                 var log = new Log ();
                 log.name = column_entry.text;
                 log.timedate = "%s\n%s – %s".printf(column_time_label.label,
@@ -226,38 +226,42 @@ namespace Khronos {
                 liststore.append (log);
                 tm.save_to_file (liststore);
                 reset_timer ();
+                if (start != true) {
+                    dt = null;
+                }
                 is_modified = true;
                 column_entry.text = "";
                 placeholder.set_visible(false);
             });
 
-            column_play_button.clicked.connect (() => {
+            timer_button.clicked.connect (() => {
                 if (start != true) {
                     start = true;
+                    dt = new GLib.DateTime.now_local ();
                     // For some reason, add() is closer to real time than add_seconds()
                     timer_id = GLib.Timeout.add (1000, () => {
                         timer ();
                         return true;
                     });;
-                    column_play_button.label = _("Stop Timer");
-                    column_play_button.get_style_context ().remove_class ("suggested-action");
-                    column_play_button.get_style_context ().add_class ("destructive-action");
-                    column_button.sensitive = false;
+                    timer_button.label = _("Stop Timer");
+                    timer_button.get_style_context ().remove_class ("suggested-action");
+                    timer_button.get_style_context ().add_class ("destructive-action");
+                    add_log_button.sensitive = false;
                 } else {
                     start = false;
                     GLib.Source.remove(timer_id);
-                    column_play_button.label = _("Start Timer");
-                    column_play_button.get_style_context ().remove_class ("destructive-action");
-                    column_play_button.get_style_context ().add_class ("suggested-action");
-                    column_button.sensitive = true;
+                    timer_button.label = _("Start Timer");
+                    timer_button.get_style_context ().remove_class ("destructive-action");
+                    timer_button.get_style_context ().add_class ("suggested-action");
+                    add_log_button.sensitive = true;
                 }
             });
 
             column_entry.changed.connect (() => {
                 if (column_entry.text_length != 0) {
-                    column_play_button.sensitive = true;
+                    timer_button.sensitive = true;
                 } else {
-                    column_play_button.sensitive = false;
+                    timer_button.sensitive = false;
                 }
                 column.unselect_all ();
             });
@@ -335,7 +339,8 @@ namespace Khronos {
             min = 0;
             hrs = 0;
             column_time_label.label = "<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec);
-            column_button.sensitive = false;
+            add_log_button.sensitive = false;
+            timer_button.sensitive = true;
             column_entry.text = "";
         }
 
@@ -349,7 +354,6 @@ namespace Khronos {
 
         public void timer () {
             if (start) {
-                dt = new GLib.DateTime.now_local ();
                 sec += 1;
                 column_time_label.label = "<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec);
                 if (sec >= 60) {
@@ -362,8 +366,6 @@ namespace Khronos {
                         column_time_label.label = "<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec);
                     }
                 }
-            } else {
-                dt = null;
             }
         }
 
@@ -387,16 +389,16 @@ namespace Khronos {
                 });
                 id3 = Timeout.add_seconds (Khronos.Application.gsettings.get_int("notification-delay")*2, () => {
                     notification3 ();
-                    GLib.Source.remove (this.id2);
                     GLib.Source.remove (this.id1);
+                    GLib.Source.remove (this.id2);
                     GLib.Source.remove (this.id4);
                     GLib.Source.remove (this.id5);
                     return true;
                 });
                 id4 = Timeout.add_seconds ((int) GLib.Math.floor (Khronos.Application.gsettings.get_int("notification-delay")*2.5), () => {
                     notification4 ();
-                    GLib.Source.remove (this.id2);
                     GLib.Source.remove (this.id1);
+                    GLib.Source.remove (this.id2);
                     GLib.Source.remove (this.id3);
                     GLib.Source.remove (this.id5);
                     return true;
@@ -423,7 +425,7 @@ namespace Khronos {
 
         public void notification2 () {
             var notification2 = new GLib.Notification ("%i minutes have passed".printf((int) GLib.Math.floor (Khronos.Application.gsettings.get_int("notification-delay")*1.5)));
-            notification2.set_body (_("Go rest for a while before continuing."));
+            notification2.set_body (_("Maybe grab a snack before continuing."));
             var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification2.set_icon (icon);
 
@@ -432,7 +434,7 @@ namespace Khronos {
 
         public void notification3 () {
             var notification3 = new GLib.Notification ("%i minutes have passed".printf(Khronos.Application.gsettings.get_int("notification-delay")*2));
-            notification3.set_body (_("Go rest for a while before continuing."));
+            notification3.set_body (_("Perhaps go get some coffee or tea before continuing."));
             var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification3.set_icon (icon);
 
@@ -441,7 +443,7 @@ namespace Khronos {
 
         public void notification4 () {
             var notification4 = new GLib.Notification ("%i minutes have passed".printf((int) GLib.Math.floor (Khronos.Application.gsettings.get_int("notification-delay")*2.5)));
-            notification4.set_body (_("Go rest for a while before continuing."));
+            notification4.set_body (_("That's a big task. Let's rest a bit before continuing."));
             var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification4.set_icon (icon);
 
@@ -450,7 +452,7 @@ namespace Khronos {
 
         public void notification5 () {
             var notification5 = new GLib.Notification ("%i minutes have passed".printf(Khronos.Application.gsettings.get_int("notification-delay")*3));
-            notification5.set_body (_("Go rest for a while before continuing."));
+            notification5.set_body (_("Amazing work! But please rest a bit before continuing."));
             var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification5.set_icon (icon);
 

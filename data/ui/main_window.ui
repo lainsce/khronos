@@ -100,7 +100,7 @@
                       <object class="GtkBox">
                         <property name="spacing">12</property>
                         <child>
-                          <object class="GtkButton" id="column_play_button">
+                          <object class="GtkButton" id="timer_button">
                             <property name="label" translatable="yes">Start Timer</property>
                             <property name="tooltip-text" translatable="yes">Starts a log's timer</property>
                             <style>
@@ -110,7 +110,7 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkButton" id="column_button">
+                          <object class="GtkButton" id="add_log_button">
                             <property name="label" translatable="yes">Add Log</property>
                             <property name="tooltip-text" translatable="yes">Adds a log to the list</property>
                             <style>
@@ -202,8 +202,8 @@
   </template>
   <object class="GtkSizeGroup" id="column_buttons">
     <widgets>
-      <widget name="column_play_button"/>
-      <widget name="column_button"/>
+      <widget name="add_log_button"/>
+      <widget name="timer_button"/>
     </widgets>
   </object>
 </interface>
