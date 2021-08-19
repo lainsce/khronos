@@ -23,11 +23,11 @@
                       <object class="GtkMenuButton" id="menu_button">
                         <property name="can-focus">True</property>
                         <property name="icon-name">open-menu-symbolic</property>
-                        <style>
-                          <class name="header-toggle-button"/>
-                        </style>
                       </object>
                     </child>
+                    <style>
+                      <class name="flat"/>
+                    </style>
                   </object>
                 </property>
               </object>
@@ -46,9 +46,6 @@
                       <object class="GtkMenuButton" id="menu_button2">
                         <property name="can-focus">True</property>
                         <property name="icon-name">open-menu-symbolic</property>
-                        <style>
-                          <class name="header-toggle-button"/>
-                        </style>
                       </object>
                     </child>
                     <child type="start">
@@ -62,6 +59,9 @@
                         </style>
                       </object>
                     </child>
+                    <style>
+                      <class name="flat"/>
+                    </style>
                   </object>
                 </property>
               </object>
@@ -86,6 +86,7 @@
                     <child>
                       <object class="GtkLabel" id="column_time_label">
                         <property name="use-markup">1</property>
+                        <property name="margin-bottom">12</property>
                         <style>
                           <class name="kh-title"/>
                         </style>
@@ -93,6 +94,7 @@
                     </child>
                     <child>
                       <object class="GtkEntry" id="column_entry">
+                        <property name="margin-bottom">12</property>
                         <property name="placeholder-text" translatable="yes">Log name…</property>
                       </object>
                     </child>
@@ -102,10 +104,10 @@
                         <child>
                           <object class="GtkButton" id="timer_button">
                             <property name="label" translatable="yes">Start Timer</property>
-                            <property name="tooltip-text" translatable="yes">Starts a log's timer</property>
+                            <property name="tooltip-text" translatable="yes">Starts the timer for a log</property>
                             <style>
                               <class name="suggested-action"/>
-                              <class name="circular"/>
+                              <class name="pill"/>
                             </style>
                           </object>
                         </child>
@@ -114,8 +116,7 @@
                             <property name="label" translatable="yes">Add Log</property>
                             <property name="tooltip-text" translatable="yes">Adds a log to the list</property>
                             <style>
-                              <class name="header-button"/>
-                              <class name="circular"/>
+                              <class name="pill"/>
                             </style>
                           </object>
                         </child>
