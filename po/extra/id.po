@@ -1,0 +1,70 @@
+# Indonesian translations for extra package.
+# Copyright (C) 2021 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-30 12:28-0300\n"
+"PO-Revision-Date: 2021-08-20 09:51+0700\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: id\n"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:6
+#: data/io.github.lainsce.Khronos.desktop.in:3
+msgid "Khronos"
+msgstr "Khronos"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:7
+msgid "Track each task's time in a simple inobtrusive way"
+msgstr ""
+"Lacak waktu setiap tugas dengan cara tidak mengganggu yang sederhana"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:9
+msgid ""
+"Start tracking any task's \"during\" time and start &amp; stop as you go, "
+"with notifications."
+msgstr ""
+"Mulai melacak tugas apa pun \"selama\" waktu dan mulai &amp;berhenti saat "
+"Anda pergi, dengan pemberitahuan."
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:11
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Keluar kapan saja dengan pintasan Ctrl + Q"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:17
+msgid "Lains"
+msgstr "Lains"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:58
+msgid "Release: Port to GTK4"
+msgstr "Rilis: Port ke GTK4"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:60
+msgid "Changed: Rewritten for GTK4."
+msgstr "Diubah: Ditulis ulang untuk GTK4."
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:66
+msgid "Release: Hello, Flatpak!"
+msgstr "Rilis: Halo, Flatpak!"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:68
+msgid "Changed: Major UI changes."
+msgstr "Diubah: Antarmuka (UI) utama berubah."
+
+#: data/io.github.lainsce.Khronos.desktop.in:4
+msgid "Track each task time in a simple inobtrusive way"
+msgstr ""
+"Lacak setiap waktu tugas dengan cara tidak mengganggu yang sederhana"
+
+#: data/io.github.lainsce.Khronos.desktop.in:7
+msgid "Plot;Planning;Time Tracking;"
+msgstr "Plot; Perencanaan; Pelacakan Waktu;"
