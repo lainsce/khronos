@@ -1,0 +1,119 @@
+# ITALIAN TRANSLATION FOR KHRONOS.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.lainsce.khronos package.
+# ALBANO BATTISTELLA <albano_battistella@hotmail.com>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.lainsce.khronos\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-17 19:01-0300\n"
+"PO-Revision-Date: 2021-08-20 13:17+0200\n"
+"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
+"Language-Team: ITALIAN <LL@li.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/MainWindow.vala:59
+msgid "Khronos"
+msgstr "Khronos"
+
+#: src/MainWindow.vala:178
+msgid "Start Timer…"
+msgstr "Avvia Cronometro…"
+
+#: src/MainWindow.vala:188
+msgid "Reset Timer"
+msgstr "Ripristina Cronometro"
+
+#: src/MainWindow.vala:201
+msgid "Export Log as CSV File…"
+msgstr "Esporta registro come file CSV…"
+
+#: src/MainWindow.vala:210
+msgid "Add Log"
+msgstr "Aggiungi Log"
+
+#: src/MainWindow.vala:220
+#, c-format
+msgid "%s"
+msgstr "%s"
+
+#: src/MainWindow.vala:232
+msgid "Stop Timer"
+msgstr "Ferma Cronometro"
+
+#: src/MainWindow.vala:239
+msgid "Start Timer"
+msgstr "Avvia Cronometro"
+
+#: src/MainWindow.vala:258
+msgid "New log name…"
+msgstr "Nuovo nome log…"
+
+#: src/MainWindow.vala:267
+msgid "You can add a log by starting the timer first."
+msgstr "Puoi aggiungere un log avviando prima il cronometro."
+
+#: src/MainWindow.vala:292
+msgid "Notifications"
+msgstr "Notifiche"
+
+#: src/MainWindow.vala:294
+msgid "Delay:"
+msgstr "Ritardo:"
+
+#: src/MainWindow.vala:311
+msgid "Interface"
+msgstr "Interfaccia"
+
+#: src/MainWindow.vala:313
+msgid "Dark Mode:"
+msgstr "Modalità scura:"
+
+#: src/MainWindow.vala:337
+msgid "Export"
+msgstr "Esporta"
+
+#: src/MainWindow.vala:343
+msgid "Time"
+msgstr "Tempo"
+
+#: src/MainWindow.vala:349
+msgid "Name"
+msgstr "Nome"
+
+#: src/MainWindow.vala:361
+msgid "Tasks"
+msgstr "Attività"
+
+#: src/MainWindow.vala:362
+msgid "Sort By:"
+msgstr "Ordina per:"
+
+#: src/MainWindow.vala:389
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: src/MainWindow.vala:579 src/MainWindow.vala:588 src/MainWindow.vala:597
+#: src/MainWindow.vala:606 src/MainWindow.vala:615
+msgid "Go rest for a while before continuing."
+msgstr "Riposati un po' prima di continuare."
+
+#: src/Widgets/Column.vala:13
+msgid "Logged tasks will end up here."
+msgstr "Le attività registrate finiranno qui."
+
+#: src/Widgets/Column.vala:17
+msgid "LOGS"
+msgstr "LOG"
+
+#: src/Widgets/ColumnListBox.vala:47
+msgid "No logs…"
+msgstr "Nessun log…"
+
+#: src/Widgets/EventBox.vala:68
+msgid "Delete Task"
+msgstr "Elimina attività"
