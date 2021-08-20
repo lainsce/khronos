@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.lainsce.khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-17 19:01-0300\n"
-"PO-Revision-Date: 2021-01-28 16:24+0100\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"POT-Creation-Date: 2021-03-02 21:52+0100\n"
+"PO-Revision-Date: 2021-04-26 18:19+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -18,110 +18,171 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/MainWindow.vala:59
-msgid "Khronos"
-msgstr "Khronos"
-
-#: src/MainWindow.vala:178
-msgid "Start Timer…"
-msgstr "Tijdklok starten…"
-
-#: src/MainWindow.vala:188
-msgid "Reset Timer"
-msgstr "Tijdklok herstellen"
-
-#: src/MainWindow.vala:201
-msgid "Export Log as CSV File…"
-msgstr "Logboek exporteren naar csv-bestand…"
-
-#: src/MainWindow.vala:210
-msgid "Add Log"
-msgstr "Logboek aanleggen"
-
-#: src/MainWindow.vala:220
-#, c-format
-msgid "%s"
-msgstr "%s"
-
-#: src/MainWindow.vala:232
+#: src/MainWindow.vala:240
 msgid "Stop Timer"
 msgstr "Tijdklok stoppen"
 
-#: src/MainWindow.vala:239
+#: src/MainWindow.vala:246 data/ui/main_window.ui:108
 msgid "Start Timer"
 msgstr "Tijdklok starten"
 
-#: src/MainWindow.vala:258
-msgid "New log name…"
-msgstr "Nieuwe logboeknaam…"
+#: src/MainWindow.vala:280
+msgid "Empty the Logs List?"
+msgstr "Logboek wissen?"
 
-#: src/MainWindow.vala:267
-msgid "You can add a log by starting the timer first."
-msgstr "Start de tijdklok om een logboek aan te leggen."
+#: src/MainWindow.vala:281
+msgid ""
+"Emptying this list means all the logs in it will be permanently lost with no "
+"recovery."
+msgstr "Door het logboek te wissen, worden alle logs permanent verwijderd."
 
-#: src/MainWindow.vala:292
-msgid "Notifications"
-msgstr "Meldingen"
+#: src/MainWindow.vala:283
+msgid "Cancel"
+msgstr "Annuleren"
 
-#: src/MainWindow.vala:294
-msgid "Delay:"
-msgstr "Vertraging:"
+#: src/MainWindow.vala:284
+msgid "Empty List"
+msgstr "Logboek wissen"
 
-#: src/MainWindow.vala:311
-msgid "Interface"
-msgstr "Uiterlijk"
-
-#: src/MainWindow.vala:313
-msgid "Dark Mode:"
-msgstr "Donker thema:"
-
-#: src/MainWindow.vala:337
-msgid "Export"
-msgstr "Exporteren"
-
-#: src/MainWindow.vala:343
-msgid "Time"
-msgstr "Tijd"
-
-#: src/MainWindow.vala:349
-msgid "Name"
-msgstr "Naam"
-
-#: src/MainWindow.vala:361
-msgid "Tasks"
-msgstr "Taken"
-
-#: src/MainWindow.vala:362
-msgid "Sort By:"
-msgstr "Sorteren op:"
-
-#: src/MainWindow.vala:389
-msgid "Settings"
-msgstr "Instellingen"
-
-#: src/MainWindow.vala:579 src/MainWindow.vala:588 src/MainWindow.vala:597
-#: src/MainWindow.vala:606 src/MainWindow.vala:615
+#: src/MainWindow.vala:425 src/MainWindow.vala:434 src/MainWindow.vala:443
+#: src/MainWindow.vala:452 src/MainWindow.vala:461
 msgid "Go rest for a while before continuing."
 msgstr "Neem even een pauze."
 
-#: src/Widgets/Column.vala:13
-msgid "Logged tasks will end up here."
-msgstr "Gelogde taken worden hier getoond."
+#: src/MainWindow.vala:496
+msgid "Khronos"
+msgstr "Khronos"
 
-#: src/Widgets/Column.vala:17
-msgid "LOGS"
-msgstr "LOGBOEKEN"
+#: src/MainWindow.vala:501
+msgid "Track each task's time in a simple inobtrusive way."
+msgstr "Houd de tijd van elke taak bij op eenvoudige, niet-storende wijze."
 
-#: src/Widgets/ColumnListBox.vala:47
-msgid "No logs…"
-msgstr "Geen logboeken…"
+#: src/MainWindow.vala:507
+msgid "translator-credits"
+msgstr "Heimen Stoffels"
 
-#: src/Widgets/EventBox.vala:68
-msgid "Delete Task"
-msgstr "Taak verwijderen"
+#: src/Services/Dialog.vala:23
+msgid "CSV files"
+msgstr "CSV-bestanden"
 
-#~ msgid "Sort By Name"
-#~ msgstr "Sorteren op naam"
+#: src/Services/Dialog.vala:27
+msgid "All files"
+msgstr "Alle bestanden"
+
+#: data/ui/mainmenu.ui:5
+msgid "Sort Tasks"
+msgstr "Taken sorteren"
+
+#: data/ui/mainmenu.ui:9
+msgid "By Time"
+msgstr "Op tijd"
+
+#: data/ui/mainmenu.ui:14
+msgid "By Name"
+msgstr "Op naam"
+
+#: data/ui/mainmenu.ui:21
+msgid "Export Logs (CSV)…"
+msgstr "Logboeken exporteren (csv)…"
+
+#: data/ui/mainmenu.ui:27
+msgid "Preferences"
+msgstr "Voorkeuren"
+
+#: data/ui/mainmenu.ui:31
+msgid "About Khronos"
+msgstr "Over Khronos"
+
+#: data/ui/main_window.ui:57
+msgid "Removes all logs from the list"
+msgstr "Wis alle logs uit het logboek"
+
+#: data/ui/main_window.ui:78
+msgid "Timer"
+msgstr "Tijdklok"
+
+#: data/ui/main_window.ui:100
+msgid "Log name…"
+msgstr "Lognaam…"
+
+#: data/ui/main_window.ui:109
+msgid "Starts a log's timer"
+msgstr "Tijdklok van log starten"
+
+#: data/ui/main_window.ui:118
+msgid "Add Log"
+msgstr "Log bijhouden"
+
+#: data/ui/main_window.ui:119
+msgid "Adds a log to the list"
+msgstr "Voeg een log toe aan de lijst"
+
+#: data/ui/main_window.ui:134
+msgid "Logs"
+msgstr "Log"
+
+#: data/ui/main_window.ui:172
+msgid "No Logs"
+msgstr "Geen log"
+
+#: data/ui/main_window.ui:180
+msgid "Add a log on Timer tab and check later."
+msgstr "Voeg een log toe op het tabblad ‘Tijdklok’ en kom later terug."
+
+#: data/ui/prefs.ui:11 data/ui/prefs.ui:14
+msgid "General"
+msgstr "Algemeen"
+
+#: data/ui/prefs.ui:18
+msgid "Notification Delay"
+msgstr "Meldingsvertraging"
+
+#: data/ui/prefs.ui:45
+msgid "Dark Mode"
+msgstr "Donker thema"
+
+#~ msgid "Settings"
+#~ msgstr "Instellingen"
+
+#~ msgid "Start Timer…"
+#~ msgstr "Tijdklok starten…"
+
+#~ msgid "Reset Timer"
+#~ msgstr "Tijdklok herstellen"
+
+#, c-format
+#~ msgid "%s"
+#~ msgstr "%s"
+
+#~ msgid "You can add a log by starting the timer first."
+#~ msgstr "Start de tijdklok om een logboek aan te leggen."
+
+#~ msgid "Delay:"
+#~ msgstr "Vertraging:"
+
+#~ msgid "Interface"
+#~ msgstr "Uiterlijk"
+
+#~ msgid "Export"
+#~ msgstr "Exporteren"
+
+#~ msgid "Name"
+#~ msgstr "Naam"
+
+#~ msgid "Sort By:"
+#~ msgstr "Sorteren op:"
+
+#~ msgid "Logged tasks will end up here."
+#~ msgstr "Gelogde taken worden hier getoond."
+
+#~ msgid "LOGS"
+#~ msgstr "LOGBOEKEN"
+
+#~ msgid "No logs…"
+#~ msgstr "Geen logboeken…"
+
+#~ msgid "Delete Task"
+#~ msgstr "Taak verwijderen"
 
 #~ msgid "Started on: %s"
 #~ msgstr "Gestart om: %s"

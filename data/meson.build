@@ -4,13 +4,18 @@ install_data(
 )
 
 install_data(
-    join_paths('icons', '128', meson.project_name() + '.Devel.svg'),
+    join_paths('icons', '128', meson.project_name() + 'Devel.svg'),
     install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', 'scalable', 'apps')
 )
 
 install_data(
     join_paths('icons', '16', meson.project_name() + '-symbolic.svg'),
     install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', 'symbolic', 'apps')
+)
+
+install_data(
+    join_paths('icons', '16', 'stopwatch-symbolic.svg'),
+    install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', 'scalable', 'actions')
 )
 
 install_data(

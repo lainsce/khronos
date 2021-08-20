@@ -1,7 +1,7 @@
 {
     "app-id" : "io.github.lainsce.Khronos",
     "runtime" : "org.gnome.Sdk",
-    "runtime-version" : "3.38",
+    "runtime-version" : "40",
     "sdk" : "org.gnome.Sdk",
     "command" : "io.github.lainsce.Khronos",
     "rename-icon" : "io.github.lainsce.Khronos.Devel",
@@ -11,7 +11,8 @@
         "--socket=wayland",
         "--socket=fallback-x11",
         "--share=network",
-        "--share=ipc"
+        "--share=ipc",
+        "--device=dri"
     ],
     "tags" : [
         "nightly"
@@ -41,17 +42,6 @@
         "/bin/sassc"
     ],
     "modules" : [
-    	{
-            "name" : "pango",
-            "buildsystem" : "meson",
-            "sources" :  [
-                {
-                    "type" : "archive",
-                    "url" : "https://download.gnome.org/sources/pango/1.48/pango-1.48.0.tar.xz",
-                    "sha256" : "391f26f3341c2d7053e0fb26a956bd42360dadd825efe7088b1e9340a65e74e6"
-                }
-            ]
-        },
         {
             "name": "libsass",
             "sources": [
@@ -83,22 +73,6 @@
             ]
         },
         {
-            "name" : "gtk4",
-            "buildsystem" : "meson",
-            "config-opts" : [
-                "-Ddemos=false",
-                "-Dbuild-examples=false",
-                "-Dbuild-tests=false"
-            ],
-            "sources" :  [
-                {
-                    "type" : "archive",
-                    "url" : "https://download.gnome.org/sources/gtk/4.0/gtk-4.0.0.tar.xz",
-                    "sha256" : "d46cf5b127ea27dd9e5d2ff6ed500cb4067eeb2cb1cd2c313ccde8013b0b9bf9"
-                }
-            ]
-        },
-        {
             "name" : "libadwaita",
             "buildsystem": "meson",
             "config-opts" : [
@@ -109,7 +83,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/exalm/libadwaita.git",
+                    "url" : "https://gitlab.gnome.org/gnome/libadwaita.git",
                     "branch" : "main"
                 }
             ]
@@ -117,17 +91,17 @@
         {
             "name" : "khronos",
             "buildsystem" : "meson",
-	    "config-opts" : [
+	        "config-opts" : [
                 "-Dprofile=development"
             ],
             "sources" : [
                 {
-                    "type" : "git",
-                    "url" : "https://github.com/lainsce/khronos",
-                    "branch" : "master"
+                    "type" : "dir",
+                    "path": "../../"
                 }
             ]
         }
     ]
 }
+
 

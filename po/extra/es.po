@@ -1,22 +1,22 @@
-# German translations for extra package.
-# Copyright (C) 2020 THE extra'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the extra package.
-# Automatically generated, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-01-30 12:28-0300\n"
-"PO-Revision-Date: 2021-03-02 13:20+0100\n"
-"Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: none\n"
-"Language: de\n"
+"PO-Revision-Date: 2021-02-12 09:51+0100\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.4.2\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:6
 #: data/io.github.lainsce.Khronos.desktop.in:3
@@ -25,19 +25,19 @@ msgstr "Khronos"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:7
 msgid "Track each task's time in a simple inobtrusive way"
-msgstr "Zeiterfassung für Aufgaben auf einfache und störungsfreie Weise"
+msgstr "Controla el tiempo de cada tarea de forma sencilla y no intrusiva"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:9
 msgid ""
 "Start tracking any task's \"during\" time and start &amp; stop as you go, "
 "with notifications."
 msgstr ""
-"Erfasse die benutzte Zeit für deine Aufgaben. Starte und stoppe die "
-"Zeiterfassung, mit Benachrichtigungen."
+"Empieza a hacer un seguimiento de cualquier tarea \"durante\" el tiempo y "
+"empieza y para sobre la marcha, con notificaciones."
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:11
 msgid "Quit anytime with the shortcut Ctrl + Q"
-msgstr "Programm mit der Tastenkombination Strg + Q beenden"
+msgstr "Salir en cualquier momento con el atajo Ctrl + Q"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:17
 msgid "Lains"
@@ -45,33 +45,24 @@ msgstr "Lains"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:58
 msgid "Release: Port to GTK4"
-msgstr "Veröffentlichung: Umgestellt auf GTK4"
+msgstr "Versión: Portado a GTK4"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:60
 msgid "Changed: Rewritten for GTK4."
-msgstr "Änderung: Umgeschrieben für GTK4."
+msgstr "Cambiado: Reescrito para GTK4."
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:66
 msgid "Release: Hello, Flatpak!"
-msgstr "Veröffentlichung: Hallo, Flatpak!"
+msgstr "Versión: ¡Hola, Flatpak!"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:68
 msgid "Changed: Major UI changes."
-msgstr "Änderung: Wesentliche Änderungen an der Benutzeroberfläche."
+msgstr "Cambiado: Cambios importantes en la IU."
 
 #: data/io.github.lainsce.Khronos.desktop.in:4
 msgid "Track each task time in a simple inobtrusive way"
-msgstr "Zeiterfassung für Aufgaben auf einfache und störungsfreie Weise"
+msgstr "Controla el tiempo de cada tarea de forma sencilla y no intrusiva"
 
 #: data/io.github.lainsce.Khronos.desktop.in:7
 msgid "Plot;Planning;Time Tracking;"
-msgstr "Plot;Planung;Zeiterfassung;"
-
-#~ msgid "Release: Initial Tracking"
-#~ msgstr "Freigabe: Anfängliches Tracking"
-
-#~ msgid "First stable release."
-#~ msgstr "Erste stabile Veröffentlichung."
-
-#~ msgid "com.github.lainsce.khronos"
-#~ msgstr "com.github.lainsce.khronos"
+msgstr "Plot;Planning;Time Tracking;Plan;Tiempo;"

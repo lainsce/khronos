@@ -1,4 +1,4 @@
-project('io.github.lainsce.Khronos', ['vala', 'c'], version: '3.0.0')
+project('io.github.lainsce.Khronos', ['vala', 'c'], version: '3.5.1')
 gnome = import('gnome')
 i18n = import('i18n')
 
@@ -46,7 +46,7 @@ else
   profile = ''
 endif
 
-app_id = 'io.github.lainsce.Khronos.@0@'.format(profile)
+app_id = 'io.github.lainsce.Khronos@0@'.format(profile)
 
 conf = configuration_data()
 conf.set_quoted('APP_ID', app_id)

@@ -4,9 +4,9 @@
     <metadata_license>CC0</metadata_license>
     <project_license>GPL-3.0+</project_license>
     <name>Khronos</name>
-    <summary>Track each task's time in a simple inobtrusive way</summary>
+    <summary>Log each task's time in a simple inobtrusive way</summary>
     <description>
-        <p>Start tracking any task's "during" time and start &amp; stop as you go, with notifications.</p>
+        <p>Start logging any task's time to completion, with the ability to stop the timer at any moment, with notifications for longer task sessions.</p>
         <ul>
             <li>Quit anytime with the shortcut Ctrl + Q</li>
         </ul>
@@ -17,7 +17,7 @@
     <developer_name>Lains</developer_name>
     <url type="homepage">https://github.com/lainsce/khronos/</url>
     <url type="bugtracker">https://github.com/lainsce/khronos/issues</url>
-    <url type="donation">https://liberapay.com/Lains/</url>
+    <url type="donation">https://patreon.com/lainsce/</url>
     <screenshots>
         <screenshot type="default">
             <image>https://raw.githubusercontent.com/lainsce/khronos/master/data/shot.png</image>
@@ -53,6 +53,14 @@
         <content_attribute id="money-gambling">none</content_attribute>
     </content_rating>
     <releases>
+        <release version="3.5.0" date="2020-02-09">
+            <description>
+                <p>Release: UI Refreshments</p>
+                <ul>
+                    <li>Changed: The UI is now with a better layout.</li>
+                </ul>
+            </description>
+        </release>
         <release version="3.0.0" date="2020-01-29">
             <description>
                 <p>Release: Port to GTK4</p>

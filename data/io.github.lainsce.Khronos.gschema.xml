@@ -1,15 +1,5 @@
 <schemalist>
 	<schema id="io.github.lainsce.Khronos" path="/io/github/lainsce/Khronos/">
-    <key name="window-height" type="i">
-				<default>700</default>
-				<summary>Window position</summary>
-				<description>The height of the window</description>
-		</key>
-		<key name="window-width" type="i">
-				<default>800</default>
-				<summary>Window position</summary>
-				<description>The width of the window</description>
-		</key>
 	  <key name="notification-delay" type="i">
 				<default>1800</default>
 				<summary>Delay between notifications</summary>
@@ -18,6 +8,11 @@
 	  <key name="dark-mode" type="b">
 				<default>false</default>
 				<summary>Whether the UI is in Dark Mode or not</summary>
+		</key>
+	  <key name="sort-type" type="s">
+				<default>'time'</default>
+				<summary>Sorting type for the task list</summary>
+				<description>The user-preferred sorting of tasks to use in Khronos, default is time</description>
 		</key>
 	</schema>
 </schemalist>

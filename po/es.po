@@ -3,139 +3,142 @@
 # This file is distributed under the same license as the io.github.lainsce.Khronos package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: io.github.lainsce.Khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 21:52+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2021-03-02 22:05+0100\n"
+"PO-Revision-Date: 2021-03-02 22:09+0100\n"
+"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
+"Language-Team: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/MainWindow.vala:240
 msgid "Stop Timer"
-msgstr ""
+msgstr "Detener temporizador"
 
 #: src/MainWindow.vala:246 data/ui/main_window.ui:108
 msgid "Start Timer"
-msgstr ""
+msgstr "Iniciar temporizador"
 
 #: src/MainWindow.vala:280
 msgid "Empty the Logs List?"
-msgstr ""
+msgstr "¿Vaciar la lista de registros?"
 
 #: src/MainWindow.vala:281
 msgid ""
 "Emptying this list means all the logs in it will be permanently lost with no "
 "recovery."
 msgstr ""
+"Vaciar esta lista significa que todos los registros en ella se perderán "
+"permanentemente sin posibilidad de recuperarlos."
 
 #: src/MainWindow.vala:283
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: src/MainWindow.vala:284
 msgid "Empty List"
-msgstr ""
+msgstr "Vaciar lista"
 
 #: src/MainWindow.vala:425 src/MainWindow.vala:434 src/MainWindow.vala:443
 #: src/MainWindow.vala:452 src/MainWindow.vala:461
 msgid "Go rest for a while before continuing."
-msgstr ""
+msgstr "Descanse un rato antes de continuar."
 
 #: src/MainWindow.vala:496
 msgid "Khronos"
-msgstr ""
+msgstr "Khronos"
 
 #: src/MainWindow.vala:501
 msgid "Track each task's time in a simple inobtrusive way."
-msgstr ""
+msgstr "Controle el tiempo de cada tarea de forma sencilla y no intrusiva."
 
 #: src/MainWindow.vala:507
 msgid "translator-credits"
-msgstr ""
+msgstr "Óscar Fernández Díaz"
 
 #: src/Services/Dialog.vala:23
 msgid "CSV files"
-msgstr ""
+msgstr "Archivos CSV"
 
 #: src/Services/Dialog.vala:27
 msgid "All files"
-msgstr ""
+msgstr "Todos los archivos"
 
 #: data/ui/mainmenu.ui:5
 msgid "Sort Tasks"
-msgstr ""
+msgstr "Ordenar tareas"
 
 #: data/ui/mainmenu.ui:9
 msgid "By Time"
-msgstr ""
+msgstr "Por tiempo"
 
 #: data/ui/mainmenu.ui:14
 msgid "By Name"
-msgstr ""
+msgstr "Por nombre"
 
 #: data/ui/mainmenu.ui:21
 msgid "Export Logs (CSV)…"
-msgstr ""
+msgstr "Exportar registros (CSV)…"
 
 #: data/ui/mainmenu.ui:27
 msgid "Preferences"
-msgstr ""
+msgstr "Preferencias"
 
 #: data/ui/mainmenu.ui:31
 msgid "About Khronos"
-msgstr ""
+msgstr "Acerca de Khronos"
 
 #: data/ui/main_window.ui:57
 msgid "Removes all logs from the list"
-msgstr ""
+msgstr "Elimina todos los registros de la lista"
 
 #: data/ui/main_window.ui:78
 msgid "Timer"
-msgstr ""
+msgstr "Temporizador"
 
 #: data/ui/main_window.ui:100
 msgid "Log name…"
-msgstr ""
+msgstr "Nombre del registro…"
 
 #: data/ui/main_window.ui:109
 msgid "Starts a log's timer"
-msgstr ""
+msgstr "Inicia el temporizador de un registro"
 
 #: data/ui/main_window.ui:118
 msgid "Add Log"
-msgstr ""
+msgstr "Añadir registro"
 
 #: data/ui/main_window.ui:119
 msgid "Adds a log to the list"
-msgstr ""
+msgstr "Añade un registro a la lista"
 
 #: data/ui/main_window.ui:134
 msgid "Logs"
-msgstr ""
+msgstr "Registros"
 
 #: data/ui/main_window.ui:172
 msgid "No Logs"
-msgstr ""
+msgstr "Sin registros"
 
 #: data/ui/main_window.ui:180
 msgid "Add a log on Timer tab and check later."
-msgstr ""
+msgstr "Añada un registro en la pestaña Temporizador y compruébelo más tarde."
 
 #: data/ui/prefs.ui:11 data/ui/prefs.ui:14
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: data/ui/prefs.ui:18
 msgid "Notification Delay"
-msgstr ""
+msgstr "Retardo de la notificación"
 
 #: data/ui/prefs.ui:45
 msgid "Dark Mode"
-msgstr ""
+msgstr "Modo oscuro"

@@ -1,4 +1,8 @@
 src/MainWindow.vala
-src/Widgets/Column.vala
-src/Widgets/ColumnListBox.vala
-src/Widgets/EventBox.vala
+src/Services/Dialog.vala
+src/Services/FileManager.vala
+src/Services/TaskManager.vala
+data/ui/logrow.ui
+data/ui/mainmenu.ui
+data/ui/main_window.ui
+data/ui/prefs.ui

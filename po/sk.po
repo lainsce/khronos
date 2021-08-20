@@ -10,132 +10,134 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-02 21:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: MartinIIOT <https://github.com/MartinIIOT>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/MainWindow.vala:240
 msgid "Stop Timer"
-msgstr ""
+msgstr "Zastaviť časovač"
 
 #: src/MainWindow.vala:246 data/ui/main_window.ui:108
 msgid "Start Timer"
-msgstr ""
+msgstr "Spustiť časovač"
 
 #: src/MainWindow.vala:280
 msgid "Empty the Logs List?"
-msgstr ""
+msgstr "Vymazať zoznam záznamov?"
 
 #: src/MainWindow.vala:281
 msgid ""
 "Emptying this list means all the logs in it will be permanently lost with no "
 "recovery."
 msgstr ""
+"Vymazanie tohto zoznamu znamená, že všetky záznamy v ňom budú natrvalo "
+"stratené bez možnosti obnovenia."
 
 #: src/MainWindow.vala:283
 msgid "Cancel"
-msgstr ""
+msgstr "Zrušiť"
 
 #: src/MainWindow.vala:284
 msgid "Empty List"
-msgstr ""
+msgstr "Prázdny zoznam"
 
 #: src/MainWindow.vala:425 src/MainWindow.vala:434 src/MainWindow.vala:443
 #: src/MainWindow.vala:452 src/MainWindow.vala:461
 msgid "Go rest for a while before continuing."
-msgstr ""
+msgstr "Pred pokračovaním si choďte na chvíľu oddýchnuť."
 
 #: src/MainWindow.vala:496
 msgid "Khronos"
-msgstr ""
+msgstr "Khronos"
 
 #: src/MainWindow.vala:501
 msgid "Track each task's time in a simple inobtrusive way."
-msgstr ""
+msgstr "Sledujte čas každej úlohy jednoduchým a nenápadným spôsobom."
 
 #: src/MainWindow.vala:507
 msgid "translator-credits"
-msgstr ""
+msgstr "MartinIIOT"
 
 #: src/Services/Dialog.vala:23
 msgid "CSV files"
-msgstr ""
+msgstr "CSV súbory"
 
 #: src/Services/Dialog.vala:27
 msgid "All files"
-msgstr ""
+msgstr "Všetky súbory"
 
 #: data/ui/mainmenu.ui:5
 msgid "Sort Tasks"
-msgstr ""
+msgstr "Zoradiť úlohy"
 
 #: data/ui/mainmenu.ui:9
 msgid "By Time"
-msgstr ""
+msgstr "Podľa času"
 
 #: data/ui/mainmenu.ui:14
 msgid "By Name"
-msgstr ""
+msgstr "Podľa názvu"
 
 #: data/ui/mainmenu.ui:21
 msgid "Export Logs (CSV)…"
-msgstr ""
+msgstr "Exportovať záznamy (CSV)…"
 
 #: data/ui/mainmenu.ui:27
 msgid "Preferences"
-msgstr ""
+msgstr "Vlastnosti"
 
 #: data/ui/mainmenu.ui:31
 msgid "About Khronos"
-msgstr ""
+msgstr "O Khronose"
 
 #: data/ui/main_window.ui:57
 msgid "Removes all logs from the list"
-msgstr ""
+msgstr "Odstrániť všetky záznamy zo zoznamu"
 
 #: data/ui/main_window.ui:78
 msgid "Timer"
-msgstr ""
+msgstr "Časovač"
 
 #: data/ui/main_window.ui:100
 msgid "Log name…"
-msgstr ""
+msgstr "Názov záznamu…"
 
 #: data/ui/main_window.ui:109
 msgid "Starts a log's timer"
-msgstr ""
+msgstr "Spustiť časovač záznamu"
 
 #: data/ui/main_window.ui:118
 msgid "Add Log"
-msgstr ""
+msgstr "Pridať záznam"
 
 #: data/ui/main_window.ui:119
 msgid "Adds a log to the list"
-msgstr ""
+msgstr "Pridať log do zoznamu"
 
 #: data/ui/main_window.ui:134
 msgid "Logs"
-msgstr ""
+msgstr "Záznamy"
 
 #: data/ui/main_window.ui:172
 msgid "No Logs"
-msgstr ""
+msgstr "Žiadne záznamy"
 
 #: data/ui/main_window.ui:180
 msgid "Add a log on Timer tab and check later."
-msgstr ""
+msgstr "Pridajte záznam na kartu časovača a skontrolujte neskôr."
 
 #: data/ui/prefs.ui:11 data/ui/prefs.ui:14
 msgid "General"
-msgstr ""
+msgstr "Všeobecné"
 
 #: data/ui/prefs.ui:18
 msgid "Notification Delay"
-msgstr ""
+msgstr "Oneskorenie notifikácie"
 
 #: data/ui/prefs.ui:45
 msgid "Dark Mode"
-msgstr ""
+msgstr "Tmavý režim"

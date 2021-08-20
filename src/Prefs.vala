@@ -5,7 +5,14 @@ namespace Khronos {
         public bool active { get; set; }
 
         [GtkChild]
-        public Gtk.Switch darkmode;
+        public unowned Gtk.Switch darkmode;
+
+        [GtkChild]
+        public unowned Gtk.Scale delay_scale;
+
+        construct {
+            delay_scale.add_mark (30, Gtk.PositionType.BOTTOM, null);
+        }
     }
 }
 

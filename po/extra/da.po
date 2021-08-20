@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-11 08:13+0100\n"
+"POT-Creation-Date: 2021-01-30 12:28-0300\n"
 "PO-Revision-Date: 2020-02-11 08:08+0100\n"
 "Last-Translator: Siigdev\n"
 "Language-Team: none\n"
@@ -17,45 +17,53 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:6
-#: data/com.github.lainsce.khronos.desktop.in:3
+#: data/io.github.lainsce.Khronos.appdata.xml.in:6
+#: data/io.github.lainsce.Khronos.desktop.in:3
 msgid "Khronos"
 msgstr "Tidsplan"
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:7
+#: data/io.github.lainsce.Khronos.appdata.xml.in:7
 msgid "Track each task's time in a simple inobtrusive way"
 msgstr ""
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:9
+#: data/io.github.lainsce.Khronos.appdata.xml.in:9
 msgid ""
-"Start tracking any task's \"during\" time and start &amp; stop as you go."
+"Start tracking any task's \"during\" time and start &amp; stop as you go, "
+"with notifications."
 msgstr ""
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:11
+#: data/io.github.lainsce.Khronos.appdata.xml.in:11
 msgid "Quit anytime with the shortcut Ctrl + Q"
 msgstr "Luk på ethvert tidspunkt med genvejen Ctrl + Q"
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:17
+#: data/io.github.lainsce.Khronos.appdata.xml.in:17
 msgid "Lains"
 msgstr "Lains"
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:57
-msgid "Release: Initial Tracking"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:58
+msgid "Release: Port to GTK4"
 msgstr ""
 
-#: data/com.github.lainsce.khronos.appdata.xml.in:59
-msgid "First stable release."
+#: data/io.github.lainsce.Khronos.appdata.xml.in:60
+msgid "Changed: Rewritten for GTK4."
 msgstr ""
 
-#: data/com.github.lainsce.khronos.desktop.in:4
+#: data/io.github.lainsce.Khronos.appdata.xml.in:66
+msgid "Release: Hello, Flatpak!"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:68
+msgid "Changed: Major UI changes."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.desktop.in:4
 msgid "Track each task time in a simple inobtrusive way"
 msgstr ""
 
-#: data/com.github.lainsce.khronos.desktop.in:6
-msgid "com.github.lainsce.khronos"
-msgstr "com.github.lainsce.khronos"
-
-#: data/com.github.lainsce.khronos.desktop.in:7
+#: data/io.github.lainsce.Khronos.desktop.in:7
 #, fuzzy
 msgid "Plot;Planning;Time Tracking;"
 msgstr "Plot;Uge;Planlægning;Tidsplan;"
+
+#~ msgid "com.github.lainsce.khronos"
+#~ msgstr "com.github.lainsce.khronos"
