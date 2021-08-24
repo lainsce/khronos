@@ -4,7 +4,7 @@
     "runtime-version" : "40",
     "sdk" : "org.gnome.Sdk",
     "command" : "io.github.lainsce.Khronos",
-    "rename-icon" : "io.github.lainsce.Khronos.Devel",
+    "rename-icon" : "io.github.lainsce.KhronosDevel",
     "finish-args" : [
         "--filesystem=xdg-documents",
         "--filesystem=xdg-download",
