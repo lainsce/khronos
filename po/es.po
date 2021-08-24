@@ -65,7 +65,7 @@ msgstr "Es una gran tarea. Descanse un poco antes de continuar."
 #: src/MainWindow.vala:455
 msgid "Amazing work! But please rest a bit before continuing."
 msgstr ""
-"¡Un trabajo increíble! Pero por favor, descansa un poco antes de continuar."
+"¡Increíble trabajo! Pero por favor, descanse un poco antes de continuar."
 
 #: src/MainWindow.vala:490
 msgid "Khronos"
@@ -158,3 +158,6 @@ msgstr "Retardo de la notificación"
 #: data/ui/prefs.ui:44
 msgid "Dark Mode"
 msgstr "Modo oscuro"
+
+#~ msgid "Starts a log's timer"
+#~ msgstr "Inicia el temporizador de un registro"
