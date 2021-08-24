@@ -1,14 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
+# Spanish translation.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the io.github.lainsce.Khronos package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: io.github.lainsce.Khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-24 10:16+0200\n"
-"PO-Revision-Date: 2021-08-24 10:23+0200\n"
+"POT-Creation-Date: 2021-08-24 15:48+0200\n"
+"PO-Revision-Date: 2021-08-24 15:50+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -52,11 +52,11 @@ msgstr "Descanse un rato antes de continuar."
 
 #: src/MainWindow.vala:428
 msgid "Maybe grab a snack before continuing."
-msgstr "Quizás pueda comer algo antes de continuar."
+msgstr "Tal vez pueda tomar un aperitivo antes de continuar."
 
 #: src/MainWindow.vala:437
 msgid "Perhaps go get some coffee or tea before continuing."
-msgstr "Tal vez pueda ir a tomar un café o un té antes de continuar."
+msgstr "Quizás pueda ir a tomar un café o un té antes de continuar."
 
 #: src/MainWindow.vala:446
 msgid "That's a big task. Let's rest a bit before continuing."
