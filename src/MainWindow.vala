@@ -129,9 +129,6 @@ namespace Khronos {
                 }
             });
 
-            var action_sort = Khronos.Application.gsettings.create_action ("sort-type");
-            app.add_action(action_sort);
-
             liststore = new GLib.ListStore (typeof (Log));
 
             column.bind_model (liststore, item => make_widgets (item));
@@ -144,70 +141,6 @@ namespace Khronos {
                 var row = ((LogRow)column.get_selected_row ());
 
                 column_entry.set_text (row.log.name);
-            });
-
-            column.set_sort_func ((row1, row2) => {
-                if (Khronos.Application.gsettings.get_string ("sort-type") == "'time'") {
-                    string task1 = ((LogRow) row1).log.timedate;
-                    string task2 = ((LogRow) row2).log.timedate;
-
-                    try {
-                        var reg = new Regex("(?m)\\d{2}∶(?<min>\\d{2})∶\\d{2} –");
-                        GLib.MatchInfo match;
-                        if (reg.match (task1, 0, out match)) {
-                            do {
-                                if (match.fetch_named ("min") != "") {
-                                    return task1.collate(task2);
-                                }
-                            } while (match.next ());
-                        } else {
-                            return task2.collate(task1);
-                        }
-                    } catch (GLib.Error e) {
-                        warning ("ERR: %s", e.message);
-                    }
-                } else if (Khronos.Application.gsettings.get_string ("sort-type") == "'name'") {
-                    string task1 = ((LogRow) row1).log.name;
-                    string task2 = ((LogRow) row2).log.name;
-
-                    return task1.collate(task2);
-                } else {
-                    return 0;
-                }
-                return 0;
-            });
-
-            Khronos.Application.gsettings.changed.connect (() => {
-                column.set_sort_func ((row1, row2) => {
-                    if (Khronos.Application.gsettings.get_string ("sort-type") == "'time'") {
-                        string task1 = ((LogRow) row1).log.timedate;
-                        string task2 = ((LogRow) row2).log.timedate;
-
-                        try {
-                            var reg = new Regex("(?m)\\d{2}∶(?<min>\\d{2})∶\\d{2} –");
-                            GLib.MatchInfo match;
-                            if (reg.match (task1, 0, out match)) {
-                                do {
-                                    if (match.fetch_named ("min") != "") {
-                                        return task1.collate(task2);
-                                    }
-                                } while (match.next ());
-                            } else {
-                                return task2.collate(task1);
-                            }
-                        } catch (GLib.Error e) {
-                            warning ("ERR: %s", e.message);
-                        }
-                    } else if (Khronos.Application.gsettings.get_string ("sort-type") == "'name'") {
-                        string task1 = ((LogRow) row1).log.name;
-                        string task2 = ((LogRow) row2).log.name;
-
-                        return task1.collate(task2);
-                    } else {
-                        return 0;
-                    }
-                    return 0;
-                });
             });
 
             add_log_button.clicked.connect (() => {

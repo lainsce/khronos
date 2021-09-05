@@ -2,28 +2,6 @@
   <menu id="menu">
     <section>
       <item>
-        <attribute name="label" translatable="yes">Sort Tasks</attribute>
-        <attribute name="action">none</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">By Time</attribute>
-        <attribute name="action">app.sort-type</attribute>
-        <attribute name="target">'time'</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">By Name</attribute>
-        <attribute name="action">app.sort-type</attribute>
-        <attribute name="target">'name'</attribute>
-      </item>
-    </section>
-    <section>
-      <item>
-        <attribute name="label" translatable="yes">Export Logs (CSV)…</attribute>
-        <attribute name="action">win.export</attribute>
-      </item>
-    </section>
-    <section>
-      <item>
         <attribute name="label" translatable="yes">Preferences</attribute>
         <attribute name="action">win.prefs</attribute>
       </item>

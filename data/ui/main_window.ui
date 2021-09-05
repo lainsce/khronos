@@ -48,6 +48,16 @@
                         <property name="icon-name">open-menu-symbolic</property>
                       </object>
                     </child>
+                    <child type="end">
+                      <object class="GtkButton" id="export_button">
+                        <property name="icon-name">document-send-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Export logs as CSV…</property>
+                        <property name="action-name">win.export</property>
+                        <style>
+                          <class name="image-button"/>
+                        </style>
+                      </object>
+                    </child>
                     <child type="start">
                       <object class="GtkButton" id="trash_button">
                         <property name="can-focus">True</property>
