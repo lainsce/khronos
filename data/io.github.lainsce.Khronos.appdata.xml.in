@@ -4,7 +4,7 @@
     <metadata_license>CC0</metadata_license>
     <project_license>GPL-3.0+</project_license>
     <name>Khronos</name>
-    <summary>Log each task's time in a simple inobtrusive way</summary>
+    <summary>Log the time it took to do tasks</summary>
     <description>
         <p>Start logging any task's time to completion, with the ability to stop the timer at any moment, with notifications for longer task sessions.</p>
         <ul>
@@ -14,6 +14,10 @@
     <provides>
         <binary>io.github.lainsce.Khronos</binary>
     </provides>
+    <kudos>
+      <kudo>ModernToolkit</kudo>
+      <kudo>HiDpiIcon</kudo>
+    </kudos>
     <developer_name>Lains</developer_name>
     <url type="homepage">https://github.com/lainsce/khronos/</url>
     <url type="bugtracker">https://github.com/lainsce/khronos/issues</url>
@@ -23,37 +27,20 @@
             <image>https://raw.githubusercontent.com/lainsce/khronos/master/data/shot.png</image>
         </screenshot>
     </screenshots>
-    <content_rating type="oars-1.1">
-        <content_attribute id="violence-cartoon">none</content_attribute>
-        <content_attribute id="violence-fantasy">none</content_attribute>
-        <content_attribute id="violence-realistic">none</content_attribute>
-        <content_attribute id="violence-bloodshed">none</content_attribute>
-        <content_attribute id="violence-sexual">none</content_attribute>
-        <content_attribute id="violence-desecration">none</content_attribute>
-        <content_attribute id="violence-slavery">none</content_attribute>
-        <content_attribute id="violence-worship">none</content_attribute>
-        <content_attribute id="drugs-alcohol">none</content_attribute>
-        <content_attribute id="drugs-narcotics">none</content_attribute>
-        <content_attribute id="drugs-tobacco">none</content_attribute>
-        <content_attribute id="sex-nudity">none</content_attribute>
-        <content_attribute id="sex-themes">none</content_attribute>
-        <content_attribute id="sex-homosexuality">none</content_attribute>
-        <content_attribute id="sex-prostitution">none</content_attribute>
-        <content_attribute id="sex-adultery">none</content_attribute>
-        <content_attribute id="sex-appearance">none</content_attribute>
-        <content_attribute id="language-profanity">none</content_attribute>
-        <content_attribute id="language-humor">none</content_attribute>
-        <content_attribute id="language-discrimination">none</content_attribute>
-        <content_attribute id="social-chat">none</content_attribute>
-        <content_attribute id="social-info">none</content_attribute>
-        <content_attribute id="social-audio">none</content_attribute>
-        <content_attribute id="social-location">none</content_attribute>
-        <content_attribute id="social-contacts">none</content_attribute>
-        <content_attribute id="money-purchasing">none</content_attribute>
-        <content_attribute id="money-gambling">none</content_attribute>
-    </content_rating>
+    <content_rating type="oars-1.1" />
+    <recommends>
+      <control>keyboard</control>
+      <control>pointing</control>
+      <control>touch</control>
+    </recommends>
+    <requires>
+      <display_length compare="ge">360</display_length>
+    </requires>
+    <custom>
+      <value key="GnomeSoftware::key-colors">[(145, 65, 172)]</value>
+    </custom>
     <releases>
-        <release version="3.5.0" date="2020-02-09">
+        <release version="3.5.0" date="2021-02-09">
             <description>
                 <p>Release: UI Refreshments</p>
                 <ul>
@@ -61,19 +48,11 @@
                 </ul>
             </description>
         </release>
-        <release version="3.0.0" date="2020-01-29">
+        <release version="3.0.0" date="2021-01-29">
             <description>
                 <p>Release: Port to GTK4</p>
                 <ul>
                     <li>Changed: Rewritten for GTK4.</li>
-                </ul>
-            </description>
-        </release>
-        <release version="2.0.0" date="2020-01-25">
-            <description>
-                <p>Release: Hello, Flatpak!</p>
-                <ul>
-                    <li>Changed: Major UI changes.</li>
                 </ul>
             </description>
         </release>
