@@ -7,81 +7,38 @@
       <object class="GtkBox">
         <property name="orientation">vertical</property>
         <child>
-          <object class="AdwViewStack" id="title_stack">
-            <property name="visible-child-name">main_title</property>
-            <child>
-              <object class="AdwViewStackPage" id="main_title">
-                <property name="name">main_title</property>
-                <property name="child">
-                  <object class="AdwHeaderBar" id="timer_header">
-                    <child type="title">
-                      <object class="AdwViewSwitcher" id="win_switcher">
-                        <property name="stack">win_stack</property>
-                      </object>
-                    </child>
-                    <child type="end">
-                      <object class="GtkMenuButton" id="menu_button">
-                        <property name="can-focus">True</property>
-                        <property name="icon-name">open-menu-symbolic</property>
-                      </object>
-                    </child>
-                    <style>
-                      <class name="flat"/>
-                    </style>
-                  </object>
-                </property>
+          <object class="AdwHeaderBar" id="timer_header">
+            <child type="title">
+              <object class="AdwViewSwitcher" id="win_switcher">
+                <property name="stack">win_stack</property>
+                <property name="policy">wide</property>
               </object>
             </child>
-            <child>
-              <object class="AdwViewStackPage" id="logs_title">
-                <property name="name">logs_title</property>
-                <property name="child">
-                  <object class="AdwHeaderBar" id="list_header">
-                    <child type="title">
-                      <object class="AdwViewSwitcher" id="win_switcher2">
-                        <property name="stack">win_stack</property>
-                      </object>
-                    </child>
-                    <child type="end">
-                      <object class="GtkMenuButton" id="menu_button2">
-                        <property name="can-focus">True</property>
-                        <property name="icon-name">open-menu-symbolic</property>
-                      </object>
-                    </child>
-                    <child type="end">
-                      <object class="GtkButton" id="export_button">
-                        <property name="icon-name">document-send-symbolic</property>
-                        <property name="tooltip-text" translatable="yes">Export logs as CSV…</property>
-                        <property name="action-name">win.export</property>
-                        <style>
-                          <class name="image-button"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child type="start">
-                      <object class="GtkButton" id="trash_button">
-                        <property name="can-focus">True</property>
-                        <property name="icon-name">user-trash-symbolic</property>
-                        <property name="tooltip-text" translatable="yes">Removes all logs from the list</property>
-                        <style>
-                          <class name="image-button"/>
-                          <class name="destructive-action"/>
-                        </style>
-                      </object>
-                    </child>
-                    <style>
-                      <class name="flat"/>
-                    </style>
-                  </object>
-                </property>
+            <child type="end">
+              <object class="GtkMenuButton" id="menu_button">
+                <property name="can-focus">True</property>
+                <property name="icon-name">open-menu-symbolic</property>
               </object>
             </child>
+            <child type="start">
+              <object class="GtkButton" id="trash_button">
+                <property name="can-focus">True</property>
+                <property name="icon-name">user-trash-symbolic</property>
+                <property name="tooltip-text" translatable="yes">Removes all logs from the list</property>
+                <style>
+                  <class name="image-button"/>
+                  <class name="destructive-action"/>
+                </style>
+              </object>
+            </child>
+            <style>
+              <class name="flat"/>
+            </style>
           </object>
         </child>
         <child>
           <object class="AdwViewStack" id="win_stack">
             <property name="vexpand">1</property>
-            <property name="visible-child-name">main</property>
             <child>
               <object class="AdwViewStackPage" id="main">
                 <property name="name">main</property>
@@ -99,6 +56,7 @@
                         <property name="margin-bottom">12</property>
                         <style>
                           <class name="kh-title"/>
+                          <class name="numeric"/>
                         </style>
                       </object>
                     </child>

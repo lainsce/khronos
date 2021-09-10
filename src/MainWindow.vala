@@ -36,13 +36,7 @@ namespace Khronos {
         [GtkChild]
         public unowned Gtk.Button trash_button;
         [GtkChild]
-        public unowned Gtk.MenuButton menu_button2;
-        [GtkChild]
         public unowned Adw.ViewSwitcher win_switcher;
-        [GtkChild]
-        public unowned Adw.ViewSwitcher win_switcher2;
-        [GtkChild]
-        public unowned Adw.ViewStack title_stack;
         [GtkChild]
         public unowned Adw.ViewStack win_stack;
         [GtkChild]
@@ -133,9 +127,7 @@ namespace Khronos {
 
             column.bind_model (liststore, item => make_widgets (item));
 
-            placeholder.set_visible (false);
-
-            column_time_label.set_label ("<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec));
+            column_time_label.set_label ("%02u∶%02u∶%02u".printf(hrs, min, sec));
 
             column.row_activated.connect ((actrow) => {
                 var row = ((LogRow)column.get_selected_row ());
@@ -147,14 +139,13 @@ namespace Khronos {
                 var log = new Log ();
                 log.name = column_entry.text;
                 log.timedate = "%s\n%s – %s".printf(column_time_label.label,
-                                                   ("<span font_features='tnum'>%s</span>").printf (dt.format ("%a, %d/%m %H∶%M∶%S")),
-                                                   ("<span font_features='tnum'>%s</span>").printf (dt.add_full (0,
-                                                                                                                 0,
-                                                                                                                 0,
-                                                                                                                 (int)hrs,
-                                                                                                                 (int)min,
-                                                                                                                 (int)sec)
-                                                                                                                 .format ("%H∶%M∶%S")));
+                                                   ("%s").printf (dt.format ("%a, %d/%m %H∶%M∶%S")),
+                                                   ("%s").printf (dt.add_full (0,
+                                                                               0,
+                                                                               0,
+                                                                               (int)hrs,
+                                                                               (int)min,
+                                                                               (int)sec).format ("%H∶%M∶%S")));
 
                 liststore.append (log);
                 tm.save_to_file (liststore);
@@ -199,17 +190,17 @@ namespace Khronos {
                 column.unselect_all ();
             });
 
+            trash_button.visible = false;
             win_stack.notify["visible-child-name"].connect (() => {
                 if (win_stack.get_visible_child_name () == "main") {
-                    title_stack.set_visible_child_name ("main_title");
+                    trash_button.visible = false;
                 } else {
-                    title_stack.set_visible_child_name ("logs_title");
+                    trash_button.visible = true;
                 }
             });
 
             var builder = new Gtk.Builder.from_resource ("/io/github/lainsce/Khronos/mainmenu.ui");
             menu_button.menu_model = (MenuModel)builder.get_object ("menu");
-            menu_button2.menu_model = (MenuModel)builder.get_object ("menu");
 
             trash_button.clicked.connect (() => {
                 var flags = Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL;
@@ -248,19 +239,18 @@ namespace Khronos {
             });
 
             tm.load_from_file ();
-
-            this.set_size_request (360, 360);
-            this.show ();
-            this.present ();
-
             set_timeouts ();
             liststore.items_changed.connect (() => {
                 tm.save_to_file (liststore);
 
                 if (liststore.get_n_items () == 0) {
-                    placeholder.set_visible (false);
+                    placeholder.set_visible (true);
                 }
             });
+
+            this.set_size_request (360, 360);
+            this.show ();
+            this.present ();
         }
 
         public LogRow make_widgets (GLib.Object item) {
@@ -271,7 +261,7 @@ namespace Khronos {
             sec = 0;
             min = 0;
             hrs = 0;
-            column_time_label.label = "<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec);
+            column_time_label.label = "%02u∶%02u∶%02u".printf(hrs, min, sec);
             add_log_button.sensitive = false;
             timer_button.sensitive = true;
             column_entry.text = "";
@@ -288,15 +278,15 @@ namespace Khronos {
         public void timer () {
             if (start) {
                 sec += 1;
-                column_time_label.label = "<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec);
+                column_time_label.label = "%02u∶%02u∶%02u".printf(hrs, min, sec);
                 if (sec >= 60) {
                     sec = 0;
                     min += 1;
-                    column_time_label.label = "<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec);
+                    column_time_label.label = "%02u∶%02u∶%02u".printf(hrs, min, sec);
                     if (min >= 60) {
                         min = 0;
                         hrs += 1;
-                        column_time_label.label = "<span font_features='tnum'>%02u∶%02u∶%02u</span>".printf(hrs, min, sec);
+                        column_time_label.label = "%02u∶%02u∶%02u".printf(hrs, min, sec);
                     }
                 }
             }

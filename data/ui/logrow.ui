@@ -25,6 +25,7 @@
                 </binding>
                 <style>
                   <class name="title"/>
+                  <class name="numeric"/>
                 </style>
               </object>
             </child>
@@ -39,6 +40,7 @@
                 </binding>
                 <style>
                   <class name="subtitle"/>
+                  <class name="numeric"/>
                 </style>
               </object>
             </child>

@@ -4,11 +4,10 @@
 headerbar {
   background-image: none;
   background: @theme_bg_color;
-  border-bottom: 1px solid @borders;
 }
 
 headerbar.flat {
-  border-bottom: 2px solid @borders;
+  border-bottom: 1px solid @borders;
 }
 
 .kh-title {
