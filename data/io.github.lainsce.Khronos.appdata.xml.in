@@ -22,6 +22,7 @@
     <url type="homepage">https://github.com/lainsce/khronos/</url>
     <url type="bugtracker">https://github.com/lainsce/khronos/issues</url>
     <url type="donation">https://patreon.com/lainsce/</url>
+    <url type="translate">https://github.com/lainsce/khronos/blob/master/po/README.md</url>
     <screenshots>
         <screenshot type="default">
             <image>https://raw.githubusercontent.com/lainsce/khronos/master/data/shot.png</image>
@@ -39,6 +40,7 @@
     <custom>
       <value key="GnomeSoftware::key-colors">[(145, 65, 172)]</value>
     </custom>
+    <translation type="gettext">io.github.lainsce.Khronos</translation>
     <releases>
         <release version="3.5.0" date="2021-02-09">
             <description>
