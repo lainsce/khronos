@@ -23,7 +23,7 @@ msgid "Khronos"
 msgstr ""
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:7
-msgid "Track each task's time in a simple inobtrusive way"
+msgid "Log the time it took to do tasks"
 msgstr ""
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:9
