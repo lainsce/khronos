@@ -1,4 +1,4 @@
-project('io.github.lainsce.Khronos', ['vala', 'c'], version: '3.5.3')
+project('io.github.lainsce.Khronos', ['vala', 'c'], version: '3.6.0')
 gnome = import('gnome')
 i18n = import('i18n')
 

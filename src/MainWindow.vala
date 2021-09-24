@@ -84,12 +84,6 @@ namespace Khronos {
                 title: "Khronos"
             );
 
-            if (Khronos.Application.gsettings.get_boolean("dark-mode")) {
-                Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
-            } else {
-                Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = false;
-            }
-
             actions = new SimpleActionGroup ();
             actions.add_action_entries (ACTION_ENTRIES, this);
             insert_action_group ("win", actions);
@@ -114,12 +108,19 @@ namespace Khronos {
         construct {
             Adw.init ();
             tm = new TaskManager (this);
+            var adwsm = Adw.StyleManager.get_default ();
+
+            if (Khronos.Application.gsettings.get_boolean("dark-mode")) {
+                adwsm.set_color_scheme (Adw.ColorScheme.FORCE_DARK);
+            } else {
+                adwsm.set_color_scheme (Adw.ColorScheme.FORCE_LIGHT);
+            }
 
             Khronos.Application.gsettings.changed.connect (() => {
                 if (Khronos.Application.gsettings.get_boolean("dark-mode")) {
-                    Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
+                    adwsm.set_color_scheme (Adw.ColorScheme.FORCE_DARK);
                 } else {
-                    Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = false;
+                    adwsm.set_color_scheme (Adw.ColorScheme.FORCE_LIGHT);
                 }
             });
 
