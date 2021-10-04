@@ -18,7 +18,7 @@
 *
 */
 namespace Khronos {
-    public class Application : Gtk.Application {
+    public class Application : Adw.Application {
         public static unowned MainWindow win = null;
         public static GLib.Settings gsettings;
 

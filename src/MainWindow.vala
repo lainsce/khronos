@@ -76,7 +76,7 @@ namespace Khronos {
             { ACTION_ABOUT, action_about }
         };
 
-        public MainWindow (Gtk.Application application) {
+        public MainWindow (Adw.Application application) {
             GLib.Object (
                 application: application,
                 app: application,
@@ -106,7 +106,6 @@ namespace Khronos {
         }
 
         construct {
-            Adw.init ();
             tm = new TaskManager (this);
             var adwsm = Adw.StyleManager.get_default ();
 
