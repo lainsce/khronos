@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the extra package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Душан Симић <dusan.simic1810@gmail.com>, 2021.
+# Dušan Simić <dusan.simic1810@gmail.com>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-01-30 12:28-0300\n"
-"PO-Revision-Date: 2021-10-05 10:47+0200\n"
-"Last-Translator: Душан Симић <dusan.simic1810@gmail.com>\n"
+"PO-Revision-Date: 2021-10-06 17:33+0200\n"
+"Last-Translator: Dušan Simić <dusan.simic1810@gmail.com>\n"
 "Language-Team: Serbian <gnome-sr@googlegroups.com>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
@@ -42,29 +43,30 @@ msgid "Quit anytime with the shortcut Ctrl + Q"
 msgstr "Изаћите користећи пречицу Ctrl + Q"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:17
+#, fuzzy
 msgid "Lains"
-msgstr ""
+msgstr "Траке"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:58
 msgid "Release: Port to GTK4"
-msgstr ""
+msgstr "Издање: Порт на ГТК4"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:60
 msgid "Changed: Rewritten for GTK4."
-msgstr ""
+msgstr "Измењено: Преписано за ГТК4"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:66
 msgid "Release: Hello, Flatpak!"
-msgstr ""
+msgstr "Издање: Здраво флетпеку!"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:68
 msgid "Changed: Major UI changes."
-msgstr ""
+msgstr "Измењено: Значајне промене у корисничком интерфејсу."
 
 #: data/io.github.lainsce.Khronos.desktop.in:4
 msgid "Track each task time in a simple inobtrusive way"
-msgstr ""
+msgstr "Пратите време задатака на једноставан ненаметљив начин"
 
 #: data/io.github.lainsce.Khronos.desktop.in:7
 msgid "Plot;Planning;Time Tracking;"
-msgstr ""
+msgstr "Планирање;Праћење времена;"
