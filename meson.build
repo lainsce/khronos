@@ -25,11 +25,10 @@ cargo_sources = files(
 
 dependency('glib-2.0', version: '>= 2.66')
 dependency('gio-2.0', version: '>= 2.66')
-dependency('gtk4', version: '>= 4.0.0')
+dependency('gtk4', version: '>= 4.5.0')
 dependency('libadwaita-1', version: '>=1.0.0')
 
 rust_sources = files(
-  'src/config.rs',
   'src/main.rs',
   'src/i18n.rs',
 

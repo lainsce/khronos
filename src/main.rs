@@ -13,12 +13,6 @@
 #![warn(clippy::option_if_let_else)]
 //
 
-extern crate log;
-extern crate pretty_env_logger;
-extern crate serde_derive;
-extern crate strum_macros;
-extern crate gtk_macros;
-
 use gettextrs::*;
 use gtk::{gio, glib};
 
