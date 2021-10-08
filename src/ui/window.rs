@@ -2,7 +2,7 @@ use adw::subclass::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
 use gtk::{gio, glib, prelude::*};
-use glib::clone;
+use glib::{clone, GString};
 
 use crate::config;
 use crate::app::KhronosApplication;
@@ -113,9 +113,20 @@ mod imp {
                 obj.add_css_class("devel");
             }
 
-            self.column_time_label.set_label (&format!("{:02}∶{:02}∶{:02}", hrs, min, sec));
+            self.column_time_label.set_label(&format!("{:02}∶{:02}∶{:02}", hrs, min, sec));
 
-            self.trash_button.set_visible (false);
+            self.trash_button.set_visible(false);
+
+            let ws = self.win_stack.get();
+            let tb = self.trash_button.get();
+            self.win_stack.get().connect_notify_local(Some("visible-child-name"), move |_, _| {
+                let main: GString = "main".into();
+                if ws.visible_child_name() == Some(main) {
+                    tb.set_visible(false);
+                } else {
+                    tb.set_visible(true);
+                }
+            });
         }
     }
 

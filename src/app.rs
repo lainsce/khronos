@@ -3,7 +3,7 @@ use glib::clone;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use adw::subclass::prelude::*;
-use gtk::{gdk, gio, glib};
+use gtk::{gio, glib};
 use gtk_macros::action;
 
 use crate::config;
