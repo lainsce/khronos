@@ -27,10 +27,7 @@ Please make sure you have these dependencies first before building.
 ```bash
 gtk4
 libadwaita-1
-libgee-0.8
 libjson-glib
-meson
-vala
 ```
 
 ## 🏗️ Building
