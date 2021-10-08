@@ -42,6 +42,14 @@
     </custom>
     <translation type="gettext">io.github.lainsce.Khronos</translation>
     <releases>
+        <release version="4.0.0" date="2021-02-09">
+            <description>
+                <p>Release: Rusty Clock</p>
+                <ul>
+                    <li>Khronos is now rewritten in Rust, should be less RAM hungry.</li>
+                </ul>
+            </description>
+        </release>
         <release version="3.5.0" date="2021-02-09">
             <description>
                 <p>Release: UI Refreshments</p>

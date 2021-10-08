@@ -7,7 +7,7 @@
     <property name="default-width">300</property>
     <property name="default-height">280</property>
     <child>
-      <object class="AdwPreferencesPage">
+      <object class="AdwPreferencesPage" id="window">
         <property name="title" translatable="yes">General</property>
         <child>
           <object class="AdwPreferencesGroup">
@@ -40,12 +40,11 @@
             <child>
               <object class="AdwActionRow">
                 <property name="activatable">True</property>
-                <property name="activatable-widget">darkmode</property>
+                <property name="activatable-widget">dark_mode_button</property>
                 <property name="title" translatable="yes">Dark Mode</property>
                 <child>
-                  <object class="GtkSwitch" id="darkmode">
+                  <object class="GtkSwitch" id="dark_mode_button">
                     <property name="valign">center</property>
-                    <property name="active" bind-source="KhronosPrefs" bind-property="active" bind-flags="sync-create"/>
                   </object>
                 </child>
               </object>

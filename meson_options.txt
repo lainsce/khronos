@@ -1,10 +1,10 @@
-option(
+option (
   'profile',
   type: 'combo',
   choices: [
     'default',
-    'development',
+    'devel'
   ],
-  value: 'default',
-  description: 'The build profile for Khronos. One of "default" or "development".'
+  value: 'default'
 )
+

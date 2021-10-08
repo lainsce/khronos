@@ -1,85 +1,67 @@
-project('io.github.lainsce.Khronos', ['vala', 'c'], version: '3.6.0')
-gnome = import('gnome')
+project('khronos',
+          version: '4.0.0',
+    meson_version: '>= 0.50.0',
+  default_options: [ 'warning_level=2',
+                   ],
+)
+
 i18n = import('i18n')
+gnome = import('gnome')
 
-add_project_arguments([
-		'--target-glib=2.40',
-	],
-	language: 'vala',
-)
-add_project_arguments(
-    '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
-    language: 'c'
-)
+name       	= 'Khronos'
+version    	= meson.project_version()
+app_id     	= 'io.github.lainsce.Khronos'
+profile    	= get_option('profile')
+vcs_tag    	= run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
+localedir  	= join_paths(get_option('prefix'), get_option('localedir'))
+datadir    	= join_paths(get_option('prefix'), get_option('datadir'))
+pkgdatadir 	= join_paths(get_option('prefix'), get_option('datadir'), app_id)
+gettext_package = meson.project_name()
 
-asresources = gnome.compile_resources(
-    'as-resources', 'data/style.gresource.xml',
-    source_dir: 'data',
-    c_name: 'as'
-)
-
-sources = files(
-    'src/Application.vala',
-    'src/MainWindow.vala',
-    'src/Prefs.vala',
-    'src/Services/TaskManager.vala',
-    'src/Services/FileManager.vala',
-    'src/Services/Dialog.vala',
-    'src/Widgets/LogRow.vala',
+cargo_sources = files(
+  'Cargo.toml',
+  'Cargo.lock',
 )
 
-cc = meson.get_compiler('c')
-m_dep = cc.find_library('m', required: true)
-dependencies = [
-    dependency('gtk4'),
-    dependency('gee-0.8'),
-    dependency('libadwaita-1'),
-    dependency('json-glib-1.0'),
-    m_dep,
-]
+dependency('glib-2.0', version: '>= 2.66')
+dependency('gio-2.0', version: '>= 2.66')
+dependency('gtk4', version: '>= 4.0.0')
+dependency('libadwaita-1', version: '>=1.0.0')
 
-if get_option('profile') == 'development'
-  name_prefix = '(Development) '
-  profile = 'Devel'
-else
-  name_prefix = ''
-  profile = ''
-endif
+rust_sources = files(
+  'src/config.rs',
+  'src/main.rs',
+  'src/i18n.rs',
 
-app_id = 'io.github.lainsce.Khronos@0@'.format(profile)
-
-conf = configuration_data()
-conf.set_quoted('APP_ID', app_id)
-conf.set_quoted('G_LOG_DOMAIN', 'io.github.lainsce.Khronos@0@'.format(profile))
-conf.set_quoted('NAME_PREFIX', name_prefix)
-conf.set_quoted('PACKAGE_NAME', meson.project_name())
-conf.set_quoted('PACKAGE_VERSION', meson.project_version())
-conf.set_quoted('PROFILE', profile)
-conf.set_quoted('VERSION', meson.project_version())
-conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
-conf.set_quoted('DATADIR', join_paths(get_option('prefix'), get_option('datadir')))
-conf.set_quoted('GNOMELOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
-configure_file(output: 'config.h', configuration: conf)
-config_h_dir = include_directories('.')
-
-
-add_project_arguments(
-    '-include', 'config.h',
-    '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
-    language: 'c'
+  'src/ui/mod.rs',
+  'src/ui/log.rs',
+  'src/ui/logrow.rs',
+  'src/ui/window.rs',
 )
 
-# Let's define our executable
-executable(
+sources = [cargo_sources, rust_sources]
+
+cargo_script = find_program(join_paths(meson.source_root(), 'build-aux/cargo.sh'))
+cargo_release = custom_target(
+  'cargo-build',
+  build_by_default: true,
+  input: sources,
+  output: meson.project_name(),
+  console: true,
+  install: true,
+  install_dir: get_option('bindir'),
+  command: [
+    cargo_script,
+    meson.build_root(),
+    meson.source_root(),
+    '@OUTPUT@',
+    get_option('buildtype'),
     meson.project_name(),
-    sources,
-    asresources,
-    dependencies: dependencies,
-    vala_args: [meson.source_root() + '/src/Config.vapi'],
-    install : true
+  ]
 )
 
+subdir('src')
 subdir('data')
 subdir('po')
 
-meson.add_install_script('build-aux/post_install.py', join_paths(get_option('prefix'), get_option('datadir')))
+meson.add_install_script('build-aux/meson/postinstall.py')

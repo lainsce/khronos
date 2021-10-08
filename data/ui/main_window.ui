@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
+  <menu id="menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Export Logs as CSV…</attribute>
+        <attribute name="action">win.export</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Preferences</attribute>
+        <attribute name="action">win.prefs</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">About Khronos</attribute>
+        <attribute name="action">win.about</attribute>
+      </item>
+    </section>
+  </menu>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
   <template class="KhronosMainWindow" parent="AdwApplicationWindow">
+    <property name="default-width">360</property>
+    <property name="default-height">360</property>
     <child>
-      <object class="GtkBox">
+      <object class="GtkBox" id="window">
         <property name="orientation">vertical</property>
         <child>
           <object class="AdwHeaderBar" id="timer_header">
@@ -17,6 +37,7 @@
             <child type="end">
               <object class="GtkMenuButton" id="menu_button">
                 <property name="can-focus">True</property>
+                <property name="menu-model">menu</property>
                 <property name="icon-name">open-menu-symbolic</property>
               </object>
             </child>
@@ -31,9 +52,6 @@
                 </style>
               </object>
             </child>
-            <style>
-              <class name="flat"/>
-            </style>
           </object>
         </child>
         <child>
