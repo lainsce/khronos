@@ -44,7 +44,7 @@
             "name" : "khronos",
             "buildsystem" : "meson",
 	        "config-opts" : [
-                "-Dprofile=development"
+                "-Dprofile=devel"
             ],
             "sources" : [
                 {

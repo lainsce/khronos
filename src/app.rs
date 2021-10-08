@@ -17,6 +17,7 @@ mod imp {
     use once_cell::sync::OnceCell;
     use glib::WeakRef;
 
+    #[derive(Default)]
     pub struct KhronosApplication {
         pub window: OnceCell<WeakRef<KhronosMainWindow>>,
     }
@@ -26,15 +27,6 @@ mod imp {
         const NAME: &'static str = "KhronosApplication";
         type Type = super::KhronosApplication;
         type ParentType = adw::Application;
-
-        fn new() -> Self {
-            let window = OnceCell::new();
-
-            Self {
-                window,
-            }
-        }
-
     }
 
     impl ObjectImpl for KhronosApplication {
@@ -52,8 +44,6 @@ mod imp {
 
         fn activate(&self, app: &Self::Type) {
             debug!("Application::activate");
-            let app = app.downcast_ref::<super::KhronosApplication>().unwrap();
-
             if let Some(weak_window) = self.window.get() {
                 let window = weak_window.upgrade().unwrap();
                 window.present();
@@ -99,12 +89,6 @@ impl KhronosApplication {
 
     fn create_window(&self) -> KhronosMainWindow {
         let window = KhronosMainWindow::new(self.clone());
-
-        // Load custom styling
-        let p = gtk::CssProvider::new();
-        gtk::CssProvider::load_from_resource(&p, "/io/github/lainsce/Khronos/stylesheet.css");
-        gtk::StyleContext::add_provider_for_display(&gdk::Display::default().unwrap(), &p, gtk::STYLE_PROVIDER_PRIORITY_APPLICATION);
-
         window.present();
         window
     }
