@@ -1,7 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the io.github.lainsce.Khronos package.
-# Душан Симић <dusan.simic1810@gmail.com>, 2021.
 # Dušan Simić <dusan.simic1810@gmail.com>, 2021.
 #
 msgid ""
@@ -9,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.lainsce.Khronos\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-02 21:52+0100\n"
-"PO-Revision-Date: 2021-10-15 15:35+0200\n"
+"PO-Revision-Date: 2021-10-15 15:34+0200\n"
 "Last-Translator: Dušan Simić <dusan.simic1810@gmail.com>\n"
 "Language-Team: Serbian <gnome-sr@googlegroups.com>\n"
 "Language: sr\n"
@@ -22,36 +21,36 @@ msgstr ""
 
 #: src/MainWindow.vala:240
 msgid "Stop Timer"
-msgstr "Заустави одбројавач"
+msgstr "Zaustavi odbrojavač"
 
 #: src/MainWindow.vala:246 data/ui/main_window.ui:108
 msgid "Start Timer"
-msgstr "Започни одбројавање"
+msgstr "Započni odbrojavanje"
 
 #: src/MainWindow.vala:280
 msgid "Empty the Logs List?"
-msgstr "Испразни записник времена?"
+msgstr "Isprazni zapisnik vremena?"
 
 #: src/MainWindow.vala:281
 msgid ""
 "Emptying this list means all the logs in it will be permanently lost with no "
 "recovery."
 msgstr ""
-"Пражњењем овог списка, сви записи ће заувек бити изгубљени без могућности "
-"повратка."
+"Pražnjenjem ovog spiska, svi zapisi će zauvek biti izgubljeni bez mogućnosti "
+"povratka."
 
 #: src/MainWindow.vala:283
 msgid "Cancel"
-msgstr "Откажи"
+msgstr "Otkaži"
 
 #: src/MainWindow.vala:284
 msgid "Empty List"
-msgstr "Испразни списак"
+msgstr "Isprazni spisak"
 
 #: src/MainWindow.vala:425 src/MainWindow.vala:434 src/MainWindow.vala:443
 #: src/MainWindow.vala:452 src/MainWindow.vala:461
 msgid "Go rest for a while before continuing."
-msgstr "Иди се одмори мало пре него што наставиш."
+msgstr "Idi se odmori malo pre nego što nastaviš."
 
 #: src/MainWindow.vala:496
 msgid "Khronos"
@@ -59,88 +58,88 @@ msgstr "Khronos"
 
 #: src/MainWindow.vala:501
 msgid "Track each task's time in a simple inobtrusive way."
-msgstr "Пратите време задатака на једноставан ненаметљив начин."
+msgstr "Pratite vreme zadataka na jednostavan nenametljiv način."
 
 #: src/MainWindow.vala:507
 msgid "translator-credits"
-msgstr "Душан Симић <dusan.simic1810@gmail.com>"
+msgstr "Dušan Simić <dusan.simic1810@gmail.com>"
 
 #: src/Services/Dialog.vala:23
 msgid "CSV files"
-msgstr "CSV датотеке"
+msgstr "CSV datoteke"
 
 #: src/Services/Dialog.vala:27
 msgid "All files"
-msgstr "Све датотеке"
+msgstr "Sve datoteke"
 
 #: data/ui/mainmenu.ui:5
 msgid "Sort Tasks"
-msgstr "Сортирај задатке"
+msgstr "Sortiraj zadatke"
 
 #: data/ui/mainmenu.ui:9
 msgid "By Time"
-msgstr "По времену"
+msgstr "Po vremenu"
 
 #: data/ui/mainmenu.ui:14
 msgid "By Name"
-msgstr "По имену"
+msgstr "Po imenu"
 
 #: data/ui/mainmenu.ui:21
 msgid "Export Logs (CSV)…"
-msgstr "Извези записник (CSV)…"
+msgstr "Izvezi zapisnik (CSV)…"
 
 #: data/ui/mainmenu.ui:27
 msgid "Preferences"
-msgstr "Подешавања"
+msgstr "Podešavanja"
 
 #: data/ui/mainmenu.ui:31
 msgid "About Khronos"
-msgstr "О Khronos-у"
+msgstr "O Khronos-u"
 
 #: data/ui/main_window.ui:57
 msgid "Removes all logs from the list"
-msgstr "Обриши све ставке из записника"
+msgstr "Obriši sve stavke iz zapisnika"
 
 #: data/ui/main_window.ui:78
 msgid "Timer"
-msgstr "Одбројавач"
+msgstr "Odbrojavač"
 
 #: data/ui/main_window.ui:100
 msgid "Log name…"
-msgstr "Име записа…"
+msgstr "Ime zapisa…"
 
 #: data/ui/main_window.ui:109
 msgid "Starts a log's timer"
-msgstr "Започиње одбројавач записа"
+msgstr "Započinje odbrojavač zapisa"
 
 #: data/ui/main_window.ui:118
 msgid "Add Log"
-msgstr "Додај запис"
+msgstr "Dodaj zapis"
 
 #: data/ui/main_window.ui:119
 msgid "Adds a log to the list"
-msgstr "Додаје запис у листу"
+msgstr "Dodaje zapis u listu"
 
 #: data/ui/main_window.ui:134
 msgid "Logs"
-msgstr "Записи"
+msgstr "Zapisi"
 
 #: data/ui/main_window.ui:172
 msgid "No Logs"
-msgstr "Нема записа"
+msgstr "Nema zapisa"
 
 #: data/ui/main_window.ui:180
 msgid "Add a log on Timer tab and check later."
-msgstr "Додај запис на Тајмер таб и провери касније."
+msgstr "Dodaj zapis na Tajmer tab i proveri kasnije."
 
 #: data/ui/prefs.ui:11 data/ui/prefs.ui:14
 msgid "General"
-msgstr "Опште"
+msgstr "Opšte"
 
 #: data/ui/prefs.ui:18
 msgid "Notification Delay"
-msgstr "Одложеност обавештења"
+msgstr "Odloženost obaveštenja"
 
 #: data/ui/prefs.ui:45
 msgid "Dark Mode"
-msgstr "Тамни мод"
+msgstr "Tamni mod"
