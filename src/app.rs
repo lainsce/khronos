@@ -111,8 +111,6 @@ impl KhronosApplication {
         );
         self.set_accels_for_action("win.prefs", &["<primary>comma"]);
 
-        let window = KhronosMainWindow::new(self.clone());
-
         action!(
             self,
             "quit",

@@ -3,6 +3,8 @@ use gtk::glib;
 use gtk::CompositeTemplate;
 use adw::*;
 
+use crate::ui::log::LogTask;
+
 glib::wrapper! {
     pub struct KhronosLogRow(ObjectSubclass<imp::KhronosLogRow>)
         @extends adw::ActionRow, adw::PreferencesRow, gtk::Widget,
@@ -18,11 +20,10 @@ mod imp {
     use std::cell::Cell;
 
     // Object holding the state
-    #[derive(Default, CompositeTemplate)]
+    #[derive(CompositeTemplate)]
     #[template(resource = "/io/github/lainsce/Khronos/logrow.ui")]
     pub struct KhronosLogRow {
-        name: Cell<u8>,
-        timedate: Cell<u8>,
+        item: LogTask,
     }
 
     // The central trait for subclassing a GObject
@@ -37,8 +38,8 @@ mod imp {
     impl ObjectImpl for KhronosLogRow {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
-            obj.set_title(&self.name.get().to_string());
-            obj.set_subtitle(&self.timedate.get().to_string());
+            obj.set_title(&self.item.name.get().to_string());
+            obj.set_subtitle(&self.item.timedate.get().to_string());
         }
     }
 
@@ -52,7 +53,8 @@ mod imp {
 }
 
 impl KhronosLogRow {
-    pub fn new() -> Self {
+    pub fn new(item: LogTask) -> Self {
         Object::new(&[]).expect("Failed to create `KhronosLogRow`.")
+        self.item = item;
     }
 }

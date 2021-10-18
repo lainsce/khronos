@@ -95,18 +95,26 @@ mod imp {
                 }),
             );
 
-            let hrs = 0; let min = 0; let sec = 0;
-            let timer_id = 0;
-            let id1 = 0; // 30min.
-            let id2 = 0; // 1h.
-            let id3 = 0; // 1h30min.
-            let id4 = 0; // 2h.
-            let id5 = 0; // 2h30min.
+            let hrs = 0; let min = 0; let sec = 0.0;
+            let _timer_id = 0;
+            let _id1 = 0; // 30min.
+            let _id2 = 0; // 1h.
+            let _id3 = 0; // 1h30min.
+            let _id4 = 0; // 2h.
+            let _id5 = 0; // 2h30min.
+            let _start = false;
 
-            let dt = glib::DateTime::new_now_local ();
+            let dt = glib::DateTime::new_now_local ().unwrap();
             let model = gio::ListStore::new(LogTask::static_type());
 
-            //self.column.bind_model (Some(&liststore), make_widgets (item));
+            self.column.bind_model (Some(&model), |item| {
+                let item = item
+                    .downcast_ref::<crate::ui::log::LogTask>()
+                    .expect("Row data is of wrong type");
+                let item_row = crate::ui::logrow::KhronosLogRow::new(item.clone());
+
+                item_row.upcast::<gtk::Widget>()
+            });
 
             // Devel Profile
             if config::PROFILE == "Devel" {
@@ -127,6 +135,23 @@ mod imp {
                     tb.set_visible(true);
                 }
             });
+
+            let ce = self.column_entry.get();
+            let cl = self.column_time_label.get();
+            self.add_log_button.get().connect_clicked(clone!(@weak ce, @weak cl => move |_| {
+                let name = ce.text();
+                let timedate = format!("{}\n{} – {}", cl.label(),
+                                                      format!("{}", dt.format ("%a, %d/%m %H∶%M∶%S").unwrap()),
+                                                      format!("{}", dt.add_full (0,0,0,hrs,min,sec).unwrap().format ("%H∶%M∶%S").unwrap()));
+
+                let log = LogTask::new (name.to_string(), timedate);
+                model.append (&log);
+                //tm.save_to_file (liststore);
+                //reset_timer ();
+                //is_modified = true;
+                ce.set_text("");
+                //placeholder.set_visible(false);
+            }));
         }
     }
 
@@ -167,7 +192,6 @@ impl KhronosMainWindow {
     }
 
     fn update_color_scheme(&self, b: bool) {
-        let self_ = self.imp();
         let manager = adw::StyleManager::default().unwrap();
         if !manager.system_supports_color_schemes() {
             let color_scheme = if b {
