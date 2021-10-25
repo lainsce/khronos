@@ -1,0 +1,68 @@
+# Swedish translation for Khronos extra.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Åke Engelbrektson <eson@svenskasprakfiler.se>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-30 12:28-0300\n"
+"PO-Revision-Date: 2021-10-25 10:08+0200\n"
+"Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: sv\n"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:6
+#: data/io.github.lainsce.Khronos.desktop.in:3
+msgid "Khronos"
+msgstr "Khronos"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:7
+msgid "Log the time it took to do tasks"
+msgstr "Logga den tid det tog att utföra uppgifter"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:9
+msgid ""
+"Start tracking any task's \"during\" time and start &amp; stop as you go, "
+"with notifications."
+msgstr ""
+"Börja logga alla uppgifters tidsåtgång och börja &amp; sluta när du går, "
+"med aviseringar."
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:11
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Avsluta när som helst med genvägen Ctrl + Q"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:17
+msgid "Lains"
+msgstr "Lains"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:58
+msgid "Release: Port to GTK4"
+msgstr "Release: Port till GTK4"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:60
+msgid "Changed: Rewritten for GTK4."
+msgstr "Ändrat: Omskrivet för GTK4."
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:66
+msgid "Release: Hello, Flatpak!"
+msgstr "Release: Hej, Flatpak!"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:68
+msgid "Changed: Major UI changes."
+msgstr "Ändrat: Större ändringar i användargränssnittet."
+
+#: data/io.github.lainsce.Khronos.desktop.in:4
+msgid "Track each task time in a simple inobtrusive way"
+msgstr "Logga varje uppgifts tidsåtgång på ett enkelt och diskret sätt."
+
+#: data/io.github.lainsce.Khronos.desktop.in:7
+msgid "Plot;Planning;Time Tracking;"
+msgstr "Plot;Planering;Tidsspårning;"
