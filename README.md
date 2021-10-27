@@ -18,7 +18,7 @@ Track each task's time in a simple inobtrusive way
 
 Would you like to support the development of this app to new heights? Then:
 
-[Be my backer on Patreon](https://www.patreon.com/lainsce)
+[Be my backer on Ko-Fi](https://www.ko-fi.com/lainsce)
 
 ## 🛠️ Dependencies
 
