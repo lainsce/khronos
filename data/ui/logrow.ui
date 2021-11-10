@@ -1,68 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
-  <template class="KhronosLogRow" parent="GtkListBoxRow">
+  <template class="KhronosLogRow" parent="AdwActionRow">
     <property name="visible">1</property>
-    <property name="child">
-      <object class="GtkBox">
-        <property name="margin-start">6</property>
-        <property name="margin-end">6</property>
+    <child type="suffix">
+      <object class="GtkButton" id="delete_button">
+        <property name="valign">center</property>
+        <property name="sensitive">0</property>
+        <property name="action-name">win.delete_row</property>
+        <child>
+          <object class="GtkImage">
+            <property name="icon-name">window-close-symbolic</property>
+          </object>
+        </child>
         <style>
-          <class name="kh-row"/>
+          <class name="image-button"/>
+          <class name="circular"/>
+          <class name="flat"/>
         </style>
-        <child>
-          <object class="GtkBox">
-            <property name="valign">center</property>
-            <property name="hexpand">1</property>
-            <property name="orientation">vertical</property>
-            <child>
-              <object class="GtkLabel">
-                <property name="halign">start</property>
-                <binding name="label">
-                  <lookup name="name" type="KhronosLog">
-                    <lookup name="log" type="KhronosLogRow"/>
-                  </lookup>
-                </binding>
-                <style>
-                  <class name="title"/>
-                  <class name="numeric"/>
-                </style>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="halign">start</property>
-                <property name="use-markup">1</property>
-                <binding name="label">
-                  <lookup name="timedate" type="KhronosLog">
-                    <lookup name="log" type="KhronosLogRow"/>
-                  </lookup>
-                </binding>
-                <style>
-                  <class name="subtitle"/>
-                  <class name="numeric"/>
-                </style>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="delete_button">
-            <property name="valign">center</property>
-            <property name="action-name">win.delete_row</property>
-            <child>
-              <object class="GtkImage">
-                <property name="icon-name">window-close-symbolic</property>
-              </object>
-            </child>
-            <style>
-              <class name="image-button"/>
-              <class name="circular"/>
-              <class name="flat"/>
-            </style>
-          </object>
-        </child>
       </object>
-    </property>
+    </child>
   </template>
 </interface>

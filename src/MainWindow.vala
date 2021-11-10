@@ -40,7 +40,7 @@ namespace Khronos {
         [GtkChild]
         public unowned Adw.ViewStack win_stack;
         [GtkChild]
-        public unowned Gtk.Box placeholder;
+        public unowned Adw.StatusPage placeholder;
 
         public GLib.ListStore liststore;
 
@@ -95,12 +95,6 @@ namespace Khronos {
                 app.set_accels_for_action (ACTION_PREFIX + action, accels_array);
             }
 
-            var provider = new Gtk.CssProvider ();
-            provider.load_from_resource ("/io/github/lainsce/Khronos/stylesheet.css");
-            Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (),
-                                                      provider,
-                                                      Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-
             var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
             theme.add_resource_path ("/io/github/lainsce/Khronos/");
         }
@@ -130,9 +124,13 @@ namespace Khronos {
             column_time_label.set_label ("%02u∶%02u∶%02u".printf(hrs, min, sec));
 
             column.row_activated.connect ((actrow) => {
-                var row = ((LogRow)column.get_selected_row ());
+                column.select_row (actrow);
 
-                column_entry.set_text (row.log.name);
+                if (column.get_selected_row () != null) {
+                    ((LogRow)actrow).delete_button.sensitive = true;
+                } else {
+                    ((LogRow)actrow).delete_button.sensitive = false;
+                }
             });
 
             add_log_button.clicked.connect (() => {
@@ -163,7 +161,7 @@ namespace Khronos {
                     start = true;
                     dt = new GLib.DateTime.now_local ();
                     // For some reason, add() is closer to real time than add_seconds()
-                    timer_id = GLib.Timeout.add (1000, () => {
+                    timer_id = GLib.Timeout.add (998, () => {
                         timer ();
                         return true;
                     });;
@@ -383,10 +381,10 @@ namespace Khronos {
         }
 
         public void action_delete_row () {
-            uint i, n = liststore.get_n_items ();
-            for (i = 0; i < n; i++) {
-                liststore.remove (i);
-            }
+            Gtk.ListBoxRow row = column.get_selected_row ();
+            uint pos;
+            liststore.find (((LogRow)row).log, out pos);
+            liststore.remove (pos);
         }
 
         public void action_export () {

@@ -1,18 +1,16 @@
 {
     "app-id" : "io.github.lainsce.Khronos",
-    "runtime" : "org.gnome.Sdk",
-    "runtime-version" : "41",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
     "command" : "io.github.lainsce.Khronos",
     "rename-icon" : "io.github.lainsce.KhronosDevel",
     "finish-args" : [
+    	"--filesystem=xdg-run/gvfsd",
         "--socket=wayland",
         "--socket=fallback-x11",
         "--share=ipc",
         "--device=dri"
-    ],
-    "tags" : [
-        "nightly"
     ],
     "desktop-file-name-suffix" : " (Devel)",
     "cleanup" : [
@@ -27,64 +25,10 @@
         "/share/gtk-doc",
         "/share/man",
         "/share/vala",
-        "/bin/vapi*",
         "*.a",
-        "*.la",
-        "/share/doc",
-        "/share/pkgconfig",
-        "/lib/girepository-1.0",
-        "/share/gir-1.0",
-        "/bin/gtk4*",
-        "/bin/pango*",
-        "/bin/sassc"
+        "*.la"
     ],
     "modules" : [
-        {
-            "name": "libsass",
-            "sources": [
-                {
-                    "type" : "archive",
-                    "url" : "https://github.com/sass/libsass/archive/3.6.4.tar.gz",
-                    "sha256": "f9484d9a6df60576e791566eab2f757a97fd414fce01dd41fc0a693ea5db2889"
-                },
-                {
-                    "type" : "script",
-                    "dest-filename" : "autogen.sh",
-                    "commands" : [ "autoreconf -si" ]
-                }
-            ]
-        },
-        {
-            "name": "sassc",
-            "sources": [
-                {
-                    "type" : "archive",
-                    "url" : "https://github.com/sass/sassc/archive/3.6.1.zip",
-                    "sha256": "0a48d963f7eb8f5d32ad62d0b22fc604e6bec787d03c6d8348c2849da9d63d71"
-                },
-                {
-                    "type" : "script",
-                    "dest-filename" : "autogen.sh",
-                    "commands" : [ "autoreconf -si" ]
-                }
-            ]
-        },
-        {
-            "name" : "libadwaita",
-            "buildsystem": "meson",
-            "config-opts" : [
-                "-Dvapi=true",
-                "-Dexamples=false",
-                "-Dtests=false"
-            ],
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/gnome/libadwaita.git",
-                    "branch" : "main"
-                }
-            ]
-        },
         {
             "name" : "khronos",
             "buildsystem" : "meson",
@@ -100,5 +44,3 @@
         }
     ]
 }
-
-

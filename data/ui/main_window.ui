@@ -26,14 +26,10 @@
                 <property name="icon-name">user-trash-symbolic</property>
                 <property name="tooltip-text" translatable="yes">Removes all logs from the list</property>
                 <style>
-                  <class name="image-button"/>
                   <class name="destructive-action"/>
                 </style>
               </object>
             </child>
-            <style>
-              <class name="flat"/>
-            </style>
           </object>
         </child>
         <child>
@@ -117,41 +113,21 @@
                             <child>
                               <object class="GtkListBox" id="column">
                                 <property name="vexpand">1</property>
+                                <property name="selection-mode">single</property>
                                 <style>
                                   <class name="content"/>
                                 </style>
                                 <child type="placeholder">
-                                  <object class="GtkBox" id="placeholder">
-                                    <property name="halign">center</property>
+                                  <object class="AdwStatusPage" id="placeholder">
                                     <property name="valign">center</property>
+                                    <property name="hexpand">0</property>
                                     <property name="vexpand">1</property>
-                                    <property name="orientation">vertical</property>
-                                    <property name="spacing">12</property>
-                                    <child>
-                                      <object class="GtkImage">
-                                        <property name="icon-name">preferences-system-time-symbolic</property>
-                                        <property name="pixel-size">96</property>
-                                        <style>
-                                          <class name="dim-label"/>
-                                        </style>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="label" translatable="yes">No Logs</property>
-                                        <style>
-                                          <class name="large-title"/>
-                                        </style>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="label" translatable="yes">Add a log on Timer tab and check later.</property>
-                                        <style>
-                                          <class name="dim-label"/>
-                                        </style>
-                                      </object>
-                                    </child>
+                                    <property name="icon-name">preferences-system-time-symbolic</property>
+                                    <property name="title" translatable="yes">No Logs</property>
+                                    <property name="description" translatable="yes">Add a log on Timer tab and check later.</property>
+                                    <style>
+                                      <class name="compact"/>
+                                    </style>
                                   </object>
                                 </child>
                               </object>
