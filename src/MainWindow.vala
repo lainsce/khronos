@@ -36,10 +36,6 @@ namespace Khronos {
         [GtkChild]
         public unowned Gtk.Button trash_button;
         [GtkChild]
-        public unowned Adw.ViewSwitcher win_switcher;
-        [GtkChild]
-        public unowned Adw.ViewStack win_stack;
-        [GtkChild]
         public unowned Adw.StatusPage placeholder;
 
         public GLib.ListStore liststore;
@@ -186,15 +182,6 @@ namespace Khronos {
                     timer_button.sensitive = false;
                 }
                 column.unselect_all ();
-            });
-
-            trash_button.visible = false;
-            win_stack.notify["visible-child-name"].connect (() => {
-                if (win_stack.get_visible_child_name () == "main") {
-                    trash_button.visible = false;
-                } else {
-                    trash_button.visible = true;
-                }
             });
 
             var builder = new Gtk.Builder.from_resource ("/io/github/lainsce/Khronos/mainmenu.ui");
