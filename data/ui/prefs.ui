@@ -12,10 +12,16 @@
         <child>
           <object class="AdwPreferencesGroup">
             <property name="title" translatable="yes">General</property>
+            <style>
+              <class name="content-list"/>
+            </style>
             <child>
               <object class="AdwActionRow">
                 <property name="activatable">False</property>
                 <property name="title" translatable="yes">Notification Delay</property>
+                <style>
+                  <class name="content-row"/>
+                </style>
                 <child>
                   <object class="GtkScale" id="delay_scale">
                     <property name="draw-value">1</property>
@@ -42,6 +48,9 @@
                 <property name="activatable">True</property>
                 <property name="activatable-widget">darkmode</property>
                 <property name="title" translatable="yes">Dark Mode</property>
+                <style>
+                  <class name="content-row"/>
+                </style>
                 <child>
                   <object class="GtkSwitch" id="darkmode">
                     <property name="valign">center</property>

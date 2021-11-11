@@ -1,8 +1,16 @@
 @define-color accent_color @purple_4;
-@define-color accent_bg_color #fad7ff;
-@define-color accent_fg_color #8541a0;
-@define-color accent_secondary_bg_color #f2dcf4;
-@define-color accent_secondary_fg_color #69596c;
+@define-color accent_bg_color #6b2589;
+@define-color accent_fg_color #fff;
+@define-color accent_secondary_bg_color #f1dcf3;
+@define-color accent_secondary_fg_color #320048;
+@define-color window_bg_color #e8e0e8;
+@define-color view_bg_color #f8f0f8;
+@define-color headerbar_bg_color #e8e0e8;
+@define-color popover_bg_color #f8f0f8;
+@define-color popover_fg_color #1e1a1e;
+@define-color window_fg_color #1e1a1e;
+@define-color view_fg_color #1e1a1e;
+@define-color headerbar_fg_color #1e1a1e;
 
 .kh-title {
   font-size: 64px;
@@ -19,6 +27,10 @@
   box-shadow: 0 2px 3px 0 alpha(#151515, 0.3),
               0 6px 10px 4px alpha(#151515, 0.15);
 }
+.list-action-button:active {
+  box-shadow: 0 1px 3px 0 alpha(#151515, 0.3),
+              0 4px 8px 3px alpha(#151515, 0.15);
+}
 .accent-button {
   background: @accent_bg_color;
   color: @accent_fg_color;
@@ -28,8 +40,6 @@
 }
 .accent-button:active {
   background: shade(@accent_bg_color, 0.95);
-  box-shadow: 0 1px 3px 0 alpha(#151515, 0.3),
-              0 4px 8px 3px alpha(#151515, 0.15);
 }
 .accent-secondary-button {
   background: @accent_secondary_bg_color;
@@ -47,4 +57,19 @@
 }
 .list-action-button.destructive-action:active {
   background: shade(#ba1b1b, 1.1);
+}
+
+.content-sidebar {
+  background: @view_bg_color;
+  border: none;
+}
+.content-list *:not(.content-row) {
+  border: none;
+  box-shadow: none;
+}
+.content-row {
+  background: @view_bg_color;
+}
+entry {
+  border: none;
 }
