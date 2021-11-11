@@ -4,124 +4,173 @@
   <requires lib="libadwaita" version="1.0"/>
   <template class="KhronosMainWindow" parent="AdwApplicationWindow">
     <child>
-      <object class="GtkOverlay">
-        <child type="overlay">
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
           <object class="AdwHeaderBar" id="timer_header">
-            <property name="valign">start</property>
             <child type="title">
-              <object class="GtkBox">
+              <object class="AdwViewSwitcher" id="win_switcher">
+                <property name="stack">win_stack</property>
+                <property name="policy">wide</property>
               </object>
             </child>
             <child type="end">
               <object class="GtkMenuButton" id="menu_button">
-                <property name="can-focus">1</property>
+                <property name="can-focus">True</property>
                 <property name="icon-name">open-menu-symbolic</property>
               </object>
             </child>
-            <child type="start">
-              <object class="GtkToggleButton" id="flap_button">
-                <property name="can-focus">1</property>
-                <property name="tooltip-text" translatable="yes">Show Logs list</property>
-                <property name="icon-name">sidebar-show-right-symbolic</property>
-              </object>
-            </child>
-            <style>
-              <class name="flat"/>
-            </style>
           </object>
         </child>
         <child>
-          <object class="GtkBox" id="win_stack">
+          <object class="AdwViewStack" id="win_stack">
             <property name="vexpand">1</property>
-            <property name="halign">center</property>
-            <property name="margin-top">46</property>
+            <style>
+              <class name="content-view"/>
+            </style>
             <child>
-              <object class="AdwFlap">
-                <property name="reveal-flap" bind-source="flap_button" bind-property="active" bind-flags="sync-create"/>
-                <child type="content">
-                  <object class="GtkBox">
-                    <property name="orientation">vertical</property>
-                    <property name="visible" bind-source="flap_button" bind-property="active" bind-flags="sync-create"/>
-                    <property name="spacing">12</property>
-                    <property name="margin-end">12</property>
-                    <property name="margin-bottom">12</property>
-                    <property name="margin-start">12</property>
-                    <property name="valign">center</property>
-                    <child>
-                      <object class="GtkLabel" id="column_time_label">
-                        <property name="use-markup">1</property>
-                        <property name="margin-bottom">12</property>
-                        <style>
-                          <class name="kh-title"/>
-                          <class name="numeric"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="column_entry">
-                        <property name="margin-bottom">12</property>
-                        <property name="placeholder-text" translatable="yes">Log name…</property>
-                      </object>
-                    </child>
+              <object class="AdwViewStackPage" id="main">
+                <property name="name">main</property>
+                <property name="title" translatable="yes">Timer</property>
+                <property name="icon-name">stopwatch-symbolic</property>
+                <property name="child">
+                  <object class="GtkOverlay">
                     <child>
                       <object class="GtkBox">
-                        <property name="spacing">12</property>
                         <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">12</property>
                         <child>
-                          <object class="GtkButton" id="timer_button">
-                            <property name="label" translatable="yes">Start Timer</property>
-                            <property name="tooltip-text" translatable="yes">Starts the timer for a log</property>
+                          <object class="GtkLabel" id="column_time_label">
+                            <property name="use-markup">1</property>
+                            <property name="margin-bottom">12</property>
                             <style>
-                              <class name="suggested-action"/>
-                              <class name="pill"/>
+                              <class name="kh-title"/>
+                              <class name="numeric"/>
                             </style>
                           </object>
                         </child>
                         <child>
+                          <object class="GtkEntry" id="column_entry">
+                            <property name="margin-bottom">12</property>
+                            <property name="placeholder-text" translatable="yes">Log name…</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child type="overlay">
+                      <object class="GtkBox">
+                        <property name="spacing">12</property>
+                        <property name="margin-end">12</property>
+                        <property name="margin-bottom">12</property>
+                        <property name="orientation">vertical</property>
+                        <property name="halign">end</property>
+                        <property name="valign">end</property>
+                        <child>
                           <object class="GtkButton" id="add_log_button">
-                            <property name="label" translatable="yes">Add Log</property>
+                            <property name="icon-name">list-add-symbolic</property>
                             <property name="tooltip-text" translatable="yes">Adds a log to the list</property>
                             <style>
-                              <class name="pill"/>
+                              <class name="list-action-button"/>
+                              <class name="accent-secondary-button"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="timer_button">
+                            <property name="icon-name">stopwatch-symbolic</property>
+                            <property name="tooltip-text" translatable="yes">Starts the timer for a log</property>
+                            <style>
+                              <class name="list-action-button"/>
+                              <class name="accent-button"/>
                             </style>
                           </object>
                         </child>
                       </object>
                     </child>
                   </object>
-                </child>
-                <child type="flap">
-                  <object class="GtkBox">
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">12</property>
-                    <property name="width-request">360</property>
-                    <style>
-                      <class name="background"/>
-                    </style>
-                    <child>
-                      <object class="GtkScrolledWindow">
-                        <property name="vexpand">1</property>
-                        <property name="margin-top">12</property>
-                        <property name="margin-end">12</property>
-                        <property name="margin-start">12</property>
+        </property>
+        </object>
+            </child>
+            <child>
+              <object class="AdwViewStackPage" id="logs">
+                <property name="name">logs</property>
+                <property name="title" translatable="yes">Logs</property>
+                <property name="icon-name">view-list-symbolic</property>
+                <property name="child">
+                <object class="GtkScrolledWindow">
+                  <property name="vexpand">1</property>
+                  <child>
+                    <object class="AdwClamp">
+                      <property name="maximum-size">400</property>
                         <child>
                           <object class="GtkBox">
+                            <property name="margin-start">12</property>
+                            <property name="margin-end">12</property>
+                            <property name="margin-top">12</property>
+                            <property name="margin-bottom">12</property>
                             <property name="orientation">vertical</property>
+                            <property name="spacing">12</property>
+                            <property name="vexpand">1</property>
                             <child>
-                              <object class="GtkListBox" id="column">
-                                <property name="selection-mode">single</property>
-                                <property name="vexpand">1</property>
-                                <style>
-                                  <class name="content"/>
-                                </style>
-                                <child type="placeholder">
-                                  <object class="AdwStatusPage" id="placeholder">
-                                    <property name="icon-name">preferences-system-time-symbolic</property>
-                                    <property name="title" translatable="yes">No Logs</property>
-                                    <property name="description" translatable="yes">Press Add Log to start storing logs.</property>
+                              <object class="GtkOverlay">
+                                <child type="overlay">
+                                  <object class="GtkButton" id="trash_button">
+                                    <property name="can-focus">True</property>
+                                    <property name="icon-name">user-trash-symbolic</property>
+                                    <property name="halign">end</property>
+                                    <property name="valign">end</property>
+                                    <property name="margin-end">12</property>
+                                    <property name="margin-bottom">12</property>
+                                    <property name="tooltip-text" translatable="yes">Removes all logs from the list</property>
                                     <style>
-                                      <class name="compact"/>
+                                      <class name="list-action-button"/>
+                                      <class name="destructive-action"/>
                                     </style>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkListBox" id="column">
+                                    <property name="vexpand">1</property>
+                                    <style>
+                                      <class name="content"/>
+                                      <class name="content-sidebar"/>
+                                    </style>
+                                    <child type="placeholder">
+                                      <object class="GtkBox" id="placeholder">
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="vexpand">1</property>
+                                        <property name="orientation">vertical</property>
+                                        <property name="spacing">12</property>
+                                        <child>
+                                          <object class="GtkImage">
+                                            <property name="icon-name">preferences-system-time-symbolic</property>
+                                            <property name="pixel-size">96</property>
+                                            <style>
+                                              <class name="dim-label"/>
+                                            </style>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="label" translatable="yes">No Logs</property>
+                                            <style>
+                                              <class name="large-title"/>
+                                            </style>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="label" translatable="yes">Add a log on Timer tab and check later.</property>
+                                            <style>
+                                              <class name="dim-label"/>
+                                            </style>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
                                   </object>
                                 </child>
                               </object>
@@ -130,21 +179,8 @@
                         </child>
                       </object>
                     </child>
-                    <child>
-                      <object class="GtkButton" id="trash_button">
-                        <property name="can-focus">1</property>
-                        <property name="halign">center</property>
-                        <property name="tooltip-text" translatable="yes">Removes all logs from the list</property>
-                        <property name="label" translatable="yes">Clear Log List…</property>
-                        <property name="margin-bottom">12</property>
-                        <style>
-                          <class name="destructive-action"/>
-                          <class name="pill"/>
-                        </style>
-                      </object>
-                    </child>
                   </object>
-                </child>
+                </property>
               </object>
             </child>
           </object>
@@ -152,11 +188,5 @@
       </object>
     </child>
   </template>
-  <object class="GtkSizeGroup" id="column_buttons">
-    <widgets>
-      <widget name="add_log_button"/>
-      <widget name="timer_button"/>
-    </widgets>
-  </object>
 </interface>
 

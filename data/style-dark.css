@@ -1,0 +1,13 @@
+@define-color accent_color @purple_2;
+@define-color accent_bg_color #6b2786;
+@define-color accent_fg_color #eeb0ff;
+@define-color accent_secondary_bg_color #514255;
+@define-color accent_secondary_fg_color #d5c0d7;
+
+.list-action-button.destructive-action {
+  background: #ffb4a9;
+  color: #930006;
+}
+.list-action-button.destructive-action:active {
+  background: shade(#ffb4a9, 0.9);
+}
