@@ -36,7 +36,7 @@ namespace Khronos {
         [GtkChild]
         public unowned Gtk.Button trash_button;
         [GtkChild]
-        public unowned Adw.StatusPage placeholder;
+        public unowned Gtk.Box placeholder;
 
         public GLib.ListStore liststore;
 
@@ -161,16 +161,18 @@ namespace Khronos {
                         timer ();
                         return true;
                     });;
-                    timer_button.label = _("Stop Timer");
-                    timer_button.get_style_context ().remove_class ("suggested-action");
+                    timer_button.icon_name = "media-playback-stop-symbolic";
+                    timer_button.tooltip_text = _("Stops the timer for a log");
+                    timer_button.get_style_context ().remove_class ("accent-button");
                     timer_button.get_style_context ().add_class ("destructive-action");
                     add_log_button.sensitive = false;
                 } else {
                     start = false;
                     GLib.Source.remove(timer_id);
-                    timer_button.label = _("Start Timer");
+                    timer_button.icon_name = "media-playback-start-symbolic";
+                    timer_button.tooltip_text = _("Starts the timer for a log");
                     timer_button.get_style_context ().remove_class ("destructive-action");
-                    timer_button.get_style_context ().add_class ("suggested-action");
+                    timer_button.get_style_context ().add_class ("accent-button");
                     add_log_button.sensitive = true;
                 }
             });

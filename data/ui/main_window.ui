@@ -79,7 +79,7 @@
                         </child>
                         <child>
                           <object class="GtkButton" id="timer_button">
-                            <property name="icon-name">stopwatch-symbolic</property>
+                            <property name="icon-name">media-playback-start-symbolic</property>
                             <property name="tooltip-text" translatable="yes">Starts the timer for a log</property>
                             <style>
                               <class name="list-action-button"/>
