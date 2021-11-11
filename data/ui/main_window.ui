@@ -103,7 +103,6 @@
                   <property name="vexpand">1</property>
                   <child>
                     <object class="AdwClamp">
-                      <property name="maximum-size">400</property>
                         <child>
                           <object class="GtkBox">
                             <property name="margin-start">12</property>
