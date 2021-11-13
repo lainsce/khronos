@@ -13,7 +13,7 @@
 @define-color headerbar_fg_color #1e1a1e;
 
 .kh-title {
-  font-size: 64px;
+  font-size: 4rem;
   font-weight: 300;
 }
 
@@ -55,21 +55,19 @@
   background: #ba1b1b;
   color: #ffdad4;
 }
+.list-action-button.destructive-action:hover {
+  background: shade(#ba1b1b, 1.02);
+}
 .list-action-button.destructive-action:active {
-  background: shade(#ba1b1b, 1.1);
+  background: shade(#ba1b1b, 0.95);
 }
 
 .content-sidebar {
   background: @view_bg_color;
-  border: none;
-}
-.content-list *:not(.content-row) {
-  border: none;
-  box-shadow: none;
 }
 .content-row {
   background: @view_bg_color;
 }
-entry {
+.log-entry {
   border: none;
 }

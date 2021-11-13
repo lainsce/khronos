@@ -1,4 +1,5 @@
 namespace Khronos.FileManager {
+
     public async void save_as (ListStore liststore) throws Error {
         string tasks = "";
         var file = yield Dialog.display_save_dialog ();
@@ -15,5 +16,53 @@ namespace Khronos.FileManager {
 
         GLib.FileUtils.set_contents (file.get_path(), tasks);
         debug ("Save as button pressed.");
+    }
+
+    public async void load_as (ListStore liststore, MainWindow? win) throws Error {
+        var file = yield Dialog.display_open_dialog ();
+        string file_path = file.get_path ();
+        string text;
+        try {
+            GLib.FileUtils.get_contents (file_path, out text);
+        } catch (Error err) {
+            print (err.message);
+        }
+
+        var days = new Gee.ArrayList<Log> ();
+        Log? current = null;
+
+        int i = 0;
+        string[] tokens = text.split ("\n");
+        foreach (string line in tokens) {
+            line = line.strip ();
+            if (line.has_prefix ("\"")) {
+                GLib.DateTime dt = new GLib.DateTime.now_local ();
+                string[] logged = line.replace ("\"", "").strip ().split(",");
+                print("%s\n".printf(logged[0]));
+                print("%s\n".printf(logged[1]));
+
+                current = new Log ();
+                current.name = logged[0];
+                current.timedate = "%s\n%s – %s".printf(logged[1],
+                                                   ("%s").printf (dt.format ("%a, %d/%m %H∶%M∶%S")),
+                                                   ("%s").printf (dt.add_full (0,
+                                                                               0,
+                                                                               0,
+                                                                               ((int)logged[1].substring(0,1)),
+                                                                               ((int)logged[1].substring(3,4)),
+                                                                               ((int)logged[1].substring(6,7))).format ("%H∶%M∶%S")));
+
+
+                days.add (current);
+            }
+
+            i++;
+        }
+
+        foreach (var day in days) {
+            win.liststore.append (day);
+            win.tm.save_to_file (win.liststore);
+        }
+        debug ("Open button pressed.");
     }
 }

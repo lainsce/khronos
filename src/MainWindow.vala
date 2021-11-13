@@ -62,12 +62,14 @@ namespace Khronos {
         public const string ACTION_PREFS = "prefs";
         public const string ACTION_ABOUT = "about";
         public const string ACTION_EXPORT = "export";
+        public const string ACTION_IMPORT = "import";
         public const string ACTION_DELETE_ROW = "delete_row";
         public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
 
         private const GLib.ActionEntry[] ACTION_ENTRIES = {
             { ACTION_PREFS, action_prefs },
             { ACTION_EXPORT, action_export },
+            { ACTION_IMPORT, action_import },
             { ACTION_DELETE_ROW, action_delete_row },
             { ACTION_ABOUT, action_about }
         };
@@ -378,6 +380,10 @@ namespace Khronos {
 
         public void action_export () {
             FileManager.save_as.begin (liststore);
+        }
+
+        public void action_import () {
+            FileManager.load_as.begin (liststore, this);
         }
 
         public void action_prefs () {

@@ -55,6 +55,9 @@
                           <object class="GtkEntry" id="column_entry">
                             <property name="margin-bottom">12</property>
                             <property name="placeholder-text" translatable="yes">Log name…</property>
+                            <style>
+                              <class name="log-entry"/>
+                            </style>
                           </object>
                         </child>
                       </object>

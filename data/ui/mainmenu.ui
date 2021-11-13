@@ -5,6 +5,10 @@
         <attribute name="label" translatable="yes">Export Logs as CSV…</attribute>
         <attribute name="action">win.export</attribute>
       </item>
+      <item>
+        <attribute name="label" translatable="yes">Import Logs from CSV…</attribute>
+        <attribute name="action">win.import</attribute>
+      </item>
     </section>
     <section>
       <item>
