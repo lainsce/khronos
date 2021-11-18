@@ -68,6 +68,9 @@
 .content-row {
   background: @view_bg_color;
 }
+.content {
+  box-shadow: none;
+}
 .log-entry {
   border: none;
 }
