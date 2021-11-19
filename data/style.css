@@ -1,12 +1,12 @@
 @define-color accent_color @purple_4;
-@define-color accent_bg_color #6b2589;
-@define-color accent_fg_color #fff;
-@define-color accent_secondary_bg_color #f1dcf3;
-@define-color accent_secondary_fg_color #320048;
-@define-color window_bg_color #f1eaf0;
-@define-color view_bg_color #faf8fa;
-@define-color headerbar_bg_color #f1eaf0;
-@define-color popover_bg_color #faf8fa;
+@define-color accent_bg_color #320047;
+@define-color accent_fg_color #fad7ff;
+@define-color accent_secondary_bg_color #f2dcf4;
+@define-color accent_secondary_fg_color #241728;
+@define-color window_bg_color #f8f0f8;
+@define-color view_bg_color #f0e8f0;
+@define-color headerbar_bg_color #f8f0f8;
+@define-color popover_bg_color #f0e8f0;
 @define-color popover_fg_color #1e1a1e;
 @define-color window_fg_color #1e1a1e;
 @define-color view_fg_color #1e1a1e;
@@ -52,14 +52,14 @@
   background: shade(@accent_secondary_bg_color, 0.95);
 }
 .list-action-button.destructive-action {
-  background: #ba1b1b;
-  color: #ffdad4;
+  background: #ffdad4;
+  color: #410001;
 }
 .list-action-button.destructive-action:hover {
-  background: shade(#ba1b1b, 1.02);
+  background: shade(#ffdad4, 1.02);
 }
 .list-action-button.destructive-action:active {
-  background: shade(#ba1b1b, 0.95);
+  background: shade(#ffdad4, 0.95);
 }
 
 .content-sidebar {
@@ -70,6 +70,7 @@
 }
 .content {
   box-shadow: none;
+  margin: 0;
 }
 .log-entry {
   border: none;
