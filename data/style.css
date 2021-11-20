@@ -73,5 +73,7 @@
   margin: 0;
 }
 .log-entry {
-  border: none;
+  border: 2px solid @borders;
+  background: none;
+  border-radius: 8px;
 }
