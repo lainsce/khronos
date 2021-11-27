@@ -12,10 +12,6 @@
     </section>
     <section>
       <item>
-        <attribute name="label" translatable="yes">Preferences</attribute>
-        <attribute name="action">win.prefs</attribute>
-      </item>
-      <item>
         <attribute name="label" translatable="yes">About Khronos</attribute>
         <attribute name="action">win.about</attribute>
       </item>

@@ -57,9 +57,10 @@ namespace Khronos {
         private uint id4 = 0; // 2h
         private uint id5 = 0; // 2h30min.
 
+        private const int NOTIF_DELAY = 1800;
+
         public SimpleActionGroup actions { get; set; }
         public const string ACTION_PREFIX = "win.";
-        public const string ACTION_PREFS = "prefs";
         public const string ACTION_ABOUT = "about";
         public const string ACTION_EXPORT = "export";
         public const string ACTION_IMPORT = "import";
@@ -67,7 +68,6 @@ namespace Khronos {
         public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
 
         private const GLib.ActionEntry[] ACTION_ENTRIES = {
-            { ACTION_PREFS, action_prefs },
             { ACTION_EXPORT, action_export },
             { ACTION_IMPORT, action_import },
             { ACTION_DELETE_ROW, action_delete_row },
@@ -99,21 +99,6 @@ namespace Khronos {
 
         construct {
             tm = new TaskManager (this);
-            var adwsm = Adw.StyleManager.get_default ();
-
-            if (Khronos.Application.gsettings.get_boolean("dark-mode")) {
-                adwsm.set_color_scheme (Adw.ColorScheme.FORCE_DARK);
-            } else {
-                adwsm.set_color_scheme (Adw.ColorScheme.FORCE_LIGHT);
-            }
-
-            Khronos.Application.gsettings.changed.connect (() => {
-                if (Khronos.Application.gsettings.get_boolean("dark-mode")) {
-                    adwsm.set_color_scheme (Adw.ColorScheme.FORCE_DARK);
-                } else {
-                    adwsm.set_color_scheme (Adw.ColorScheme.FORCE_LIGHT);
-                }
-            });
 
             liststore = new GLib.ListStore (typeof (Log));
 
@@ -283,7 +268,7 @@ namespace Khronos {
 
         public void set_timeouts () {
             if (start) {
-                id1 = Timeout.add_seconds (Khronos.Application.gsettings.get_int("notification-delay"), () => {
+                id1 = Timeout.add_seconds (NOTIF_DELAY, () => {
                     notification1 ();
                     GLib.Source.remove (this.id2);
                     GLib.Source.remove (this.id3);
@@ -291,7 +276,7 @@ namespace Khronos {
                     GLib.Source.remove (this.id5);
                     return true;
                 });
-                id2 = Timeout.add_seconds ((int) GLib.Math.floor (Khronos.Application.gsettings.get_int("notification-delay")*1.5), () => {
+                id2 = Timeout.add_seconds ((int) GLib.Math.floor (NOTIF_DELAY*1.5), () => {
                     notification2 ();
                     GLib.Source.remove (this.id1);
                     GLib.Source.remove (this.id3);
@@ -299,7 +284,7 @@ namespace Khronos {
                     GLib.Source.remove (this.id5);
                     return true;
                 });
-                id3 = Timeout.add_seconds (Khronos.Application.gsettings.get_int("notification-delay")*2, () => {
+                id3 = Timeout.add_seconds (NOTIF_DELAY*2, () => {
                     notification3 ();
                     GLib.Source.remove (this.id1);
                     GLib.Source.remove (this.id2);
@@ -307,7 +292,7 @@ namespace Khronos {
                     GLib.Source.remove (this.id5);
                     return true;
                 });
-                id4 = Timeout.add_seconds ((int) GLib.Math.floor (Khronos.Application.gsettings.get_int("notification-delay")*2.5), () => {
+                id4 = Timeout.add_seconds ((int) GLib.Math.floor (NOTIF_DELAY*2.5), () => {
                     notification4 ();
                     GLib.Source.remove (this.id1);
                     GLib.Source.remove (this.id2);
@@ -315,7 +300,7 @@ namespace Khronos {
                     GLib.Source.remove (this.id5);
                     return true;
                 });
-                id5 = Timeout.add_seconds (Khronos.Application.gsettings.get_int("notification-delay")*3, () => {
+                id5 = Timeout.add_seconds (NOTIF_DELAY*3, () => {
                     notification5 ();
                     GLib.Source.remove (this.id1);
                     GLib.Source.remove (this.id2);
@@ -327,7 +312,7 @@ namespace Khronos {
         }
 
         public void notification1 () {
-            var notification1 = new GLib.Notification ("%i minutes have passed".printf(Khronos.Application.gsettings.get_int("notification-delay")));
+            var notification1 = new GLib.Notification ("%i minutes have passed".printf(NOTIF_DELAY));
             notification1.set_body (_("Go rest for a while before continuing."));
             var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification1.set_icon (icon);
@@ -336,7 +321,7 @@ namespace Khronos {
         }
 
         public void notification2 () {
-            var notification2 = new GLib.Notification ("%i minutes have passed".printf((int) GLib.Math.floor (Khronos.Application.gsettings.get_int("notification-delay")*1.5)));
+            var notification2 = new GLib.Notification ("%i minutes have passed".printf((int) GLib.Math.floor (NOTIF_DELAY*1.5)));
             notification2.set_body (_("Maybe grab a snack before continuing."));
             var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification2.set_icon (icon);
@@ -345,7 +330,7 @@ namespace Khronos {
         }
 
         public void notification3 () {
-            var notification3 = new GLib.Notification ("%i minutes have passed".printf(Khronos.Application.gsettings.get_int("notification-delay")*2));
+            var notification3 = new GLib.Notification ("%i minutes have passed".printf(NOTIF_DELAY*2));
             notification3.set_body (_("Perhaps go get some coffee or tea before continuing."));
             var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification3.set_icon (icon);
@@ -354,7 +339,7 @@ namespace Khronos {
         }
 
         public void notification4 () {
-            var notification4 = new GLib.Notification ("%i minutes have passed".printf((int) GLib.Math.floor (Khronos.Application.gsettings.get_int("notification-delay")*2.5)));
+            var notification4 = new GLib.Notification ("%i minutes have passed".printf((int) GLib.Math.floor (NOTIF_DELAY*2.5)));
             notification4.set_body (_("That's a big task. Let's rest a bit before continuing."));
             var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification4.set_icon (icon);
@@ -363,7 +348,7 @@ namespace Khronos {
         }
 
         public void notification5 () {
-            var notification5 = new GLib.Notification ("%i minutes have passed".printf(Khronos.Application.gsettings.get_int("notification-delay")*3));
+            var notification5 = new GLib.Notification ("%i minutes have passed".printf(NOTIF_DELAY*3));
             notification5.set_body (_("Amazing work! But please rest a bit before continuing."));
             var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification5.set_icon (icon);
@@ -384,15 +369,6 @@ namespace Khronos {
 
         public void action_import () {
             FileManager.load_as.begin (liststore, this);
-        }
-
-        public void action_prefs () {
-            var prefs = new Prefs ();
-            prefs.show ();
-            prefs.set_transient_for (this);
-            prefs.delay = Khronos.Application.gsettings.get_int("notification-delay") / 60;
-
-            Khronos.Application.gsettings.bind ("dark-mode", prefs.darkmode, "active", GLib.SettingsBindFlags.DEFAULT);
         }
 
         public void action_about () {

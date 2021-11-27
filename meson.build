@@ -21,7 +21,6 @@ asresources = gnome.compile_resources(
 sources = files(
     'src/Application.vala',
     'src/MainWindow.vala',
-    'src/Prefs.vala',
     'src/Services/TaskManager.vala',
     'src/Services/FileManager.vala',
     'src/Services/Dialog.vala',
