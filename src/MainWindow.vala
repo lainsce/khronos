@@ -101,20 +101,24 @@ namespace Khronos {
             tm = new TaskManager (this);
 
             liststore = new GLib.ListStore (typeof (Log));
+            liststore.items_changed.connect (() => {
+                tm.save_to_file (liststore);
 
-            column.bind_model (liststore, item => make_widgets (item));
-
-            column_time_label.set_label ("%02u∶%02u∶%02u".printf(hrs, min, sec));
-
-            column.row_activated.connect ((actrow) => {
-                column.select_row (actrow);
-
-                if (column.get_selected_row () != null) {
-                    ((LogRow)actrow).delete_button.sensitive = true;
-                } else {
-                    ((LogRow)actrow).delete_button.sensitive = false;
+                if (liststore.get_n_items () == 0) {
+                    placeholder.set_visible (true);
                 }
             });
+
+            column.bind_model (liststore, item => make_widgets (item));
+            column.row_activated.connect ((actrow) => {
+                column.select_row (actrow);
+            });
+
+            var builder = new Gtk.Builder.from_resource ("/io/github/lainsce/Khronos/mainmenu.ui");
+            menu_button.menu_model = (MenuModel)builder.get_object ("menu");
+
+            tm.load_from_file ();
+            set_timeouts ();
 
             add_log_button.clicked.connect (() => {
                 var log = new Log ();
@@ -173,9 +177,6 @@ namespace Khronos {
                 column.unselect_all ();
             });
 
-            var builder = new Gtk.Builder.from_resource ("/io/github/lainsce/Khronos/mainmenu.ui");
-            menu_button.menu_model = (MenuModel)builder.get_object ("menu");
-
             trash_button.clicked.connect (() => {
                 var flags = Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL;
                 var dialog = new Gtk.MessageDialog (this, flags, Gtk.MessageType.WARNING, Gtk.ButtonsType.NONE, null, null);
@@ -210,16 +211,6 @@ namespace Khronos {
                     }
                 });
                 placeholder.set_visible (false);
-            });
-
-            tm.load_from_file ();
-            set_timeouts ();
-            liststore.items_changed.connect (() => {
-                tm.save_to_file (liststore);
-
-                if (liststore.get_n_items () == 0) {
-                    placeholder.set_visible (true);
-                }
             });
 
             this.set_size_request (360, 360);
@@ -379,7 +370,7 @@ namespace Khronos {
                 null
             };
 
-            var program_name = Config.NAME_PREFIX + _("Khronos");
+            var program_name = Config.NAME_PREFIX + ("Khronos");
             Gtk.show_about_dialog (this,
                                    "program-name", program_name,
                                    "logo-icon-name", Config.APP_ID,
