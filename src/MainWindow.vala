@@ -358,8 +358,9 @@ namespace Khronos {
             load_logs.begin ();
         }
 
-        public async void load_logs () {
+        public async void load_logs () throws Error {
             Gee.ArrayList<Log> logs = yield FileManager.load_as (liststore);
+
             foreach (var log in logs) {
                 liststore.append (log);
                 tm.save_to_file (liststore);
