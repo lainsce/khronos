@@ -1,6 +1,6 @@
 namespace Khronos.FileManager {
 
-    public async void save_as (ListStore liststore) throws Error {
+    public async void save_logs (ListStore liststore) throws Error {
         debug ("Save as button pressed.");
         string tasks = "";
         var file = yield Dialog.display_save_dialog ();

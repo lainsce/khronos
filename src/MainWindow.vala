@@ -114,9 +114,6 @@ namespace Khronos {
                 column.select_row (actrow);
             });
 
-            var builder = new Gtk.Builder.from_resource ("/io/github/lainsce/Khronos/mainmenu.ui");
-            menu_button.menu_model = (MenuModel)builder.get_object ("menu");
-
             tm.load_from_file ();
             set_timeouts ();
 
@@ -174,7 +171,6 @@ namespace Khronos {
                 } else {
                     timer_button.sensitive = false;
                 }
-                column.unselect_all ();
             });
 
             trash_button.clicked.connect (() => {
@@ -355,11 +351,15 @@ namespace Khronos {
         }
 
         public void action_export () {
-            FileManager.save_as.begin (liststore);
+            FileManager.save_logs.begin (liststore);
         }
 
         public void action_import () {
-            var logs = FileManager.load_as.begin (liststore, this);
+            load_logs.begin ();
+        }
+
+        public async void load_logs () {
+            Gee.ArrayList<Log> logs = yield FileManager.load_as (liststore);
             foreach (var log in logs) {
                 liststore.append (log);
                 tm.save_to_file (liststore);
