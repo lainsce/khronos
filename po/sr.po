@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.lainsce.Khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 21:52+0100\n"
-"PO-Revision-Date: 2021-10-15 15:35+0200\n"
+"POT-Creation-Date: 2021-11-29 23:06+0100\n"
+"PO-Revision-Date: 2021-11-29 23:09+0100\n"
 "Last-Translator: Dušan Simić <dusan.simic1810@gmail.com>\n"
 "Language-Team: Serbian <gnome-sr@googlegroups.com>\n"
 "Language: sr\n"
@@ -17,22 +17,120 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
-"X-Generator: Gtranslator 40.0\n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Poedit 3.0\n"
 
-#: src/MainWindow.vala:240
-msgid "Stop Timer"
-msgstr "Заустави одбројавач"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:6
+#: data/io.github.lainsce.Khronos.desktop.in:3
+msgid "Khronos"
+msgstr "Khronos"
 
-#: src/MainWindow.vala:246 data/ui/main_window.ui:108
-msgid "Start Timer"
-msgstr "Започни одбројавање"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:7
+msgid "Log the time it took to do tasks"
+msgstr "Пратите време које је потребно да се ураде задаци"
 
-#: src/MainWindow.vala:280
+#: data/io.github.lainsce.Khronos.appdata.xml.in:9
+msgid ""
+"Start logging any task's time to completion, with the ability to stop the "
+"timer at any moment, with notifications for longer task sessions."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:11
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Изаћите користећи пречицу Ctrl + Q"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:21
+#, fuzzy
+msgid "Lains"
+msgstr "Траке"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:47
+msgid "Release: UI Refreshments"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:49
+msgid "Changed: The UI is now with a better layout."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:55
+msgid "Release: Port to GTK4"
+msgstr "Издање: Порт на ГТК4"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:57
+msgid "Changed: Rewritten for GTK4."
+msgstr "Измењено: Преписано за ГТК4"
+
+#: data/io.github.lainsce.Khronos.desktop.in:4
+msgid "Track each task time in a simple inobtrusive way"
+msgstr "Пратите време задатака на једноставан ненаметљив начин"
+
+#: data/io.github.lainsce.Khronos.desktop.in:11
+msgid "Plot;Planning;Time Tracking;"
+msgstr "Планирање;Праћење времена;"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:5
+msgid "Delay between notifications"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.gschema.xml:6
+msgid "The delay between two notifications, default is 30min. in seconds."
+msgstr ""
+
+#: data/ui/main_window.ui:6
+#, fuzzy
+msgid "Export Logs as CSV…"
+msgstr "Извези записник (CSV)…"
+
+#: data/ui/main_window.ui:10
+#, fuzzy
+msgid "Import Logs from CSV…"
+msgstr "Извези записник (CSV)…"
+
+#: data/ui/main_window.ui:16
+msgid "About Khronos"
+msgstr "О Khronos-у"
+
+#: data/ui/main_window.ui:53
+msgid "Timer"
+msgstr "Одбројавач"
+
+#: data/ui/main_window.ui:77
+msgid "Log name…"
+msgstr "Име записа…"
+
+#: data/ui/main_window.ui:96
+msgid "Adds a log to the list"
+msgstr "Додаје запис у листу"
+
+#: data/ui/main_window.ui:106 src/MainWindow.vala:161
+msgid "Starts the timer for a log"
+msgstr ""
+
+#: data/ui/main_window.ui:122
+msgid "Logs"
+msgstr "Записи"
+
+#: data/ui/main_window.ui:148
+msgid "Removes all logs from the list"
+msgstr "Обриши све ставке из записника"
+
+#: data/ui/main_window.ui:180
+msgid "No Logs"
+msgstr "Нема записа"
+
+#: data/ui/main_window.ui:188
+msgid "Add a log on Timer tab and check later."
+msgstr "Додај запис на Тајмер таб и провери касније."
+
+#: src/MainWindow.vala:153
+msgid "Stops the timer for a log"
+msgstr ""
+
+#: src/MainWindow.vala:186
 msgid "Empty the Logs List?"
 msgstr "Испразни записник времена?"
 
-#: src/MainWindow.vala:281
+#: src/MainWindow.vala:187
 msgid ""
 "Emptying this list means all the logs in it will be permanently lost with no "
 "recovery."
@@ -40,107 +138,50 @@ msgstr ""
 "Пражњењем овог списка, сви записи ће заувек бити изгубљени без могућности "
 "повратка."
 
-#: src/MainWindow.vala:283
+#: src/MainWindow.vala:189
 msgid "Cancel"
 msgstr "Откажи"
 
-#: src/MainWindow.vala:284
+#: src/MainWindow.vala:190
 msgid "Empty List"
 msgstr "Испразни списак"
 
-#: src/MainWindow.vala:425 src/MainWindow.vala:434 src/MainWindow.vala:443
-#: src/MainWindow.vala:452 src/MainWindow.vala:461
+#: src/MainWindow.vala:307
 msgid "Go rest for a while before continuing."
 msgstr "Иди се одмори мало пре него што наставиш."
 
-#: src/MainWindow.vala:496
-msgid "Khronos"
-msgstr "Khronos"
+#: src/MainWindow.vala:316
+#, fuzzy
+msgid "Maybe grab a snack before continuing."
+msgstr "Иди се одмори мало пре него што наставиш."
 
-#: src/MainWindow.vala:501
+#: src/MainWindow.vala:325
+#, fuzzy
+msgid "Perhaps go get some coffee or tea before continuing."
+msgstr "Иди се одмори мало пре него што наставиш."
+
+#: src/MainWindow.vala:334
+#, fuzzy
+msgid "That's a big task. Let's rest a bit before continuing."
+msgstr "Иди се одмори мало пре него што наставиш."
+
+#: src/MainWindow.vala:343
+#, fuzzy
+msgid "Amazing work! But please rest a bit before continuing."
+msgstr "Иди се одмори мало пре него што наставиш."
+
+#: src/MainWindow.vala:387
 msgid "Track each task's time in a simple inobtrusive way."
 msgstr "Пратите време задатака на једноставан ненаметљив начин."
 
-#: src/MainWindow.vala:507
+#: src/MainWindow.vala:393
 msgid "translator-credits"
 msgstr "Душан Симић <dusan.simic1810@gmail.com>"
 
-#: src/Services/Dialog.vala:23
+#: src/Services/Dialog.vala:23 src/Services/Dialog.vala:44
 msgid "CSV files"
 msgstr "CSV датотеке"
 
-#: src/Services/Dialog.vala:27
+#: src/Services/Dialog.vala:27 src/Services/Dialog.vala:48
 msgid "All files"
 msgstr "Све датотеке"
-
-#: data/ui/mainmenu.ui:5
-msgid "Sort Tasks"
-msgstr "Сортирај задатке"
-
-#: data/ui/mainmenu.ui:9
-msgid "By Time"
-msgstr "По времену"
-
-#: data/ui/mainmenu.ui:14
-msgid "By Name"
-msgstr "По имену"
-
-#: data/ui/mainmenu.ui:21
-msgid "Export Logs (CSV)…"
-msgstr "Извези записник (CSV)…"
-
-#: data/ui/mainmenu.ui:27
-msgid "Preferences"
-msgstr "Подешавања"
-
-#: data/ui/mainmenu.ui:31
-msgid "About Khronos"
-msgstr "О Khronos-у"
-
-#: data/ui/main_window.ui:57
-msgid "Removes all logs from the list"
-msgstr "Обриши све ставке из записника"
-
-#: data/ui/main_window.ui:78
-msgid "Timer"
-msgstr "Одбројавач"
-
-#: data/ui/main_window.ui:100
-msgid "Log name…"
-msgstr "Име записа…"
-
-#: data/ui/main_window.ui:109
-msgid "Starts a log's timer"
-msgstr "Започиње одбројавач записа"
-
-#: data/ui/main_window.ui:118
-msgid "Add Log"
-msgstr "Додај запис"
-
-#: data/ui/main_window.ui:119
-msgid "Adds a log to the list"
-msgstr "Додаје запис у листу"
-
-#: data/ui/main_window.ui:134
-msgid "Logs"
-msgstr "Записи"
-
-#: data/ui/main_window.ui:172
-msgid "No Logs"
-msgstr "Нема записа"
-
-#: data/ui/main_window.ui:180
-msgid "Add a log on Timer tab and check later."
-msgstr "Додај запис на Тајмер таб и провери касније."
-
-#: data/ui/prefs.ui:11 data/ui/prefs.ui:14
-msgid "General"
-msgstr "Опште"
-
-#: data/ui/prefs.ui:18
-msgid "Notification Delay"
-msgstr "Одложеност обавештења"
-
-#: data/ui/prefs.ui:45
-msgid "Dark Mode"
-msgstr "Тамни мод"

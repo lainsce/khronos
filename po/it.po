@@ -7,113 +7,182 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.lainsce.khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-17 19:01-0300\n"
-"PO-Revision-Date: 2021-01-30 11:22+0100\n"
+"POT-Creation-Date: 2021-11-29 23:06+0100\n"
+"PO-Revision-Date: 2021-11-29 23:08+0100\n"
 "Last-Translator: albano battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian<LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
 
-#: src/MainWindow.vala:59
+#: data/io.github.lainsce.Khronos.appdata.xml.in:6
+#: data/io.github.lainsce.Khronos.desktop.in:3
 msgid "Khronos"
 msgstr "Khronos"
 
-#: src/MainWindow.vala:178
-msgid "Start Timer…"
-msgstr "Avvia timer..."
+#: data/io.github.lainsce.Khronos.appdata.xml.in:7
+msgid "Log the time it took to do tasks"
+msgstr ""
 
-#: src/MainWindow.vala:188
-msgid "Reset Timer"
-msgstr "Ripristina Timer"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:9
+msgid ""
+"Start logging any task's time to completion, with the ability to stop the "
+"timer at any moment, with notifications for longer task sessions."
+msgstr ""
 
-#: src/MainWindow.vala:201
-msgid "Export Log as CSV File…"
-msgstr "Esporta Log come file CSV..."
+#: data/io.github.lainsce.Khronos.appdata.xml.in:11
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Esci in qualsiasi momento con la scorciatoia Ctrl + Q"
 
-#: src/MainWindow.vala:210
-msgid "Add Log"
-msgstr "Aggiungi Log"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:21
+msgid "Lains"
+msgstr "Lains"
 
-#: src/MainWindow.vala:220
-#, c-format
-msgid "%s"
-msgstr "%s"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:47
+msgid "Release: UI Refreshments"
+msgstr ""
 
-#: src/MainWindow.vala:232
-msgid "Stop Timer"
-msgstr "Ferma Timer"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:49
+msgid "Changed: The UI is now with a better layout."
+msgstr ""
 
-#: src/MainWindow.vala:239
-msgid "Start Timer"
-msgstr "Avvia Timer"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:55
+#, fuzzy
+msgid "Release: Port to GTK4"
+msgstr "Rilascio: avvia Ordinamento"
 
-#: src/MainWindow.vala:258
-msgid "New log name…"
-msgstr "Nuovo nome log..."
+#: data/io.github.lainsce.Khronos.appdata.xml.in:57
+msgid "Changed: Rewritten for GTK4."
+msgstr ""
 
-#: src/MainWindow.vala:267
-msgid "You can add a log by starting the timer first."
-msgstr "È possibile aggiungere un log avviando prima il timer."
+#: data/io.github.lainsce.Khronos.desktop.in:4
+msgid "Track each task time in a simple inobtrusive way"
+msgstr "Tieni traccia di ogni attività in modo semplice e non invadente"
 
-#: src/MainWindow.vala:292
-msgid "Notifications"
+#: data/io.github.lainsce.Khronos.desktop.in:11
+msgid "Plot;Planning;Time Tracking;"
+msgstr "Tracciare, pianificazione, monitoraggio del tempo;"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:5
+#, fuzzy
+msgid "Delay between notifications"
 msgstr "Notifiche"
 
-#: src/MainWindow.vala:294
-msgid "Delay:"
-msgstr "Ritardo:"
+#: data/io.github.lainsce.Khronos.gschema.xml:6
+msgid "The delay between two notifications, default is 30min. in seconds."
+msgstr ""
 
-#: src/MainWindow.vala:311
-msgid "Interface"
-msgstr "Interfaccia"
+#: data/ui/main_window.ui:6
+#, fuzzy
+msgid "Export Logs as CSV…"
+msgstr "Esporta Log come file CSV..."
 
-#: src/MainWindow.vala:313
-msgid "Dark Mode:"
-msgstr "Modalità Scura"
+#: data/ui/main_window.ui:10
+#, fuzzy
+msgid "Import Logs from CSV…"
+msgstr "Esporta Log come file CSV..."
 
-#: src/MainWindow.vala:337
-msgid "Export"
-msgstr "Esporta"
+#: data/ui/main_window.ui:16
+#, fuzzy
+msgid "About Khronos"
+msgstr "Khronos"
 
-#: src/MainWindow.vala:343
-msgid "Time"
+#: data/ui/main_window.ui:53
+#, fuzzy
+msgid "Timer"
 msgstr "Tempo"
 
-#: src/MainWindow.vala:349
-msgid "Name"
-msgstr "Nome"
+#: data/ui/main_window.ui:77
+#, fuzzy
+msgid "Log name…"
+msgstr "Nuovo nome log..."
 
-#: src/MainWindow.vala:361
-msgid "Tasks"
-msgstr "Compiti"
+#: data/ui/main_window.ui:96
+msgid "Adds a log to the list"
+msgstr ""
 
-#: src/MainWindow.vala:362
-msgid "Sort By:"
-msgstr "Ordina per:"
+#: data/ui/main_window.ui:106 src/MainWindow.vala:161
+msgid "Starts the timer for a log"
+msgstr ""
 
-#: src/MainWindow.vala:389
-msgid "Settings"
-msgstr "Impostazioni"
+#: data/ui/main_window.ui:122
+msgid "Logs"
+msgstr ""
 
-#: src/MainWindow.vala:579 src/MainWindow.vala:588 src/MainWindow.vala:597
-#: src/MainWindow.vala:606 src/MainWindow.vala:615
+#: data/ui/main_window.ui:148
+msgid "Removes all logs from the list"
+msgstr ""
+
+#: data/ui/main_window.ui:180
+msgid "No Logs"
+msgstr ""
+
+#: data/ui/main_window.ui:188
+msgid "Add a log on Timer tab and check later."
+msgstr ""
+
+#: src/MainWindow.vala:153
+msgid "Stops the timer for a log"
+msgstr ""
+
+#: src/MainWindow.vala:186
+msgid "Empty the Logs List?"
+msgstr ""
+
+#: src/MainWindow.vala:187
+msgid ""
+"Emptying this list means all the logs in it will be permanently lost with no "
+"recovery."
+msgstr ""
+
+#: src/MainWindow.vala:189
+msgid "Cancel"
+msgstr ""
+
+#: src/MainWindow.vala:190
+msgid "Empty List"
+msgstr ""
+
+#: src/MainWindow.vala:307
 msgid "Go rest for a while before continuing."
 msgstr "Riposati un po' prima di continuare."
 
-#: src/Widgets/Column.vala:13
-msgid "Logged tasks will end up here."
-msgstr "Le attività registrate finiranno qui."
+#: src/MainWindow.vala:316
+#, fuzzy
+msgid "Maybe grab a snack before continuing."
+msgstr "Riposati un po' prima di continuare."
 
-#: src/Widgets/Column.vala:17
-msgid "LOGS"
-msgstr "LOGS"
+#: src/MainWindow.vala:325
+#, fuzzy
+msgid "Perhaps go get some coffee or tea before continuing."
+msgstr "Riposati un po' prima di continuare."
 
-#: src/Widgets/ColumnListBox.vala:47
-msgid "No logs…"
-msgstr "Nessun log..."
+#: src/MainWindow.vala:334
+#, fuzzy
+msgid "That's a big task. Let's rest a bit before continuing."
+msgstr "Riposati un po' prima di continuare."
 
-#: src/Widgets/EventBox.vala:68
-msgid "Delete Task"
-msgstr "Elimina Attività"
+#: src/MainWindow.vala:343
+#, fuzzy
+msgid "Amazing work! But please rest a bit before continuing."
+msgstr "Riposati un po' prima di continuare."
+
+#: src/MainWindow.vala:387
+#, fuzzy
+msgid "Track each task's time in a simple inobtrusive way."
+msgstr ""
+"Tieni traccia del tempo di ogni attività in modo semplice e non invadente"
+
+#: src/MainWindow.vala:393
+msgid "translator-credits"
+msgstr ""
+
+#: src/Services/Dialog.vala:23 src/Services/Dialog.vala:44
+msgid "CSV files"
+msgstr ""
+
+#: src/Services/Dialog.vala:27 src/Services/Dialog.vala:48
+msgid "All files"
+msgstr ""
