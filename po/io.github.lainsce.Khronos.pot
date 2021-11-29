@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.lainsce.Khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 21:52+0100\n"
+"POT-Creation-Date: 2021-11-29 23:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,125 +17,159 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/MainWindow.vala:240
-msgid "Stop Timer"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:6
+#: data/io.github.lainsce.Khronos.desktop.in:3
+msgid "Khronos"
 msgstr ""
 
-#: src/MainWindow.vala:246 data/ui/main_window.ui:108
-msgid "Start Timer"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:7
+msgid "Log the time it took to do tasks"
 msgstr ""
 
-#: src/MainWindow.vala:280
+#: data/io.github.lainsce.Khronos.appdata.xml.in:9
+msgid ""
+"Start logging any task's time to completion, with the ability to stop the "
+"timer at any moment, with notifications for longer task sessions."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:11
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:21
+msgid "Lains"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:47
+msgid "Release: UI Refreshments"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:49
+msgid "Changed: The UI is now with a better layout."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:55
+msgid "Release: Port to GTK4"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:57
+msgid "Changed: Rewritten for GTK4."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.desktop.in:4
+msgid "Track each task time in a simple inobtrusive way"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.desktop.in:11
+msgid "Plot;Planning;Time Tracking;"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.gschema.xml:5
+msgid "Delay between notifications"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.gschema.xml:6
+msgid "The delay between two notifications, default is 30min. in seconds."
+msgstr ""
+
+#: data/ui/main_window.ui:6
+msgid "Export Logs as CSV…"
+msgstr ""
+
+#: data/ui/main_window.ui:10
+msgid "Import Logs from CSV…"
+msgstr ""
+
+#: data/ui/main_window.ui:16
+msgid "About Khronos"
+msgstr ""
+
+#: data/ui/main_window.ui:53
+msgid "Timer"
+msgstr ""
+
+#: data/ui/main_window.ui:77
+msgid "Log name…"
+msgstr ""
+
+#: data/ui/main_window.ui:96
+msgid "Adds a log to the list"
+msgstr ""
+
+#: data/ui/main_window.ui:106 src/MainWindow.vala:161
+msgid "Starts the timer for a log"
+msgstr ""
+
+#: data/ui/main_window.ui:122
+msgid "Logs"
+msgstr ""
+
+#: data/ui/main_window.ui:148
+msgid "Removes all logs from the list"
+msgstr ""
+
+#: data/ui/main_window.ui:180
+msgid "No Logs"
+msgstr ""
+
+#: data/ui/main_window.ui:188
+msgid "Add a log on Timer tab and check later."
+msgstr ""
+
+#: src/MainWindow.vala:153
+msgid "Stops the timer for a log"
+msgstr ""
+
+#: src/MainWindow.vala:186
 msgid "Empty the Logs List?"
 msgstr ""
 
-#: src/MainWindow.vala:281
+#: src/MainWindow.vala:187
 msgid ""
 "Emptying this list means all the logs in it will be permanently lost with no "
 "recovery."
 msgstr ""
 
-#: src/MainWindow.vala:283
+#: src/MainWindow.vala:189
 msgid "Cancel"
 msgstr ""
 
-#: src/MainWindow.vala:284
+#: src/MainWindow.vala:190
 msgid "Empty List"
 msgstr ""
 
-#: src/MainWindow.vala:425 src/MainWindow.vala:434 src/MainWindow.vala:443
-#: src/MainWindow.vala:452 src/MainWindow.vala:461
+#: src/MainWindow.vala:307
 msgid "Go rest for a while before continuing."
 msgstr ""
 
-#: src/MainWindow.vala:496
-msgid "Khronos"
+#: src/MainWindow.vala:316
+msgid "Maybe grab a snack before continuing."
 msgstr ""
 
-#: src/MainWindow.vala:501
+#: src/MainWindow.vala:325
+msgid "Perhaps go get some coffee or tea before continuing."
+msgstr ""
+
+#: src/MainWindow.vala:334
+msgid "That's a big task. Let's rest a bit before continuing."
+msgstr ""
+
+#: src/MainWindow.vala:343
+msgid "Amazing work! But please rest a bit before continuing."
+msgstr ""
+
+#: src/MainWindow.vala:387
 msgid "Track each task's time in a simple inobtrusive way."
 msgstr ""
 
-#: src/MainWindow.vala:507
+#: src/MainWindow.vala:393
 msgid "translator-credits"
 msgstr ""
 
-#: src/Services/Dialog.vala:23
+#: src/Services/Dialog.vala:23 src/Services/Dialog.vala:44
 msgid "CSV files"
 msgstr ""
 
-#: src/Services/Dialog.vala:27
+#: src/Services/Dialog.vala:27 src/Services/Dialog.vala:48
 msgid "All files"
-msgstr ""
-
-#: data/ui/mainmenu.ui:5
-msgid "Sort Tasks"
-msgstr ""
-
-#: data/ui/mainmenu.ui:9
-msgid "By Time"
-msgstr ""
-
-#: data/ui/mainmenu.ui:14
-msgid "By Name"
-msgstr ""
-
-#: data/ui/mainmenu.ui:21
-msgid "Export Logs (CSV)…"
-msgstr ""
-
-#: data/ui/mainmenu.ui:27
-msgid "Preferences"
-msgstr ""
-
-#: data/ui/mainmenu.ui:31
-msgid "About Khronos"
-msgstr ""
-
-#: data/ui/main_window.ui:57
-msgid "Removes all logs from the list"
-msgstr ""
-
-#: data/ui/main_window.ui:78
-msgid "Timer"
-msgstr ""
-
-#: data/ui/main_window.ui:100
-msgid "Log name…"
-msgstr ""
-
-#: data/ui/main_window.ui:109
-msgid "Starts a log's timer"
-msgstr ""
-
-#: data/ui/main_window.ui:118
-msgid "Add Log"
-msgstr ""
-
-#: data/ui/main_window.ui:119
-msgid "Adds a log to the list"
-msgstr ""
-
-#: data/ui/main_window.ui:134
-msgid "Logs"
-msgstr ""
-
-#: data/ui/main_window.ui:172
-msgid "No Logs"
-msgstr ""
-
-#: data/ui/main_window.ui:180
-msgid "Add a log on Timer tab and check later."
-msgstr ""
-
-#: data/ui/prefs.ui:11 data/ui/prefs.ui:14
-msgid "General"
-msgstr ""
-
-#: data/ui/prefs.ui:18
-msgid "Notification Delay"
-msgstr ""
-
-#: data/ui/prefs.ui:45
-msgid "Dark Mode"
 msgstr ""

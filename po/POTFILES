@@ -1,8 +1,13 @@
+data/io.github.lainsce.Khronos.appdata.xml.in
+data/io.github.lainsce.Khronos.desktop.in
+data/io.github.lainsce.Khronos.gschema.xml
+
+data/ui/logrow.ui
+data/ui/main_window.ui
+
+src/Application.vala
 src/MainWindow.vala
+
 src/Services/Dialog.vala
 src/Services/FileManager.vala
 src/Services/TaskManager.vala
-data/ui/logrow.ui
-data/ui/mainmenu.ui
-data/ui/main_window.ui
-data/ui/prefs.ui
