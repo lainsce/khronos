@@ -16,7 +16,7 @@ namespace Khronos.FileManager {
         GLib.FileUtils.set_contents (file.get_path(), tasks);
     }
 
-    public async void load_as (ListStore liststore, MainWindow? win) throws Error {
+    public async Gee.ArrayList<Log> load_as (ListStore liststore) throws Error {
         debug ("Open button pressed.");
         var file = yield Dialog.display_open_dialog ();
         string file_path = file.get_path ();
@@ -58,9 +58,6 @@ namespace Khronos.FileManager {
             i++;
         }
 
-        foreach (var log in logs) {
-            win.liststore.append (log);
-            win.tm.save_to_file (win.liststore);
-        }
+        return logs;
     }
 }

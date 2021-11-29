@@ -359,7 +359,11 @@ namespace Khronos {
         }
 
         public void action_import () {
-            FileManager.load_as.begin (liststore, this);
+            var logs = FileManager.load_as.begin (liststore, this);
+            foreach (var log in logs) {
+                liststore.append (log);
+                tm.save_to_file (liststore);
+            }
         }
 
         public void action_about () {
