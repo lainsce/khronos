@@ -173,6 +173,10 @@ namespace Khronos {
                 }
             });
 
+            column_entry.activate.connect (() => {
+                timer_button.activate ();
+            });
+
             trash_button.clicked.connect (() => {
                 var flags = Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL;
                 var dialog = new Gtk.MessageDialog (this, flags, Gtk.MessageType.WARNING, Gtk.ButtonsType.NONE, null, null);
