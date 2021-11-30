@@ -3,7 +3,7 @@
     <id>io.github.lainsce.Khronos</id>
     <metadata_license>CC0</metadata_license>
     <project_license>GPL-3.0+</project_license>
-    <name>Khronos</name>
+    <name translatable="no">Khronos</name>
     <summary>Log the time it took to do tasks</summary>
     <description>
         <p>Start logging any task's time to completion, with the ability to stop the timer at any moment, with notifications for longer task sessions.</p>
@@ -18,7 +18,7 @@
       <kudo>ModernToolkit</kudo>
       <kudo>HiDpiIcon</kudo>
     </kudos>
-    <developer_name>Lains</developer_name>
+    <developer_name translatable="no">Lains</developer_name>
     <url type="homepage">https://github.com/lainsce/khronos/</url>
     <url type="bugtracker">https://github.com/lainsce/khronos/issues</url>
     <url type="donation">https://ko-fi.com/lainsce/</url>
