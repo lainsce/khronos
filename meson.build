@@ -13,7 +13,7 @@ add_project_arguments(
 )
 
 asresources = gnome.compile_resources(
-    'as-resources', 'data/style.gresource.xml',
+    'as-resources', 'data/io.github.lainsce.Khronos.gresource.xml',
     source_dir: 'data',
     c_name: 'as'
 )
