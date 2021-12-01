@@ -1,10 +1,10 @@
 {
-    "app-id" : "io.github.lainsce.Khronos",
+    "app-id" : "io.github.lainsce.Khronos.Devel",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
     "command" : "io.github.lainsce.Khronos",
-    "rename-icon" : "io.github.lainsce.KhronosDevel",
+    "rename-icon" : "io.github.lainsce.Khronos.Devel",
     "finish-args" : [
         "--filesystem=xdg-run/gvfsd",
         "--socket=wayland",
