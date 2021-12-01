@@ -42,6 +42,15 @@
     </custom>
     <translation type="gettext">io.github.lainsce.Khronos</translation>
     <releases>
+        <release version="3.6.5" date="2021-12-01">
+            <description>
+                <p>Release: Tick Tock Clock</p>
+                <ul>
+                    <li>Changed: UI now sports an experimental design.</li>
+                    <li>Changed: A robust backend rewrite.</li>
+                </ul>
+            </description>
+        </release>
         <release version="3.5.0" date="2021-02-09">
             <description>
                 <p>Release: UI Refreshments</p>
