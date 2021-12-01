@@ -6,7 +6,5 @@
 
       <file alias="logrow.ui" compressed="true">ui/logrow.ui</file>
       <file alias="main_window.ui" compressed="true">ui/main_window.ui</file>
-
-      <file alias="stopwatch-symbolic.svg" preprocess="xml-stripblanks">icons/16/stopwatch-symbolic.svg</file>
     </gresource>
 </gresources>
