@@ -1,14 +1,14 @@
 namespace Khronos.FileManager {
 
-    public async void save_logs (ListStore liststore) throws Error {
+    public async void save_logs (LogViewModel view_model) throws Error {
         debug ("Save as button pressed.");
         string tasks = "";
         var file = yield Dialog.display_save_dialog ();
-        uint i, n = liststore.get_n_items ();
+        uint i, n = view_model.logs.get_n_items ();
 
         tasks += "task,timedate\n";
         for (i = 0; i < n; i++) {
-            var item = liststore.get_item (i);
+            var item = view_model.logs.get_item (i);
             tasks += "\"" + ((Log)item).name.replace("\"", "") +
             "\",\"" + ((Log)item).timedate.replace("\"", "") + "\"\n";
         }
@@ -16,7 +16,7 @@ namespace Khronos.FileManager {
         GLib.FileUtils.set_contents (file.get_path(), tasks);
     }
 
-    public async Gee.ArrayList<Log> load_as (ListStore liststore) throws Error {
+    public async Gee.ArrayList<Log> load_as () throws Error {
         debug ("Open button pressed.");
         var file = yield Dialog.display_open_dialog ();
         string file_path = file.get_path ();

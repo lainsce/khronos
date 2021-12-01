@@ -6,7 +6,7 @@
     "command" : "io.github.lainsce.Khronos",
     "rename-icon" : "io.github.lainsce.KhronosDevel",
     "finish-args" : [
-    	"--filesystem=xdg-run/gvfsd",
+        "--filesystem=xdg-run/gvfsd",
         "--socket=wayland",
         "--socket=fallback-x11",
         "--share=ipc",
@@ -29,7 +29,7 @@
         "*.la"
     ],
     "modules" : [
-    	{
+        {
             "name" : "libsass",
             "cleanup" : [
                 "*"
@@ -68,32 +68,6 @@
             ]
         },
         {
-		"name": "pango",
-		"buildsystem": "meson",
-		"sources": [
-			{
-			  "type": "git",
-			  "url": "https://gitlab.gnome.org/GNOME/pango.git",
-			  "commit" : "0c80c6d0b80cce4443e9a18fad2b4bccabaf4325"
-			}
-		]
-	},
-	{
-		"name": "gtk",
-		"buildsystem": "meson",
-		"config-opts" : [
-		        "-Dexamples=false",
-		        "-Dtests=false"
-		],
-		"sources": [
-			{
-			  "type": "git",
-			  "url": "https://gitlab.gnome.org/GNOME/gtk.git",
-			  "commit" : "e0c97e6fccc1f66dabddc21a6e8821347429e157"
-			}
-		]
-	},
-        {
             "name" : "libadwaita",
             "buildsystem" : "meson",
             "config-opts" : [
@@ -112,13 +86,14 @@
         {
             "name" : "khronos",
             "buildsystem" : "meson",
-	        "config-opts" : [
+            "config-opts" : [
                 "-Dprofile=development"
             ],
             "sources" : [
                 {
-                    "type" : "dir",
-                    "path": "../../"
+                    "type" : "git",
+                    "url" : "https://github.com/lainsce/khronos.git",
+                    "branch" : "main"
                 }
             ]
         }

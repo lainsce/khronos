@@ -1,24 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk" version="4.0"/>
-  <template class="KhronosLogRow" parent="AdwActionRow">
-    <property name="visible">1</property>
-    <child type="suffix">
-      <object class="GtkButton" id="delete_button">
-        <property name="valign">center</property>
-        <property name="sensitive">0</property>
-        <property name="action-name">win.delete_row</property>
-        <child>
-          <object class="GtkImage">
-            <property name="icon-name">window-close-symbolic</property>
-          </object>
-        </child>
-        <style>
-          <class name="image-button"/>
-          <class name="circular"/>
-          <class name="flat"/>
-        </style>
-      </object>
-    </child>
-  </template>
+<template class="GtkListItem">
+  <property name="child">
+    <object class="KhronosLogRowContent">
+      <binding name="log">
+        <lookup name="item">GtkListItem</lookup>
+      </binding>
+    </object>
+  </property>
+</template>
 </interface>

@@ -17,37 +17,36 @@
 * Boston, MA 02110-1301 USA
 *
 */
-namespace Khronos {
-    public class Application : Adw.Application {
-        public static unowned MainWindow win = null;
-        public static GLib.Settings gsettings;
+public class Khronos.Application : Adw.Application {
+    private const GLib.ActionEntry app_entries[] = {
+        { "quit", quit },
+    };
 
-        public Application () {
-            Object (
-                flags: ApplicationFlags.FLAGS_NONE,
-                application_id: "io.github.lainsce.Khronos"
-            );
-        }
+    public Application () {
+        Object (application_id: Config.APP_ID);
+    }
+    public static int main (string[] args) {
+        Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
+        Intl.textdomain (Config.GETTEXT_PACKAGE);
 
-        static construct {
-            gsettings = new GLib.Settings ("io.github.lainsce.Khronos");
-        }
+        var app = new Khronos.Application ();
+        return app.run (args);
+    }
+    protected override void startup () {
+        resource_base_path = "/io/github/lainsce/Khronos";
 
-        construct {
-            Intl.setlocale (LocaleCategory.ALL, "");
-            Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
-            Intl.textdomain (Config.GETTEXT_PACKAGE);
-        }
+        base.startup ();
 
-        protected override void activate () {
-            var w = new MainWindow (this);
-            win = w;
-        }
+        add_action_entries (app_entries, this);
 
-        public static int main (string[] args) {
-            var app = new Khronos.Application ();
-            int status = app.run (args);
-		    return status;
-        }
+        typeof (LogListView).ensure ();
+
+        var repo = new LogRepository ();
+        var view_model = new LogViewModel (repo);
+
+        new MainWindow (this, view_model);
+    }
+    protected override void activate () {
+        active_window?.present ();
     }
 }

@@ -17,6 +17,11 @@
   font-weight: 300;
 }
 
+headerbar {
+  border-bottom: none;
+  box-shadow: none;
+}
+
 .list-action-button {
   padding: 8px;
   border-radius: 8px;
@@ -64,6 +69,7 @@
 
 .content-sidebar {
   background: @view_bg_color;
+  border-radius: 8px;
 }
 .content-row {
   background: @view_bg_color;

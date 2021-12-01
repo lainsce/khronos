@@ -5,6 +5,8 @@
       <file alias="style-dark.css" compressed="true">style-dark.css</file>
 
       <file alias="logrow.ui" compressed="true">ui/logrow.ui</file>
+      <file alias="loglistview.ui" compressed="true">ui/loglistview.ui</file>
+      <file alias="logrowcontent.ui" compressed="true">ui/logrowcontent.ui</file>
       <file alias="main_window.ui" compressed="true">ui/main_window.ui</file>
     </gresource>
 </gresources>

@@ -22,8 +22,6 @@ namespace Khronos {
         delegate void HookFunc ();
         // Widgets
         [GtkChild]
-        public unowned Gtk.ListBox column;
-        [GtkChild]
         public unowned Gtk.Entry column_entry;
         [GtkChild]
         public unowned Gtk.Label column_time_label;
@@ -36,9 +34,7 @@ namespace Khronos {
         [GtkChild]
         public unowned Gtk.Button trash_button;
         [GtkChild]
-        public unowned Gtk.Box placeholder;
-
-        public GLib.ListStore liststore;
+        public unowned LogListView listview;
 
         public bool is_modified {get; set; default = false;}
         public bool start = false;
@@ -47,9 +43,9 @@ namespace Khronos {
         private uint min = 0;
         private uint hrs = 0;
 
-        public TaskManager tm;
         public GLib.DateTime dt;
         public unowned Gtk.Application app { get; construct; }
+        public LogViewModel view_model { get; construct; }
 
         private uint id1 = 0; // 30min.
         private uint id2 = 0; // 1h.
@@ -64,20 +60,19 @@ namespace Khronos {
         public const string ACTION_ABOUT = "about";
         public const string ACTION_EXPORT = "export";
         public const string ACTION_IMPORT = "import";
-        public const string ACTION_DELETE_ROW = "delete_row";
         public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
 
         private const GLib.ActionEntry[] ACTION_ENTRIES = {
             { ACTION_EXPORT, action_export },
             { ACTION_IMPORT, action_import },
-            { ACTION_DELETE_ROW, action_delete_row },
             { ACTION_ABOUT, action_about }
         };
 
-        public MainWindow (Adw.Application application) {
+        public MainWindow (Adw.Application application, LogViewModel view_model) {
             GLib.Object (
                 application: application,
                 app: application,
+                view_model: view_model,
                 icon_name: "io.github.lainsce.Khronos",
                 title: "Khronos"
             );
@@ -98,47 +93,14 @@ namespace Khronos {
         }
 
         construct {
-            tm = new TaskManager (this);
-
-            liststore = new GLib.ListStore (typeof (Log));
-            liststore.items_changed.connect (() => {
-                tm.save_to_file (liststore);
-
-                if (liststore.get_n_items () == 0) {
-                    placeholder.set_visible (true);
-                }
-            });
-
-            column.bind_model (liststore, item => make_widgets (item));
-            column.row_activated.connect ((actrow) => {
-                column.select_row (actrow);
-            });
-
-            tm.load_from_file ();
+            // Migrate things from old version
+            var settings = new Settings ();
+            if (settings.schema_version == 0) {
+                var mm = new MigrationManager (this);
+                mm.load_from_file ();
+                settings.schema_version = 1;
+            }
             set_timeouts ();
-
-            add_log_button.clicked.connect (() => {
-                var log = new Log ();
-                log.name = column_entry.text;
-                log.timedate = "%s\n%s – %s".printf(column_time_label.label,
-                                                   ("%s").printf (dt.format ("%a, %d/%m %H∶%M∶%S")),
-                                                   ("%s").printf (dt.add_full (0,
-                                                                               0,
-                                                                               0,
-                                                                               (int)hrs,
-                                                                               (int)min,
-                                                                               (int)sec).format ("%H∶%M∶%S")));
-
-                liststore.append (log);
-                tm.save_to_file (liststore);
-                reset_timer ();
-                if (start != true) {
-                    dt = null;
-                }
-                is_modified = true;
-                column_entry.text = "";
-                placeholder.set_visible(false);
-            });
 
             timer_button.clicked.connect (() => {
                 if (start != true) {
@@ -177,42 +139,6 @@ namespace Khronos {
                 timer_button.activate ();
             });
 
-            trash_button.clicked.connect (() => {
-                var flags = Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL;
-                var dialog = new Gtk.MessageDialog (this, flags, Gtk.MessageType.WARNING, Gtk.ButtonsType.NONE, null, null);
-                dialog.set_transient_for (this);
-                dialog.resizable = false;
-
-                dialog.text = _("Empty the Logs List?");
-                dialog.secondary_text = _("Emptying this list means all the logs in it will be permanently lost with no recovery.");
-
-                dialog.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
-                var ok_button = dialog.add_button (_("Empty List"), Gtk.ResponseType.OK);
-                ok_button.get_style_context ().add_class ("destructive-action");
-
-                dialog.show ();
-
-                dialog.response.connect ((response_id) => {
-                    switch (response_id) {
-                        case Gtk.ResponseType.OK:
-                            liststore.remove_all ();
-                            dialog.close ();
-                            break;
-                        case Gtk.ResponseType.NO:
-                            dialog.close ();
-                            break;
-                        case Gtk.ResponseType.CANCEL:
-                        case Gtk.ResponseType.CLOSE:
-                        case Gtk.ResponseType.DELETE_EVENT:
-                            dialog.close ();
-                            return;
-                        default:
-                            assert_not_reached ();
-                    }
-                });
-                placeholder.set_visible (false);
-            });
-
             if (Config.PROFILE == "Devel")
                 add_css_class ("devel");
 
@@ -221,8 +147,79 @@ namespace Khronos {
             this.present ();
         }
 
-        public LogRow make_widgets (GLib.Object item) {
-            return new LogRow ((Log) item);
+        [GtkCallback]
+        void on_new_log_requested () {
+            var log = new Log ();
+            log.name = column_entry.text;
+            log.timedate = "%s\n%s – %s".printf(column_time_label.label,
+                                               ("%s").printf (dt.format ("%a, %d/%m %H∶%M∶%S")),
+                                               ("%s").printf (dt.add_full (0,
+                                                                           0,
+                                                                           0,
+                                                                           (int)hrs,
+                                                                           (int)min,
+                                                                           (int)sec).format ("%H∶%M∶%S")));
+            reset_timer ();
+            if (start != true) {
+                dt = null;
+            }
+            is_modified = true;
+            column_entry.text = "";
+            view_model.create_new_log (log);
+        }
+
+        [GtkCallback]
+        public void on_log_update_requested (Log log) {
+            view_model.update_log (log);
+        }
+
+        [GtkCallback]
+        public void on_log_removal_requested (Log log) {
+            view_model.delete_log (log);
+        }
+
+        [GtkCallback]
+        void on_clear_trash_requested () {
+            view_model.delete_trash.begin (this);
+        }
+
+        public void action_export () {
+            FileManager.save_logs.begin (view_model);
+        }
+
+        public void action_import () {
+            load_logs.begin ();
+        }
+
+        public async void load_logs () throws Error {
+            Gee.ArrayList<Log> logs = yield FileManager.load_as ();
+
+            foreach (var log in logs) {
+                view_model.create_new_log (log);
+            }
+        }
+
+        public void action_about () {
+            const string COPYRIGHT = "Copyright \xc2\xa9 2019-2021 Paulo \"Lains\" Galardi\n";
+
+            const string? AUTHORS[] = {
+                "Paulo \"Lains\" Galardi",
+                null
+            };
+
+            var program_name = Config.NAME_PREFIX + ("Khronos");
+            Gtk.show_about_dialog (this,
+                                   "program-name", program_name,
+                                   "logo-icon-name", Config.APP_ID,
+                                   "version", Config.VERSION,
+                                   "comments", _("Track each task\'s time in a simple inobtrusive way."),
+                                   "copyright", COPYRIGHT,
+                                   "authors", AUTHORS,
+                                   "artists", null,
+                                   "license-type", Gtk.License.GPL_3_0,
+                                   "wrap-license", false,
+                                   "translator-credits", _("translator-credits"),
+                                   null);
         }
 
         public void reset_timer () {
@@ -235,12 +232,13 @@ namespace Khronos {
             column_entry.text = "";
         }
 
-        public void add_task (string name, string timedate) {
+        public void add_task (string id, string name, string timedate) {
             var log = new Log ();
+            log.id = id;
             log.name = name;
             log.timedate = timedate;
 
-            liststore.append(log);
+            view_model.create_new_log (log);
         }
 
         public void timer () {
@@ -348,53 +346,6 @@ namespace Khronos {
             notification5.set_icon (icon);
 
             application.send_notification ("io.github.lainsce.Khronos", notification5);
-        }
-
-        public void action_delete_row () {
-            Gtk.ListBoxRow row = column.get_selected_row ();
-            uint pos;
-            liststore.find (((LogRow)row).log, out pos);
-            liststore.remove (pos);
-        }
-
-        public void action_export () {
-            FileManager.save_logs.begin (liststore);
-        }
-
-        public void action_import () {
-            load_logs.begin ();
-        }
-
-        public async void load_logs () throws Error {
-            Gee.ArrayList<Log> logs = yield FileManager.load_as (liststore);
-
-            foreach (var log in logs) {
-                liststore.append (log);
-                tm.save_to_file (liststore);
-            }
-        }
-
-        public void action_about () {
-            const string COPYRIGHT = "Copyright \xc2\xa9 2019-2021 Paulo \"Lains\" Galardi\n";
-
-            const string? AUTHORS[] = {
-                "Paulo \"Lains\" Galardi",
-                null
-            };
-
-            var program_name = Config.NAME_PREFIX + ("Khronos");
-            Gtk.show_about_dialog (this,
-                                   "program-name", program_name,
-                                   "logo-icon-name", Config.APP_ID,
-                                   "version", Config.VERSION,
-                                   "comments", _("Track each task\'s time in a simple inobtrusive way."),
-                                   "copyright", COPYRIGHT,
-                                   "authors", AUTHORS,
-                                   "artists", null,
-                                   "license-type", Gtk.License.GPL_3_0,
-                                   "wrap-license", false,
-                                   "translator-credits", _("translator-credits"),
-                                   null);
         }
     }
 }

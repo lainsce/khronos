@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+<template class="KhronosLogRowContent" parent="AdwBin">
+  <property name="child">
+    <object class="GtkBox">
+      <property name="orientation">horizontal</property>
+      <property name="valign">center</property>
+      <property name="spacing">6</property>
+      <style>
+        <class name="Khronos-sidebar-box"/>
+      </style>
+      <child>
+        <object class="GtkBox">
+          <property name="orientation">vertical</property>
+          <property name="valign">center</property>
+          <property name="spacing">6</property>
+          <property name="margin-start">6</property>
+          <child>
+            <object class="GtkLabel" id="log_label">
+              <property name="halign">start</property>
+              <property name="ellipsize">end</property>
+              <property name="single-line-mode">yes</property>
+              <binding name="label">
+                <lookup name="title" type="KhronosLog">
+                  <lookup name="Log">KhronosLogRowContent</lookup>
+                </lookup>
+              </binding>
+              <style>
+                <class name="heading"/>
+              </style>
+            </object>
+          </child>
+          <child>
+            <object class="GtkLabel" id="log2_label">
+              <property name="halign">start</property>
+              <property name="ellipsize">end</property>
+              <property name="single-line-mode">yes</property>
+              <property name="max-width-chars">25</property>
+              <property name="use-markup">1</property>
+              <binding name="label">
+                <lookup name="timedate" type="KhronosLog">
+                  <lookup name="Log">KhronosLogRowContent</lookup>
+                </lookup>
+              </binding>
+              <style>
+                <class name="caption"/>
+              </style>
+            </object>
+          </child>
+        </object>
+      </child>
+      <child type="suffix">
+        <object class="GtkButton" id="delete_button">
+          <property name="icon-name">window-close-symbolic</property>
+          <property name="valign">center</property>
+          <signal name="clicked" handler="on_delete_button_clicked" />
+          <style>
+            <class name="flat" />
+            <class name="circular" />
+          </style>
+        </object>
+      </child>
+    </object>
+  </property>
+</template>
+</interface>

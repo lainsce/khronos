@@ -2,10 +2,11 @@ project('io.github.lainsce.Khronos', ['vala', 'c'], version: '3.6.0')
 gnome = import('gnome')
 i18n = import('i18n')
 
-add_project_arguments([
-		'--target-glib=2.40',
-	],
-	language: 'vala',
+add_project_arguments(
+    [
+         '--target-glib=2.40',
+    ],
+    language: 'vala',
 )
 add_project_arguments(
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
@@ -21,18 +22,32 @@ asresources = gnome.compile_resources(
 sources = files(
     'src/Application.vala',
     'src/MainWindow.vala',
-    'src/Services/TaskManager.vala',
+    'src/Models/Log.vala',
+    'src/Repositories/LogRepository.vala',
+    'src/Views/LogListView.vala',
+    'src/Views/View.vala',
+    'src/ViewModels/LogViewModel.vala',
+    'src/Utils/FileUtils.vala',
+    'src/Utils/MiscUtils.vala',
+    'src/Utils/ThreadUtils.vala',
+    'src/Utils/ObservableList.vala',
+    'src/Services/SettingsManager.vala',
+    'src/Services/MigrationManager.vala',
     'src/Services/FileManager.vala',
     'src/Services/Dialog.vala',
-    'src/Widgets/LogRow.vala',
+    'src/Widgets/LogRowContent.vala',
 )
 
 cc = meson.get_compiler('c')
 m_dep = cc.find_library('m', required: true)
 dependencies = [
+    dependency('gio-2.0'),
     dependency('gtk4'),
+    dependency('glib-2.0'),
+    dependency('gobject-2.0'),
     dependency('gee-0.8'),
     dependency('libadwaita-1'),
+    dependency('gmodule-2.0'),
     dependency('json-glib-1.0'),
     m_dep,
 ]

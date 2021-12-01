@@ -18,54 +18,15 @@
 */
 
 namespace Khronos {
-    public class TaskManager {
+    public class MigrationManager {
         public unowned MainWindow win = null;
         public unowned Json.Builder builder;
-        private string app_dir = Environment.get_user_data_dir () +
-                                 "/io.github.lainsce.Khronos";
+        private string app_dir = Environment.get_user_data_dir () + "/io.github.lainsce.Khronos";
         private string file_name;
 
-        public TaskManager (MainWindow win) {
+        public MigrationManager (MainWindow win) {
             this.win = win;
             file_name = this.app_dir + "/saved_logged_tasks.json";
-            debug ("%s".printf(file_name));
-        }
-
-        public void save_to_file (ListStore liststore) {
-            string json_string = "";
-            var b = new Json.Builder ();
-            builder = b;
-
-            builder.begin_array ();
-	        uint i, n = liststore.get_n_items ();
-            for (i = 0; i < n; i++) {
-                builder.begin_array ();
-                var item = liststore.get_item (i);
-                builder.add_string_value (((Log)item).name);
-                builder.add_string_value (((Log)item).timedate);
-                builder.end_array ();
-            }
-            builder.end_array ();
-
-            Json.Generator generator = new Json.Generator ();
-            Json.Node root = builder.get_root ();
-            generator.set_root (root);
-            json_string = generator.to_data (null);
-
-            var dir = File.new_for_path(app_dir);
-            var file = File.new_for_path (file_name);
-            try {
-                if (!dir.query_exists()) {
-                    dir.make_directory();
-                }
-                if (file.query_exists ()) {
-                    file.delete ();
-                }
-                GLib.FileUtils.set_contents (file.get_path (), json_string);
-            } catch (Error e) {
-                warning ("Failed to save file: %s\n", e.message);
-            }
-
         }
 
         public void load_from_file() {
@@ -83,7 +44,7 @@ namespace Khronos {
                         string name = task.get_string_element(0);
                         string timedate = task.get_string_element(1);
 
-                        win.add_task (name, timedate);
+                        win.add_task (Uuid.string_random (), name, timedate);
                     }
                 }
             } catch (Error e) {
