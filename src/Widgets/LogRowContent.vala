@@ -23,6 +23,7 @@ public class Khronos.LogRowContent : Adw.Bin {
 
     [GtkChild]
     public unowned Gtk.Label log_label;
+    [GtkChild]
     public unowned Gtk.Label log2_label;
 
     Binding? text_binding;
@@ -43,7 +44,7 @@ public class Khronos.LogRowContent : Adw.Bin {
             text_binding = _log?.bind_property (
                 "name", log_label, "label", SYNC_CREATE|BIDIRECTIONAL);
             text2_binding = _log?.bind_property (
-                "timedate", log_label, "label", SYNC_CREATE|BIDIRECTIONAL);
+                "timedate", log2_label, "label", SYNC_CREATE|BIDIRECTIONAL);
         }
     }
 

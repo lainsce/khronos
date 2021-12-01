@@ -71,9 +71,6 @@ headerbar {
   background: @view_bg_color;
   border-radius: 8px;
 }
-.content-row {
-  background: @view_bg_color;
-}
 .content {
   box-shadow: none;
   margin: 0;

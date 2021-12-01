@@ -41,6 +41,11 @@ public class Khronos.LogListView : View {
     public signal void log_removal_requested (Log log);
 
     [GtkCallback]
+    public void on_log_update_requested (Log log) {
+        view_model.update_log (log);
+    }
+
+    [GtkCallback]
     public void on_log_removal_requested (Log log) {
         view_model.delete_log (log);
     }

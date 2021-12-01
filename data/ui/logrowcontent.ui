@@ -6,25 +6,20 @@
       <property name="orientation">horizontal</property>
       <property name="valign">center</property>
       <property name="spacing">6</property>
-      <style>
-        <class name="Khronos-sidebar-box"/>
-      </style>
+      <property name="margin-start">12</property>
+      <property name="margin-end">12</property>
+      <property name="margin-top">6</property>
+      <property name="margin-bottom">6</property>
       <child>
         <object class="GtkBox">
           <property name="orientation">vertical</property>
           <property name="valign">center</property>
           <property name="spacing">6</property>
-          <property name="margin-start">6</property>
           <child>
             <object class="GtkLabel" id="log_label">
               <property name="halign">start</property>
               <property name="ellipsize">end</property>
-              <property name="single-line-mode">yes</property>
-              <binding name="label">
-                <lookup name="title" type="KhronosLog">
-                  <lookup name="Log">KhronosLogRowContent</lookup>
-                </lookup>
-              </binding>
+              <property name="use-markup">1</property>
               <style>
                 <class name="heading"/>
               </style>
@@ -34,14 +29,8 @@
             <object class="GtkLabel" id="log2_label">
               <property name="halign">start</property>
               <property name="ellipsize">end</property>
-              <property name="single-line-mode">yes</property>
-              <property name="max-width-chars">25</property>
+              <property name="hexpand">1</property>
               <property name="use-markup">1</property>
-              <binding name="label">
-                <lookup name="timedate" type="KhronosLog">
-                  <lookup name="Log">KhronosLogRowContent</lookup>
-                </lookup>
-              </binding>
               <style>
                 <class name="caption"/>
               </style>

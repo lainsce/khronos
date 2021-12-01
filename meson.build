@@ -1,14 +1,40 @@
-project('io.github.lainsce.Khronos', ['vala', 'c'], version: '3.6.0')
+project('io.github.lainsce.Khronos', ['vala', 'c'], version: '3.6.5')
 gnome = import('gnome')
 i18n = import('i18n')
 
-add_project_arguments(
-    [
-         '--target-glib=2.40',
-    ],
-    language: 'vala',
+add_project_arguments([
+		'--target-glib=2.40',
+	],
+	language: 'vala',
 )
+
+if get_option('profile') == 'development'
+  name_prefix = '(Development) '
+  profile = '.Devel'
+else
+  name_prefix = ''
+  profile = ''
+endif
+
+app_id = '@0@@1@'.format(meson.project_name(), profile)
+
+conf = configuration_data()
+conf.set_quoted('APP_ID', app_id)
+conf.set_quoted('G_LOG_DOMAIN', '@0@@1@'.format(meson.project_name(), profile))
+conf.set_quoted('NAME_PREFIX', name_prefix)
+conf.set_quoted('PACKAGE_NAME', meson.project_name())
+conf.set_quoted('PACKAGE_VERSION', meson.project_version())
+conf.set_quoted('PROFILE', profile)
+conf.set_quoted('VERSION', meson.project_version())
+conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
+conf.set_quoted('DATADIR', join_paths(get_option('prefix'), get_option('datadir')))
+conf.set_quoted('GNOMELOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
+configure_file(output: 'config.h', configuration: conf)
+config_h_dir = include_directories('.')
+
+
 add_project_arguments(
+    '-include', 'config.h',
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
     language: 'c'
 )
@@ -38,8 +64,6 @@ sources = files(
     'src/Widgets/LogRowContent.vala',
 )
 
-cc = meson.get_compiler('c')
-m_dep = cc.find_library('m', required: true)
 dependencies = [
     dependency('gio-2.0'),
     dependency('gtk4'),
@@ -49,41 +73,9 @@ dependencies = [
     dependency('libadwaita-1'),
     dependency('gmodule-2.0'),
     dependency('json-glib-1.0'),
-    m_dep,
+    meson.get_compiler('c').find_library('m', required: true)
 ]
 
-if get_option('profile') == 'development'
-  name_prefix = '(Development) '
-  profile = 'Devel'
-else
-  name_prefix = ''
-  profile = ''
-endif
-
-app_id = 'io.github.lainsce.Khronos@0@'.format(profile)
-
-conf = configuration_data()
-conf.set_quoted('APP_ID', app_id)
-conf.set_quoted('G_LOG_DOMAIN', 'io.github.lainsce.Khronos@0@'.format(profile))
-conf.set_quoted('NAME_PREFIX', name_prefix)
-conf.set_quoted('PACKAGE_NAME', meson.project_name())
-conf.set_quoted('PACKAGE_VERSION', meson.project_version())
-conf.set_quoted('PROFILE', profile)
-conf.set_quoted('VERSION', meson.project_version())
-conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
-conf.set_quoted('DATADIR', join_paths(get_option('prefix'), get_option('datadir')))
-conf.set_quoted('GNOMELOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
-configure_file(output: 'config.h', configuration: conf)
-config_h_dir = include_directories('.')
-
-
-add_project_arguments(
-    '-include', 'config.h',
-    '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
-    language: 'c'
-)
-
-# Let's define our executable
 executable(
     meson.project_name(),
     sources,

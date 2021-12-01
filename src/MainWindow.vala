@@ -20,6 +20,8 @@ namespace Khronos {
     [GtkTemplate (ui = "/io/github/lainsce/Khronos/main_window.ui")]
     public class MainWindow : Adw.ApplicationWindow {
         delegate void HookFunc ();
+        public signal void clicked ();
+
         // Widgets
         [GtkChild]
         public unowned Gtk.Entry column_entry;
@@ -144,7 +146,6 @@ namespace Khronos {
 
             this.set_size_request (360, 360);
             this.show ();
-            this.present ();
         }
 
         [GtkCallback]
