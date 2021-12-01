@@ -213,6 +213,9 @@ namespace Khronos {
                 placeholder.set_visible (false);
             });
 
+            if (Config.PROFILE == "Devel")
+                add_css_class ("devel");
+
             this.set_size_request (360, 360);
             this.show ();
             this.present ();
