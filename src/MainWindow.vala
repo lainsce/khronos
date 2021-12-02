@@ -141,7 +141,7 @@ namespace Khronos {
                 timer_button.activate ();
             });
 
-            if (Config.PROFILE == "Devel")
+            if (Config.PROFILE == ".Devel")
                 add_css_class ("devel");
 
             this.set_size_request (360, 360);
