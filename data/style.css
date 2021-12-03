@@ -71,6 +71,14 @@ headerbar {
   background: @view_bg_color;
   border-radius: 8px;
 }
+
+.content-sidebar row {
+  border-bottom: 1px solid @borders;
+}
+.content-sidebar row:last-child {
+  border-bottom: none;
+}
+
 .content {
   box-shadow: none;
   margin: 0;
@@ -80,9 +88,9 @@ headerbar {
   background: none;
   border-radius: 8px;
 }
-
 .kh-tag {
   background: shade(@view_bg_color,0.95);
+  border: 1px solid @borders;
   border-radius: 8px;
   padding: 8px;
 }
