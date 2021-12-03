@@ -42,6 +42,14 @@
     </custom>
     <translation type="gettext">io.github.lainsce.Khronos</translation>
     <releases>
+        <release version="3.6.6" date="2021-12-03">
+            <description>
+                <p>Release: Leap Year</p>
+                <ul>
+                    <li>Added: Logs now have tags! Add tags in the new entry below log name, by specifying them with colons, like this: "tag1:tag2:tag3".</li>
+                </ul>
+            </description>
+        </release>
         <release version="3.6.5" date="2021-12-01">
             <description>
                 <p>Release: Tick Tock Clock</p>

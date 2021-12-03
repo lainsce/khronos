@@ -26,6 +26,8 @@ namespace Khronos {
         [GtkChild]
         public unowned Gtk.Entry column_entry;
         [GtkChild]
+        public unowned Gtk.Entry column_tag_entry;
+        [GtkChild]
         public unowned Gtk.Label column_time_label;
         [GtkChild]
         public unowned Gtk.Button add_log_button;
@@ -160,12 +162,14 @@ namespace Khronos {
                                                                            (int)hrs,
                                                                            (int)min,
                                                                            (int)sec).format ("%H∶%M∶%S")));
+            log.tags = column_tag_entry.text;
             reset_timer ();
             if (start != true) {
                 dt = null;
             }
             is_modified = true;
             column_entry.text = "";
+            column_tag_entry.text = "";
             view_model.create_new_log (log);
         }
 
@@ -231,13 +235,15 @@ namespace Khronos {
             add_log_button.sensitive = false;
             timer_button.sensitive = true;
             column_entry.text = "";
+            column_tag_entry.text = "";
         }
 
-        public void add_task (string id, string name, string timedate) {
+        public void add_task (string id, string name, string timedate, string tags) {
             var log = new Log ();
             log.id = id;
             log.name = name;
             log.timedate = timedate;
+            log.tags = tags;
 
             view_model.create_new_log (log);
         }

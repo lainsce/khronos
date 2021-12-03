@@ -25,6 +25,8 @@ public class Khronos.LogRowContent : Adw.Bin {
     public unowned Gtk.Label log_label;
     [GtkChild]
     public unowned Gtk.Label log2_label;
+    [GtkChild]
+    public unowned Gtk.Box log_tag_holder;
 
     Binding? text_binding;
     Binding? text2_binding;
@@ -45,6 +47,15 @@ public class Khronos.LogRowContent : Adw.Bin {
                 "name", log_label, "label", SYNC_CREATE|BIDIRECTIONAL);
             text2_binding = _log?.bind_property (
                 "timedate", log2_label, "label", SYNC_CREATE|BIDIRECTIONAL);
+
+            string[] tags = _log.tags.split(":");
+            foreach (var t in tags) {
+                var build = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+                var tagobj = new Gtk.Label (t);
+                build.append(tagobj);
+                log_tag_holder.append(build);
+                build.add_css_class ("kh-tag");
+            }
         }
     }
 

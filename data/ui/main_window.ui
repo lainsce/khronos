@@ -87,6 +87,14 @@
                                 </style>
                               </object>
                             </child>
+                            <child>
+                              <object class="GtkEntry" id="column_tag_entry">
+                                <property name="placeholder-text" translatable="yes">Tags (separated by colons)…</property>
+                                <style>
+                                  <class name="log-entry"/>
+                                </style>
+                              </object>
+                            </child>
                           </object>
                         </child>
                       </object>
@@ -102,6 +110,7 @@
                         <child>
                           <object class="GtkButton" id="add_log_button">
                             <property name="icon-name">list-add-symbolic</property>
+                            <property name="sensitive">0</property>
                             <property name="tooltip-text" translatable="yes">Adds a log to the list</property>
                             <signal name="clicked" handler="on_new_log_requested" />
                             <style>

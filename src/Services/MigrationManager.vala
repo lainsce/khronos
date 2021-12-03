@@ -44,7 +44,7 @@ namespace Khronos {
                         string name = task.get_string_element(0);
                         string timedate = task.get_string_element(1);
 
-                        win.add_task (Uuid.string_random (), name, timedate);
+                        win.add_task (Uuid.string_random (), name, timedate, "");
                     }
                 }
             } catch (Error e) {

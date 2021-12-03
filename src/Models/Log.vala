@@ -21,6 +21,7 @@ namespace Khronos {
         public string id { get; set; default = Uuid.string_random (); }
         public string name { get; set; }
         public string timedate { get; set; }
+        public string tags { get; set; }
 
         public static Log from_json (Json.Node node) requires (node.get_node_type () == OBJECT) {
             return (Log) Json.gobject_deserialize (typeof (Log), node);

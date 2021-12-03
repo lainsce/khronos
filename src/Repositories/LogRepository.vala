@@ -71,6 +71,7 @@ public class Khronos.LogRepository : Object {
             }
             current_log.name = log.name;
             current_log.timedate = log.timedate;
+            current_log.tags = log.tags;
         }
 
         string? log_id = null;
