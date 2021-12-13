@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: com.github.lainsce.khronos\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-29 23:06+0100\n"
-"PO-Revision-Date: 2021-11-29 23:08+0100\n"
+"PO-Revision-Date: 2021-12-03 18:08+0100\n"
 "Last-Translator: albano battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian<LL@li.org>\n"
 "Language: it\n"
@@ -24,13 +24,15 @@ msgstr "Khronos"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:7
 msgid "Log the time it took to do tasks"
-msgstr ""
+msgstr "Registra il tempo impiegato per svolgere le attività"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:9
 msgid ""
 "Start logging any task's time to completion, with the ability to stop the "
 "timer at any moment, with notifications for longer task sessions."
 msgstr ""
+"Inizia a registrare il tempo di completamento di qualsiasi attività, con la possibilità di interrompere il "
+"timer in qualsiasi momento, con notifiche per sessioni di attività più lunghe."
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:11
 msgid "Quit anytime with the shortcut Ctrl + Q"
@@ -42,20 +44,19 @@ msgstr "Lains"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:47
 msgid "Release: UI Refreshments"
-msgstr ""
+msgstr "Rilascio: Aggiornamenti all'interfaccia utente"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:49
 msgid "Changed: The UI is now with a better layout."
-msgstr ""
+msgstr "Modificato: l'interfaccia utente è ora con un layout migliore."
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:55
-#, fuzzy
 msgid "Release: Port to GTK4"
-msgstr "Rilascio: avvia Ordinamento"
+msgstr "Versione: port su GTK4"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:57
 msgid "Changed: Rewritten for GTK4."
-msgstr ""
+msgstr "Modificato: riscritto per GTK4."
 
 #: data/io.github.lainsce.Khronos.desktop.in:4
 msgid "Track each task time in a simple inobtrusive way"
@@ -66,123 +67,113 @@ msgid "Plot;Planning;Time Tracking;"
 msgstr "Tracciare, pianificazione, monitoraggio del tempo;"
 
 #: data/io.github.lainsce.Khronos.gschema.xml:5
-#, fuzzy
 msgid "Delay between notifications"
-msgstr "Notifiche"
+msgstr "Ritardo tra le notifiche"
 
 #: data/io.github.lainsce.Khronos.gschema.xml:6
 msgid "The delay between two notifications, default is 30min. in seconds."
-msgstr ""
+msgstr "The delay between two notifications, default is 30min. in seconds."
 
 #: data/ui/main_window.ui:6
-#, fuzzy
 msgid "Export Logs as CSV…"
-msgstr "Esporta Log come file CSV..."
+msgstr "Esporta Log come CSV…"
 
 #: data/ui/main_window.ui:10
-#, fuzzy
 msgid "Import Logs from CSV…"
-msgstr "Esporta Log come file CSV..."
+msgstr "Importa Log da CSV…"
 
 #: data/ui/main_window.ui:16
-#, fuzzy
 msgid "About Khronos"
-msgstr "Khronos"
+msgstr "Informazioni su Khronos"
 
 #: data/ui/main_window.ui:53
-#, fuzzy
 msgid "Timer"
-msgstr "Tempo"
+msgstr "Timer"
 
 #: data/ui/main_window.ui:77
-#, fuzzy
 msgid "Log name…"
-msgstr "Nuovo nome log..."
+msgstr "Nome log…"
 
 #: data/ui/main_window.ui:96
 msgid "Adds a log to the list"
-msgstr ""
+msgstr "Aggiunge un log all'elenco"
 
 #: data/ui/main_window.ui:106 src/MainWindow.vala:161
 msgid "Starts the timer for a log"
-msgstr ""
+msgstr "Avvia il timer per un log"
 
 #: data/ui/main_window.ui:122
 msgid "Logs"
-msgstr ""
+msgstr "Log"
 
 #: data/ui/main_window.ui:148
 msgid "Removes all logs from the list"
-msgstr ""
+msgstr "Rimuove tutti i log dall'elenco"
 
 #: data/ui/main_window.ui:180
 msgid "No Logs"
-msgstr ""
+msgstr "Nessun Log"
 
 #: data/ui/main_window.ui:188
 msgid "Add a log on Timer tab and check later."
-msgstr ""
+msgstr "Aggiungi un log nella scheda Timer e controlla in seguito."
 
 #: src/MainWindow.vala:153
 msgid "Stops the timer for a log"
-msgstr ""
+msgstr "Arresta il timer per un log"
 
 #: src/MainWindow.vala:186
 msgid "Empty the Logs List?"
-msgstr ""
+msgstr "Svuotare l'elenco dei log?"
 
 #: src/MainWindow.vala:187
 msgid ""
 "Emptying this list means all the logs in it will be permanently lost with no "
 "recovery."
 msgstr ""
+"Svuotare questo elenco significa che tutti i log in esso contenuti verranno definitivamente persi senza "
+"possibilità di recupero."
 
 #: src/MainWindow.vala:189
 msgid "Cancel"
-msgstr ""
+msgstr "Cancela"
 
 #: src/MainWindow.vala:190
 msgid "Empty List"
-msgstr ""
+msgstr "Elenco vuoto"
 
 #: src/MainWindow.vala:307
 msgid "Go rest for a while before continuing."
 msgstr "Riposati un po' prima di continuare."
 
 #: src/MainWindow.vala:316
-#, fuzzy
 msgid "Maybe grab a snack before continuing."
-msgstr "Riposati un po' prima di continuare."
+msgstr "Magari fai uno spuntino prima di continuare."
 
 #: src/MainWindow.vala:325
-#, fuzzy
 msgid "Perhaps go get some coffee or tea before continuing."
-msgstr "Riposati un po' prima di continuare."
+msgstr "Magari vai a prendere un caffè o un tè prima di continuare."
 
 #: src/MainWindow.vala:334
-#, fuzzy
 msgid "That's a big task. Let's rest a bit before continuing."
-msgstr "Riposati un po' prima di continuare."
+msgstr "Questo è un grande compito. Riposiamoci un po' prima di continuare."
 
 #: src/MainWindow.vala:343
-#, fuzzy
 msgid "Amazing work! But please rest a bit before continuing."
-msgstr "Riposati un po' prima di continuare."
+msgstr "Lavoro fantastico! Ma per favore riposati un po' prima di continuare."
 
 #: src/MainWindow.vala:387
-#, fuzzy
 msgid "Track each task's time in a simple inobtrusive way."
-msgstr ""
-"Tieni traccia del tempo di ogni attività in modo semplice e non invadente"
+msgstr "Tieni traccia del tempo di ogni attività in modo semplice e non invadente."
 
 #: src/MainWindow.vala:393
 msgid "translator-credits"
-msgstr ""
+msgstr "Albano Battistella"
 
 #: src/Services/Dialog.vala:23 src/Services/Dialog.vala:44
 msgid "CSV files"
-msgstr ""
+msgstr "File CSV"
 
 #: src/Services/Dialog.vala:27 src/Services/Dialog.vala:48
 msgid "All files"
-msgstr ""
+msgstr "Tutti i file"
