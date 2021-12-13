@@ -42,6 +42,14 @@
     </custom>
     <translation type="gettext">io.github.lainsce.Khronos</translation>
     <releases>
+        <release version="3.6.7" date="2022-01-05">
+            <description>
+                <p>Release: Nanosecond</p>
+                <ul>
+                    <li>Removed: each log's delete button, as they would be accidentally clicked and would remove the log.</li>
+                </ul>
+            </description>
+        </release>
         <release version="3.6.6" date="2021-12-03">
             <description>
                 <p>Release: Leap Year</p>
