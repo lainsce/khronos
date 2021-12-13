@@ -2,7 +2,7 @@
 Name=Khronos
 Comment=Track each task time in a simple inobtrusive way
 Exec=io.github.lainsce.Khronos
-Icon=io.github.lainsce.Khronos
+Icon=@app_id@
 Keywords=Plot;Planning;Time Tracking;
 Terminal=false
 Type=Application

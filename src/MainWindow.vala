@@ -77,7 +77,7 @@ namespace Khronos {
                 application: application,
                 app: application,
                 view_model: view_model,
-                icon_name: "io.github.lainsce.Khronos",
+                icon_name: Config.APP_ID,
                 title: "Khronos"
             );
 
@@ -143,7 +143,7 @@ namespace Khronos {
                 timer_button.activate ();
             });
 
-            if (Config.PROFILE == ".Devel")
+            if (Config.DEVELOPMENT)
                 add_css_class ("devel");
 
             this.set_size_request (360, 360);
@@ -212,9 +212,8 @@ namespace Khronos {
                 null
             };
 
-            var program_name = Config.NAME_PREFIX + ("Khronos");
             Gtk.show_about_dialog (this,
-                                   "program-name", program_name,
+                                   "program-name", "Khronos" + Config.NAME_SUFFIX,
                                    "logo-icon-name", Config.APP_ID,
                                    "version", Config.VERSION,
                                    "comments", _("Track each task\'s time in a simple inobtrusive way."),

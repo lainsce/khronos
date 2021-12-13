@@ -11,7 +11,7 @@
         "--share=ipc",
         "--device=dri"
     ],
-    "desktop-file-name-suffix" : " (Devel)",
+    "desktop-file-name-suffix" : " (Development)",
     "cleanup" : [
         "/cache",
         "/man",
@@ -86,13 +86,12 @@
             "name" : "khronos",
             "buildsystem" : "meson",
             "config-opts" : [
-                "-Dprofile=development"
+                "-Ddevelopment=true"
             ],
             "sources" : [
                 {
-                    "type" : "git",
-                    "url" : "https://github.com/lainsce/khronos.git",
-                    "branch" : "main"
+                    "type" : "dir",
+                    "path" : "../../"
                 }
             ]
         }
