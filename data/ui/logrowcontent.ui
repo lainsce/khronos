@@ -52,17 +52,6 @@
           </child>
         </object>
       </child>
-      <child type="suffix">
-        <object class="GtkButton" id="delete_button">
-          <property name="icon-name">window-close-symbolic</property>
-          <property name="valign">center</property>
-          <signal name="clicked" handler="on_delete_button_clicked" />
-          <style>
-            <class name="flat" />
-            <class name="circular" />
-          </style>
-        </object>
-      </child>
     </object>
   </property>
 </template>

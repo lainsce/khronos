@@ -58,12 +58,4 @@ public class Khronos.LogRowContent : Adw.Bin {
             }
         }
     }
-
-    construct {
-    }
-
-    [GtkCallback]
-    void on_delete_button_clicked () {
-        ((LogListView)MiscUtils.find_ancestor_of_type<LogListView>(this)).log_removal_requested (log);
-    }
 }
