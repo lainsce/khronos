@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-    <id>io.github.lainsce.Khronos</id>
+    <id>@app_id@</id>
     <metadata_license>CC0</metadata_license>
     <project_license>GPL-3.0+</project_license>
     <name translatable="no">Khronos</name>
@@ -40,7 +40,7 @@
     <custom>
       <value key="GnomeSoftware::key-colors">[(145, 65, 172)]</value>
     </custom>
-    <translation type="gettext">io.github.lainsce.Khronos</translation>
+    <translation type="gettext">@app_id@</translation>
     <releases>
         <release version="3.6.7" date="2022-01-05">
             <description>
