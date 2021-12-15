@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.lainsce.Khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-02 21:45+0100\n"
-"PO-Revision-Date: 2021-12-02 21:49+0100\n"
+"POT-Creation-Date: 2021-12-15 19:10+0100\n"
+"PO-Revision-Date: 2021-12-15 19:14+0100\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/io.github.lainsce.Khronos.metainfo.xml.in:7
 msgid "Log the time it took to do tasks"
@@ -36,30 +36,55 @@ msgid "Quit anytime with the shortcut Ctrl + Q"
 msgstr "Salir en cualquier momento con el atajo Ctrl + Q"
 
 #: data/io.github.lainsce.Khronos.metainfo.xml.in:47
+msgid "Release: Nanosecond"
+msgstr "Versión: Nanosegundo"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:49
+msgid ""
+"Removed: each log's delete button, as they would be accidentally clicked and "
+"would remove the log."
+msgstr ""
+"Eliminado: el botón de borrado de cada registro, ya que al ser pulsado "
+"accidentalmente eliminaba el registro."
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:55
+msgid "Release: Leap Year"
+msgstr "Versión: Año bisiesto"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:57
+msgid ""
+"Added: Logs now have tags! Add tags in the new entry below log name, by "
+"specifying them with colons, like this: \"tag1:tag2:tag3\"."
+msgstr ""
+"Añadido: ¡Los registros ahora tienen etiquetas! Añada etiquetas en la "
+"entrada nueva debajo del nombre del registro, especificándolas con dos "
+"puntos, así \"etiqueta1:etiqueta2:etiqueta3\"."
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:63
 msgid "Release: Tick Tock Clock"
 msgstr "Versión: Reloj Tick Tock"
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:49
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:65
 msgid "Changed: UI now sports an experimental design."
 msgstr "Cambiado: La interfaz de usuario tiene ahora un diseño experimental."
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:50
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:66
 msgid "Changed: A robust backend rewrite."
 msgstr "Cambiado: Una robusta reescritura del código."
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:56
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:72
 msgid "Release: UI Refreshments"
 msgstr "Versión: Actualizaciones de la interfaz de usuario"
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:58
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:74
 msgid "Changed: The UI is now with a better layout."
 msgstr "Cambiado: La interfaz de usuario tiene ahora un mejor diseño."
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:64
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:80
 msgid "Release: Port to GTK4"
 msgstr "Versión: Portado a GTK4"
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:66
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:82
 msgid "Changed: Rewritten for GTK4."
 msgstr "Cambiado: Reescrito para GTK4."
 
@@ -71,7 +96,7 @@ msgstr "Khronos"
 msgid "Track each task time in a simple inobtrusive way"
 msgstr "Controla el tiempo de cada tarea de forma sencilla y no intrusiva"
 
-#: data/io.github.lainsce.Khronos.desktop.in:11
+#: data/io.github.lainsce.Khronos.desktop.in:7
 msgid "Plot;Planning;Time Tracking;"
 msgstr "Plot;Planning;Time Tracking;Plan;Tiempo;"
 
@@ -112,51 +137,55 @@ msgstr "Temporizador"
 msgid "Log name…"
 msgstr "Nombre del registro…"
 
-#: data/ui/main_window.ui:105
+#: data/ui/main_window.ui:92
+msgid "Tags (separated by colons)…"
+msgstr "Etiquetas (separadas por dos puntos)…"
+
+#: data/ui/main_window.ui:114
 msgid "Adds a log to the list"
 msgstr "Añade un registro a la lista"
 
-#: data/ui/main_window.ui:116 src/MainWindow.vala:125
+#: data/ui/main_window.ui:125 src/MainWindow.vala:127
 msgid "Starts the timer for a log"
 msgstr "Inicia el temporizador para un registro"
 
-#: data/ui/main_window.ui:132
+#: data/ui/main_window.ui:141
 msgid "Logs"
 msgstr "Registros"
 
-#: data/ui/main_window.ui:155
+#: data/ui/main_window.ui:164
 msgid "Removes all logs from the list"
 msgstr "Elimina todos los registros de la lista"
 
-#: src/MainWindow.vala:117
+#: src/MainWindow.vala:119
 msgid "Stops the timer for a log"
 msgstr "Detiene el temporizador para un registro"
 
-#: src/MainWindow.vala:216
+#: src/MainWindow.vala:219
 msgid "Track each task's time in a simple inobtrusive way."
 msgstr "Controle el tiempo de cada tarea de forma sencilla y no intrusiva."
 
-#: src/MainWindow.vala:222
+#: src/MainWindow.vala:225
 msgid "translator-credits"
 msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
 
-#: src/MainWindow.vala:309
+#: src/MainWindow.vala:314
 msgid "Go rest for a while before continuing."
 msgstr "Descanse un rato antes de continuar."
 
-#: src/MainWindow.vala:318
+#: src/MainWindow.vala:323
 msgid "Maybe grab a snack before continuing."
 msgstr "Tal vez pueda tomar un aperitivo antes de continuar."
 
-#: src/MainWindow.vala:327
+#: src/MainWindow.vala:332
 msgid "Perhaps go get some coffee or tea before continuing."
 msgstr "Quizás pueda ir a tomar un café o un té antes de continuar."
 
-#: src/MainWindow.vala:336
+#: src/MainWindow.vala:341
 msgid "That's a big task. Let's rest a bit before continuing."
 msgstr "Es una gran tarea. Descanse un poco antes de continuar."
 
-#: src/MainWindow.vala:345
+#: src/MainWindow.vala:350
 msgid "Amazing work! But please rest a bit before continuing."
 msgstr ""
 "¡Increíble trabajo! Pero por favor, descanse un poco antes de continuar."
@@ -171,7 +200,7 @@ msgstr "Todos los archivos"
 
 #: src/ViewModels/LogViewModel.vala:53
 msgid "Clear Logs?"
-msgstr "¿Limpiar los registros?"
+msgstr "¿Eliminar los registros?"
 
 #: src/ViewModels/LogViewModel.vala:54
 msgid "Clearing means the logs here will be permanently lost with no recovery."
@@ -183,4 +212,4 @@ msgstr "Cancelar"
 
 #: src/ViewModels/LogViewModel.vala:57
 msgid "Clear"
-msgstr "Limpiar"
+msgstr "Eliminar"
