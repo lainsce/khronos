@@ -1,14 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
+# Croatian translation of io.github.lainsce.Khronos.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the io.github.lainsce.Khronos package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Milo Ivir <mail@milotype.de>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: io.github.lainsce.Khronos\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-29 23:06+0100\n"
-"PO-Revision-Date: 2021-11-29 23:08+0100\n"
+"PO-Revision-Date: 2021-12-28 19:10+0100\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
 "Language: hr\n"
@@ -33,6 +33,9 @@ msgid ""
 "Start logging any task's time to completion, with the ability to stop the "
 "timer at any moment, with notifications for longer task sessions."
 msgstr ""
+"Počni bilježiti vrijeme bilo kojeg zadatka do završetka, s mogućnošću "
+"prekidanja štoperice u bilo kojem trenutku, s obavijestima za duže sesije "
+"zadataka."
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:11
 msgid "Quit anytime with the shortcut Ctrl + Q"
@@ -44,11 +47,11 @@ msgstr "Lains"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:47
 msgid "Release: UI Refreshments"
-msgstr ""
+msgstr "Izdanje: Poboljšano korisničko sučelje"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:49
 msgid "Changed: The UI is now with a better layout."
-msgstr ""
+msgstr "Promjena: Korisničko sučelje sada ima bolji raspored."
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:55
 msgid "Release: Port to GTK4"
@@ -56,7 +59,7 @@ msgstr "Izdanje: Portiranje na GTK4"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:57
 msgid "Changed: Rewritten for GTK4."
-msgstr "Promijenjeno: Preprogramirano za GTK4."
+msgstr "Promjena: Preprogramirano za GTK4."
 
 #: data/io.github.lainsce.Khronos.desktop.in:4
 msgid "Track each task time in a simple inobtrusive way"
@@ -68,43 +71,41 @@ msgstr "Planiranje;Mjerenje vremena;"
 
 #: data/io.github.lainsce.Khronos.gschema.xml:5
 msgid "Delay between notifications"
-msgstr ""
+msgstr "Odgoda između obavještavanja"
 
 #: data/io.github.lainsce.Khronos.gschema.xml:6
 msgid "The delay between two notifications, default is 30min. in seconds."
 msgstr ""
+"Odgoda između obavještavanja, standardno je postavljeno na 30 min u "
+"sekundama."
 
 #: data/ui/main_window.ui:6
-#, fuzzy
 msgid "Export Logs as CSV…"
-msgstr "Izvezi zapise (CSV) …"
+msgstr "Izvezi zapise kao CSV …"
 
 #: data/ui/main_window.ui:10
-#, fuzzy
 msgid "Import Logs from CSV…"
-msgstr "Izvezi zapise (CSV) …"
+msgstr "Uvezi zapise iz CSV-a …"
 
 #: data/ui/main_window.ui:16
 msgid "About Khronos"
 msgstr "O programu Khronos"
 
 #: data/ui/main_window.ui:53
-#, fuzzy
 msgid "Timer"
-msgstr "Zaustavi štopericu"
+msgstr "Štoperica"
 
 #: data/ui/main_window.ui:77
-#, fuzzy
 msgid "Log name…"
-msgstr "Ime novog zapisa …"
+msgstr "Ime zapisa …"
 
 #: data/ui/main_window.ui:96
 msgid "Adds a log to the list"
-msgstr ""
+msgstr "Dodaje zapis u popis"
 
 #: data/ui/main_window.ui:106 src/MainWindow.vala:161
 msgid "Starts the timer for a log"
-msgstr ""
+msgstr "Pokreće štopericu za zapis"
 
 #: data/ui/main_window.ui:122
 msgid "Logs"
@@ -112,62 +113,59 @@ msgstr "Zapisi"
 
 #: data/ui/main_window.ui:148
 msgid "Removes all logs from the list"
-msgstr ""
+msgstr "Briše sve zapise iz popisa"
 
 #: data/ui/main_window.ui:180
-#, fuzzy
 msgid "No Logs"
-msgstr "Zapisi"
+msgstr "Nema zapisa"
 
 #: data/ui/main_window.ui:188
 msgid "Add a log on Timer tab and check later."
-msgstr ""
+msgstr "Dodaj zapis u karticu štoperice i kasnije provjeri."
 
 #: src/MainWindow.vala:153
 msgid "Stops the timer for a log"
-msgstr ""
+msgstr "Prekida štopericu za zapis"
 
 #: src/MainWindow.vala:186
 msgid "Empty the Logs List?"
-msgstr ""
+msgstr "Izbrisati popis zapisa?"
 
 #: src/MainWindow.vala:187
 msgid ""
 "Emptying this list means all the logs in it will be permanently lost with no "
 "recovery."
 msgstr ""
+"Pražnjenje ovog popisa znači da će svi zapisi u popisu biti nepovratno "
+"izbrisani."
 
 #: src/MainWindow.vala:189
 msgid "Cancel"
-msgstr ""
+msgstr "Odustani"
 
 #: src/MainWindow.vala:190
 msgid "Empty List"
-msgstr ""
+msgstr "Prazan popis"
 
 #: src/MainWindow.vala:307
 msgid "Go rest for a while before continuing."
 msgstr "Malo se odmori prije nego što nastaviš."
 
 #: src/MainWindow.vala:316
-#, fuzzy
 msgid "Maybe grab a snack before continuing."
-msgstr "Malo se odmori prije nego što nastaviš."
+msgstr "Nabavi si nešto za grickanje prije nego što nastaviš."
 
 #: src/MainWindow.vala:325
-#, fuzzy
 msgid "Perhaps go get some coffee or tea before continuing."
-msgstr "Malo se odmori prije nego što nastaviš."
+msgstr "Nabavi si kavu ili čaj prije nego što nastaviš."
 
 #: src/MainWindow.vala:334
-#, fuzzy
 msgid "That's a big task. Let's rest a bit before continuing."
-msgstr "Malo se odmori prije nego što nastaviš."
+msgstr "Ovo je veliki zadatak. Odmori se malo prije nego što nastaviš."
 
 #: src/MainWindow.vala:343
-#, fuzzy
 msgid "Amazing work! But please rest a bit before continuing."
-msgstr "Malo se odmori prije nego što nastaviš."
+msgstr "Nevjerojatan posao! Malo se odmori prije nego što nastaviš."
 
 #: src/MainWindow.vala:387
 msgid "Track each task's time in a simple inobtrusive way."
@@ -175,7 +173,7 @@ msgstr "Mjeri vrijeme za obavljanje zadataka na jednostavan i nesmetan način."
 
 #: src/MainWindow.vala:393
 msgid "translator-credits"
-msgstr "Milo Ivir <mail@milotype.de>, 2021."
+msgstr "Milo Ivir <mail@milotype.de>"
 
 #: src/Services/Dialog.vala:23 src/Services/Dialog.vala:44
 msgid "CSV files"
