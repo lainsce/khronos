@@ -10,7 +10,8 @@ Track each task's time in a simple inobtrusive way
 [![Please do not theme this app](https://stopthemingmy.app/badge.svg)](https://stopthemingmy.app)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
-<p align="center"><img src='data/shot.png'/></p>
+![Light screenshot](data/shot.png#gh-light-mode-only)
+![Dark screenshot](data/shot-dark.png#gh-dark-mode-only)
 
 <p align="center"><a href='https://flathub.org/apps/details/io.github.lainsce.Khronos'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a></p>
 
