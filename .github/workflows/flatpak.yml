@@ -15,5 +15,6 @@ jobs:
       - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
         with:
           bundle: io.github.lainsce.Khronos.Devel.flatpak
-          manifest-path: build-aux/flatpak/io.github.lainsce.Khronos.Devel.json
+          manifest-path: io.github.lainsce.Khronos.Devel.json
+          cache-key: flatpak-builder-${{ github.sha }}
           run-tests: true
