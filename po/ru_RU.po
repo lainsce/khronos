@@ -1,155 +1,186 @@
-# com.ekonomikas.merkato.
-# Copyright (C) 2022 GPL v3.
-# This file is distributed under the same license as the com.bitstower.Markets package.
-# Flávio Vasconcellos Corrêa <flavio.vcorrea at ufpel.edu.br>, 2021 - 2022.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the io.github.lainsce.Khronos package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: com.ekonomikas.merkato\n"
-"Report-Msgid-Bugs-To: flavio.vcorrea at ufpel.edu.br\n"
-"POT-Creation-Date: 2022-01-17 11:01-0300\n"
-"PO-Revision-Date: 2022-02-01 23:24+0300\n"
+"Project-Id-Version: io.github.lainsce.Khronos\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-29 23:07+0100\n"
+"PO-Revision-Date: 2022-02-02 03:34+0300\n"
 "Last-Translator: Danik2343 a.k.a Aaron <krutalevex@mail.ru>\n"
-"Language-Team: LANGUAGE <flavio.vcorrea at ufpel.edu.br>\n"
+"Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.0.1\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-SearchPath-0: src\n"
-"X-Poedit-SearchPath-1: src/beans\n"
-"X-Poedit-SearchPath-2: src/persistence\n"
-"X-Poedit-SearchPath-3: src/rest\n"
-"X-Poedit-SearchPath-4: src/tools\n"
-"X-Poedit-SearchPath-5: src/views\n"
-"X-Poedit-SearchPath-6: src/AboutDialog.vala\n"
-"X-Poedit-SearchPath-7: src/Application.vala\n"
-"X-Poedit-SearchPath-8: src/ApplicationSet.vala\n"
-"X-Poedit-SearchPath-9: src/MainWindow.vala\n"
-"X-Poedit-SearchPath-10: src/PreferencesWindow.vala\n"
-"X-Poedit-SearchPath-11: data/ui\n"
 
-#: data/ui/MktErrorView.ui:37
-msgid "Ops! Catastrophic failure."
-msgstr "Упс! Катастрофическая ошибка"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:6
+#: data/io.github.lainsce.Khronos.desktop.in:3
+msgid "Khronos"
+msgstr "Khronos"
 
-#: data/ui/MktNoSymbolView.ui:37
-msgid "No symbols here"
-msgstr "Здесь нет символов"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:7
+msgid "Log the time it took to do tasks"
+msgstr "Записывайте в журнал время, затраченное на выполнение заданий"
 
-#: data/ui/MktNoSymbolView.ui:60
-msgid "Press + to search quotes"
-msgstr "Нажмите + для поиска цитат"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:9
+msgid ""
+"Start logging any task's time to completion, with the ability to stop the "
+"timer at any moment, with notifications for longer task sessions."
+msgstr ""
+"Начните регистрировать время выполнения любой задачи, с возможностью "
+"остановить таймер в любой момент, с уведомлениями о более длительном "
+"выполнении задачи."
 
-#: data/ui/MktNoTickerView.ui:37
-msgid "No tickers found"
-msgstr "Тикеров не найдено"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:11
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Выйти из программы в любое время с помощью сочетания клавиш Ctrl + Q"
 
-#: data/ui/MktPreferencesWindow.ui:24
-msgid "General"
-msgstr "Общие"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:21
+msgid "Lains"
+msgstr "Lains"
 
-#: data/ui/MktPreferencesWindow.ui:30
-msgid "Update Interval"
-msgstr "Интервал обновления"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:47
+msgid "Release: UI Refreshments"
+msgstr "Релиз: Обновление пользовательского интерфейса"
 
-#: data/ui/MktPreferencesWindow.ui:31
-msgid "Pull data every X seconds"
-msgstr "Извлекать данные каждые X секунд"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:49
+msgid "Changed: The UI is now with a better layout."
+msgstr ""
+"Изменено: пользовательский интерфейс теперь имеет более удобную компоновку."
 
-#: data/ui/MktPreferencesWindow.ui:57
-msgid "Order"
-msgstr "Заказ"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:55
+msgid "Release: Port to GTK4"
+msgstr "Релиз: Перенос на GTK4"
 
-#: data/ui/MktPreferencesWindow.ui:63
-msgid "Custom"
-msgstr "Пользовательские"
+#: data/io.github.lainsce.Khronos.appdata.xml.in:57
+msgid "Changed: Rewritten for GTK4."
+msgstr "Изменено: Переписано для GTK4."
 
-#: data/ui/MktPreferencesWindow.ui:85
-msgid "By Title"
-msgstr "По названию"
+#: data/io.github.lainsce.Khronos.desktop.in:4
+msgid "Track each task time in a simple inobtrusive way"
+msgstr ""
+"Отслеживайте время выполнения каждой задачи простым и ненавязчивым способом"
 
-#: data/ui/MktPreferencesWindow.ui:108
-msgid "By Title (desc)"
-msgstr "По названию (описание)"
+#: data/io.github.lainsce.Khronos.desktop.in:11
+msgid "Plot;Planning;Time Tracking;"
+msgstr "Сюжет;Планирование;Отслеживание времени;"
 
-#: data/ui/MktPreferencesWindow.ui:131
-msgid "By Profit (%)"
-msgstr "По прибыванию (%)"
+#: data/io.github.lainsce.Khronos.gschema.xml:5
+msgid "Delay between notifications"
+msgstr "Задержка между уведомлениями"
 
-#: data/ui/MktPreferencesWindow.ui:154
-msgid "By Loss (%)"
-msgstr "По убыванию (%)"
+#: data/io.github.lainsce.Khronos.gschema.xml:6
+msgid "The delay between two notifications, default is 30min. in seconds."
+msgstr "Задержка между двумя уведомлениями, по умолчанию 30 мин. в секундах."
 
-#: data/ui/MktPreferencesWindow.ui:178
-msgid "Appearance"
-msgstr "Внешний вид"
+#: data/ui/main_window.ui:6
+msgid "Export Logs as CSV…"
+msgstr "Экспорт журналов в формате CSV…"
 
-#: data/ui/MktPreferencesWindow.ui:184
-msgid "Dark Theme"
-msgstr "Тёмная темя"
+#: data/ui/main_window.ui:10
+msgid "Import Logs from CSV…"
+msgstr "Импорт журналов из CSV…"
 
-#: data/ui/MktPreferencesWindow.ui:185
-msgid "Use dark GTK+ theme"
-msgstr "Использовать темную тему GTK+"
+#: data/ui/main_window.ui:16
+msgid "About Khronos"
+msgstr "О Khronos"
 
-#: data/ui/MktSymbolView.ui:42 data/ui/MktTickerView.ui:44
-msgid "Source: <a href=\"https://finance.yahoo.com/\">Yahoo Finance</a>"
-msgstr "Источник: <a href=\"https://finance.yahoo.com/\">Yahoo Finance</a>"
+#: data/ui/main_window.ui:53
+msgid "Timer"
+msgstr "Таймер"
 
-#: data/ui/MktSymbolViewBox.ui:23
-msgid "Preferences"
-msgstr "Настройки"
+#: data/ui/main_window.ui:77
+msgid "Log name…"
+msgstr "Имя журнала…"
 
-#: data/ui/MktSymbolViewBox.ui:48 data/ui/MktTickerViewBox.ui:23
-msgid "About Merkato"
-msgstr "О Merkato"
+#: data/ui/main_window.ui:96
+msgid "Adds a log to the list"
+msgstr "Добавляет журнал в список"
 
-#: data/ui/MktSymbolViewBox.ui:72
-msgid "My symbols"
-msgstr "Мои символы"
+#: data/ui/main_window.ui:106 src/MainWindow.vala:161
+msgid "Starts the timer for a log"
+msgstr "Запускает таймер для журнала"
 
-#: data/ui/MktSymbolViewBox.ui:80 data/ui/MktTickerViewBox.ui:55
-msgid "Open menu options"
-msgstr "Открыть пункты меню"
+#: data/ui/main_window.ui:122
+msgid "Logs"
+msgstr "Журналы"
 
-#: data/ui/MktSymbolViewBox.ui:111 data/ui/MktTickerViewBox.ui:47
-msgid "Search and add symbols"
-msgstr "Поиск и добавление символов"
+#: data/ui/main_window.ui:148
+msgid "Removes all logs from the list"
+msgstr "Удаляет все журналы из списка"
 
-#: data/ui/MktSymbolViewBox.ui:130
-msgid "If selected, open remove symbols mode."
-msgstr "Если выбрано, откроется режим удаления символов."
+#: data/ui/main_window.ui:180
+msgid "No Logs"
+msgstr "Нет журналов"
 
-#: data/ui/MktTickerViewBox.ui:89
-msgid "Return to watchlist"
-msgstr "Вернуться в список просмотра"
+#: data/ui/main_window.ui:188
+msgid "Add a log on Timer tab and check later."
+msgstr "Добавить журнал на вкладке Таймер и проверьте позже."
 
-#: data/ui/MktTickerViewBox.ui:119
-msgid "Insert text or ticker symbol and press <RETURN> to search"
-msgstr "Вставьте текст или символ тикера и нажмите <RETURN> для поиска"
+#: src/MainWindow.vala:153
+msgid "Stops the timer for a log"
+msgstr "Остановка таймера для журнала"
 
-#: data/ui/MktTickerViewBox.ui:129
-msgid "Search"
-msgstr "Поиск"
+#: src/MainWindow.vala:186
+msgid "Empty the Logs List?"
+msgstr "Опустошить список журналов?"
 
-#: src/AboutDialog.vala:28
-msgid "Track of your investiments."
-msgstr "Отслеживайте свои инвестиции."
+#: src/MainWindow.vala:187
+msgid ""
+"Emptying this list means all the logs in it will be permanently lost with no "
+"recovery."
+msgstr ""
+"Опустошение этого списка означает, что все журналы в нем будут навсегда "
+"потеряны без возможности восстановления."
 
-#: src/AboutDialog.vala:33
-msgid "Official webpage"
-msgstr "Официальная веб-страница"
+#: src/MainWindow.vala:189
+msgid "Cancel"
+msgstr "Отмена"
 
-#: src/AboutDialog.vala:34
+#: src/MainWindow.vala:190
+msgid "Empty List"
+msgstr "Пустой список"
+
+#: src/MainWindow.vala:307
+msgid "Go rest for a while before continuing."
+msgstr "Отдохните некоторое время, прежде чем продолжить."
+
+#: src/MainWindow.vala:316
+msgid "Maybe grab a snack before continuing."
+msgstr "Может быть, перекусите, прежде чем продолжить."
+
+#: src/MainWindow.vala:325
+msgid "Perhaps go get some coffee or tea before continuing."
+msgstr "Возможно, перед тем как продолжить, сходите за кофе или чаем."
+
+#: src/MainWindow.vala:334
+msgid "That's a big task. Let's rest a bit before continuing."
+msgstr "Это большая задача. Давайте немного отдохнем, прежде чем продолжить."
+
+#: src/MainWindow.vala:343
+msgid "Amazing work! But please rest a bit before continuing."
+msgstr ""
+"Потрясающая работа! Но, пожалуйста, отдохните немного перед продолжением."
+
+#: src/MainWindow.vala:387
+msgid "Track each task's time in a simple inobtrusive way."
+msgstr ""
+"Отслеживайте время выполнения каждой задачи простым ненавязчивым способом."
+
+#: src/MainWindow.vala:393
 msgid "translator-credits"
 msgstr "Danik2343<krutalevex@mail.ru>"
 
-#: src/views/symbol/SymbolRow.vala:96
-msgid "Market Closed"
-msgstr "Рынок закрыт"
+#: src/Services/Dialog.vala:23 src/Services/Dialog.vala:44
+msgid "CSV files"
+msgstr "CSV-файлы"
 
-#: src/views/symbol/SymbolRow.vala:100
-msgid "Market Open"
-msgstr "Рынок открыт"
+#: src/Services/Dialog.vala:27 src/Services/Dialog.vala:48
+msgid "All files"
+msgstr "All files"
