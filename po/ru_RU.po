@@ -1,0 +1,155 @@
+# com.ekonomikas.merkato.
+# Copyright (C) 2022 GPL v3.
+# This file is distributed under the same license as the com.bitstower.Markets package.
+# Flávio Vasconcellos Corrêa <flavio.vcorrea at ufpel.edu.br>, 2021 - 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: com.ekonomikas.merkato\n"
+"Report-Msgid-Bugs-To: flavio.vcorrea at ufpel.edu.br\n"
+"POT-Creation-Date: 2022-01-17 11:01-0300\n"
+"PO-Revision-Date: 2022-02-01 23:24+0300\n"
+"Last-Translator: Danik2343 a.k.a Aaron <krutalevex@mail.ru>\n"
+"Language-Team: LANGUAGE <flavio.vcorrea at ufpel.edu.br>\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: src\n"
+"X-Poedit-SearchPath-1: src/beans\n"
+"X-Poedit-SearchPath-2: src/persistence\n"
+"X-Poedit-SearchPath-3: src/rest\n"
+"X-Poedit-SearchPath-4: src/tools\n"
+"X-Poedit-SearchPath-5: src/views\n"
+"X-Poedit-SearchPath-6: src/AboutDialog.vala\n"
+"X-Poedit-SearchPath-7: src/Application.vala\n"
+"X-Poedit-SearchPath-8: src/ApplicationSet.vala\n"
+"X-Poedit-SearchPath-9: src/MainWindow.vala\n"
+"X-Poedit-SearchPath-10: src/PreferencesWindow.vala\n"
+"X-Poedit-SearchPath-11: data/ui\n"
+
+#: data/ui/MktErrorView.ui:37
+msgid "Ops! Catastrophic failure."
+msgstr "Упс! Катастрофическая ошибка"
+
+#: data/ui/MktNoSymbolView.ui:37
+msgid "No symbols here"
+msgstr "Здесь нет символов"
+
+#: data/ui/MktNoSymbolView.ui:60
+msgid "Press + to search quotes"
+msgstr "Нажмите + для поиска цитат"
+
+#: data/ui/MktNoTickerView.ui:37
+msgid "No tickers found"
+msgstr "Тикеров не найдено"
+
+#: data/ui/MktPreferencesWindow.ui:24
+msgid "General"
+msgstr "Общие"
+
+#: data/ui/MktPreferencesWindow.ui:30
+msgid "Update Interval"
+msgstr "Интервал обновления"
+
+#: data/ui/MktPreferencesWindow.ui:31
+msgid "Pull data every X seconds"
+msgstr "Извлекать данные каждые X секунд"
+
+#: data/ui/MktPreferencesWindow.ui:57
+msgid "Order"
+msgstr "Заказ"
+
+#: data/ui/MktPreferencesWindow.ui:63
+msgid "Custom"
+msgstr "Пользовательские"
+
+#: data/ui/MktPreferencesWindow.ui:85
+msgid "By Title"
+msgstr "По названию"
+
+#: data/ui/MktPreferencesWindow.ui:108
+msgid "By Title (desc)"
+msgstr "По названию (описание)"
+
+#: data/ui/MktPreferencesWindow.ui:131
+msgid "By Profit (%)"
+msgstr "По прибыванию (%)"
+
+#: data/ui/MktPreferencesWindow.ui:154
+msgid "By Loss (%)"
+msgstr "По убыванию (%)"
+
+#: data/ui/MktPreferencesWindow.ui:178
+msgid "Appearance"
+msgstr "Внешний вид"
+
+#: data/ui/MktPreferencesWindow.ui:184
+msgid "Dark Theme"
+msgstr "Тёмная темя"
+
+#: data/ui/MktPreferencesWindow.ui:185
+msgid "Use dark GTK+ theme"
+msgstr "Использовать темную тему GTK+"
+
+#: data/ui/MktSymbolView.ui:42 data/ui/MktTickerView.ui:44
+msgid "Source: <a href=\"https://finance.yahoo.com/\">Yahoo Finance</a>"
+msgstr "Источник: <a href=\"https://finance.yahoo.com/\">Yahoo Finance</a>"
+
+#: data/ui/MktSymbolViewBox.ui:23
+msgid "Preferences"
+msgstr "Настройки"
+
+#: data/ui/MktSymbolViewBox.ui:48 data/ui/MktTickerViewBox.ui:23
+msgid "About Merkato"
+msgstr "О Merkato"
+
+#: data/ui/MktSymbolViewBox.ui:72
+msgid "My symbols"
+msgstr "Мои символы"
+
+#: data/ui/MktSymbolViewBox.ui:80 data/ui/MktTickerViewBox.ui:55
+msgid "Open menu options"
+msgstr "Открыть пункты меню"
+
+#: data/ui/MktSymbolViewBox.ui:111 data/ui/MktTickerViewBox.ui:47
+msgid "Search and add symbols"
+msgstr "Поиск и добавление символов"
+
+#: data/ui/MktSymbolViewBox.ui:130
+msgid "If selected, open remove symbols mode."
+msgstr "Если выбрано, откроется режим удаления символов."
+
+#: data/ui/MktTickerViewBox.ui:89
+msgid "Return to watchlist"
+msgstr "Вернуться в список просмотра"
+
+#: data/ui/MktTickerViewBox.ui:119
+msgid "Insert text or ticker symbol and press <RETURN> to search"
+msgstr "Вставьте текст или символ тикера и нажмите <RETURN> для поиска"
+
+#: data/ui/MktTickerViewBox.ui:129
+msgid "Search"
+msgstr "Поиск"
+
+#: src/AboutDialog.vala:28
+msgid "Track of your investiments."
+msgstr "Отслеживайте свои инвестиции."
+
+#: src/AboutDialog.vala:33
+msgid "Official webpage"
+msgstr "Официальная веб-страница"
+
+#: src/AboutDialog.vala:34
+msgid "translator-credits"
+msgstr "Danik2343<krutalevex@mail.ru>"
+
+#: src/views/symbol/SymbolRow.vala:96
+msgid "Market Closed"
+msgstr "Рынок закрыт"
+
+#: src/views/symbol/SymbolRow.vala:100
+msgid "Market Open"
+msgstr "Рынок открыт"
