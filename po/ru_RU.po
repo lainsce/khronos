@@ -1,0 +1,186 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the io.github.lainsce.Khronos package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.lainsce.Khronos\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-29 23:07+0100\n"
+"PO-Revision-Date: 2022-02-02 03:34+0300\n"
+"Last-Translator: Danik2343 a.k.a Aaron <krutalevex@mail.ru>\n"
+"Language-Team: \n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:6
+#: data/io.github.lainsce.Khronos.desktop.in:3
+msgid "Khronos"
+msgstr "Khronos"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:7
+msgid "Log the time it took to do tasks"
+msgstr "Записывайте в журнал время, затраченное на выполнение заданий"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:9
+msgid ""
+"Start logging any task's time to completion, with the ability to stop the "
+"timer at any moment, with notifications for longer task sessions."
+msgstr ""
+"Начните регистрировать время выполнения любой задачи, с возможностью "
+"остановить таймер в любой момент, с уведомлениями о более длительном "
+"выполнении задачи."
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:11
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Выйти из программы в любое время с помощью сочетания клавиш Ctrl + Q"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:21
+msgid "Lains"
+msgstr "Lains"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:47
+msgid "Release: UI Refreshments"
+msgstr "Релиз: Обновление пользовательского интерфейса"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:49
+msgid "Changed: The UI is now with a better layout."
+msgstr ""
+"Изменено: пользовательский интерфейс теперь имеет более удобную компоновку."
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:55
+msgid "Release: Port to GTK4"
+msgstr "Релиз: Перенос на GTK4"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:57
+msgid "Changed: Rewritten for GTK4."
+msgstr "Изменено: Переписано для GTK4."
+
+#: data/io.github.lainsce.Khronos.desktop.in:4
+msgid "Track each task time in a simple inobtrusive way"
+msgstr ""
+"Отслеживайте время выполнения каждой задачи простым и ненавязчивым способом"
+
+#: data/io.github.lainsce.Khronos.desktop.in:11
+msgid "Plot;Planning;Time Tracking;"
+msgstr "Сюжет;Планирование;Отслеживание времени;"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:5
+msgid "Delay between notifications"
+msgstr "Задержка между уведомлениями"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:6
+msgid "The delay between two notifications, default is 30min. in seconds."
+msgstr "Задержка между двумя уведомлениями, по умолчанию 30 мин. в секундах."
+
+#: data/ui/main_window.ui:6
+msgid "Export Logs as CSV…"
+msgstr "Экспорт журналов в формате CSV…"
+
+#: data/ui/main_window.ui:10
+msgid "Import Logs from CSV…"
+msgstr "Импорт журналов из CSV…"
+
+#: data/ui/main_window.ui:16
+msgid "About Khronos"
+msgstr "О Khronos"
+
+#: data/ui/main_window.ui:53
+msgid "Timer"
+msgstr "Таймер"
+
+#: data/ui/main_window.ui:77
+msgid "Log name…"
+msgstr "Имя журнала…"
+
+#: data/ui/main_window.ui:96
+msgid "Adds a log to the list"
+msgstr "Добавляет журнал в список"
+
+#: data/ui/main_window.ui:106 src/MainWindow.vala:161
+msgid "Starts the timer for a log"
+msgstr "Запускает таймер для журнала"
+
+#: data/ui/main_window.ui:122
+msgid "Logs"
+msgstr "Журналы"
+
+#: data/ui/main_window.ui:148
+msgid "Removes all logs from the list"
+msgstr "Удаляет все журналы из списка"
+
+#: data/ui/main_window.ui:180
+msgid "No Logs"
+msgstr "Нет журналов"
+
+#: data/ui/main_window.ui:188
+msgid "Add a log on Timer tab and check later."
+msgstr "Добавить журнал на вкладке Таймер и проверьте позже."
+
+#: src/MainWindow.vala:153
+msgid "Stops the timer for a log"
+msgstr "Остановка таймера для журнала"
+
+#: src/MainWindow.vala:186
+msgid "Empty the Logs List?"
+msgstr "Опустошить список журналов?"
+
+#: src/MainWindow.vala:187
+msgid ""
+"Emptying this list means all the logs in it will be permanently lost with no "
+"recovery."
+msgstr ""
+"Опустошение этого списка означает, что все журналы в нем будут навсегда "
+"потеряны без возможности восстановления."
+
+#: src/MainWindow.vala:189
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/MainWindow.vala:190
+msgid "Empty List"
+msgstr "Пустой список"
+
+#: src/MainWindow.vala:307
+msgid "Go rest for a while before continuing."
+msgstr "Отдохните некоторое время, прежде чем продолжить."
+
+#: src/MainWindow.vala:316
+msgid "Maybe grab a snack before continuing."
+msgstr "Может быть, перекусите, прежде чем продолжить."
+
+#: src/MainWindow.vala:325
+msgid "Perhaps go get some coffee or tea before continuing."
+msgstr "Возможно, перед тем как продолжить, сходите за кофе или чаем."
+
+#: src/MainWindow.vala:334
+msgid "That's a big task. Let's rest a bit before continuing."
+msgstr "Это большая задача. Давайте немного отдохнем, прежде чем продолжить."
+
+#: src/MainWindow.vala:343
+msgid "Amazing work! But please rest a bit before continuing."
+msgstr ""
+"Потрясающая работа! Но, пожалуйста, отдохните немного перед продолжением."
+
+#: src/MainWindow.vala:387
+msgid "Track each task's time in a simple inobtrusive way."
+msgstr ""
+"Отслеживайте время выполнения каждой задачи простым ненавязчивым способом."
+
+#: src/MainWindow.vala:393
+msgid "translator-credits"
+msgstr "Danik2343<krutalevex@mail.ru>"
+
+#: src/Services/Dialog.vala:23 src/Services/Dialog.vala:44
+msgid "CSV files"
+msgstr "CSV-файлы"
+
+#: src/Services/Dialog.vala:27 src/Services/Dialog.vala:48
+msgid "All files"
+msgstr "All files"
