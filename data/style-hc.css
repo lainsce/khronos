@@ -1,0 +1,14 @@
+.content-sidebar {
+  border: 1px solid @borders;
+}
+.content-sidebar row {
+  border: 1px solid @borders;
+}
+
+.list-action-button {
+  border: 1px solid @borders;
+}
+
+.kh-tag {
+  border: 1px solid @borders;
+}

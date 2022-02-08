@@ -3,6 +3,7 @@
     <gresource prefix="/io/github/lainsce/Khronos">
       <file alias="style.css" compressed="true">style.css</file>
       <file alias="style-dark.css" compressed="true">style-dark.css</file>
+      <file alias="style-hc.css" compressed="true">style-hc.css</file>
 
       <file alias="logrow.ui" compressed="true">ui/logrow.ui</file>
       <file alias="loglistview.ui" compressed="true">ui/loglistview.ui</file>

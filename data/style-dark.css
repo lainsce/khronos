@@ -19,3 +19,10 @@
 .list-action-button.destructive-action:active {
   background: shade(#ffb4a9, 0.9);
 }
+
+.content-sidebar row {
+  background: mix(@view_bg_color,#fff,0.05);
+}
+.kh-tag {
+  background: mix(@view_bg_color,#fff,0.12);
+}

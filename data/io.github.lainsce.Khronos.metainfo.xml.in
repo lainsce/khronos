@@ -42,6 +42,14 @@
     </custom>
     <translation type="gettext">@app_id@</translation>
     <releases>
+        <release version="3.6.8" date="2022-01-05">
+            <description>
+                <p>Release: Second</p>
+                <ul>
+                    <li>Changed: The UI colors, they are now way less in your face yet are still colored. The Logs are now stylized like cards.</li>
+                </ul>
+            </description>
+        </release>
         <release version="3.6.7" date="2022-01-05">
             <description>
                 <p>Release: Nanosecond</p>

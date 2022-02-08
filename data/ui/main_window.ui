@@ -159,8 +159,8 @@
                               <property name="icon-name">user-trash-symbolic</property>
                               <property name="halign">end</property>
                               <property name="valign">end</property>
-                              <property name="margin-end">12</property>
-                              <property name="margin-bottom">12</property>
+                              <property name="margin-end">6</property>
+                              <property name="margin-bottom">6</property>
                               <property name="tooltip-text" translatable="yes">Removes all logs from the list</property>
                               <signal name="clicked" handler="on_clear_trash_requested" />
                               <style>
