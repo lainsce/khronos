@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.lainsce.Khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-15 19:10+0100\n"
-"PO-Revision-Date: 2021-12-15 19:14+0100\n"
+"POT-Creation-Date: 2022-02-09 21:03+0100\n"
+"PO-Revision-Date: 2022-02-09 21:04+0100\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -36,10 +36,23 @@ msgid "Quit anytime with the shortcut Ctrl + Q"
 msgstr "Salir en cualquier momento con el atajo Ctrl + Q"
 
 #: data/io.github.lainsce.Khronos.metainfo.xml.in:47
+msgid "Release: Second"
+msgstr "Versión: Segundo"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:49
+msgid ""
+"Changed: The UI colors, they are now way less in your face yet are still "
+"colored. The Logs are now stylized like cards."
+msgstr ""
+"Cambiado: Los colores de la interfaz de usuario, ahora son menos llamativos "
+"pero siguen siendo de color. Los registros están ahora estilizados como "
+"tarjetas."
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:55
 msgid "Release: Nanosecond"
 msgstr "Versión: Nanosegundo"
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:49
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:57
 msgid ""
 "Removed: each log's delete button, as they would be accidentally clicked and "
 "would remove the log."
@@ -47,11 +60,11 @@ msgstr ""
 "Eliminado: el botón de borrado de cada registro, ya que al ser pulsado "
 "accidentalmente eliminaba el registro."
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:55
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:63
 msgid "Release: Leap Year"
 msgstr "Versión: Año bisiesto"
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:57
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:65
 msgid ""
 "Added: Logs now have tags! Add tags in the new entry below log name, by "
 "specifying them with colons, like this: \"tag1:tag2:tag3\"."
@@ -60,31 +73,31 @@ msgstr ""
 "entrada nueva debajo del nombre del registro, especificándolas con dos "
 "puntos, así \"etiqueta1:etiqueta2:etiqueta3\"."
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:63
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:71
 msgid "Release: Tick Tock Clock"
 msgstr "Versión: Reloj Tick Tock"
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:65
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:73
 msgid "Changed: UI now sports an experimental design."
 msgstr "Cambiado: La interfaz de usuario tiene ahora un diseño experimental."
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:66
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:74
 msgid "Changed: A robust backend rewrite."
 msgstr "Cambiado: Una robusta reescritura del código."
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:72
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:80
 msgid "Release: UI Refreshments"
 msgstr "Versión: Actualizaciones de la interfaz de usuario"
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:74
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:82
 msgid "Changed: The UI is now with a better layout."
 msgstr "Cambiado: La interfaz de usuario tiene ahora un mejor diseño."
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:80
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:88
 msgid "Release: Port to GTK4"
 msgstr "Versión: Portado a GTK4"
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:82
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:90
 msgid "Changed: Rewritten for GTK4."
 msgstr "Cambiado: Reescrito para GTK4."
 
@@ -165,27 +178,28 @@ msgstr "Detiene el temporizador para un registro"
 msgid "Track each task's time in a simple inobtrusive way."
 msgstr "Controle el tiempo de cada tarea de forma sencilla y no intrusiva."
 
-#: src/MainWindow.vala:225
+#. TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
+#: src/MainWindow.vala:226
 msgid "translator-credits"
 msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
 
-#: src/MainWindow.vala:314
+#: src/MainWindow.vala:315
 msgid "Go rest for a while before continuing."
 msgstr "Descanse un rato antes de continuar."
 
-#: src/MainWindow.vala:323
+#: src/MainWindow.vala:324
 msgid "Maybe grab a snack before continuing."
 msgstr "Tal vez pueda tomar un aperitivo antes de continuar."
 
-#: src/MainWindow.vala:332
+#: src/MainWindow.vala:333
 msgid "Perhaps go get some coffee or tea before continuing."
 msgstr "Quizás pueda ir a tomar un café o un té antes de continuar."
 
-#: src/MainWindow.vala:341
+#: src/MainWindow.vala:342
 msgid "That's a big task. Let's rest a bit before continuing."
 msgstr "Es una gran tarea. Descanse un poco antes de continuar."
 
-#: src/MainWindow.vala:350
+#: src/MainWindow.vala:351
 msgid "Amazing work! But please rest a bit before continuing."
 msgstr ""
 "¡Increíble trabajo! Pero por favor, descanse un poco antes de continuar."
