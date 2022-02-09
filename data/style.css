@@ -1,8 +1,8 @@
-@define-color accent_color #813d9c;
-@define-color accent_bg_color #623077;
-@define-color accent_fg_color #fefafe;
-@define-color accent_secondary_bg_color #f2dcf4;
-@define-color accent_secondary_fg_color #241728;
+@define-color accent_color #904db2;
+@define-color accent_bg_color #E4B5FF;
+@define-color accent_fg_color #3c0050;
+@define-color accent_secondary_bg_color #EADAF4;
+@define-color accent_secondary_fg_color #211527;
 @define-color window_bg_color #f2eff3;
 @define-color view_bg_color #fefbff;
 @define-color headerbar_bg_color #f2eff3;
@@ -62,14 +62,14 @@ headerbar {
   background: shade(@accent_secondary_bg_color, 0.95);
 }
 .list-action-button.destructive-action {
-  background: #6a595f;
-  color: #ffffff;
+  background: #F2DCE3;
+  color: #26161C;
 }
 .list-action-button.destructive-action:hover {
-  background: shade(#6a595f, 1.02);
+  background: shade(#F2DCE3, 1.02);
 }
 .list-action-button.destructive-action:active {
-  background: shade(#6a595f, 0.95);
+  background: shade(#F2DCE3, 0.95);
 }
 
 .content-sidebar {
@@ -78,7 +78,7 @@ headerbar {
 }
 
 .content-sidebar row {
-  background: mix(@view_bg_color,#151515,0.05);
+  background: mix(@view_bg_color,@view_fg_color,0.05);
   border-radius: 8px;
   margin: 6px;
   margin-top: 3px;
@@ -92,7 +92,7 @@ headerbar {
   margin: 0;
 }
 .kh-tag {
-  background: mix(@view_bg_color,#151515,0.12);
+  background: mix(@view_bg_color,@view_fg_color,0.12);
   border-radius: 8px;
   padding: 8px;
 }

@@ -1,28 +1,21 @@
-@define-color accent_color @purple_1;
-@define-color accent_bg_color @purple_1;
-@define-color accent_fg_color #530469;
-@define-color accent_secondary_bg_color #fad8ff;
-@define-color accent_secondary_fg_color #6b2589;
-@define-color window_bg_color #1e1a1e;
-@define-color view_bg_color #2e2a2e;
-@define-color headerbar_bg_color #1e1a1e;
-@define-color popover_bg_color #2e2a2e;
-@define-color popover_fg_color #f8f0f8;
-@define-color window_fg_color #f8f0f8;
-@define-color view_fg_color #f8f0f8;
-@define-color headerbar_fg_color #f8f0f8;
+@define-color accent_color #904db2;
+@define-color accent_bg_color #5E147B;
+@define-color accent_fg_color #E4B5FF;
+@define-color accent_secondary_bg_color #4c4053;
+@define-color accent_secondary_fg_color #EADAF4;
+@define-color window_bg_color #1c1b1d;
+@define-color view_bg_color #312f32;
+@define-color headerbar_bg_color #1c1b1d;
+@define-color popover_bg_color #312f32;
+@define-color popover_fg_color #E4E1E5;
+@define-color window_fg_color #E4E1E5;
+@define-color view_fg_color #E4E1E5;
+@define-color headerbar_fg_color #E4E1E5;
 
 .list-action-button.destructive-action {
-  background: #ffb4a9;
-  color: #930006;
+  background: #524247;
+  color: #F2DCE3;
 }
 .list-action-button.destructive-action:active {
-  background: shade(#ffb4a9, 0.9);
-}
-
-.content-sidebar row {
-  background: mix(@view_bg_color,#fff,0.05);
-}
-.kh-tag {
-  background: mix(@view_bg_color,#fff,0.12);
+  background: shade(#524247, 0.9);
 }
