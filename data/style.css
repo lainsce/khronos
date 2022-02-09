@@ -62,14 +62,14 @@ headerbar {
   background: shade(@accent_secondary_bg_color, 0.95);
 }
 .list-action-button.destructive-action {
-  background: #ffdad4;
-  color: #410001;
+  background: #6a595f;
+  color: #ffffff;
 }
 .list-action-button.destructive-action:hover {
-  background: shade(#ffdad4, 1.02);
+  background: shade(#6a595f, 1.02);
 }
 .list-action-button.destructive-action:active {
-  background: shade(#ffdad4, 0.95);
+  background: shade(#6a595f, 0.95);
 }
 
 .content-sidebar {
