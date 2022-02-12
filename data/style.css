@@ -96,3 +96,8 @@ headerbar {
   border-radius: 8px;
   padding: 8px;
 }
+
+.kh-bar box {
+  border: none;
+  box-shadow: none;
+}
