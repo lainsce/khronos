@@ -11,6 +11,7 @@
 @define-color window_fg_color #1e1a1e;
 @define-color view_fg_color #1e1a1e;
 @define-color headerbar_fg_color #1e1a1e;
+@define-color borders alpha(#7d747e, 0.5);
 
 .solid-csd {
   box-shadow: none;
