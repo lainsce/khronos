@@ -13,9 +13,12 @@
 @define-color headerbar_fg_color #E4E1E5;
 
 .list-action-button.destructive-action {
-  background: #524247;
-  color: #F2DCE3;
+  background: #8c1d18;
+  color: #f2b8b5;
+}
+.list-action-button.destructive-action:hover {
+  background: shade(#8c1d18, 1.02);
 }
 .list-action-button.destructive-action:active {
-  background: shade(#524247, 0.9);
+  background: shade(#8c1d18, 0.9);
 }
