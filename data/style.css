@@ -45,6 +45,7 @@ headerbar {
 .accent-button {
   background: @accent_bg_color;
   color: @accent_fg_color;
+  min-width:106px;
 }
 .accent-button:hover {
   background: shade(@accent_bg_color, 1.02);

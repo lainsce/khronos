@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020-2021 Lains
+* Copyright (c) 2020-2022 Lains
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -30,9 +30,21 @@ namespace Khronos {
         [GtkChild]
         public unowned Gtk.Label column_time_label;
         [GtkChild]
+        public unowned Gtk.Label column_label;
+        [GtkChild]
+        public unowned Khronos.TagHolder tag_holder;
+        [GtkChild]
         public unowned Gtk.Button add_log_button;
         [GtkChild]
+        public unowned Gtk.Button reset_button;
+        [GtkChild]
         public unowned Gtk.Button timer_button;
+        [GtkChild]
+        public unowned Gtk.Button stop_timer_button;
+        [GtkChild]
+        public unowned Adw.ButtonContent timer_button_content;
+        [GtkChild]
+        public unowned Adw.PreferencesGroup logs_group;
         [GtkChild]
         public unowned Gtk.MenuButton menu_button;
         [GtkChild]
@@ -106,29 +118,73 @@ namespace Khronos {
             }
             set_timeouts ();
 
+            trash_button.set_sensitive (false);
+            stop_timer_button.visible = false;
+            reset_button.visible = false;
+            add_log_button.visible = false;
+            column_label.visible = false;
+            tag_holder.visible = false;
+
+            set_show_logs.begin ();
+
             timer_button.clicked.connect (() => {
                 if (start != true) {
                     start = true;
                     dt = new GLib.DateTime.now_local ();
                     // For some reason, add() is closer to real time than add_seconds()
+                    GLib.Source.remove(timer_id);
                     timer_id = GLib.Timeout.add (998, () => {
                         timer ();
                         return true;
-                    });;
-                    timer_button.icon_name = "media-playback-stop-symbolic";
-                    timer_button.tooltip_text = _("Stops the timer for a log");
-                    timer_button.get_style_context ().remove_class ("accent-button");
+                    });
+                    timer_button_content.icon_name = "media-playback-pause-symbolic";
+                    timer_button.tooltip_text = _("Pauses the timer for a log");
+                    timer_button_content.label = _("Pause Timer");
                     timer_button.get_style_context ().add_class ("destructive-action");
                     add_log_button.sensitive = false;
+                    stop_timer_button.visible = true;
+                    reset_button.visible = true;
+
+                    column_entry.visible = false;
+                    column_tag_entry.visible = false;
+                    column_label.visible = true;
+                    tag_holder.visible = true;
+
+                    column_label.label = column_entry.text;
+
+                    string[] tags = column_tag_entry.text.split(":");
+                    foreach (var t in tags) {
+                        var build = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+                        var tagobj = new Gtk.Label (t);
+                        build.append(tagobj);
+                        tag_holder.append(build);
+                        build.add_css_class ("kh-tag");
+                    }
                 } else {
                     start = false;
-                    GLib.Source.remove(timer_id);
-                    timer_button.icon_name = "media-playback-start-symbolic";
+                    timer_button_content.icon_name = "media-playback-start-symbolic";
                     timer_button.tooltip_text = _("Starts the timer for a log");
+                    timer_button_content.label = _("Start Timer");
                     timer_button.get_style_context ().remove_class ("destructive-action");
-                    timer_button.get_style_context ().add_class ("accent-button");
                     add_log_button.sensitive = true;
+                    stop_timer_button.sensitive = true;
+                    reset_button.sensitive = true;
                 }
+            });
+
+            stop_timer_button.clicked.connect (() => {
+                start = false;
+                GLib.Source.remove(timer_id);
+                timer_button_content.icon_name = "media-playback-start-symbolic";
+                timer_button.tooltip_text = _("Starts the timer for a log");
+                timer_button_content.label = _("Start Timer");
+                timer_button.get_style_context ().remove_class ("destructive-action");
+                add_log_button.sensitive = true;
+                add_log_button.visible = true;
+                reset_button.sensitive = true;
+                stop_timer_button.visible = false;
+                reset_button.visible = true;
+                timer_button.visible = false;
             });
 
             column_entry.changed.connect (() => {
@@ -146,7 +202,7 @@ namespace Khronos {
             if (Config.DEVELOPMENT)
                 add_css_class ("devel");
 
-            this.set_size_request (360, 360);
+            this.set_size_request (360, 500);
             this.show ();
         }
 
@@ -171,6 +227,37 @@ namespace Khronos {
             column_entry.text = "";
             column_tag_entry.text = "";
             view_model.create_new_log (log);
+            reset_button.sensitive = true;
+            trash_button.set_sensitive (true);
+        }
+
+        [GtkCallback]
+        public void on_reset_requested () {
+            reset_timer ();
+            if (start != true) {
+                dt = null;
+            }
+            is_modified = false;
+            column_entry.text = "";
+            column_tag_entry.text = "";
+            column_label.label = "";
+            reset_button.sensitive = false;
+            timer_button.visible = true;
+            stop_timer_button.visible = false;
+            reset_button.visible = false;
+            add_log_button.visible = false;
+
+            column_entry.visible = true;
+            column_tag_entry.visible = true;
+            column_label.visible = false;
+            tag_holder.visible = false;
+
+            var child = tag_holder.get_first_child ();
+            while (child != null) {
+              var temp = child.get_next_sibling ();
+              child.unparent ();
+              child = temp;
+            }
         }
 
         [GtkCallback]
@@ -186,6 +273,18 @@ namespace Khronos {
         [GtkCallback]
         void on_clear_trash_requested () {
             view_model.delete_trash.begin (this);
+        }
+
+        public async void set_show_logs () {
+            var vm_logs = yield view_model.list_logs ();
+            if (vm_logs == null) {
+                logs_group.visible = false;
+            } else {
+                if (vm_logs.length () != 0) {
+                    logs_group.visible = true;
+                    trash_button.set_sensitive (true);
+                }
+            }
         }
 
         public void action_export () {
@@ -205,7 +304,7 @@ namespace Khronos {
         }
 
         public void action_about () {
-            const string COPYRIGHT = "Copyright \xc2\xa9 2019-2021 Paulo \"Lains\" Galardi\n";
+            const string COPYRIGHT = "Copyright \xc2\xa9 2019-2022 Paulo \"Lains\" Galardi\n";
 
             const string? AUTHORS[] = {
                 "Paulo \"Lains\" Galardi",

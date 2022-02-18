@@ -59,6 +59,7 @@ sources = [
   'src/Services/FileManager.vala',
   'src/Services/Dialog.vala',
   'src/Widgets/LogRowContent.vala',
+  'src/Widgets/TagHolder.vala',
 ]
 
 dependencies = [

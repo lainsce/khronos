@@ -1,5 +1,5 @@
 /*
-* Copyright (C) 2017-2021 Lains
+* Copyright (C) 2017-2022 Lains
 *
 * This program is free software; you can redistribute it &&/or
 * modify it under the terms of the GNU General Public
@@ -60,6 +60,8 @@ public class Khronos.LogViewModel : Object {
             switch (response_id) {
                 case Gtk.ResponseType.OK:
                     depopulate_trashs.begin ();
+                    win.logs_group.set_sensitive (false);
+                    win.trash_button.set_sensitive (false);
                     dialog.close ();
                     break;
                 case Gtk.ResponseType.NO:
@@ -85,6 +87,11 @@ public class Khronos.LogViewModel : Object {
     async void populate_logs () {
         var logs = yield repository.get_logs ();
         this.logs.add_all (logs);
+    }
+
+    public async List<Log> list_logs () {
+        var logs = yield repository.get_logs ();
+        return logs;
     }
 
     async void depopulate_trashs () {
