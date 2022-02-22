@@ -59,7 +59,8 @@ namespace Khronos {
         private uint min = 0;
         private uint hrs = 0;
 
-        public GLib.DateTime dt;
+        public GLib.DateTime dt_start;
+        public GLib.DateTime dt_stop;
         public unowned Gtk.Application app { get; construct; }
         public LogViewModel view_model { get; construct; }
 
@@ -128,7 +129,9 @@ namespace Khronos {
             timer_button.clicked.connect (() => {
                 if (start != true) {
                     start = true;
-                    dt = new GLib.DateTime.now_local ();
+                    if (dt_start == null) {
+                        dt_start = new GLib.DateTime.now_local ();
+                    }
                     // For some reason, add() is closer to real time than add_seconds()
                     GLib.Source.remove(timer_id);
                     timer_id = GLib.Timeout.add (998, () => {
@@ -169,6 +172,7 @@ namespace Khronos {
                     }
                 } else {
                     start = false;
+                    GLib.Source.remove(timer_id);
                     timer_button_content.icon_name = "media-playback-start-symbolic";
                     timer_button.tooltip_text = _("Starts the timer for a log");
                     timer_button_content.label = _("Start Timer");
@@ -181,6 +185,7 @@ namespace Khronos {
 
             stop_timer_button.clicked.connect (() => {
                 start = false;
+                dt_stop = new GLib.DateTime.now_local ();
                 GLib.Source.remove(timer_id);
                 timer_button_content.icon_name = "media-playback-start-symbolic";
                 timer_button.tooltip_text = _("Starts the timer for a log");
@@ -218,17 +223,12 @@ namespace Khronos {
             var log = new Log ();
             log.name = column_entry.text;
             log.timedate = "%s\n%s – %s".printf(column_time_label.label,
-                                               ("%s").printf (dt.format ("%a, %d/%m %H∶%M∶%S")),
-                                               ("%s").printf (dt.add_full (0,
-                                                                           0,
-                                                                           0,
-                                                                           (int)hrs,
-                                                                           (int)min,
-                                                                           (int)sec).format ("%H∶%M∶%S")));
+                                               ("%s").printf (dt_start.format ("%a, %d/%m %H∶%M∶%S")),
+                                               ("%s").printf (dt_stop.format ("%H∶%M∶%S")));
             log.tags = column_tag_entry.text;
             reset_timer ();
             if (start != true) {
-                dt = null;
+                dt_start = null;
             }
             is_modified = true;
             column_entry.text = "";
@@ -243,7 +243,7 @@ namespace Khronos {
         public void on_reset_requested () {
             reset_timer ();
             if (start != true) {
-                dt = null;
+                dt_start = null;
             }
             is_modified = false;
             column_entry.text = "";
