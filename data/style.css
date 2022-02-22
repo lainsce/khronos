@@ -28,9 +28,24 @@ headerbar {
   box-shadow: none;
 }
 
+.action-button {
+  padding: 10px;
+  border-radius: 999px;
+}
+.action-button.destructive-action {
+  background: #f9dedc;
+  color: #410e0b;
+}
+.action-button.destructive-action:hover {
+  background: shade(#f9dedc, 1.02);
+}
+.action-button.destructive-action:active {
+  background: shade(#f9dedc, 0.95);
+}
+
 .list-action-button {
-  padding: 8px;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 12px;
   box-shadow: 0 1px 3px 0 alpha(#151515, 0.3),
               0 4px 8px 3px alpha(#151515, 0.15);
 }
@@ -102,4 +117,12 @@ headerbar {
 .kh-bar box {
   border: none;
   box-shadow: none;
+}
+
+.sep {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  padding: 1px;
+  border-radius: 8px;
+  background: mix(@view_bg_color,@view_fg_color,0.05);
 }

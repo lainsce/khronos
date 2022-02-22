@@ -60,8 +60,6 @@ public class Khronos.LogViewModel : Object {
             switch (response_id) {
                 case Gtk.ResponseType.OK:
                     depopulate_trashs.begin ();
-                    win.logs_group.visible = false;
-                    win.trash_button.set_sensitive (false);
                     dialog.close ();
                     break;
                 case Gtk.ResponseType.NO:

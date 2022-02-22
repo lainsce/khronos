@@ -125,8 +125,6 @@ namespace Khronos {
             column_label.visible = false;
             tag_holder.visible = false;
 
-            set_show_logs.begin ();
-
             timer_button.clicked.connect (() => {
                 if (start != true) {
                     start = true;
@@ -152,6 +150,15 @@ namespace Khronos {
 
                     column_label.label = column_entry.text;
 
+                    // Clean it up...
+                    var child = tag_holder.get_first_child ();
+                    while (child != null) {
+                      var temp = child.get_next_sibling ();
+                      child.unparent ();
+                      child = temp;
+                    }
+
+                    // ...before you populate.
                     string[] tags = column_tag_entry.text.split(":");
                     foreach (var t in tags) {
                         var build = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
@@ -202,7 +209,7 @@ namespace Khronos {
             if (Config.DEVELOPMENT)
                 add_css_class ("devel");
 
-            this.set_size_request (360, 500);
+            this.set_size_request (360, 360);
             this.show ();
         }
 
@@ -229,6 +236,7 @@ namespace Khronos {
             view_model.create_new_log (log);
             reset_button.sensitive = true;
             trash_button.set_sensitive (true);
+            logs_group.visible = true;
         }
 
         [GtkCallback]
@@ -273,18 +281,6 @@ namespace Khronos {
         [GtkCallback]
         void on_clear_trash_requested () {
             view_model.delete_trash.begin (this);
-        }
-
-        public async void set_show_logs () {
-            var vm_logs = yield view_model.list_logs ();
-            if (vm_logs == null) {
-                logs_group.visible = false;
-            } else {
-                if (vm_logs.length () != 0) {
-                    logs_group.visible = true;
-                    trash_button.set_sensitive (true);
-                }
-            }
         }
 
         public void action_export () {

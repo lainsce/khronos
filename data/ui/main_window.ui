@@ -147,7 +147,7 @@
                         <property name="sensitive">0</property>
                         <property name="tooltip-text" translatable="yes">Stops the timer for a log</property>
                         <style>
-                          <class name="list-action-button"/>
+                          <class name="action-button"/>
                           <class name="destructive-action"/>
                         </style>
                       </object>
@@ -174,7 +174,7 @@
                         <property name="tooltip-text" translatable="yes">Resets the timer</property>
                         <signal name="clicked" handler="on_reset_requested" />
                         <style>
-                          <class name="list-action-button"/>
+                          <class name="action-button"/>
                           <class name="accent-secondary-button"/>
                         </style>
                       </object>
@@ -182,44 +182,63 @@
                   </object>
                 </child>
                 <child>
-                  <object class="AdwPreferencesGroup" id="logs_group">
-                    <property name="title" translatable="yes">Logs</property>
-                    <property name="margin-top">24</property>
-                    <property name="vexpand">1</property>
-                    <property name="header-suffix">
-                      <object class="GtkButton" id="trash_button">
-                        <property name="tooltip-text" translatable="yes">Removes all logs from the list</property>
-                        <child>
-                          <object class="AdwButtonContent">
-                            <property name="icon-name">user-trash-symbolic</property>
-                            <property name="label" translatable="yes">Clear Logs</property>
-                          </object>
-                        </child>
-                        <signal name="clicked" handler="on_clear_trash_requested" />
-                        <style>
-                          <class name="flat"/>
-                        </style>
-                      </object>
-                    </property>
-                    <child>
-                      <object class="KhronosLogListView" id="listview">
-                        <property name="vexpand">1</property>
-                        <signal name="new_log_requested" handler="on_new_log_requested" />
-                        <signal name="log_update_requested" handler="on_log_update_requested" />
-                        <signal name="log_removal_requested" handler="on_log_removal_requested" />
-                        <binding name="logs">
-                          <lookup name="logs" type="KhronosLogViewModel">
-                            <lookup name="view-model">KhronosMainWindow</lookup>
-                          </lookup>
-                        </binding>
-                        <binding name="view-model">
-                          <lookup name="view-model">KhronosMainWindow</lookup>
-                        </binding>
-                      </object>
-                    </child>
+                  <object class="GtkToggleButton" id="view_logs_button">
+                    <property name="icon-name">format-justify-fill-symbolic</property>
+                    <property name="valign">center</property>
+                    <property name="halign">end</property>
+                    <property name="margin-top">6</property>
+                    <property name="tooltip-text" translatable="yes">Shows/Hides the logs list</property>
+                    <style>
+                      <class name="action-button"/>
+                    </style>
                   </object>
                 </child>
-              </object>
+                <child>
+                  <object class="GtkRevealer">
+                  <binding name="reveal-child">
+                    <lookup name="active">view_logs_button</lookup>
+                  </binding>
+                  <child>
+                    <object class="AdwPreferencesGroup" id="logs_group">
+                      <property name="title" translatable="yes">Logs</property>
+                      <property name="margin-top">24</property>
+                      <property name="vexpand">1</property>
+                      <property name="header-suffix">
+                        <object class="GtkButton" id="trash_button">
+                          <property name="tooltip-text" translatable="yes">Removes all logs from the list</property>
+                          <child>
+                            <object class="AdwButtonContent">
+                              <property name="icon-name">user-trash-symbolic</property>
+                              <property name="label" translatable="yes">Clear Logs</property>
+                            </object>
+                          </child>
+                          <signal name="clicked" handler="on_clear_trash_requested" />
+                          <style>
+                            <class name="flat"/>
+                          </style>
+                        </object>
+                      </property>
+                      <child>
+                        <object class="KhronosLogListView" id="listview">
+                          <property name="vexpand">1</property>
+                          <signal name="new_log_requested" handler="on_new_log_requested" />
+                          <signal name="log_update_requested" handler="on_log_update_requested" />
+                          <signal name="log_removal_requested" handler="on_log_removal_requested" />
+                          <binding name="logs">
+                            <lookup name="logs" type="KhronosLogViewModel">
+                              <lookup name="view-model">KhronosMainWindow</lookup>
+                            </lookup>
+                          </binding>
+                          <binding name="view-model">
+                            <lookup name="view-model">KhronosMainWindow</lookup>
+                          </binding>
+                        </object>
+                      </child>
+                    </object>
+                  </child>
+                </object>
+              </child>
+            </object>
           </child>
         </object>
       </child>
@@ -227,4 +246,3 @@
   </child>
 </template>
 </interface>
-
