@@ -195,7 +195,11 @@
                 </child>
                 <child>
                   <object class="GtkRevealer">
+                    <property name="height-request">185</property>
                   <binding name="reveal-child">
+                    <lookup name="active">view_logs_button</lookup>
+                  </binding>
+                  <binding name="visible">
                     <lookup name="active">view_logs_button</lookup>
                   </binding>
                   <child>
