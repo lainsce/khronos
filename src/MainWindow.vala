@@ -24,6 +24,8 @@ namespace Khronos {
 
         // Widgets
         [GtkChild]
+        public unowned Gtk.Box controls;
+        [GtkChild]
         public unowned Gtk.Entry column_entry;
         [GtkChild]
         public unowned Gtk.Entry column_tag_entry;
@@ -44,13 +46,13 @@ namespace Khronos {
         [GtkChild]
         public unowned Adw.ButtonContent timer_button_content;
         [GtkChild]
-        public unowned Adw.PreferencesGroup logs_group;
-        [GtkChild]
         public unowned Gtk.MenuButton menu_button;
         [GtkChild]
-        public unowned Gtk.Button trash_button;
-        [GtkChild]
         public unowned LogListView listview;
+        [GtkChild]
+        public unowned Gtk.Stack event_stack;
+        [GtkChild]
+        public unowned Gtk.SearchEntry event_searchbar;
 
         public bool is_modified {get; set; default = false;}
         public bool start = false;
@@ -119,12 +121,12 @@ namespace Khronos {
             }
             set_timeouts ();
 
-            trash_button.set_sensitive (false);
             stop_timer_button.visible = false;
             reset_button.visible = false;
             add_log_button.visible = false;
             column_label.visible = false;
             tag_holder.visible = false;
+            event_searchbar.visible = false;
 
             timer_button.clicked.connect (() => {
                 if (start != true) {
@@ -211,10 +213,7 @@ namespace Khronos {
                 timer_button.activate ();
             });
 
-            if (Config.DEVELOPMENT)
-                add_css_class ("devel");
-
-            this.set_size_request (360, 360);
+            this.set_size_request (360, 500);
             this.show ();
         }
 
@@ -235,8 +234,6 @@ namespace Khronos {
             column_tag_entry.text = "";
             view_model.create_new_log (log);
             reset_button.sensitive = true;
-            trash_button.set_sensitive (true);
-            logs_group.visible = true;
         }
 
         [GtkCallback]
@@ -279,8 +276,19 @@ namespace Khronos {
         }
 
         [GtkCallback]
-        void on_clear_trash_requested () {
-            view_model.delete_trash.begin (this);
+        void on_timer_stack_requested () {
+            event_stack.set_visible_child_name ("timer");
+            event_searchbar.visible = false;
+            controls.visible = true;
+        }
+
+        [GtkCallback]
+        void on_logs_stack_requested () {
+            event_stack.set_visible_child_name ("logs");
+            uint num = view_model.logs.get_n_items ();
+            event_searchbar.visible = true;
+            event_searchbar.placeholder_text = num.to_string() + " " + (_("events"));
+            controls.visible = false;
         }
 
         public void action_export () {
@@ -406,7 +414,7 @@ namespace Khronos {
         }
 
         public void notification1 () {
-            var notification1 = new GLib.Notification ("%i minutes have passed".printf(NOTIF_DELAY));
+            var notification1 = new GLib.Notification ("%i minutes have passed".printf(NOTIF_DELAY/60));
             notification1.set_body (_("Go rest for a while before continuing."));
             var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification1.set_icon (icon);
@@ -415,7 +423,7 @@ namespace Khronos {
         }
 
         public void notification2 () {
-            var notification2 = new GLib.Notification ("%i minutes have passed".printf((int) GLib.Math.floor (NOTIF_DELAY*1.5)));
+            var notification2 = new GLib.Notification ("%i minutes have passed".printf((int) GLib.Math.floor (NOTIF_DELAY*1.5)/60));
             notification2.set_body (_("Maybe grab a snack before continuing."));
             var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification2.set_icon (icon);
@@ -424,7 +432,7 @@ namespace Khronos {
         }
 
         public void notification3 () {
-            var notification3 = new GLib.Notification ("%i minutes have passed".printf(NOTIF_DELAY*2));
+            var notification3 = new GLib.Notification ("%i minutes have passed".printf((NOTIF_DELAY*2)/60));
             notification3.set_body (_("Perhaps go get some coffee or tea before continuing."));
             var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification3.set_icon (icon);
@@ -433,7 +441,7 @@ namespace Khronos {
         }
 
         public void notification4 () {
-            var notification4 = new GLib.Notification ("%i minutes have passed".printf((int) GLib.Math.floor (NOTIF_DELAY*2.5)));
+            var notification4 = new GLib.Notification ("%i minutes have passed".printf((int) GLib.Math.floor (NOTIF_DELAY*2.5)/60));
             notification4.set_body (_("That's a big task. Let's rest a bit before continuing."));
             var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification4.set_icon (icon);
@@ -442,7 +450,7 @@ namespace Khronos {
         }
 
         public void notification5 () {
-            var notification5 = new GLib.Notification ("%i minutes have passed".printf(NOTIF_DELAY*3));
+            var notification5 = new GLib.Notification ("%i minutes have passed".printf((NOTIF_DELAY*3)/60));
             notification5.set_body (_("Amazing work! But please rest a bit before continuing."));
             var icon = new GLib.ThemedIcon ("appointment-symbolic");
             notification5.set_icon (icon);

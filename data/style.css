@@ -3,19 +3,16 @@
 @define-color accent_fg_color #3c0050;
 @define-color accent_secondary_bg_color #EADAF4;
 @define-color accent_secondary_fg_color #211527;
-@define-color window_bg_color #f2eff3;
-@define-color view_bg_color #fefbff;
-@define-color headerbar_bg_color #f2eff3;
-@define-color popover_bg_color #fefbff;
-@define-color popover_fg_color #1e1a1e;
-@define-color window_fg_color #1e1a1e;
-@define-color view_fg_color #1e1a1e;
-@define-color headerbar_fg_color #1e1a1e;
-@define-color borders alpha(#7d747e, 0.5);
+@define-color window_bg_color #fff;
+@define-color headerbar_bg_color #fff;
 
 .solid-csd {
   box-shadow: none;
   outline: 1px solid @borders;
+}
+
+.main-box {
+  background: linear-gradient(135deg, @window_bg_color, mix(@window_bg_color, @accent_bg_color, 0.2));
 }
 
 .kh-title {
@@ -26,6 +23,7 @@
 headerbar {
   border-bottom: none;
   box-shadow: none;
+  background: none;
 }
 
 .action-button {
@@ -90,14 +88,12 @@ headerbar {
 }
 
 .content-sidebar {
-  background: @view_bg_color;
-  border-radius: 8px;
+  background: none;
 }
 
 .content-sidebar row {
-  background: mix(@view_bg_color,@view_fg_color,0.05);
+  background: alpha(@view_fg_color,0.05);
   border-radius: 8px;
-  margin: 6px;
   margin-top: 3px;
 }
 .content-sidebar row:first-child {
@@ -109,7 +105,7 @@ headerbar {
   margin: 0;
 }
 .kh-tag {
-  background: mix(@view_bg_color,@view_fg_color,0.12);
+  background: alpha(@view_fg_color,0.11);
   border-radius: 8px;
   padding: 8px;
 }
@@ -119,10 +115,18 @@ headerbar {
   box-shadow: none;
 }
 
-.sep {
-  margin-top: 6px;
-  margin-bottom: 6px;
-  padding: 1px;
-  border-radius: 8px;
-  background: mix(@view_bg_color,@view_fg_color,0.05);
+.stack-button {
+  font-size: 1.5rem;
+  font-weight: 300;
+  padding: 0;
+  margin: 0;
+}
+
+.stack-button:checked {
+  font-weight: 600;
+  background: none;
+}
+
+.search-bar {
+  border-radius: 999px;
 }

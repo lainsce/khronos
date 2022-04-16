@@ -1,5 +1,5 @@
 project('io.github.lainsce.Khronos', 'vala',
-        version: '3.6.8',
+        version: '3.7.0',
         meson_version: '>= 0.59.0'
 )
 

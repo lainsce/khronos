@@ -3,15 +3,8 @@
 @define-color accent_fg_color #E4B5FF;
 @define-color accent_secondary_bg_color #4c4053;
 @define-color accent_secondary_fg_color #EADAF4;
-@define-color window_bg_color #1c1b1d;
-@define-color view_bg_color #312f32;
-@define-color headerbar_bg_color #1c1b1d;
-@define-color popover_bg_color #312f32;
-@define-color popover_fg_color #E4E1E5;
-@define-color window_fg_color #E4E1E5;
-@define-color view_fg_color #E4E1E5;
-@define-color headerbar_fg_color #E4E1E5;
-@define-color borders alpha(#978e97, 0.5);
+@define-color window_bg_color #111;
+@define-color headerbar_bg_color #111;
 
 .action-button.destructive-action {
   background: #8c1d18;

@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-<menu id="main_menu">
-  <section>
-    <item>
-      <attribute name="label" translatable="yes">Export Logs as CSV…</attribute>
-      <attribute name="action">win.export</attribute>
-    </item>
-    <item>
-      <attribute name="label" translatable="yes">Import Logs from CSV…</attribute>
-      <attribute name="action">win.import</attribute>
-    </item>
-  </section>
-  <section>
-    <item>
-      <attribute name="label" translatable="yes">About Khronos</attribute>
-      <attribute name="action">win.about</attribute>
-    </item>
-  </section>
-</menu>
-<template class="KhronosMainWindow" parent="AdwApplicationWindow">
+  <menu id="main_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Export Logs as CSV…</attribute>
+        <attribute name="action">win.export</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Import Logs from CSV…</attribute>
+        <attribute name="action">win.import</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">About Khronos</attribute>
+        <attribute name="action">win.about</attribute>
+      </item>
+    </section>
+  </menu>
+  <template class="KhronosMainWindow" parent="AdwApplicationWindow">
     <child>
       <object class="GtkBox">
         <property name="orientation">vertical</property>
+        <style>
+          <class name="main-box"/>
+        </style>
         <child>
           <object class="AdwHeaderBar" id="timer_header">
             <property name="centering-policy">strict</property>
@@ -40,213 +43,238 @@
         </child>
         <child>
           <object class="GtkBox">
-            <property name="orientation">vertical</property>
-            <property name="margin-bottom">6</property>
-            <property name="margin-start">6</property>
-            <property name="margin-end">6</property>
-            <property name="hexpand">1</property>
-            <style>
-              <class name="content-sidebar"/>
-            </style>
+            <property name="margin-start">18</property>
+            <property name="margin-end">18</property>
+            <property name="spacing">12</property>
             <child>
-              <object class="GtkBox">
-                <property name="orientation">vertical</property>
-                <property name="vexpand">1</property>
-                <property name="spacing">12</property>
-                <property name="margin-bottom">12</property>
-                <property name="margin-start">12</property>
-                <property name="margin-end">12</property>
+              <object class="GtkToggleButton" id="view_timer_button">
+                <property name="label" translatable="yes">Timer</property>
+                <property name="active">1</property>
+                <signal name="toggled" handler="on_timer_stack_requested"/>
+                <style>
+                  <class name="flat"/>
+                  <class name="stack-button"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkToggleButton" id="view_logs_button">
+                <property name="label" translatable="yes">Logs</property>
+                <property name="group">view_timer_button</property>
+                <signal name="toggled" handler="on_logs_stack_requested"/>
+                <style>
+                  <class name="flat"/>
+                  <class name="stack-button"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkSearchEntry" id="event_searchbar">
+            <property name="margin-start">18</property>
+            <property name="margin-end">18</property>
+            <property name="margin-top">6</property>
+            <property name="margin-bottom">6</property>
+            <property name="placeholder-text" translatable="yes">• events</property>
+            <style>
+              <class name="search-bar"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkOverlay">
+            <child>
+              <object class="GtkStack" id="event_stack">
                 <child>
-                  <object class="GtkLabel" id="column_time_label">
-                    <property name="use-markup">1</property>
-                    <property name="margin-bottom">12</property>
-                    <property name="margin-top">24</property>
-                    <property name="label">00∶00∶00</property>
-                    <style>
-                      <class name="kh-title"/>
-                      <class name="numeric"/>
-                    </style>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="spacing">6</property>
-                    <property name="orientation">horizontal</property>
-                    <property name="halign">center</property>
-                    <child>
-                      <object class="GtkEntry" id="column_entry">
-                        <property name="placeholder-text" translatable="yes">Log name…</property>
-                        <style>
-                          <class name="log-entry"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="column_tag_entry">
-                        <property name="placeholder-text" translatable="yes">Tags (separated by colons)…</property>
-                        <style>
-                          <class name="log-entry"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkBox" id="task_box">
-                        <property name="spacing">6</property>
+                  <object class="GtkStackPage">
+                    <property name="name">timer</property>
+                    <property name="title">Timer</property>
+                    <property name="child">
+                      <object class="GtkBox">
                         <property name="orientation">vertical</property>
-                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">45</property>
                         <child>
-                          <object class="GtkLabel" id="column_label">
+                          <object class="GtkLabel" id="column_time_label">
+                            <property name="use-markup">1</property>
+                            <property name="margin-bottom">12</property>
+                            <property name="label">00∶00∶00</property>
                             <style>
-                              <class name="heading"/>
+                              <class name="kh-title"/>
+                              <class name="numeric"/>
                             </style>
                           </object>
                         </child>
                         <child>
-                          <object class="KhronosTagHolder" id="tag_holder">
-                            <property name="halign">start</property>
-                            <property name="hexpand">1</property>
-                            <style>
-                              <class name="tag-holder"/>
-                            </style>
+                          <object class="GtkBox">
+                            <property name="spacing">6</property>
+                            <property name="orientation">vertical</property>
+                            <property name="halign">center</property>
                             <child>
-                              <placeholder/>
+                              <object class="GtkEntry" id="column_entry">
+                                <property name="placeholder-text" translatable="yes">Log name…</property>
+                                <style>
+                                  <class name="log-entry"/>
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="column_tag_entry">
+                                <property name="placeholder-text" translatable="yes">Tags (separated by colons)…</property>
+                                <style>
+                                  <class name="log-entry"/>
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkBox" id="task_box">
+                                <property name="spacing">6</property>
+                                <property name="orientation">vertical</property>
+                                <property name="halign">center</property>
+                                <child>
+                                  <object class="GtkLabel" id="column_label">
+                                    <style>
+                                      <class name="heading"/>
+                                    </style>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="KhronosTagHolder" id="tag_holder">
+                                    <property name="halign">start</property>
+                                    <property name="hexpand">1</property>
+                                    <style>
+                                      <class name="tag-holder"/>
+                                    </style>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
                             </child>
                           </object>
                         </child>
                       </object>
-                    </child>
+                    </property>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkBox">
-                    <property name="spacing">20</property>
-                    <property name="margin-top">12</property>
-                    <property name="orientation">horizontal</property>
-                    <property name="halign">center</property>
-                    <property name="valign">end</property>
-                    <child>
-                      <object class="GtkButton" id="add_log_button">
-                        <property name="sensitive">0</property>
-                        <property name="tooltip-text" translatable="yes">Adds a log to the list</property>
-                        <property name="child">
-                          <object class="AdwButtonContent" id="add_button_content">
-                            <property name="icon-name">list-add-symbolic</property>
-                            <property name="label" translatable="yes">Add Log</property>
+                  <object class="GtkStackPage">
+                    <property name="name">logs</property>
+                    <property name="title">Logs</property>
+                    <property name="child">
+                      <object class="GtkScrolledWindow">
+                        <property name="vexpand">1</property>
+                        <property name="margin-bottom">18</property>
+                        <property name="margin-start">18</property>
+                        <property name="margin-end">18</property>
+                        <child>
+                          <object class="AdwClamp">
+                            <child>
+                              <object class="GtkBox">
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">6</property>
+                                <child>
+                                  <object class="AdwPreferencesGroup">
+                                    <property name="vexpand">1</property>
+                                    <child>
+                                      <object class="KhronosLogListView" id="listview">
+                                        <property name="vexpand">1</property>
+                                        <signal name="new_log_requested" handler="on_new_log_requested"/>
+                                        <signal name="log_update_requested" handler="on_log_update_requested"/>
+                                        <signal name="log_removal_requested" handler="on_log_removal_requested"/>
+                                        <binding name="logs">
+                                          <lookup name="logs" type="KhronosLogViewModel">
+                                            <lookup name="view-model">KhronosMainWindow</lookup>
+                                          </lookup>
+                                        </binding>
+                                        <binding name="view-model">
+                                          <lookup name="view-model">KhronosMainWindow</lookup>
+                                        </binding>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
                           </object>
-                        </property>
-                        <signal name="clicked" handler="on_new_log_requested" />
-                        <style>
-                          <class name="list-action-button"/>
-                          <class name="accent-secondary-button"/>
-                        </style>
+                        </child>
                       </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="stop_timer_button">
-                        <property name="icon-name">media-playback-stop-symbolic</property>
-                        <property name="sensitive">0</property>
-                        <property name="tooltip-text" translatable="yes">Stops the timer for a log</property>
-                        <style>
-                          <class name="action-button"/>
-                          <class name="destructive-action"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="timer_button">
-                        <property name="tooltip-text" translatable="yes">Starts the timer for a log</property>
-                        <property name="child">
-                          <object class="AdwButtonContent" id="timer_button_content">
-                            <property name="icon-name">media-playback-start-symbolic</property>
-                            <property name="label" translatable="yes">Start Timer</property>
-                          </object>
-                        </property>
-                        <style>
-                          <class name="list-action-button"/>
-                          <class name="accent-button"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset_button">
-                        <property name="icon-name">view-refresh-symbolic</property>
-                        <property name="sensitive">0</property>
-                        <property name="tooltip-text" translatable="yes">Resets the timer</property>
-                        <signal name="clicked" handler="on_reset_requested" />
-                        <style>
-                          <class name="action-button"/>
-                          <class name="accent-secondary-button"/>
-                        </style>
-                      </object>
-                    </child>
+                    </property>
                   </object>
                 </child>
+              </object>
+            </child>
+            <child type="overlay">
+              <object class="GtkBox" id="controls">
+                <property name="spacing">20</property>
+                <property name="margin-bottom">18</property>
+                <property name="margin-end">18</property>
+                <property name="orientation">horizontal</property>
+                <property name="halign">end</property>
+                <property name="valign">end</property>
                 <child>
-                  <object class="GtkToggleButton" id="view_logs_button">
-                    <property name="icon-name">format-justify-fill-symbolic</property>
-                    <property name="valign">center</property>
-                    <property name="halign">end</property>
-                    <property name="margin-top">6</property>
-                    <property name="tooltip-text" translatable="yes">Shows/Hides the logs list</property>
+                  <object class="GtkButton" id="add_log_button">
+                    <property name="sensitive">0</property>
+                    <property name="tooltip-text" translatable="yes">Adds a log to the list</property>
+                    <property name="child">
+                      <object class="AdwButtonContent" id="add_button_content">
+                        <property name="icon-name">list-add-symbolic</property>
+                        <property name="label" translatable="yes">Add Log</property>
+                      </object>
+                    </property>
+                    <signal name="clicked" handler="on_new_log_requested"/>
                     <style>
-                      <class name="action-button"/>
+                      <class name="list-action-button"/>
+                      <class name="accent-secondary-button"/>
                     </style>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkRevealer">
-                    <property name="height-request">185</property>
-                  <binding name="reveal-child">
-                    <lookup name="active">view_logs_button</lookup>
-                  </binding>
-                  <binding name="visible">
-                    <lookup name="active">view_logs_button</lookup>
-                  </binding>
-                  <child>
-                    <object class="AdwPreferencesGroup" id="logs_group">
-                      <property name="title" translatable="yes">Logs</property>
-                      <property name="margin-top">24</property>
-                      <property name="vexpand">1</property>
-                      <property name="header-suffix">
-                        <object class="GtkButton" id="trash_button">
-                          <property name="tooltip-text" translatable="yes">Removes all logs from the list</property>
-                          <child>
-                            <object class="AdwButtonContent">
-                              <property name="icon-name">user-trash-symbolic</property>
-                              <property name="label" translatable="yes">Clear Logs</property>
-                            </object>
-                          </child>
-                          <signal name="clicked" handler="on_clear_trash_requested" />
-                          <style>
-                            <class name="flat"/>
-                          </style>
-                        </object>
-                      </property>
-                      <child>
-                        <object class="KhronosLogListView" id="listview">
-                          <property name="vexpand">1</property>
-                          <signal name="new_log_requested" handler="on_new_log_requested" />
-                          <signal name="log_update_requested" handler="on_log_update_requested" />
-                          <signal name="log_removal_requested" handler="on_log_removal_requested" />
-                          <binding name="logs">
-                            <lookup name="logs" type="KhronosLogViewModel">
-                              <lookup name="view-model">KhronosMainWindow</lookup>
-                            </lookup>
-                          </binding>
-                          <binding name="view-model">
-                            <lookup name="view-model">KhronosMainWindow</lookup>
-                          </binding>
-                        </object>
-                      </child>
-                    </object>
-                  </child>
-                </object>
-              </child>
-            </object>
-          </child>
-        </object>
-      </child>
-    </object>
-  </child>
-</template>
+                  <object class="GtkButton" id="stop_timer_button">
+                    <property name="icon-name">media-playback-stop-symbolic</property>
+                    <property name="sensitive">0</property>
+                    <property name="tooltip-text" translatable="yes">Stops the timer for a log</property>
+                    <style>
+                      <class name="action-button"/>
+                      <class name="destructive-action"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="timer_button">
+                    <property name="tooltip-text" translatable="yes">Starts the timer for a log</property>
+                    <property name="child">
+                      <object class="AdwButtonContent" id="timer_button_content">
+                        <property name="icon-name">media-playback-start-symbolic</property>
+                        <property name="label" translatable="yes">Start Timer</property>
+                      </object>
+                    </property>
+                    <style>
+                      <class name="list-action-button"/>
+                      <class name="accent-button"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="reset_button">
+                    <property name="icon-name">view-refresh-symbolic</property>
+                    <property name="sensitive">0</property>
+                    <property name="tooltip-text" translatable="yes">Resets the timer</property>
+                    <signal name="clicked" handler="on_reset_requested"/>
+                    <style>
+                      <class name="action-button"/>
+                      <class name="accent-secondary-button"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
 </interface>
+
