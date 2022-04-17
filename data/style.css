@@ -43,48 +43,46 @@ headerbar {
 
 .list-action-button {
   padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px 0 alpha(#151515, 0.3),
-              0 4px 8px 3px alpha(#151515, 0.15);
-}
-.list-action-button:hover {
-  box-shadow: 0 2px 3px 0 alpha(#151515, 0.3),
-              0 6px 10px 4px alpha(#151515, 0.15);
-}
-.list-action-button:active {
-  box-shadow: 0 1px 3px 0 alpha(#151515, 0.3),
-              0 4px 8px 3px alpha(#151515, 0.15);
+  border-radius: 999px;
 }
 .accent-button {
   background: @accent_bg_color;
   color: @accent_fg_color;
-  min-width:106px;
+  box-shadow: 0 4px 8px 3px alpha(@accent_bg_color, 0.30);
 }
 .accent-button:hover {
   background: shade(@accent_bg_color, 1.02);
+  box-shadow: 0 6px 10px 4px alpha(@accent_bg_color, 0.30);
 }
 .accent-button:active {
   background: shade(@accent_bg_color, 0.95);
+  box-shadow: 0 4px 8px 3px alpha(@accent_bg_color, 0.30);
 }
 .accent-secondary-button {
   background: @accent_secondary_bg_color;
   color: @accent_secondary_fg_color;
+  box-shadow: 0 4px 8px 3px alpha(@accent_secondary_bg_color, 0.30);
 }
 .accent-secondary-button:hover {
   background: shade(@accent_secondary_bg_color, 1.02);
+  box-shadow: 0 6px 10px 4px alpha(@accent_secondary_bg_color, 0.30);
 }
 .accent-secondary-button:active {
   background: shade(@accent_secondary_bg_color, 0.95);
+  box-shadow: 0 4px 8px 3px alpha(@accent_secondary_bg_color, 0.30);
 }
 .list-action-button.destructive-action {
   background: #f9dedc;
   color: #410e0b;
+  box-shadow: 0 4px 8px 3px alpha(#f9dedc, 0.30);
 }
 .list-action-button.destructive-action:hover {
   background: shade(#f9dedc, 1.02);
+  box-shadow: 0 6px 10px 4px alpha(#f9dedc, 0.30);
 }
 .list-action-button.destructive-action:active {
   background: shade(#f9dedc, 0.95);
+  box-shadow: 0 4px 8px 3px alpha(#f9dedc, 0.30);
 }
 
 .content-sidebar {

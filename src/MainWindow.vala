@@ -44,8 +44,6 @@ namespace Khronos {
         [GtkChild]
         public unowned Gtk.Button stop_timer_button;
         [GtkChild]
-        public unowned Adw.ButtonContent timer_button_content;
-        [GtkChild]
         public unowned Gtk.MenuButton menu_button;
         [GtkChild]
         public unowned LogListView listview;
@@ -140,9 +138,8 @@ namespace Khronos {
                         timer ();
                         return true;
                     });
-                    timer_button_content.icon_name = "media-playback-pause-symbolic";
+                    timer_button.icon_name = "media-playback-pause-symbolic";
                     timer_button.tooltip_text = _("Pauses the timer for a log");
-                    timer_button_content.label = _("Pause Timer");
                     timer_button.get_style_context ().add_class ("destructive-action");
                     add_log_button.sensitive = false;
                     stop_timer_button.visible = true;
@@ -175,9 +172,8 @@ namespace Khronos {
                 } else {
                     start = false;
                     GLib.Source.remove(timer_id);
-                    timer_button_content.icon_name = "media-playback-start-symbolic";
+                    timer_button.icon_name = "media-playback-start-symbolic";
                     timer_button.tooltip_text = _("Starts the timer for a log");
-                    timer_button_content.label = _("Start Timer");
                     timer_button.get_style_context ().remove_class ("destructive-action");
                     add_log_button.sensitive = true;
                     stop_timer_button.sensitive = true;
@@ -189,9 +185,8 @@ namespace Khronos {
                 start = false;
                 dt_stop = new GLib.DateTime.now_local ();
                 GLib.Source.remove(timer_id);
-                timer_button_content.icon_name = "media-playback-start-symbolic";
+                timer_button.icon_name = "media-playback-start-symbolic";
                 timer_button.tooltip_text = _("Starts the timer for a log");
-                timer_button_content.label = _("Start Timer");
                 timer_button.get_style_context ().remove_class ("destructive-action");
                 add_log_button.sensitive = true;
                 add_log_button.visible = true;

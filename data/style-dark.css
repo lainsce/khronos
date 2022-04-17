@@ -6,17 +6,6 @@
 @define-color window_bg_color #111;
 @define-color headerbar_bg_color #111;
 
-.action-button.destructive-action {
-  background: #8c1d18;
-  color: #f2b8b5;
-}
-.action-button.destructive-action:hover {
-  background: shade(#8c1d18, 1.02);
-}
-.action-button.destructive-action:active {
-  background: shade(#8c1d18, 0.9);
-}
-
 .list-action-button.destructive-action {
   background: #8c1d18;
   color: #f2b8b5;

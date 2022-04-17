@@ -218,16 +218,11 @@
                   <object class="GtkButton" id="add_log_button">
                     <property name="sensitive">0</property>
                     <property name="tooltip-text" translatable="yes">Adds a log to the list</property>
-                    <property name="child">
-                      <object class="AdwButtonContent" id="add_button_content">
-                        <property name="icon-name">list-add-symbolic</property>
-                        <property name="label" translatable="yes">Add Log</property>
-                      </object>
-                    </property>
+                    <property name="icon-name">list-add-symbolic</property>
                     <signal name="clicked" handler="on_new_log_requested"/>
                     <style>
                       <class name="list-action-button"/>
-                      <class name="accent-secondary-button"/>
+                      <class name="accent-button"/>
                     </style>
                   </object>
                 </child>
@@ -245,12 +240,7 @@
                 <child>
                   <object class="GtkButton" id="timer_button">
                     <property name="tooltip-text" translatable="yes">Starts the timer for a log</property>
-                    <property name="child">
-                      <object class="AdwButtonContent" id="timer_button_content">
-                        <property name="icon-name">media-playback-start-symbolic</property>
-                        <property name="label" translatable="yes">Start Timer</property>
-                      </object>
-                    </property>
+                    <property name="icon-name">media-playback-start-symbolic</property>
                     <style>
                       <class name="list-action-button"/>
                       <class name="accent-button"/>
