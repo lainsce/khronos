@@ -1,5 +1,5 @@
 /*
-* Copyright (C) 2017-2021 Lains
+* Copyright (C) 2017-2022 Lains
 *
 * This program is free software; you can redistribute it &&/or
 * modify it under the terms of the GNU General Public
@@ -57,5 +57,13 @@ public class Khronos.LogRowContent : Adw.Bin {
                 build.add_css_class ("kh-tag");
             }
         }
+    }
+
+    construct {
+    }
+
+    [GtkCallback]
+    void on_delete_button_clicked () {
+        ((LogListView)MiscUtils.find_ancestor_of_type<LogListView>(this)).log_removal_requested (log);
     }
 }

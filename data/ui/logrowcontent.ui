@@ -3,50 +3,62 @@
 <template class="KhronosLogRowContent" parent="AdwBin">
   <property name="child">
     <object class="GtkBox">
-      <property name="orientation">horizontal</property>
       <property name="valign">center</property>
-      <property name="spacing">6</property>
-      <property name="margin-start">12</property>
-      <property name="margin-end">12</property>
-      <property name="margin-top">6</property>
-      <property name="margin-bottom">6</property>
+      <property name="hexpand">1</property>
       <child>
         <object class="GtkBox">
-          <property name="orientation">vertical</property>
+          <property name="orientation">horizontal</property>
           <property name="valign">center</property>
           <property name="spacing">6</property>
           <child>
-            <object class="GtkLabel" id="log_label">
-              <property name="halign">start</property>
-              <property name="ellipsize">end</property>
-              <property name="use-markup">1</property>
+            <object class="GtkButton" id="delete_button">
+              <property name="icon-name">user-trash-symbolic</property>
+              <property name="valign">center</property>
+              <signal name="clicked" handler="on_delete_button_clicked" />
               <style>
-                <class name="heading"/>
+                <class name="flat" />
               </style>
             </object>
           </child>
           <child>
-            <object class="GtkLabel" id="log2_label">
-              <property name="halign">start</property>
-              <property name="ellipsize">end</property>
-              <property name="hexpand">1</property>
-              <property name="use-markup">1</property>
-              <style>
-                <class name="caption"/>
-              </style>
-            </object>
-          </child>
-          <child>
-            <object class="GtkBox" id="log_tag_holder">
-              <property name="halign">start</property>
-              <property name="hexpand">1</property>
-              <property name="orientation">horizontal</property>
+            <object class="GtkBox">
+              <property name="orientation">vertical</property>
+              <property name="valign">center</property>
               <property name="spacing">6</property>
-              <style>
-                <class name="tag-holder"/>
-              </style>
               <child>
-                <placeholder/>
+                <object class="GtkLabel" id="log_label">
+                  <property name="halign">start</property>
+                  <property name="ellipsize">end</property>
+                  <property name="use-markup">1</property>
+                  <style>
+                    <class name="view-title"/>
+                  </style>
+                </object>
+              </child>
+              <child>
+                <object class="GtkLabel" id="log2_label">
+                  <property name="halign">start</property>
+                  <property name="ellipsize">end</property>
+                  <property name="hexpand">1</property>
+                  <property name="use-markup">1</property>
+                  <style>
+                    <class name="caption"/>
+                  </style>
+                </object>
+              </child>
+              <child>
+                <object class="GtkBox" id="log_tag_holder">
+                  <property name="halign">start</property>
+                  <property name="hexpand">1</property>
+                  <property name="orientation">horizontal</property>
+                  <property name="spacing">6</property>
+                  <style>
+                    <class name="tag-holder"/>
+                  </style>
+                  <child>
+                    <placeholder/>
+                  </child>
+                </object>
               </child>
             </object>
           </child>

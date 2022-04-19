@@ -88,14 +88,26 @@ headerbar {
 .content-sidebar {
   background: none;
 }
-
 .content-sidebar row {
   background: alpha(@view_fg_color,0.05);
+  border-radius: 8px;
+  margin-top: 3px;
+  padding: 6px;
+}
+.content-sidebar row:hover {
+  background: alpha(@view_fg_color,0.11);
   border-radius: 8px;
   margin-top: 3px;
 }
 .content-sidebar row:first-child {
   margin-top: 6px;
+}
+.content-sidebar row button {
+  background: none;
+  margin: 0;
+}
+.content-sidebar row button:hover {
+  color: #ba1b1b;
 }
 
 .content {
@@ -119,10 +131,16 @@ headerbar {
   padding: 0;
   margin: 0;
 }
-
 .stack-button:checked {
   font-weight: 600;
   background: none;
+}
+
+.view-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
 }
 
 .search-bar {
