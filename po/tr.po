@@ -1,0 +1,178 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the io.github.lainsce.Khronos package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.lainsce.Khronos\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-29 23:07+0100\n"
+"PO-Revision-Date: 2022-05-14 12:07+0300\n"
+"Last-Translator: Sinan AYDOĞAN <sinanaydogan@hotmail.com.tr>\n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:6
+#: data/io.github.lainsce.Khronos.desktop.in:3
+msgid "Khronos"
+msgstr "Khronos"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:7
+msgid "Log the time it took to do tasks"
+msgstr "Görevleri tamamlamak için geçen süreyi kaydedin"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:9
+msgid ""
+"Start logging any task's time to completion, with the ability to stop the "
+"timer at any moment, with notifications for longer task sessions."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:11
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:21
+msgid "Lains"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:47
+msgid "Release: UI Refreshments"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:49
+msgid "Changed: The UI is now with a better layout."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:55
+msgid "Release: Port to GTK4"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:57
+msgid "Changed: Rewritten for GTK4."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.desktop.in:4
+msgid "Track each task time in a simple inobtrusive way"
+msgstr "Her türlü göreviniz için harcanın zamanı takip etmenin en basit yolu."
+
+#: data/io.github.lainsce.Khronos.desktop.in:11
+msgid "Plot;Planning;Time Tracking;"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.gschema.xml:5
+msgid "Delay between notifications"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.gschema.xml:6
+msgid "The delay between two notifications, default is 30min. in seconds."
+msgstr "Bildirimler arası süre varsayılan olarak 30 dakikadır"
+
+#: data/ui/main_window.ui:6
+msgid "Export Logs as CSV…"
+msgstr "Kayıtları bir CSV dosyasına aktar"
+
+#: data/ui/main_window.ui:10
+msgid "Import Logs from CSV…"
+msgstr "Kayıtları CSV dosyasından içeri aktar"
+
+#: data/ui/main_window.ui:16
+msgid "About Khronos"
+msgstr "Khronos Hakkında"
+
+#: data/ui/main_window.ui:53
+msgid "Timer"
+msgstr "Zamanlayıcı"
+
+#: data/ui/main_window.ui:77
+msgid "Log name…"
+msgstr "Kayıt adı..."
+
+#: data/ui/main_window.ui:96
+msgid "Adds a log to the list"
+msgstr "Listeye bir kayıt ekler"
+
+#: data/ui/main_window.ui:106 src/MainWindow.vala:161
+msgid "Starts the timer for a log"
+msgstr "Kayıt için zamanlayıcıyı başlatır"
+
+#: data/ui/main_window.ui:122
+msgid "Logs"
+msgstr "Kayıtlar"
+
+#: data/ui/main_window.ui:148
+msgid "Removes all logs from the list"
+msgstr "Listedeki tüm kayıtları siler"
+
+#: data/ui/main_window.ui:180
+msgid "No Logs"
+msgstr "Kayıt Yok"
+
+#: data/ui/main_window.ui:188
+msgid "Add a log on Timer tab and check later."
+msgstr ""
+
+#: src/MainWindow.vala:153
+msgid "Stops the timer for a log"
+msgstr "Kaydı tamamlamak için zamanlayıcıyı durdur"
+
+#: src/MainWindow.vala:186
+msgid "Empty the Logs List?"
+msgstr "Kayıt listesi boşaltılsın mı?"
+
+#: src/MainWindow.vala:187
+msgid ""
+"Emptying this list means all the logs in it will be permanently lost with no "
+"recovery."
+msgstr ""
+"Kayıtları listesini boşalttığınızda tüm kayıtlarınız kalıcı olarak "
+"silinecektir."
+
+#: src/MainWindow.vala:189
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/MainWindow.vala:190
+msgid "Empty List"
+msgstr "Boş Liste"
+
+#: src/MainWindow.vala:307
+msgid "Go rest for a while before continuing."
+msgstr "Devam etmeden önce biraz dinlen"
+
+#: src/MainWindow.vala:316
+msgid "Maybe grab a snack before continuing."
+msgstr "Belki devam etmeden ufak bir atıştırmalık almalısın"
+
+#: src/MainWindow.vala:325
+msgid "Perhaps go get some coffee or tea before continuing."
+msgstr "Devam etmeden önce belki kahve veya çaya alabilirsin"
+
+#: src/MainWindow.vala:334
+msgid "That's a big task. Let's rest a bit before continuing."
+msgstr "Ne uzun bir çalışmaydı, devam etmeden önce hadi biraz mola verelim."
+
+#: src/MainWindow.vala:343
+msgid "Amazing work! But please rest a bit before continuing."
+msgstr "Harika bir çalışma! ama devam etmeden önce lütfen biraz dinlen"
+
+#: src/MainWindow.vala:387
+msgid "Track each task's time in a simple inobtrusive way."
+msgstr "Her görev için harcadığınız zamanı basitçe takip edin."
+
+#: src/MainWindow.vala:393
+msgid "translator-credits"
+msgstr "çevirmenler ve geliştiriciler"
+
+#: src/Services/Dialog.vala:23 src/Services/Dialog.vala:44
+msgid "CSV files"
+msgstr "CSV dosyaları"
+
+#: src/Services/Dialog.vala:27 src/Services/Dialog.vala:48
+msgid "All files"
+msgstr "Tüm dosyalar"
