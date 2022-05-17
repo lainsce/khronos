@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.lainsce.khronos\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-29 23:06+0100\n"
-"PO-Revision-Date: 2021-11-29 23:08+0100\n"
+"POT-Creation-Date: 2021-11-29 23:07+0100\n"
+"PO-Revision-Date: 2022-05-17 21:16+0200\n"
 "Last-Translator: Nathan Bonnemains (@NathanBnm)\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:6
 #: data/io.github.lainsce.Khronos.desktop.in:3
@@ -25,13 +25,16 @@ msgstr "Khronos"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:7
 msgid "Log the time it took to do tasks"
-msgstr ""
+msgstr "Consignez le temps nécessaire pour accomplir vos tâches"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:9
 msgid ""
 "Start logging any task's time to completion, with the ability to stop the "
 "timer at any moment, with notifications for longer task sessions."
 msgstr ""
+"Commencez à enregistrer le temps qu'il vous faut pour exécuter n'importe "
+"quelle tâche, avec la possibilité d'arrêter le chronomètre à tout moment, "
+"ainsi que des notifications pour les sessions de tâches plus longues."
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:11
 msgid "Quit anytime with the shortcut Ctrl + Q"
@@ -43,20 +46,19 @@ msgstr "Lains"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:47
 msgid "Release: UI Refreshments"
-msgstr ""
+msgstr "Version : Interface rafraîchie"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:49
 msgid "Changed: The UI is now with a better layout."
-msgstr ""
+msgstr "Changement : l'interface est désormais mieux agencée."
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:55
-#, fuzzy
 msgid "Release: Port to GTK4"
-msgstr "Version : Démarrage du tri"
+msgstr "Version : portage vers GTK4"
 
 #: data/io.github.lainsce.Khronos.appdata.xml.in:57
 msgid "Changed: Rewritten for GTK4."
-msgstr ""
+msgstr "Changement : réécriture en GTK4."
 
 #: data/io.github.lainsce.Khronos.desktop.in:4
 msgid "Track each task time in a simple inobtrusive way"
@@ -64,123 +66,120 @@ msgstr "Suivez le déroulement de chaque tâche de manière simple et discrète"
 
 #: data/io.github.lainsce.Khronos.desktop.in:11
 msgid "Plot;Planning;Time Tracking;"
-msgstr "Planing;Suivi du temps;"
+msgstr "Plot;Planning;Time Tracking;Suivi du temps;"
 
 #: data/io.github.lainsce.Khronos.gschema.xml:5
 msgid "Delay between notifications"
-msgstr ""
+msgstr "Délai entre les notifications"
 
 #: data/io.github.lainsce.Khronos.gschema.xml:6
 msgid "The delay between two notifications, default is 30min. in seconds."
 msgstr ""
+"Le délai entre deux notifications, en secondes, à 30 minutes par défaut."
 
 #: data/ui/main_window.ui:6
-#, fuzzy
 msgid "Export Logs as CSV…"
-msgstr "Exporter le journal en tant que…"
+msgstr "Exporter les tâches en un fichier CSV…"
 
 #: data/ui/main_window.ui:10
-#, fuzzy
 msgid "Import Logs from CSV…"
-msgstr "Exporter le journal en tant que…"
+msgstr "Importer des tâches depuis un fichier CSV…"
 
 #: data/ui/main_window.ui:16
-#, fuzzy
 msgid "About Khronos"
-msgstr "Khronos"
+msgstr "À propos de Khronos"
 
 #: data/ui/main_window.ui:53
-#, fuzzy
 msgid "Timer"
-msgstr "Arrêter le chronomètre"
+msgstr "Chronomètre"
 
 #: data/ui/main_window.ui:77
-#, fuzzy
 msgid "Log name…"
-msgstr "Nom de la nouvelle tâche…"
+msgstr "Nom de la tâche…"
 
 #: data/ui/main_window.ui:96
 msgid "Adds a log to the list"
-msgstr ""
+msgstr "Ajoute une tâche à la liste"
 
 #: data/ui/main_window.ui:106 src/MainWindow.vala:161
 msgid "Starts the timer for a log"
-msgstr ""
+msgstr "Démarre le chronomètre pour une tâche"
 
 #: data/ui/main_window.ui:122
 msgid "Logs"
-msgstr ""
+msgstr "Tâches"
 
 #: data/ui/main_window.ui:148
 msgid "Removes all logs from the list"
-msgstr ""
+msgstr "Supprime toutes les tâches de la liste"
 
 #: data/ui/main_window.ui:180
 msgid "No Logs"
-msgstr ""
+msgstr "Pas de tâches"
 
 #: data/ui/main_window.ui:188
 msgid "Add a log on Timer tab and check later."
-msgstr ""
+msgstr "Ajoutez une tâche sur l'onglet chronomètre et vérifiez plus tard."
 
 #: src/MainWindow.vala:153
 msgid "Stops the timer for a log"
-msgstr ""
+msgstr "Stoppe le chronomètre d'une tâche"
 
 #: src/MainWindow.vala:186
 msgid "Empty the Logs List?"
-msgstr ""
+msgstr "Vider la liste des tâches ?"
 
 #: src/MainWindow.vala:187
 msgid ""
 "Emptying this list means all the logs in it will be permanently lost with no "
 "recovery."
 msgstr ""
+"Vider cette liste signifie que toutes les tâches seront supprimées "
+"définitivement sans possibilité de récupération."
 
 #: src/MainWindow.vala:189
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #: src/MainWindow.vala:190
 msgid "Empty List"
-msgstr ""
+msgstr "Vider la liste"
 
 #: src/MainWindow.vala:307
 msgid "Go rest for a while before continuing."
-msgstr "Prenez une pause avant de continuer."
+msgstr "Prenez une pause avant de continuer..."
 
 #: src/MainWindow.vala:316
-#, fuzzy
 msgid "Maybe grab a snack before continuing."
-msgstr "Prenez une pause avant de continuer."
+msgstr "Allez peut-être prendre une collation avant de continuer..."
 
 #: src/MainWindow.vala:325
-#, fuzzy
 msgid "Perhaps go get some coffee or tea before continuing."
-msgstr "Prenez une pause avant de continuer."
+msgstr "Allez peut-être prendre un café ou un thé avant de continuer..."
 
 #: src/MainWindow.vala:334
-#, fuzzy
 msgid "That's a big task. Let's rest a bit before continuing."
-msgstr "Prenez une pause avant de continuer."
+msgstr ""
+"C'est une grande tâche. Allons prendre un peu de repos avant de continuer..."
 
 #: src/MainWindow.vala:343
-#, fuzzy
 msgid "Amazing work! But please rest a bit before continuing."
-msgstr "Prenez une pause avant de continuer."
+msgstr ""
+"Excellent travail ! Mais s'il vous plaît, reposez-vous un peu avant de "
+"continuer..."
 
 #: src/MainWindow.vala:387
 msgid "Track each task's time in a simple inobtrusive way."
-msgstr ""
+msgstr "Suivez le temps de chaque tâche de manière simple et non-intrusive."
 
 #: src/MainWindow.vala:393
 msgid "translator-credits"
-msgstr ""
+msgstr "Irénée Thirion"
 
 #: src/Services/Dialog.vala:23 src/Services/Dialog.vala:44
 msgid "CSV files"
-msgstr ""
+msgstr "Fichiers CSV"
 
 #: src/Services/Dialog.vala:27 src/Services/Dialog.vala:48
 msgid "All files"
-msgstr ""
+msgstr "Tous les fichiers"
