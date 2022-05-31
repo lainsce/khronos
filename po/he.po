@@ -1,0 +1,180 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the io.github.lainsce.Khronos package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.lainsce.Khronos\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-29 23:07+0100\n"
+"PO-Revision-Date: 2022-05-31 15:53+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: \n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
+"2 : 3);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:6
+#: data/io.github.lainsce.Khronos.desktop.in:3
+msgid "Khronos"
+msgstr "Khronos"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:7
+msgid "Log the time it took to do tasks"
+msgstr "תיעוד הזמן שנדרש לביצוע משימות"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:9
+msgid ""
+"Start logging any task's time to completion, with the ability to stop the "
+"timer at any moment, with notifications for longer task sessions."
+msgstr ""
+"אפשר להתחיל לתעד את הזמן שלקח להשלים כל משימה שהיא, עם אפשרות לעצור את "
+"המתזמן בכל עת, עם התראות למשימות ארוכות יותר."
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:11
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "ניתן לצאת בכל עת עם קיצור המקשים Ctrl + Q"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:21
+msgid "Lains"
+msgstr "Lains"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:47
+msgid "Release: UI Refreshments"
+msgstr "במהדורה: רענוני מנשק משתמש"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:49
+msgid "Changed: The UI is now with a better layout."
+msgstr "שינויים: פריסת מנשק המשתמש השתפרה."
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:55
+msgid "Release: Port to GTK4"
+msgstr "במהדורה: הסבה ל־GTK4"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:57
+msgid "Changed: Rewritten for GTK4."
+msgstr "שינויים: שכתוב מחדש ל־GTK4."
+
+#: data/io.github.lainsce.Khronos.desktop.in:4
+msgid "Track each task time in a simple inobtrusive way"
+msgstr "מעקב אחר זמן שלוקח לבצע משימה בצורה פשוטה ולא מתבלטת"
+
+#: data/io.github.lainsce.Khronos.desktop.in:11
+msgid "Plot;Planning;Time Tracking;"
+msgstr "תכנון;מעקב;תיעוד זמן;מעקב זמן;מעקב משימות;ביצוע מטלות;ביצוע משימות;"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:5
+msgid "Delay between notifications"
+msgstr "השהיה בין התראות"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:6
+msgid "The delay between two notifications, default is 30min. in seconds."
+msgstr "ההפרש בין שתי התראות, ברירת המחדל היא 30 דקות, בשניות."
+
+#: data/ui/main_window.ui:6
+msgid "Export Logs as CSV…"
+msgstr "ייצוא יומנים כ־CSV…"
+
+#: data/ui/main_window.ui:10
+msgid "Import Logs from CSV…"
+msgstr "ייבוא יומנים מ־CSV…"
+
+#: data/ui/main_window.ui:16
+msgid "About Khronos"
+msgstr "על Khronos"
+
+#: data/ui/main_window.ui:53
+msgid "Timer"
+msgstr "מתזמן"
+
+#: data/ui/main_window.ui:77
+msgid "Log name…"
+msgstr "שם היומן…"
+
+#: data/ui/main_window.ui:96
+msgid "Adds a log to the list"
+msgstr "מוסיף יומן לרשימה"
+
+#: data/ui/main_window.ui:106 src/MainWindow.vala:161
+msgid "Starts the timer for a log"
+msgstr "מתחיל את המתזמן ליומן"
+
+#: data/ui/main_window.ui:122
+msgid "Logs"
+msgstr "יומנים"
+
+#: data/ui/main_window.ui:148
+msgid "Removes all logs from the list"
+msgstr "מסיר את כל היומנים מהרשימה"
+
+#: data/ui/main_window.ui:180
+msgid "No Logs"
+msgstr "אין יומנים"
+
+#: data/ui/main_window.ui:188
+msgid "Add a log on Timer tab and check later."
+msgstr "ניתן להוסיף יומן בלשונית המתזמן ולבדוק מאוחר יותר."
+
+#: src/MainWindow.vala:153
+msgid "Stops the timer for a log"
+msgstr "עוצר את המתזמן ליומן"
+
+#: src/MainWindow.vala:186
+msgid "Empty the Logs List?"
+msgstr "לפנות את רשימת היומנים?"
+
+#: src/MainWindow.vala:187
+msgid ""
+"Emptying this list means all the logs in it will be permanently lost with no "
+"recovery."
+msgstr ""
+"פינוי הרשימה הזאת יוביל לכך שכל היומנים יאבדו לחלוטין ללא אפשרות לשחזור."
+
+#: src/MainWindow.vala:189
+msgid "Cancel"
+msgstr "ביטול"
+
+#: src/MainWindow.vala:190
+msgid "Empty List"
+msgstr "פינוי הרשימה"
+
+#: src/MainWindow.vala:307
+msgid "Go rest for a while before continuing."
+msgstr "אפשר ללכת לנוח קצת לפני המשך ביצוע המשימה."
+
+#: src/MainWindow.vala:316
+msgid "Maybe grab a snack before continuing."
+msgstr "אפשר ללכת לנשנש משהו לפני המשך ביצוע המשימה."
+
+#: src/MainWindow.vala:325
+msgid "Perhaps go get some coffee or tea before continuing."
+msgstr "אולי אפשר ללכת לשתות קפה או תה לפני המשך ביצוע המשימה."
+
+#: src/MainWindow.vala:334
+msgid "That's a big task. Let's rest a bit before continuing."
+msgstr "זאת משימה גדולה. עדיף לנוח קצת לפני שממשיכים בה."
+
+#: src/MainWindow.vala:343
+msgid "Amazing work! But please rest a bit before continuing."
+msgstr "עבודה מצוינת! אבל בבקשה, עדיף לנוח קצת לפני המשך ביצוע המשימה."
+
+#: src/MainWindow.vala:387
+msgid "Track each task's time in a simple inobtrusive way."
+msgstr "מעקב אחר התזמון של כל אחת מהמשימות בצורה פשוטה ולא מתבלטת."
+
+#: src/MainWindow.vala:393
+msgid "translator-credits"
+msgstr "ירון שהרבני <sh.yaron@gmail.com>"
+
+#: src/Services/Dialog.vala:23 src/Services/Dialog.vala:44
+msgid "CSV files"
+msgstr "קובצי CSV"
+
+#: src/Services/Dialog.vala:27 src/Services/Dialog.vala:48
+msgid "All files"
+msgstr "כל הקבצים"
