@@ -10,4 +10,8 @@
       <file alias="logrowcontent.ui" compressed="true">ui/logrowcontent.ui</file>
       <file alias="main_window.ui" compressed="true">ui/main_window.ui</file>
     </gresource>
+
+    <gresource prefix="/io/github/lainsce/Khronos/icons/scalable/actions/">
+      <file alias="clock-alt-symbolic.svg">icons/hicolor/symbolic/clock-alt-symbolic.svg</file>
+    </gresource>
 </gresources>

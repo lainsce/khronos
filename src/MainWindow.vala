@@ -48,7 +48,11 @@ namespace Khronos {
         [GtkChild]
         public unowned LogListView listview;
         [GtkChild]
-        public unowned Gtk.Stack event_stack;
+        public unowned Adw.ViewStack event_stack;
+        [GtkChild]
+        public unowned Gtk.Box timer_page;
+        [GtkChild]
+        public unowned Gtk.ScrolledWindow logs_page;
         [GtkChild]
         public unowned Gtk.SearchEntry event_searchbar;
 
@@ -208,6 +212,18 @@ namespace Khronos {
                 timer_button.activate ();
             });
 
+            event_stack.notify["visible-child"].connect (() => {
+                if (event_stack.get_visible_child () == timer_page) {
+                    event_searchbar.visible = false;
+                    controls.visible = true;
+                } else if (event_stack.get_visible_child () == logs_page) {
+                    uint num = view_model.logs.get_n_items ();
+                    event_searchbar.visible = true;
+                    event_searchbar.placeholder_text = num.to_string() + " " + (_("events"));
+                    controls.visible = false;
+                }
+            });
+
             this.set_size_request (360, 500);
             this.show ();
         }
@@ -268,22 +284,6 @@ namespace Khronos {
         [GtkCallback]
         public void on_log_removal_requested (Log log) {
             view_model.delete_log (log);
-        }
-
-        [GtkCallback]
-        void on_timer_stack_requested () {
-            event_stack.set_visible_child_name ("timer");
-            event_searchbar.visible = false;
-            controls.visible = true;
-        }
-
-        [GtkCallback]
-        void on_logs_stack_requested () {
-            event_stack.set_visible_child_name ("logs");
-            uint num = view_model.logs.get_n_items ();
-            event_searchbar.visible = true;
-            event_searchbar.placeholder_text = num.to_string() + " " + (_("events"));
-            controls.visible = false;
         }
 
         public void action_export () {

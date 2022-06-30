@@ -40,6 +40,7 @@ public class Khronos.Application : Adw.Application {
         add_action_entries (app_entries, this);
 
         typeof (LogListView).ensure ();
+        typeof (LogRowContent).ensure ();
 
         var repo = new LogRepository ();
         var view_model = new LogViewModel (repo);

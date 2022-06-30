@@ -1,18 +1,6 @@
-@define-color accent_color #904db2;
-@define-color accent_bg_color #E4B5FF;
-@define-color accent_fg_color #3c0050;
-@define-color accent_secondary_bg_color #EADAF4;
-@define-color accent_secondary_fg_color #211527;
-@define-color window_bg_color #fff;
-@define-color headerbar_bg_color #fff;
-
 .solid-csd {
   box-shadow: none;
   outline: 1px solid @borders;
-}
-
-.main-box {
-  background: linear-gradient(135deg, @window_bg_color, mix(@window_bg_color, @accent_bg_color, 0.2));
 }
 
 .kh-title {
@@ -20,129 +8,12 @@
   font-weight: 300;
 }
 
-headerbar {
-  border-bottom: none;
-  box-shadow: none;
-  background: none;
-}
-
-.action-button {
-  padding: 10px;
-  border-radius: 999px;
-}
-.action-button.destructive-action {
-  background: #f9dedc;
-  color: #410e0b;
-}
-.action-button.destructive-action:hover {
-  background: shade(#f9dedc, 1.02);
-}
-.action-button.destructive-action:active {
-  background: shade(#f9dedc, 0.95);
-}
-
-.list-action-button {
-  padding: 10px;
-  border-radius: 999px;
-}
-.accent-button {
-  background: @accent_bg_color;
-  color: @accent_fg_color;
-  box-shadow: 0 4px 8px 3px alpha(@accent_bg_color, 0.30);
-}
-.accent-button:hover {
-  background: shade(@accent_bg_color, 1.02);
-  box-shadow: 0 6px 10px 4px alpha(@accent_bg_color, 0.30);
-}
-.accent-button:active {
-  background: shade(@accent_bg_color, 0.95);
-  box-shadow: 0 4px 8px 3px alpha(@accent_bg_color, 0.30);
-}
-.accent-secondary-button {
-  background: @accent_secondary_bg_color;
-  color: @accent_secondary_fg_color;
-  box-shadow: 0 4px 8px 3px alpha(@accent_secondary_bg_color, 0.30);
-}
-.accent-secondary-button:hover {
-  background: shade(@accent_secondary_bg_color, 1.02);
-  box-shadow: 0 6px 10px 4px alpha(@accent_secondary_bg_color, 0.30);
-}
-.accent-secondary-button:active {
-  background: shade(@accent_secondary_bg_color, 0.95);
-  box-shadow: 0 4px 8px 3px alpha(@accent_secondary_bg_color, 0.30);
-}
-.list-action-button.destructive-action {
-  background: #f9dedc;
-  color: #410e0b;
-  box-shadow: 0 4px 8px 3px alpha(#f9dedc, 0.30);
-}
-.list-action-button.destructive-action:hover {
-  background: shade(#f9dedc, 1.02);
-  box-shadow: 0 6px 10px 4px alpha(#f9dedc, 0.30);
-}
-.list-action-button.destructive-action:active {
-  background: shade(#f9dedc, 0.95);
-  box-shadow: 0 4px 8px 3px alpha(#f9dedc, 0.30);
-}
-
 .content-sidebar {
-  background: none;
-}
-.content-sidebar row {
-  background: alpha(@view_fg_color,0.05);
   border-radius: 8px;
-  margin-top: 3px;
-  padding: 6px;
-}
-.content-sidebar row:hover {
-  background: alpha(@view_fg_color,0.11);
-  border-radius: 8px;
-  margin-top: 3px;
-}
-.content-sidebar row:first-child {
-  margin-top: 6px;
-}
-.content-sidebar row button {
-  background: none;
-  margin: 0;
-}
-.content-sidebar row button:hover {
-  color: #ba1b1b;
 }
 
-.content {
-  box-shadow: none;
-  margin: 0;
-}
 .kh-tag {
-  background: alpha(@view_fg_color,0.11);
-  border-radius: 8px;
-  padding: 8px;
-}
-
-.kh-bar box {
-  border: none;
-  box-shadow: none;
-}
-
-.stack-button {
-  font-size: 1.5rem;
-  font-weight: 300;
-  padding: 0;
-  margin: 0;
-}
-.stack-button:checked {
-  font-weight: 600;
-  background: none;
-}
-
-.view-title {
-  font-size: 1.5rem;
-  font-weight: 500;
-  padding: 0;
-  margin: 0;
-}
-
-.search-bar {
-  border-radius: 999px;
+  background: alpha(@view_fg_color, 0.1);
+  border-radius: 12px;
+  padding: 4px 12px;
 }

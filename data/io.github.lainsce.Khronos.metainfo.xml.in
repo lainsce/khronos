@@ -42,6 +42,14 @@
     </custom>
     <translation type="gettext">@app_id@</translation>
     <releases>
+        <release version="3.7.1" date="2022-07-01">
+            <description>
+                <p>Release: Hour</p>
+                <ul>
+                    <li>Changed: UI is now pure Adwaita following the inclusion of Khronos in GNOME Circle.</li>
+                </ul>
+            </description>
+        </release>
         <release version="3.7.0" date="2022-04-20">
             <description>
                 <p>Release: Minute</p>

@@ -1,5 +1,5 @@
 project('io.github.lainsce.Khronos', 'vala',
-        version: '3.7.0',
+        version: '3.7.1',
         meson_version: '>= 0.59.0'
 )
 
@@ -69,7 +69,6 @@ dependencies = [
   dependency('gobject-2.0'),
   dependency('gee-0.8'),
   dependency('libadwaita-1'),
-  dependency('gmodule-2.0'),
   dependency('json-glib-1.0'),
   meson.get_compiler('c').find_library('m', required: true)
 ]

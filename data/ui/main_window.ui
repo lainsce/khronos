@@ -29,7 +29,9 @@
           <object class="AdwHeaderBar" id="timer_header">
             <property name="centering-policy">strict</property>
             <property name="title-widget">
-              <object class="GtkBox">
+              <object class="AdwViewSwitcher">
+                <property name="stack">event_stack</property>
+                <property name="policy">wide</property>
               </object>
             </property>
             <child type="end">
@@ -37,35 +39,6 @@
                 <property name="can-focus">True</property>
                 <property name="menu-model">main_menu</property>
                 <property name="icon-name">open-menu-symbolic</property>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkBox">
-            <property name="margin-start">18</property>
-            <property name="margin-end">18</property>
-            <property name="spacing">12</property>
-            <child>
-              <object class="GtkToggleButton" id="view_timer_button">
-                <property name="label" translatable="yes">Timer</property>
-                <property name="active">1</property>
-                <signal name="toggled" handler="on_timer_stack_requested"/>
-                <style>
-                  <class name="flat"/>
-                  <class name="stack-button"/>
-                </style>
-              </object>
-            </child>
-            <child>
-              <object class="GtkToggleButton" id="view_logs_button">
-                <property name="label" translatable="yes">Logs</property>
-                <property name="group">view_timer_button</property>
-                <signal name="toggled" handler="on_logs_stack_requested"/>
-                <style>
-                  <class name="flat"/>
-                  <class name="stack-button"/>
-                </style>
               </object>
             </child>
           </object>
@@ -85,13 +58,14 @@
         <child>
           <object class="GtkOverlay">
             <child>
-              <object class="GtkStack" id="event_stack">
+              <object class="AdwViewStack" id="event_stack">
                 <child>
-                  <object class="GtkStackPage">
+                  <object class="AdwViewStackPage">
                     <property name="name">timer</property>
+                    <property name="icon-name">clock-alt-symbolic</property>
                     <property name="title">Timer</property>
                     <property name="child">
-                      <object class="GtkBox">
+                      <object class="GtkBox" id="timer_page">
                         <property name="orientation">vertical</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">45</property>
@@ -160,11 +134,12 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkStackPage">
+                  <object class="AdwViewStackPage">
                     <property name="name">logs</property>
+                    <property name="icon-name">view-list-symbolic</property>
                     <property name="title">Logs</property>
                     <property name="child">
-                      <object class="GtkScrolledWindow">
+                      <object class="GtkScrolledWindow" id="logs_page">
                         <property name="vexpand">1</property>
                         <property name="margin-bottom">18</property>
                         <property name="margin-start">18</property>
@@ -221,8 +196,7 @@
                     <property name="icon-name">list-add-symbolic</property>
                     <signal name="clicked" handler="on_new_log_requested"/>
                     <style>
-                      <class name="list-action-button"/>
-                      <class name="accent-button"/>
+                      <class name="pill"/>
                     </style>
                   </object>
                 </child>
@@ -232,7 +206,7 @@
                     <property name="sensitive">0</property>
                     <property name="tooltip-text" translatable="yes">Stops the timer for a log</property>
                     <style>
-                      <class name="action-button"/>
+                      <class name="pill"/>
                       <class name="destructive-action"/>
                     </style>
                   </object>
@@ -242,8 +216,8 @@
                     <property name="tooltip-text" translatable="yes">Starts the timer for a log</property>
                     <property name="icon-name">media-playback-start-symbolic</property>
                     <style>
-                      <class name="list-action-button"/>
-                      <class name="accent-button"/>
+                      <class name="pill"/>
+                      <class name="suggested-action"/>
                     </style>
                   </object>
                 </child>
@@ -254,8 +228,7 @@
                     <property name="tooltip-text" translatable="yes">Resets the timer</property>
                     <signal name="clicked" handler="on_reset_requested"/>
                     <style>
-                      <class name="action-button"/>
-                      <class name="accent-secondary-button"/>
+                      <class name="pill"/>
                     </style>
                   </object>
                 </child>
@@ -267,4 +240,3 @@
     </child>
   </template>
 </interface>
-
