@@ -1,0 +1,182 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.lainsce.khronos package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.lainsce.khronos\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-04 17:36+0100\n"
+"PO-Revision-Date: 2022-07-04 17:36+0200\n"
+"Last-Translator: vikdevelop <https://github.com/vikdevelop>\n"
+"Language-Team: CZ\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:6
+#: data/io.github.lainsce.Khronos.desktop.in:3
+msgid "Khronos"
+msgstr "Khronos"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:7
+msgid "Log the time it took to do tasks"
+msgstr "Zaznamenávání času potřebného k provedení úkolů"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:9
+msgid ""
+"Start logging any task's time to completion, with the ability to stop the "
+"timer at any moment, with notifications for longer task sessions."
+msgstr ""
+"Začněte zaznamenávat čas do dokončení jakéhokoli úkolu s možností "
+"časovač kdykoli zastavit a s upozorněními na delší úkoly."
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:11
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Ukončení kdykoli pomocí klávesové zkratky Ctrl + Q"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:21
+msgid "Lains"
+msgstr "Lains"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:47
+msgid "Release: UI Refreshments"
+msgstr "Vydání: občerstvení UL"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:49
+msgid "Changed: The UI is now with a better layout."
+msgstr "Změněno: UL je nyní s lepším rozvržením."
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:55
+msgid "Release: Port to GTK4"
+msgstr "Vydání: Přechod na GTK4"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:57
+msgid "Changed: Rewritten for GTK4."
+msgstr "Změněno: Přepsáno pro GTK4."
+
+#: data/io.github.lainsce.Khronos.desktop.in:4
+msgid "Track each task time in a simple inobtrusive way"
+msgstr "Sledování času každého úkolu jednoduchým nevtíravým způsobem"
+
+#: data/io.github.lainsce.Khronos.desktop.in:11
+msgid "Plot;Planning;Time Tracking;"
+msgstr "Pozemek;Plánování;Sledování času;"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:5
+msgid "Delay between notifications"
+msgstr "Prodleva mezi oznámeními"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:6
+msgid "The delay between two notifications, default is 30min. in seconds."
+msgstr ""
+"Prodleva mezi dvěma oznámeními, výchozí hodnota je 30min. v sekundách."
+
+#: data/ui/main_window.ui:6
+msgid "Export Logs as CSV…"
+msgstr "Exportoval prokoly jako CSV…"
+
+#: data/ui/main_window.ui:10
+msgid "Import Logs from CSV…"
+msgstr "Importovat protokoly z CSV…"
+
+#: data/ui/main_window.ui:16
+msgid "About Khronos"
+msgstr "O programu Khronos"
+
+#: data/ui/main_window.ui:53
+msgid "Timer"
+msgstr "Časovač"
+
+#: data/ui/main_window.ui:77
+msgid "Log name…"
+msgstr "Název protokolu …"
+
+#: data/ui/main_window.ui:96
+msgid "Adds a log to the list"
+msgstr "Přidá protokol do seznamu"
+
+#: data/ui/main_window.ui:106 src/MainWindow.vala:161
+msgid "Starts the timer for a log"
+msgstr "Spustí časovač pro prokolování"
+
+#: data/ui/main_window.ui:122
+msgid "Logs"
+msgstr "Protokoly"
+
+#: data/ui/main_window.ui:148
+msgid "Removes all logs from the list"
+msgstr "Odstraní věechny protokoly ze seznamu"
+
+#: data/ui/main_window.ui:180
+msgid "No Logs"
+msgstr "Žádné protokoly"
+
+#: data/ui/main_window.ui:188
+msgid "Add a log on Timer tab and check later."
+msgstr "Přidat protokol na kartu Časovač a později zkontrolovat."
+
+#: src/MainWindow.vala:153
+msgid "Stops the timer for a log"
+msgstr "Zastaví časovač pro protokolování"
+
+#: src/MainWindow.vala:186
+msgid "Empty the Logs List?"
+msgstr "Vyprázdnit seznam protokolů?"
+
+#: src/MainWindow.vala:187
+msgid ""
+"Emptying this list means all the logs in it will be permanently lost with no "
+"recovery."
+msgstr ""
+"Vyprázdnění tohoto seznamu znamená, že všechny záznamy v něm budou trvale ztraceny bez "
+"možnosti obnovy."
+
+#: src/MainWindow.vala:189
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: src/MainWindow.vala:190
+msgid "Empty List"
+msgstr "Prázdný seznam"
+
+#: src/MainWindow.vala:307
+msgid "Go rest for a while before continuing."
+msgstr "Než budete pokračovat, jděte si na chvíli odpočinout."
+
+#: src/MainWindow.vala:316
+msgid "Maybe grab a snack before continuing."
+msgstr "Možná si před pokračováním vezměte svačinu."
+
+#: src/MainWindow.vala:325
+msgid "Perhaps go get some coffee or tea before continuing."
+msgstr "Než budete pokračovat, zajděte si na kávu nebo čaj."
+
+#: src/MainWindow.vala:334
+msgid "That's a big task. Let's rest a bit before continuing."
+msgstr "To je velký úkol. Než budeme pokračovat, trochu si odpočineme."
+
+#: src/MainWindow.vala:343
+msgid "Amazing work! But please rest a bit before continuing."
+msgstr ""
+"Úžasná práce! Před pokračováním si ale prosím trochu odpočiňte."
+
+#: src/MainWindow.vala:387
+msgid "Track each task's time in a simple inobtrusive way."
+msgstr "Sledujte čas každého úkolu jednoduchým a nevtíravým způsobem."
+
+#: src/MainWindow.vala:393
+msgid "translator-credits"
+msgstr "vikdevelop <super-vik1@protonmail.com>, 2022."
+
+#: src/Services/Dialog.vala:23 src/Services/Dialog.vala:44
+msgid "CSV files"
+msgstr "Soubory CSV"
+
+#: src/Services/Dialog.vala:27 src/Services/Dialog.vala:48
+msgid "All files"
+msgstr "Všechny soubory"
