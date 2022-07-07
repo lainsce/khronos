@@ -47,39 +47,26 @@ public class Khronos.LogViewModel : Object {
     }
 
     public async void delete_trash (MainWindow win) {
-        var dialog = new Gtk.MessageDialog (win, 0, 0, 0, null);
-        dialog.modal = true;
-
-        dialog.set_title (_("Clear Logs?"));
-        dialog.text = (_("Clearing means the logs here will be permanently lost with no recovery."));
-
-        dialog.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
-        dialog.add_button (_("Clear"), Gtk.ResponseType.OK);
-
-        dialog.response.connect ((response_id) => {
-            switch (response_id) {
-                case Gtk.ResponseType.OK:
+        var dialog = new Adw.MessageDialog (win, _("Clear Logs?"), null);
+        dialog.set_body (_("Clearing means the logs here will be permanently lost with no recovery."));
+        dialog.add_response ("cancel", _("Cancel"));
+        dialog.add_response ("clear",  _("Clear"));
+        dialog.set_response_appearance ("clear", Adw.ResponseAppearance.DESTRUCTIVE);
+        dialog.set_default_response ("clear");
+        dialog.set_close_response ("cancel");
+        dialog.response.connect ((response) => {
+            switch (response) {
+                case "clear":
                     depopulate_trashs.begin ();
                     dialog.close ();
                     break;
-                case Gtk.ResponseType.NO:
-                    dialog.close ();
-                    break;
-                case Gtk.ResponseType.CANCEL:
-                case Gtk.ResponseType.CLOSE:
-                case Gtk.ResponseType.DELETE_EVENT:
+                case "cancel":
                 default:
                     dialog.close ();
                     return;
             }
         });
-
-        if (dialog != null) {
-            dialog.present ();
-            return;
-        } else {
-            dialog.show ();
-        }
+        dialog.present ();
     }
 
     async void populate_logs () {

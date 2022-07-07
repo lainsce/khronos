@@ -165,6 +165,9 @@
                                     <binding name="view-model">
                                       <lookup name="view-model">KhronosMainWindow</lookup>
                                     </binding>
+                                    <binding name="window">
+                                      <lookup name="w">KhronosMainWindow</lookup>
+                                    </binding>
                                   </object>
                                 </child>
                               </object>
@@ -181,16 +184,6 @@
         </child>
         <child>
           <object class="GtkActionBar" id="controls">
-            <child type="start">
-              <object class="GtkButton" id="add_log_button">
-                <property name="sensitive">0</property>
-                <property name="tooltip-text" translatable="yes">Adds a log to the list</property>
-                <property name="icon-name">list-add-symbolic</property>
-                <signal name="clicked" handler="on_new_log_requested"/>
-                <style>
-                </style>
-              </object>
-            </child>
             <child type="end">
               <object class="GtkButton" id="timer_button">
                 <property name="tooltip-text" translatable="yes">Starts the timer for a log</property>
@@ -213,6 +206,31 @@
                 <property name="sensitive">0</property>
                 <property name="tooltip-text" translatable="yes">Resets the timer</property>
                 <signal name="clicked" handler="on_reset_requested"/>
+              </object>
+            </child>
+            <child type="end">
+              <object class="GtkButton" id="add_log_button">
+                <property name="sensitive">0</property>
+                <property name="tooltip-text" translatable="yes">Adds a log to the list</property>
+                <property name="icon-name">list-add-symbolic</property>
+                <signal name="clicked" handler="on_new_log_requested"/>
+                <style>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkActionBar" id="controls2">
+            <child type="end">
+              <object class="GtkButton" id="trash_button">
+                <property name="icon-name">user-trash-symbolic</property>
+                <property name="sensitive">0</property>
+                <property name="tooltip-text" translatable="yes">Cleans the logs list</property>
+                <signal name="clicked" handler="on_logs_removal_requested"/>
+                <style>
+                  <class name="destructive-action"/>
+                </style>
               </object>
             </child>
           </object>

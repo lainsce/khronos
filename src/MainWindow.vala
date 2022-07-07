@@ -24,7 +24,9 @@ namespace Khronos {
 
         // Widgets
         [GtkChild]
-        public unowned Gtk.Box controls;
+        public unowned Gtk.ActionBar controls;
+        [GtkChild]
+        public unowned Gtk.ActionBar controls2;
         [GtkChild]
         public unowned Gtk.Entry column_entry;
         [GtkChild]
@@ -43,6 +45,8 @@ namespace Khronos {
         public unowned Gtk.Button timer_button;
         [GtkChild]
         public unowned Gtk.Button stop_timer_button;
+        [GtkChild]
+        public unowned Gtk.Button trash_button;
         [GtkChild]
         public unowned Gtk.MenuButton menu_button;
         [GtkChild]
@@ -89,6 +93,8 @@ namespace Khronos {
             { ACTION_ABOUT, action_about }
         };
 
+        public MainWindow w  { get; set; }
+
         public MainWindow (Adw.Application application, LogViewModel view_model) {
             GLib.Object (
                 application: application,
@@ -111,6 +117,8 @@ namespace Khronos {
 
             var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
             theme.add_resource_path ("/io/github/lainsce/Khronos/");
+
+            this.w = (MainWindow) app.get_active_window ();
         }
 
         construct {
@@ -212,15 +220,18 @@ namespace Khronos {
                 timer_button.activate ();
             });
 
+            controls2.visible = false;
             event_stack.notify["visible-child"].connect (() => {
                 if (event_stack.get_visible_child () == timer_page) {
                     event_searchbar.visible = false;
                     controls.visible = true;
+                    controls2.visible = false;
                 } else if (event_stack.get_visible_child () == logs_page) {
                     uint num = view_model.logs.get_n_items ();
                     event_searchbar.visible = true;
                     event_searchbar.placeholder_text = num.to_string() + " " + (_("events"));
                     controls.visible = false;
+                    controls2.visible = true;
                 }
             });
 
@@ -245,6 +256,7 @@ namespace Khronos {
             column_tag_entry.text = "";
             view_model.create_new_log (log);
             reset_button.sensitive = true;
+            trash_button.sensitive = true;
         }
 
         [GtkCallback]
@@ -286,6 +298,12 @@ namespace Khronos {
             view_model.delete_log (log);
         }
 
+        [GtkCallback]
+        public void on_logs_removal_requested (Gtk.Button button) {
+            view_model.delete_trash (this);
+            trash_button.sensitive = false;
+        }
+
         public void action_export () {
             FileManager.save_logs.begin (view_model);
         }
@@ -303,26 +321,28 @@ namespace Khronos {
         }
 
         public void action_about () {
-            const string COPYRIGHT = "Copyright \xc2\xa9 2019-2022 Paulo \"Lains\" Galardi\n";
+            const string COPYRIGHT = "© 2019-2022 Paulo \"Lains\" Galardi\n";
 
             const string? AUTHORS[] = {
                 "Paulo \"Lains\" Galardi",
                 null
             };
+            const string? DESIGNERS[] = {
+                "Paulo \"Lains\" Galardi",
+                null
+            };
 
-            Gtk.show_about_dialog (this,
-                                   "program-name", "Khronos" + Config.NAME_SUFFIX,
-                                   "logo-icon-name", Config.APP_ID,
-                                   "version", Config.VERSION,
-                                   "comments", _("Track each task\'s time in a simple inobtrusive way."),
-                                   "copyright", COPYRIGHT,
-                                   "authors", AUTHORS,
-                                   "artists", null,
-                                   "license-type", Gtk.License.GPL_3_0,
-                                   "wrap-license", false,
-                                   // TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
-                                   "translator-credits", _("translator-credits"),
-                                   null);
+            //  Adw.show_about_window (this,
+            //                         "application-name", "Khronos" + Config.NAME_SUFFIX,
+            //                         "application-icon", Config.APP_ID,
+            //                         "version", Config.VERSION,
+            //                         "copyright", COPYRIGHT,
+            //                         "developers", AUTHORS,
+            //                         "designers", DESIGNERS,
+            //                         "license-type", Gtk.License.GPL_3_0,
+            //                         // TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
+            //                         "translator-credits", _("translator-credits"),
+            //                         null);
         }
 
         public void reset_timer () {

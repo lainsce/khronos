@@ -24,6 +24,7 @@ public class Khronos.LogListView : View {
     public ObservableList<Log>? logs { get; set; }
     public Log? selected_log { get; set;}
     public LogViewModel? view_model { get; set; }
+    public MainWindow window { get; set; }
 
     construct {
         selection_model.bind_property ("selected", this, "selected-log", DEFAULT, (_, from, ref to) => {
