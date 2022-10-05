@@ -1,0 +1,310 @@
+# Turkish translation for io.github.diegoivanme.flowtime.
+# Copyright (C) 2022 io.github.diegoivanme.flowtime's COPYRIGHT HOLDER
+# This file is distributed under the same license as the io.github.diegoivanme.flowtime package.
+#
+# Sabri Ünal <libreajans@gmail.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.diegoivanme.flowtime\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-29 23:07+0100\n"
+"PO-Revision-Date: 2022-10-05 17:02+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"Language-Team: Turkish <gnometurk@gnome.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:6
+#: data/io.github.lainsce.Khronos.desktop.in:3
+msgid "Khronos"
+msgstr "Khronos"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:7
+msgid "Log the time it took to do tasks"
+msgstr "Görevleri yapmak için geçen süreyi günlüğe kaydedin"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:9
+msgid ""
+"Start logging any task's time to completion, with the ability to stop the "
+"timer at any moment, with notifications for longer task sessions."
+msgstr ""
+"Kronometreyi her an durdurma özelliğiyle, herhangi bir görevin tamamlanma "
+"zamanını, daha uzun görev oturumlarında bildirimlerle, günlüğe kaydetmeye "
+"başlayın."
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:11
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Ctrl + Q kısayoluyla istediğiniz zaman çıkın"
+
+# Geliştiricinin adı
+#: data/io.github.lainsce.Khronos.appdata.xml.in:21
+msgid "Lains"
+msgstr "Lains"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:47
+msgid "Release: UI Refreshments"
+msgstr "Sürüm: Kullanıcı Arayüzü İyileştirmeleri"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:49
+msgid "Changed: The UI is now with a better layout."
+msgstr "Değişti: Kullanıcı arayüzü düzeni iyileştirildi."
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:55
+msgid "Release: Port to GTK4"
+msgstr "Sürüm: GTK4'e geçiş yapıldı"
+
+#: data/io.github.lainsce.Khronos.appdata.xml.in:57
+msgid "Changed: Rewritten for GTK4."
+msgstr "Dğişti: GTK4 için yeniden yazıldı"
+
+#: data/io.github.lainsce.Khronos.desktop.in:4
+msgid "Track each task time in a simple inobtrusive way"
+msgstr "Her görev süresini basit ve göze batmayan bir şekilde takip edin"
+
+#: data/io.github.lainsce.Khronos.desktop.in:11
+msgid "Plot;Planning;Time Tracking;"
+msgstr ""
+"Plot;Planlama;Süre;Zaman;Zaman Takibi;Süre Takibi;Planning;Time Tracking;"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:5
+msgid "Delay between notifications"
+msgstr "Bildirimler arasındaki gecikme"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:6
+msgid "The delay between two notifications, default is 30min. in seconds."
+msgstr ""
+"İki bildirim arasındaki gecikme, varsayılan olarak 30 dakikadır. saniye "
+"cinsinden."
+
+#: data/ui/main_window.ui:6
+msgid "Export Logs as CSV…"
+msgstr "Günlükleri CSV Olarak Dışa Aktar..."
+
+#: data/ui/main_window.ui:10
+msgid "Import Logs from CSV…"
+msgstr "Günlükleri CSV Dosyasından İçe Aktar"
+
+#: data/ui/main_window.ui:16
+msgid "About Khronos"
+msgstr "Khronos Hakkında"
+
+#: data/ui/main_window.ui:53
+msgid "Timer"
+msgstr "Kronometre"
+
+#: data/ui/main_window.ui:77
+msgid "Log name…"
+msgstr "Günlük adı..."
+
+#: data/ui/main_window.ui:96
+msgid "Adds a log to the list"
+msgstr "Listeye günlük ekle"
+
+#: data/ui/main_window.ui:106 src/MainWindow.vala:161
+msgid "Starts the timer for a log"
+msgstr "Günlük için kronometreyi başlatır"
+
+#: data/ui/main_window.ui:122
+msgid "Logs"
+msgstr "Günlükler"
+
+#: data/ui/main_window.ui:148
+msgid "Removes all logs from the list"
+msgstr "Tüm günlükleri listeden kaldırır"
+
+#: data/ui/main_window.ui:180
+msgid "No Logs"
+msgstr "Günlük Yok"
+
+#: data/ui/main_window.ui:188
+msgid "Add a log on Timer tab and check later."
+msgstr "Kronometre sekmesine bir günlük ekleyin ve daha sonra kontrol edin."
+
+#: src/MainWindow.vala:153
+msgid "Stops the timer for a log"
+msgstr "Günlük için kronometreyi durdurur"
+
+#: src/MainWindow.vala:186
+msgid "Empty the Logs List?"
+msgstr "Günlük Listesi boşaltılsın mı?"
+
+#: src/MainWindow.vala:187
+msgid ""
+"Emptying this list means all the logs in it will be permanently lost with no "
+"recovery."
+msgstr ""
+"Bu listenin boşaltılması, içindeki tüm günlüklerin kurtarma imkanı olmadan "
+"kalıcı olarak kaybedileceği anlamına gelir."
+
+#: src/MainWindow.vala:189
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/MainWindow.vala:190
+msgid "Empty List"
+msgstr "Listeyi Boşalt"
+
+#: src/MainWindow.vala:307
+msgid "Go rest for a while before continuing."
+msgstr "Devam etmeden önce bir süre dinlenin."
+
+# Sağlık için not ekledim.
+#: src/MainWindow.vala:316
+msgid "Maybe grab a snack before continuing."
+msgstr ""
+"Belki devam etmeden önce bir şeyler atıştırmak istersiniz\n"
+"(Çn: Aburcuburdan uzak durmayı ihmal etmeyin)."
+
+#: src/MainWindow.vala:325
+msgid "Perhaps go get some coffee or tea before continuing."
+msgstr ""
+"Belki devam etmeden önce belki bir çay veya kahve almak istersiniz\n"
+"(Çn: Şekerden uzak durmayı ihmal etmeyin)."
+
+#: src/MainWindow.vala:334
+msgid "That's a big task. Let's rest a bit before continuing."
+msgstr "Bu büyük bir görev. Devam etmeden önce biraz dinlenin."
+
+#: src/MainWindow.vala:343
+msgid "Amazing work! But please rest a bit before continuing."
+msgstr "Muhteşem bir çalışma! Devam etmeden önce lütfen biraz dinlenin."
+
+#: src/MainWindow.vala:387
+msgid "Track each task's time in a simple inobtrusive way."
+msgstr "Her görevin zamanını basit ve göze batmayan bir şekilde takip edin."
+
+#: src/MainWindow.vala:393
+msgid "translator-credits"
+msgstr "Sabri Ünal <libreajans@gmail.com>"
+
+#: src/Services/Dialog.vala:23 src/Services/Dialog.vala:44
+msgid "CSV files"
+msgstr "CSV dosyaları"
+
+#: src/Services/Dialog.vala:27 src/Services/Dialog.vala:48
+msgid "All files"
+msgstr "Tüm dosyalar"
+
+#~ msgid "Flowtime"
+#~ msgstr "Flowtime"
+
+#~ msgid "Get things done, keep concentrated"
+#~ msgstr "İşleri hallet ve odaklan"
+
+#~ msgid ""
+#~ "The Pomodoro technique is efficient for tasks you find boring, but having "
+#~ "to take a break when you are 100% concentrated in something you like "
+#~ "might be annoying. That's why the Flowtime technique exists: take "
+#~ "appropiate breaks without loosing you **flow**."
+#~ msgstr ""
+#~ "Pomodoro tekniği sıkıcı bulduğunuz görevler için etkilidir, ancak "
+#~ "sevdiğiniz bir şeye %100 odaklandığınızda ara vermek zorunda kalmak can "
+#~ "sıkıcı olabilir. Flowtime tekniği bu yüzden mevcuttur: **akışı** "
+#~ "kaybetmeden uygun molalar verin."
+
+#~ msgid "Flowtime 2.0: Keep on track!"
+#~ msgstr "Flowtime 2.0: Yolda kalın!"
+
+#~ msgid "In this new version, a shiny new feature was added: Statistics!"
+#~ msgstr "Bu yeni sürümde yepyeni bir özellik eklendi: İstatistikler!"
+
+#~ msgid ""
+#~ "Have an overview of how much time you have worked in the last month, week "
+#~ "and day"
+#~ msgstr ""
+#~ "Geçen ay, hafta ve gün içinde ne kadar çalıştığınıza dair bir genel "
+#~ "görünüme sahip olun"
+
+#~ msgid "Take a look at your day-specific data"
+#~ msgstr "Güne özel verilerinize göz atın"
+
+#~ msgid "Export your statistics to CSV format"
+#~ msgstr "İstatistiklerinizi CSV biçiminde dışa aktarın"
+
+# Geliştirici adı
+#~ msgid "Diego Iván"
+#~ msgstr "Diego Iván"
+
+#~ msgid "_About Flowtime"
+#~ msgstr "Flowtime _Hakkında"
+
+#~ msgid "_Preferences"
+#~ msgstr "_Tercihler"
+
+#~ msgid "_Enable Small View"
+#~ msgstr "Küçük Görünümü _Etkinleştir"
+
+#~ msgid "Stages"
+#~ msgstr "Aşamalar"
+
+#~ msgid "Work Stage"
+#~ msgstr "Çalışma Aşaması"
+
+#~ msgid "Break Stage"
+#~ msgstr "Mola Aşaması"
+
+#~ msgid "Statistics"
+#~ msgstr "İstatistikler"
+
+#~ msgid "See Details"
+#~ msgstr "Ayrıntıları Gör"
+
+#~ msgid "Work Time"
+#~ msgstr "Çalışma Zamanı"
+
+#~ msgid "Break Time"
+#~ msgstr "Mola Zamanı"
+
+#~ msgid "Months Saved"
+#~ msgstr "Kaydedilecek Ay"
+
+#~ msgid "The amount of months that the work data will be saved"
+#~ msgstr "Çalışma verilerinin kaydedileceği ay sayısı"
+
+#~ msgid "Autostart"
+#~ msgstr "Kendiliğinden başlat"
+
+#~ msgid "Automatically start the timer when the stage is changed"
+#~ msgstr "Aşama değiştirildiğinde zamanlayıcıyı kendiliğinden başlat"
+
+#~ msgid "Sounds"
+#~ msgstr "Sesler"
+
+#~ msgid "Alarm sounds that mark break time"
+#~ msgstr "Mola zamanını belirten alarm sesleri"
+
+#~ msgid "Today"
+#~ msgstr "Bugün"
+
+#~ msgid "This Week"
+#~ msgstr "Bu Hafta"
+
+#~ msgid "This Month"
+#~ msgstr "Bu Ay"
+
+#~ msgid "seconds"
+#~ msgstr "saniye"
+
+#~ msgid "minutes"
+#~ msgstr "dakika"
+
+#~ msgid "hour"
+#~ msgstr "saat"
+
+#~ msgid "hours"
+#~ msgstr "saat"
+
+#~ msgid "day"
+#~ msgstr "gün"
+
+#~ msgid "days"
+#~ msgstr "gün"
+
+#, c-format
+#~ msgid "%s is your most productive day of the week"
+#~ msgstr "haftanın en verimli gününüz %s"
