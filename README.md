@@ -17,9 +17,8 @@ Track each task's time in a simple inobtrusive way
 
 ## 💝 Donations
 
-Would you like to support the development of this app to new heights? Then:
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/lainsce)
+Would you like to support the development of this app to new heights?
+Then become a GitHub Sponsor or check my Patreon, buttons in the sidebar.
 
 ## 🛠️ Dependencies
 
