@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the io.github.lainsce.Khronos package.
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: io.github.lainsce.Khronos\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-29 23:07+0100\n"
+"POT-Creation-Date: 2022-12-06 22:55+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,58 +17,123 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/io.github.lainsce.Khronos.appdata.xml.in:6
-#: data/io.github.lainsce.Khronos.desktop.in:3
-msgid "Khronos"
-msgstr ""
-
-#: data/io.github.lainsce.Khronos.appdata.xml.in:7
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:7
 msgid "Log the time it took to do tasks"
 msgstr ""
 
-#: data/io.github.lainsce.Khronos.appdata.xml.in:9
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:9
 msgid ""
 "Start logging any task's time to completion, with the ability to stop the "
 "timer at any moment, with notifications for longer task sessions."
 msgstr ""
 
-#: data/io.github.lainsce.Khronos.appdata.xml.in:11
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:11
 msgid "Quit anytime with the shortcut Ctrl + Q"
 msgstr ""
 
-#: data/io.github.lainsce.Khronos.appdata.xml.in:21
-msgid "Lains"
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:47
+msgid "Release: Hour"
 msgstr ""
 
-#: data/io.github.lainsce.Khronos.appdata.xml.in:47
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:49
+msgid ""
+"Changed: UI is now pure Adwaita following the inclusion of Khronos in GNOME "
+"Circle."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:55
+msgid "Release: Minute"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:57
+msgid ""
+"Changed: UI now follows my own style that complements that of Adwaita, "
+"called Solo."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:63
+msgid "Release: Second"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:65
+msgid ""
+"Changed: The UI colors, they are now way less in your face yet are still "
+"colored. The Logs are now stylized like cards."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:71
+msgid "Release: Nanosecond"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:73
+msgid ""
+"Removed: each log's delete button, as they would be accidentally clicked and "
+"would remove the log."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:79
+msgid "Release: Leap Year"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:81
+msgid ""
+"Added: Logs now have tags! Add tags in the new entry below log name, by "
+"specifying them with colons, like this: \"tag1:tag2:tag3\"."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:87
+msgid "Release: Tick Tock Clock"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:89
+msgid "Changed: UI now sports an experimental design."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:90
+msgid "Changed: A robust backend rewrite."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:96
 msgid "Release: UI Refreshments"
 msgstr ""
 
-#: data/io.github.lainsce.Khronos.appdata.xml.in:49
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:98
 msgid "Changed: The UI is now with a better layout."
 msgstr ""
 
-#: data/io.github.lainsce.Khronos.appdata.xml.in:55
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:104
 msgid "Release: Port to GTK4"
 msgstr ""
 
-#: data/io.github.lainsce.Khronos.appdata.xml.in:57
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:106
 msgid "Changed: Rewritten for GTK4."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.desktop.in:3
+msgid "Khronos"
 msgstr ""
 
 #: data/io.github.lainsce.Khronos.desktop.in:4
 msgid "Track each task time in a simple inobtrusive way"
 msgstr ""
 
-#: data/io.github.lainsce.Khronos.desktop.in:11
+#: data/io.github.lainsce.Khronos.desktop.in:7
 msgid "Plot;Planning;Time Tracking;"
 msgstr ""
 
 #: data/io.github.lainsce.Khronos.gschema.xml:5
-msgid "Delay between notifications"
+msgid "Migration Version"
 msgstr ""
 
 #: data/io.github.lainsce.Khronos.gschema.xml:6
+msgid "The version of migration to use; Do not change."
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.gschema.xml:10
+msgid "Delay between notifications"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.gschema.xml:11
 msgid "The delay between two notifications, default is 30min. in seconds."
 msgstr ""
 
@@ -84,86 +149,64 @@ msgstr ""
 msgid "About Khronos"
 msgstr ""
 
-#: data/ui/main_window.ui:53
-msgid "Timer"
+#: data/ui/main_window.ui:52
+msgid "• events"
 msgstr ""
 
-#: data/ui/main_window.ui:77
+#: data/ui/main_window.ui:88
 msgid "Log name…"
 msgstr ""
 
 #: data/ui/main_window.ui:96
-msgid "Adds a log to the list"
+msgid "Tags (separated by colons)…"
 msgstr ""
 
-#: data/ui/main_window.ui:106 src/MainWindow.vala:161
+#: data/ui/main_window.ui:189 src/MainWindow.vala:188 src/MainWindow.vala:201
 msgid "Starts the timer for a log"
 msgstr ""
 
-#: data/ui/main_window.ui:122
-msgid "Logs"
-msgstr ""
-
-#: data/ui/main_window.ui:148
-msgid "Removes all logs from the list"
-msgstr ""
-
-#: data/ui/main_window.ui:180
-msgid "No Logs"
-msgstr ""
-
-#: data/ui/main_window.ui:188
-msgid "Add a log on Timer tab and check later."
-msgstr ""
-
-#: src/MainWindow.vala:153
+#: data/ui/main_window.ui:200
 msgid "Stops the timer for a log"
 msgstr ""
 
-#: src/MainWindow.vala:186
-msgid "Empty the Logs List?"
+#: data/ui/main_window.ui:207
+msgid "Resets the timer"
 msgstr ""
 
-#: src/MainWindow.vala:187
-msgid ""
-"Emptying this list means all the logs in it will be permanently lost with no "
-"recovery."
+#: data/ui/main_window.ui:214
+msgid "Adds a log to the list"
 msgstr ""
 
-#: src/MainWindow.vala:189
-msgid "Cancel"
+#: data/ui/main_window.ui:229
+msgid "Cleans the logs list"
 msgstr ""
 
-#: src/MainWindow.vala:190
-msgid "Empty List"
+#: src/MainWindow.vala:154
+msgid "Pauses the timer for a log"
 msgstr ""
 
-#: src/MainWindow.vala:307
+#: src/MainWindow.vala:232
+msgid "events"
+msgstr ""
+
+#: src/MainWindow.vala:433
 msgid "Go rest for a while before continuing."
 msgstr ""
 
-#: src/MainWindow.vala:316
+#: src/MainWindow.vala:442
 msgid "Maybe grab a snack before continuing."
 msgstr ""
 
-#: src/MainWindow.vala:325
+#: src/MainWindow.vala:451
 msgid "Perhaps go get some coffee or tea before continuing."
 msgstr ""
 
-#: src/MainWindow.vala:334
+#: src/MainWindow.vala:460
 msgid "That's a big task. Let's rest a bit before continuing."
 msgstr ""
 
-#: src/MainWindow.vala:343
+#: src/MainWindow.vala:469
 msgid "Amazing work! But please rest a bit before continuing."
-msgstr ""
-
-#: src/MainWindow.vala:387
-msgid "Track each task's time in a simple inobtrusive way."
-msgstr ""
-
-#: src/MainWindow.vala:393
-msgid "translator-credits"
 msgstr ""
 
 #: src/Services/Dialog.vala:23 src/Services/Dialog.vala:44
@@ -172,4 +215,20 @@ msgstr ""
 
 #: src/Services/Dialog.vala:27 src/Services/Dialog.vala:48
 msgid "All files"
+msgstr ""
+
+#: src/ViewModels/LogViewModel.vala:50
+msgid "Clear Logs?"
+msgstr ""
+
+#: src/ViewModels/LogViewModel.vala:51
+msgid "Clearing means the logs here will be permanently lost with no recovery."
+msgstr ""
+
+#: src/ViewModels/LogViewModel.vala:52
+msgid "Cancel"
+msgstr ""
+
+#: src/ViewModels/LogViewModel.vala:53
+msgid "Clear"
 msgstr ""
