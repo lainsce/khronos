@@ -27,3 +27,6 @@ And that's it! You've successfully translated Khronos for your language!
 * (Optional) Compile .po files instead replacing `-pot` with `-update-po` in the previous command.
 
 Note: install `appstream` package in order to generate release strings.
+
+<!--To generate a pot file-->
+<!-- xgettext --from-code=UTF-8  --add-comments --keyword=_ --output=po/io.github.lainsce.Khronos.pot -f po/POTFILES -->
