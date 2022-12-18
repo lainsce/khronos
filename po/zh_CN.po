@@ -1,0 +1,235 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-06 22:55+0300\n"
+"PO-Revision-Date: 2022-12-17 15:42+0800\n"
+"Last-Translator: YUCLing\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:7
+msgid "Log the time it took to do tasks"
+msgstr "记录一件事所消耗的时间"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:9
+msgid ""
+"Start logging any task's time to completion, with the ability to stop the "
+"timer at any moment, with notifications for longer task sessions."
+msgstr "开始记录任何任务的完成时间，能够随时停止计时器，并带有长时任务的通知。"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:11
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "在任何时候都可以按 Ctrl + Q 退出"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:47
+msgid "Release: Hour"
+msgstr "发布：时"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:49
+msgid ""
+"Changed: UI is now pure Adwaita following the inclusion of Khronos in GNOME "
+"Circle."
+msgstr "变更：在 Khronos 被包含到 GNOME Circle 之后，现在 UI 使用纯 Adwaita。"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:55
+msgid "Release: Minute"
+msgstr "发布：分"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:57
+msgid ""
+"Changed: UI now follows my own style that complements that of Adwaita, "
+"called Solo."
+msgstr "变更：UI 现在遵循我自己的风格，与 Adwaita 的风格相辅相成，称为 Solo。"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:63
+msgid "Release: Second"
+msgstr "发布：秒"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:65
+msgid ""
+"Changed: The UI colors, they are now way less in your face yet are still "
+"colored. The Logs are now stylized like cards."
+msgstr "变更：UI 颜色，它们现在不再那么碍眼，但仍然是彩色的。记录现在使用卡片风格。"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:71
+msgid "Release: Nanosecond"
+msgstr "发布：纳秒"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:73
+msgid ""
+"Removed: each log's delete button, as they would be accidentally clicked and "
+"would remove the log."
+msgstr "移除：每个记录的删除按钮，因为它们会被意外点击导致记录被删除。"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:79
+msgid "Release: Leap Year"
+msgstr "发布：闰年"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:81
+msgid ""
+"Added: Logs now have tags! Add tags in the new entry below log name, by "
+"specifying them with colons, like this: \"tag1:tag2:tag3\"."
+msgstr "新增：记录现在拥有了标签！在记录名称下面的新输入框添加标签，用冒号指定标签，像这样：\"tag1:tag2:tag3\"。"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:87
+msgid "Release: Tick Tock Clock"
+msgstr "发布：滴答时钟"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:89
+msgid "Changed: UI now sports an experimental design."
+msgstr "变更：UI 现在采用了实验性设计。"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:90
+msgid "Changed: A robust backend rewrite."
+msgstr "变更：一次强大的后端重写。"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:96
+msgid "Release: UI Refreshments"
+msgstr "发布：UI 换貌"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:98
+msgid "Changed: The UI is now with a better layout."
+msgstr "变更：现在 UI 拥有更好的布局。"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:104
+msgid "Release: Port to GTK4"
+msgstr "发布：移植到 GTK4"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:106
+msgid "Changed: Rewritten for GTK4."
+msgstr "变更：为 GTK4 重写。"
+
+#: data/io.github.lainsce.Khronos.desktop.in:3
+msgid "Khronos"
+msgstr "Khronos"
+
+#: data/io.github.lainsce.Khronos.desktop.in:4
+msgid "Track each task time in a simple inobtrusive way"
+msgstr "以一种简单而不引人注目的方式跟踪每个任务时间"
+
+#: data/io.github.lainsce.Khronos.desktop.in:7
+msgid "Plot;Planning;Time Tracking;"
+msgstr "策划;计划;时间跟踪;"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:5
+msgid "Migration Version"
+msgstr "迁移版本"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:6
+msgid "The version of migration to use; Do not change."
+msgstr "迁移所使用的版本；不要修改。"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:10
+msgid "Delay between notifications"
+msgstr "通知之间的延迟"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:11
+msgid "The delay between two notifications, default is 30min. in seconds."
+msgstr "两个通知之间的延迟，默认为30分钟。单位为秒。"
+
+#: data/ui/main_window.ui:6
+msgid "Export Logs as CSV…"
+msgstr "将记录保存至 CSV…"
+
+#: data/ui/main_window.ui:10
+msgid "Import Logs from CSV…"
+msgstr "从 CSV 中导入记录…"
+
+#: data/ui/main_window.ui:16
+msgid "About Khronos"
+msgstr "关于 Khronos"
+
+#: data/ui/main_window.ui:52
+msgid "• events"
+msgstr "• 个事件"
+
+#: data/ui/main_window.ui:88
+msgid "Log name…"
+msgstr "记录名称…"
+
+#: data/ui/main_window.ui:96
+msgid "Tags (separated by colons)…"
+msgstr "标签（用冒号分割）…"
+
+#: data/ui/main_window.ui:189 src/MainWindow.vala:188 src/MainWindow.vala:201
+msgid "Starts the timer for a log"
+msgstr "为该记录开始计时器"
+
+#: data/ui/main_window.ui:200
+msgid "Stops the timer for a log"
+msgstr "为该记录停止计时器"
+
+#: data/ui/main_window.ui:207
+msgid "Resets the timer"
+msgstr "重置计时器"
+
+#: data/ui/main_window.ui:214
+msgid "Adds a log to the list"
+msgstr "添加记录到列表"
+
+#: data/ui/main_window.ui:229
+msgid "Cleans the logs list"
+msgstr "清除记录列表"
+
+#: src/MainWindow.vala:154
+msgid "Pauses the timer for a log"
+msgstr "为该记录暂停计时器"
+
+#: src/MainWindow.vala:232
+msgid "events"
+msgstr "个事件"
+
+#: src/MainWindow.vala:433
+msgid "Go rest for a while before continuing."
+msgstr "继续之前先休息一下吧。"
+
+#: src/MainWindow.vala:442
+msgid "Maybe grab a snack before continuing."
+msgstr "也许在继续之前拿些零食也不错。"
+
+#: src/MainWindow.vala:451
+msgid "Perhaps go get some coffee or tea before continuing."
+msgstr "在继续之前或许可以去弄些咖啡或者茶。"
+
+#: src/MainWindow.vala:460
+msgid "That's a big task. Let's rest a bit before continuing."
+msgstr "真是个大任务啊。先休息一下吧。"
+
+#: src/MainWindow.vala:469
+msgid "Amazing work! But please rest a bit before continuing."
+msgstr "干得漂亮！但在你继续工作前先休息一下吧。"
+
+#: src/Services/Dialog.vala:23 src/Services/Dialog.vala:44
+msgid "CSV files"
+msgstr "CSV 文件"
+
+#: src/Services/Dialog.vala:27 src/Services/Dialog.vala:48
+msgid "All files"
+msgstr "所有文件"
+
+#: src/ViewModels/LogViewModel.vala:50
+msgid "Clear Logs?"
+msgstr "清除记录？"
+
+#: src/ViewModels/LogViewModel.vala:51
+msgid "Clearing means the logs here will be permanently lost with no recovery."
+msgstr "清除意味着这里的记录都会永久丢失且无法还原。"
+
+#: src/ViewModels/LogViewModel.vala:52
+msgid "Cancel"
+msgstr "取消"
+
+#: src/ViewModels/LogViewModel.vala:53
+msgid "Clear"
+msgstr "清除"
