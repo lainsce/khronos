@@ -17,6 +17,8 @@
   <bug-database rdf:resource="https://github.com/lainsce/khronos"/>
   <category rdf:resource="http://api.gnome.org/doap-extensions#apps"/>
   <programming-language>Vala</programming-language>
+  <platform>GTK 4</platform>
+  <platform>Libadwaita</platform>
   <maintainer>
     <foaf:Person>
       <foaf:name>Lains</foaf:name>
@@ -25,4 +27,3 @@
     </foaf:Person>
   </maintainer>
 </Project>
-
