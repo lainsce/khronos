@@ -332,17 +332,21 @@ namespace Khronos {
                 null
             };
 
-            //  Adw.show_about_window (this,
-            //                         "application-name", "Khronos" + Config.NAME_SUFFIX,
-            //                         "application-icon", Config.APP_ID,
-            //                         "version", Config.VERSION,
-            //                         "copyright", COPYRIGHT,
-            //                         "developers", AUTHORS,
-            //                         "designers", DESIGNERS,
-            //                         "license-type", Gtk.License.GPL_3_0,
-            //                         // TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
-            //                         "translator-credits", _("translator-credits"),
-            //                         null);
+            var about = new Adw.AboutWindow ();
+	        about.application_icon = Config.APP_ID;
+            about.application_name =  "Khronos" + Config.NAME_SUFFIX;
+            about.developers = AUTHORS;
+            about.designers = DESIGNERS;
+            about.copyright = COPYRIGHT;
+            about.issue_url = "https://github.com/lainsce/khronos/issues";
+            about.license_type = Gtk.License.GPL_3_0;
+            about.version = Config.VERSION;
+            about.website = "https://github.com/lainsce/khronos";
+            // TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
+            about.translator_credits = _("translator-credits");
+            about.transient_for = this.w;
+            about.present ();
+
         }
 
         public void reset_timer () {

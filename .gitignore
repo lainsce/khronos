@@ -12,3 +12,4 @@ obj-x86_64-linux-gnu/
 .buildconfig
 builddir/
 .flatpak/
+.flatpak-builder/
