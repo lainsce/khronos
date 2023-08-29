@@ -61,7 +61,7 @@
               <object class="AdwViewStackPage">
                 <property name="name">timer</property>
                 <property name="icon-name">clock-alt-symbolic</property>
-                <property name="title">Timer</property>
+                <property name="title" translatable="yes">Timer</property>
                 <property name="child">
                   <object class="GtkBox" id="timer_page">
                     <property name="orientation">vertical</property>
@@ -135,7 +135,7 @@
               <object class="AdwViewStackPage">
                 <property name="name">logs</property>
                 <property name="icon-name">view-list-symbolic</property>
-                <property name="title">Logs</property>
+                <property name="title" translatable="yes">Logs</property>
                 <property name="child">
                   <object class="GtkScrolledWindow" id="logs_page">
                     <property name="vexpand">1</property>
