@@ -244,7 +244,7 @@ namespace Khronos {
             var log = new Log ();
             log.name = column_entry.text;
             log.timedate = "%s\n%s – %s".printf(column_time_label.label,
-                                               ("%s").printf (dt_start.format ("%d/%m/%Y %H∶%M∶%S")),
+                                               ("%s").printf (dt_start.format ("%a, %d/%m %H∶%M∶%S")),
                                                ("%s").printf (dt_stop.format ("%H∶%M∶%S")));
             log.tags = column_tag_entry.text;
             reset_timer ();
@@ -299,6 +299,11 @@ namespace Khronos {
 
             uint num = view_model.logs.get_n_items ();
             event_searchbar.placeholder_text = num.to_string() + " " + (_("events"));
+
+            if (num == 0) {
+                view_model.delete_trash.begin (this);
+                trash_button.sensitive = false;
+            }
         }
 
         [GtkCallback]
