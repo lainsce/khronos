@@ -23,6 +23,6 @@ namespace Khronos.MiscUtils {
           return (T) ancestor;
       }
 
-      return null;
+      return (T) ancestor;
     }
 }
