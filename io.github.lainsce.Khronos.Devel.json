@@ -8,8 +8,7 @@
         "--filesystem=xdg-run/gvfsd",
         "--socket=wayland",
         "--socket=fallback-x11",
-        "--share=ipc",
-        "--device=dri"
+        "--share=ipc"
     ],
     "desktop-file-name-suffix" : " (Development)",
     "cleanup" : [

@@ -173,12 +173,12 @@ namespace Khronos {
                     }
 
                     // ...before you populate.
-                    string[] tags = column_tag_entry.text.split(":");
+                    string[] tags = column_tag_entry.text.split (":");
                     foreach (var t in tags) {
                         var build = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
                         var tagobj = new Gtk.Label (t);
                         build.append(tagobj);
-                        tag_holder.append(build);
+                        tag_holder.append (build);
                         build.add_css_class ("kh-tag");
                     }
                 } else {
@@ -186,7 +186,7 @@ namespace Khronos {
                     GLib.Source.remove(timer_id);
                     timer_button.icon_name = "media-playback-start-symbolic";
                     timer_button.tooltip_text = _("Starts the timer for a log");
-                    timer_button.get_style_context ().remove_class ("destructive-action");
+                    timer_button.remove_css_class ("destructive-action");
                     add_log_button.sensitive = true;
                     stop_timer_button.sensitive = true;
                     reset_button.sensitive = true;
@@ -196,10 +196,10 @@ namespace Khronos {
             stop_timer_button.clicked.connect (() => {
                 start = false;
                 dt_stop = new GLib.DateTime.now_local ();
-                GLib.Source.remove(timer_id);
+                GLib.Source.remove (timer_id);
                 timer_button.icon_name = "media-playback-start-symbolic";
                 timer_button.tooltip_text = _("Starts the timer for a log");
-                timer_button.get_style_context ().remove_class ("destructive-action");
+                timer_button.remove_css_class ("destructive-action");
                 add_log_button.sensitive = true;
                 add_log_button.visible = true;
                 reset_button.sensitive = true;
@@ -235,7 +235,6 @@ namespace Khronos {
                 }
             });
 
-            this.set_size_request (360, 500);
             this.show ();
         }
 

@@ -42,6 +42,14 @@
     </custom>
     <translation type="gettext">@app_id@</translation>
     <releases>
+        <release version="4.0.0" date="2023-09-20">
+            <description>
+                <p>Release: Day</p>
+                <ul>
+                    <li>Changed: Overall refinements to match the updated looks of GNOME apps.</li>
+                </ul>
+            </description>
+        </release>
         <release version="3.7.1" date="2022-07-01">
             <description>
                 <p>Release: Hour</p>
