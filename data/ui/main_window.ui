@@ -20,10 +20,10 @@
   </menu>
   <template class="KhronosMainWindow" parent="AdwApplicationWindow">
     <property name="width-request">360</property>
-    <property name="height-request">360</property>
+    <property name="height-request">500</property>
     <child>
       <object class="AdwBreakpoint">
-        <condition>max-width: 550sp</condition>
+        <condition>max-width: 500sp</condition>
         <setter object="switcher_bar" property="reveal">True</setter>
         <setter object="timer_header" property="title-widget"/>
       </object>

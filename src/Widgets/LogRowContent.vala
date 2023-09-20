@@ -42,17 +42,17 @@ public class Khronos.LogRowContent : Adw.Bin {
             _log = value;
 
             text_binding = _log?.bind_property (
-                "name", row, "title", SYNC_CREATE|BIDIRECTIONAL);
+                "name", row, "title", SYNC_CREATE | BIDIRECTIONAL);
             text2_binding = _log?.bind_property (
-                "timedate", row, "subtitle", SYNC_CREATE|BIDIRECTIONAL);
+                "timedate", row, "subtitle", SYNC_CREATE | BIDIRECTIONAL);
 
-            string[] tags = _log.tags.split(":");
+            string[] tags = _log.tags.split (":");
             foreach (var t in tags) {
                 var build = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
                 build.add_css_class ("kh-tag");
                 var tagobj = new Gtk.Label (t);
-                build.append(tagobj);
-                log_tag_holder.append(build);
+                build.append (tagobj);
+                log_tag_holder.append (build);
             }
         }
     }
@@ -62,6 +62,6 @@ public class Khronos.LogRowContent : Adw.Bin {
 
     [GtkCallback]
     void on_delete_button_clicked () {
-        ((LogListView)MiscUtils.find_ancestor_of_type<LogListView>(this)).log_removal_requested (log);
+        ((LogListView) MiscUtils.find_ancestor_of_type<LogListView> (this)).log_removal_requested (log);
     }
 }

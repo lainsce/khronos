@@ -28,7 +28,7 @@ public class Khronos.TagHolder : Gtk.Widget {
 
     public void append (Gtk.Widget child) {
         child.set_parent (this);
-        children.append(child);
+        children.append (child);
     }
 
     public override void dispose () {

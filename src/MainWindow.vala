@@ -152,10 +152,10 @@ namespace Khronos {
                     });
                     timer_button.icon_name = "media-playback-pause-symbolic";
                     timer_button.tooltip_text = _("Pauses the timer for a log");
-                    timer_button.get_style_context ().add_class ("destructive-action");
+                    timer_button.add_css_class ("destructive-action");
                     add_log_button.sensitive = false;
                     stop_timer_button.visible = true;
-                    reset_button.visible = true;
+                    reset_button.visible = false;
 
                     column_entry.visible = false;
                     column_tag_entry.visible = false;
@@ -190,6 +190,7 @@ namespace Khronos {
                     add_log_button.sensitive = true;
                     stop_timer_button.sensitive = true;
                     reset_button.sensitive = true;
+                    reset_button.visible = true;
                 }
             });
 
@@ -295,12 +296,18 @@ namespace Khronos {
         [GtkCallback]
         public void on_log_removal_requested (Log log) {
             view_model.delete_log (log);
+
+            uint num = view_model.logs.get_n_items ();
+            event_searchbar.placeholder_text = num.to_string() + " " + (_("events"));
         }
 
         [GtkCallback]
         public void on_logs_removal_requested (Gtk.Button button) {
-            view_model.delete_trash (this);
+            view_model.delete_trash.begin (this);
             trash_button.sensitive = false;
+
+            uint num = view_model.logs.get_n_items ();
+            event_searchbar.placeholder_text = num.to_string() + " " + (_("events"));
         }
 
         public void action_export () {
