@@ -23,6 +23,7 @@
     <url type="bugtracker">https://github.com/lainsce/khronos/issues</url>
     <url type="donation">https://ko-fi.com/lainsce/</url>
     <url type="translate">https://github.com/lainsce/khronos/blob/main/po/README.md</url>
+    <url type="vcs-browser">https://github.com/lainsce/khronos</url>
     <screenshots>
         <screenshot type="default">
             <image>https://raw.githubusercontent.com/lainsce/khronos/main/data/shot.png</image>
