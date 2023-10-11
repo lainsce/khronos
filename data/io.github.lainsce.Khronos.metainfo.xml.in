@@ -23,6 +23,7 @@
     <url type="bugtracker">https://github.com/lainsce/khronos/issues</url>
     <url type="donation">https://ko-fi.com/lainsce/</url>
     <url type="translate">https://github.com/lainsce/khronos/blob/main/po/README.md</url>
+    <url type="vcs-browser">https://github.com/lainsce/khronos</url>
     <screenshots>
         <screenshot type="default">
             <image>https://raw.githubusercontent.com/lainsce/khronos/main/data/shot.png</image>
@@ -51,7 +52,7 @@
             </description>
         </release>
         <release version="4.0.0" date="2023-09-20">
-            <description>
+            <description translatable="no">
                 <p>Release: Day</p>
                 <ul>
                     <li>Changed: Overall refinements to match the updated looks of GNOME apps.</li>
@@ -59,7 +60,7 @@
             </description>
         </release>
         <release version="3.7.1" date="2022-07-01">
-            <description>
+            <description translatable="no">
                 <p>Release: Hour</p>
                 <ul>
                     <li>Changed: UI is now pure Adwaita following the inclusion of Khronos in GNOME Circle.</li>
@@ -67,7 +68,7 @@
             </description>
         </release>
         <release version="3.7.0" date="2022-04-20">
-            <description>
+            <description translatable="no">
                 <p>Release: Minute</p>
                 <ul>
                     <li>Changed: UI now follows my own style that complements that of Adwaita, called Solo.</li>
@@ -75,7 +76,7 @@
             </description>
         </release>
         <release version="3.6.8" date="2022-01-05">
-            <description>
+            <description translatable="no">
                 <p>Release: Second</p>
                 <ul>
                     <li>Changed: The UI colors, they are now way less in your face yet are still colored. The Logs are now stylized like cards.</li>
@@ -83,7 +84,7 @@
             </description>
         </release>
         <release version="3.6.7" date="2022-01-05">
-            <description>
+            <description translatable="no">
                 <p>Release: Nanosecond</p>
                 <ul>
                     <li>Removed: each log's delete button, as they would be accidentally clicked and would remove the log.</li>
@@ -91,7 +92,7 @@
             </description>
         </release>
         <release version="3.6.6" date="2021-12-03">
-            <description>
+            <description translatable="no">
                 <p>Release: Leap Year</p>
                 <ul>
                     <li>Added: Logs now have tags! Add tags in the new entry below log name, by specifying them with colons, like this: "tag1:tag2:tag3".</li>
@@ -99,7 +100,7 @@
             </description>
         </release>
         <release version="3.6.5" date="2021-12-01">
-            <description>
+            <description translatable="no">
                 <p>Release: Tick Tock Clock</p>
                 <ul>
                     <li>Changed: UI now sports an experimental design.</li>
@@ -108,7 +109,7 @@
             </description>
         </release>
         <release version="3.5.0" date="2021-02-09">
-            <description>
+            <description translatable="no">
                 <p>Release: UI Refreshments</p>
                 <ul>
                     <li>Changed: The UI is now with a better layout.</li>
@@ -116,7 +117,7 @@
             </description>
         </release>
         <release version="3.0.0" date="2021-01-29">
-            <description>
+            <description translatable="no">
                 <p>Release: Port to GTK4</p>
                 <ul>
                     <li>Changed: Rewritten for GTK4.</li>
