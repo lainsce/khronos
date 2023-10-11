@@ -20,10 +20,12 @@
   </menu>
   <template class="KhronosMainWindow" parent="AdwApplicationWindow">
     <property name="width-request">360</property>
-    <property name="height-request">500</property>
+    <property name="height-request">294</property>
+    <property name="default-width">800</property>
+    <property name="default-height">600</property>
     <child>
       <object class="AdwBreakpoint">
-        <condition>max-width: 500sp</condition>
+        <condition>max-aspect-ratio: 3/4 or max-width: 600</condition>
         <setter object="switcher_bar" property="reveal">True</setter>
         <setter object="timer_header" property="title-widget"/>
       </object>
@@ -50,10 +52,9 @@
         </child>
         <child type="top">
           <object class="GtkSearchEntry" id="event_searchbar">
-            <property name="margin-start">18</property>
-            <property name="margin-end">18</property>
             <property name="margin-top">6</property>
             <property name="margin-bottom">6</property>
+            <property name="halign">center</property>
             <property name="placeholder-text" translatable="yes">• events</property>
             <style>
               <class name="search-bar"/>
@@ -98,7 +99,7 @@
                         </child>
                         <child>
                           <object class="GtkEntry" id="column_tag_entry">
-                            <property name="placeholder-text" translatable="yes">Tags (separated by colons)…</property>
+                            <property name="placeholder-text" translatable="yes">Tags (split by colons)…</property>
                             <style>
                               <class name="log-entry"/>
                             </style>
@@ -193,8 +194,10 @@
               <object class="GtkButton" id="timer_button">
                 <property name="tooltip-text" translatable="yes">Starts the timer for a log</property>
                 <property name="icon-name">media-playback-start-symbolic</property>
+                <property name="valign">center</property>
                 <style>
                   <class name="suggested-action"/>
+                  <class name="floating"/>
                 </style>
               </object>
             </child>
@@ -202,24 +205,34 @@
               <object class="GtkButton" id="stop_timer_button">
                 <property name="icon-name">media-playback-stop-symbolic</property>
                 <property name="sensitive">0</property>
+                <property name="valign">center</property>
                 <property name="tooltip-text" translatable="yes">Stops the timer for a log</property>
+                <style>
+                  <class name="floating-secondary"/>
+                </style>
               </object>
             </child>
             <child type="end">
               <object class="GtkButton" id="reset_button">
                 <property name="icon-name">view-refresh-symbolic</property>
                 <property name="sensitive">0</property>
+                <property name="valign">center</property>
                 <property name="tooltip-text" translatable="yes">Resets the timer</property>
                 <signal name="clicked" handler="on_reset_requested"/>
+                <style>
+                  <class name="floating-secondary"/>
+                </style>
               </object>
             </child>
             <child type="end">
               <object class="GtkButton" id="add_log_button">
                 <property name="sensitive">0</property>
+                <property name="valign">center</property>
                 <property name="tooltip-text" translatable="yes">Adds a log to the list</property>
                 <property name="icon-name">list-add-symbolic</property>
                 <signal name="clicked" handler="on_new_log_requested"/>
                 <style>
+                  <class name="floating-secondary"/>
                 </style>
               </object>
             </child>
@@ -231,10 +244,12 @@
               <object class="GtkButton" id="trash_button">
                 <property name="icon-name">user-trash-symbolic</property>
                 <property name="sensitive">0</property>
+                <property name="valign">center</property>
                 <property name="tooltip-text" translatable="yes">Cleans the logs list</property>
                 <signal name="clicked" handler="on_logs_removal_requested"/>
                 <style>
                   <class name="destructive-action"/>
+                  <class name="floating"/>
                 </style>
               </object>
             </child>

@@ -9,13 +9,13 @@
         <object class="AdwActionRow" id="row">
           <property name="valign">center</property>
           <property name="hexpand">1</property>
-          <child type="prefix">
+          <child type="suffix">
             <object class="GtkButton" id="delete_button">
               <property name="icon-name">user-trash-symbolic</property>
               <property name="valign">center</property>
               <signal name="clicked" handler="on_delete_button_clicked" />
               <style>
-                <class name="flat" />
+                <class name="destructive-action" />
               </style>
             </object>
           </child>
@@ -25,7 +25,7 @@
         <object class="GtkBox">
           <property name="orientation">horizontal</property>
           <property name="valign">center</property>
-          <property name="margin-start">60</property>
+          <property name="margin-start">12</property>
           <property name="margin-bottom">6</property>
           <child>
             <object class="GtkBox" id="log_tag_holder">

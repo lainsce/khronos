@@ -138,6 +138,9 @@ namespace Khronos {
             tag_holder.visible = false;
             event_searchbar.visible = false;
 
+            uint num = view_model.logs.get_n_items ();
+            event_searchbar.placeholder_text = num.to_string() + " " + (_("events"));
+
             timer_button.clicked.connect (() => {
                 if (start != true) {
                     start = true;
@@ -228,7 +231,6 @@ namespace Khronos {
                     controls.visible = true;
                     controls2.visible = false;
                 } else if (event_stack.get_visible_child () == logs_page) {
-                    uint num = view_model.logs.get_n_items ();
                     event_searchbar.visible = true;
                     event_searchbar.placeholder_text = num.to_string() + " " + (_("events"));
                     controls.visible = false;

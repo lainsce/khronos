@@ -3,6 +3,10 @@
   outline: 1px solid @borders;
 }
 
+.search-bar {
+  border-radius: 999px;
+}
+
 .kh-title {
   font-size: 400%;
   font-weight: 300;
@@ -16,4 +20,22 @@
   background: alpha(@view_fg_color, 0.1);
   border-radius: 8px;
   padding: 4px 12px;
+}
+
+.floating {
+  padding: 0;
+  margin: 0 16px 16px 0;
+  min-width: 56px;
+  min-height: 56px;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px 2px alpha(@view_fg_color, 0.15),
+              0 1px 2px 1px alpha(@view_fg_color, 0.3);
+}
+
+.floating-secondary {
+  padding: 0;
+  margin: 0 16px 16px 0;
+  min-width: 42px;
+  min-height: 42px;
+  border-radius: 16px;
 }
