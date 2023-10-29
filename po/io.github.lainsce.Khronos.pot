@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 12:34+0300\n"
+"POT-Creation-Date: 2023-10-29 16:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,11 +31,23 @@ msgstr ""
 msgid "Quit anytime with the shortcut Ctrl + Q"
 msgstr ""
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:48
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:20
+msgid "Plot"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:21
+msgid "Planning"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:22
+msgid "Time Tracking"
+msgstr ""
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:59
 msgid "Release: Day 2"
 msgstr ""
 
-#: data/io.github.lainsce.Khronos.metainfo.xml.in:50
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:61
 msgid "Changed: Overall refinements to match the updated looks of GNOME apps."
 msgstr ""
 
