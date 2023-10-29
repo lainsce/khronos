@@ -11,6 +11,16 @@
             <li>Quit anytime with the shortcut Ctrl + Q</li>
         </ul>
     </description>
+    <categories>
+        <category>GNOME</category>
+        <category>GTK</category>
+        <category>Office</category>
+    </categories>
+    <keywords>
+        <keyword>Plot</keyword>
+        <keyword>Planning</keyword>
+        <keyword>Time Tracking</keyword>
+    </keywords>    
     <provides>
         <binary>io.github.lainsce.Khronos</binary>
     </provides>
@@ -42,6 +52,7 @@
       <value key="GnomeSoftware::key-colors">[(145, 65, 172)]</value>
     </custom>
     <translation type="gettext">@app_id@</translation>
+    <launchable type="desktop-id">io.github.lainsce.Khronos.desktop</launchable>
     <releases>
         <release version="4.0.1" date="2023-10-11">
             <description>
