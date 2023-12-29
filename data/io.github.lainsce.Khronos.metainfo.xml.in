@@ -11,16 +11,6 @@
             <li>Quit anytime with the shortcut Ctrl + Q</li>
         </ul>
     </description>
-    <categories>
-        <category>GNOME</category>
-        <category>GTK</category>
-        <category>Office</category>
-    </categories>
-    <keywords>
-        <keyword>Plot</keyword>
-        <keyword>Planning</keyword>
-        <keyword>Time Tracking</keyword>
-    </keywords>    
     <provides>
         <binary>io.github.lainsce.Khronos</binary>
     </provides>
