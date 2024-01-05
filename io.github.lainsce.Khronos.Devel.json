@@ -30,6 +30,7 @@
         {
             "name" : "khronos",
             "buildsystem" : "meson",
+            "run-tests" : true,
             "config-opts" : [
                 "-Ddevelopment=true"
             ],

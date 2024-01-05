@@ -39,10 +39,12 @@ appstream_file = i18n.merge_file(
 )
 
 #Validate Appstream file
-appstream_file_validate = find_program('appstreamcli', required: false)
-if appstream_file_validate.found()
-  test('validate-appstream', appstream_file_validate,
-    args: ['validate', '--no-net', appstream_file]
+appstreamcli = find_program('appstreamcli', required: false)
+if appstreamcli.found()
+  test('validate-appstream',
+    appstreamcli,
+    args: ['validate', '--no-net', '--explain', appstream_file],
+    workdir: meson.current_build_dir()
   )
 endif
 
