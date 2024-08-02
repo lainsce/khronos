@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: khronos\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-29 16:03+0300\n"
+"PO-Revision-Date: 2024-05-13 12:54+0530\n"
+"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
+"Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 46.1\n"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:7
+msgid "Log the time it took to do tasks"
+msgstr "कार्य करने में लगने वाले समय को लॉग करें"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:9
+msgid ""
+"Start logging any task's time to completion, with the ability to stop the "
+"timer at any moment, with notifications for longer task sessions."
+msgstr ""
+"किसी भी कार्य के पूरा होने के समय को लॉग करना प्रारंभ करें, किसी भी क्षण टाइमर को रोकने "
+"की क्षमता के साथ, लंबे कार्य सत्रों के लिए सूचनाओं के साथ।"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:11
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "शॉर्टकट Ctrl + Q से किसी भी समय बाहर निकलें"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:20
+msgid "Plot"
+msgstr "सारणी"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:21
+msgid "Planning"
+msgstr "योजना"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:22
+msgid "Time Tracking"
+msgstr "समय निगरानी"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:59
+msgid "Release: Day 2"
+msgstr "रिलीज: दिन 2"
+
+#: data/io.github.lainsce.Khronos.metainfo.xml.in:61
+msgid "Changed: Overall refinements to match the updated looks of GNOME apps."
+msgstr "परिवर्तित: GNOME ऐप्स के अद्यतन स्वरूप से मेल खाने के लिए समग्र परिशोधन।"
+
+#: data/io.github.lainsce.Khronos.desktop.in:3
+msgid "Khronos"
+msgstr "Khronos"
+
+#: data/io.github.lainsce.Khronos.desktop.in:4
+msgid "Track each task time in a simple inobtrusive way"
+msgstr "प्रत्येक कार्य के समय पर सरल, विनीत तरीके से नज़र रखें"
+
+#: data/io.github.lainsce.Khronos.desktop.in:7
+msgid "Plot;Planning;Time Tracking;"
+msgstr "सारणी;योजना;समय निगरानी;"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:5
+msgid "Migration Version"
+msgstr "माइग्रेशन संस्करण"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:6
+msgid "The version of migration to use; Do not change."
+msgstr "उपयोग के लिए माइग्रेशन का संस्करण; बदलें नहीं।"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:10
+msgid "Delay between notifications"
+msgstr "सूचनाओं के बीच विलंब"
+
+#: data/io.github.lainsce.Khronos.gschema.xml:11
+msgid "The delay between two notifications, default is 30min. in seconds."
+msgstr "दो सूचनाओं के बीच विलंब, तयशुदा 30 मिनट है। कुछ लम्हों में।"
+
+#: data/ui/main_window.ui:6
+msgid "Export Logs as CSV…"
+msgstr "लॉग को CSV के रूप में निर्यात करें…"
+
+#: data/ui/main_window.ui:10
+msgid "Import Logs from CSV…"
+msgstr "CSV से लॉग आयात करें…"
+
+#: data/ui/main_window.ui:16
+msgid "About Khronos"
+msgstr "Khronos के बारे में"
+
+#: data/ui/main_window.ui:58
+msgid "• events"
+msgstr "• कार्यक्रम"
+
+#: data/ui/main_window.ui:70
+msgid "Timer"
+msgstr "टाइमर"
+
+#: data/ui/main_window.ui:94
+msgid "Log name…"
+msgstr "लॉग नाम…"
+
+#: data/ui/main_window.ui:102
+msgid "Tags (split by colons)…"
+msgstr "टैग (कोलन द्वारा विभाजित)…"
+
+#: data/ui/main_window.ui:144
+msgid "Logs"
+msgstr "लॉग"
+
+#: data/ui/main_window.ui:195 src/MainWindow.vala:191 src/MainWindow.vala:205
+msgid "Starts the timer for a log"
+msgstr "लॉग के लिए टाइमर प्रारंभ करता है"
+
+#: data/ui/main_window.ui:209
+msgid "Stops the timer for a log"
+msgstr "लॉग के लिए टाइमर बंद कर देता है"
+
+#: data/ui/main_window.ui:220
+msgid "Resets the timer"
+msgstr "टाइमर रीसेट करता है"
+
+#: data/ui/main_window.ui:231
+msgid "Adds a log to the list"
+msgstr "सूची में एक लॉग जोड़ता है"
+
+#: data/ui/main_window.ui:248
+msgid "Cleans the logs list"
+msgstr "लॉग सूची साफ करता है"
+
+#: src/MainWindow.vala:142 src/MainWindow.vala:235 src/MainWindow.vala:303
+#: src/MainWindow.vala:317
+msgid "events"
+msgstr "कार्यक्रम"
+
+#: src/MainWindow.vala:157
+msgid "Pauses the timer for a log"
+msgstr "लॉग के लिए टाइमर को रोकता है"
+
+#: src/MainWindow.vala:359
+msgid "translator-credits"
+msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
+
+#: src/MainWindow.vala:450
+msgid "Go rest for a while before continuing."
+msgstr "आगे बढ़ने से पहले कुछ देर आराम करें।"
+
+#: src/MainWindow.vala:459
+msgid "Maybe grab a snack before continuing."
+msgstr "आगे बढ़ने से पहले शायद नाश्ता करें।"
+
+#: src/MainWindow.vala:468
+msgid "Perhaps go get some coffee or tea before continuing."
+msgstr "शायद जारी रखने से पहले कुछ कॉफी या चाय ले आएं।"
+
+#: src/MainWindow.vala:477
+msgid "That's a big task. Let's rest a bit before continuing."
+msgstr "यह एक बड़ा काम है। आइए आगे बढ़ने से पहले थोड़ा आराम करें।"
+
+#: src/MainWindow.vala:486
+msgid "Amazing work! But please rest a bit before continuing."
+msgstr "अद्भुत कार्य! लेकिन कृपया जारी रखने से पहले थोड़ा आराम करें।"
+
+#: src/Services/Dialog.vala:23 src/Services/Dialog.vala:44
+msgid "CSV files"
+msgstr "CSV फाइलें"
+
+#: src/Services/Dialog.vala:27 src/Services/Dialog.vala:48
+msgid "All files"
+msgstr "सभी फाइलें"
+
+#: src/ViewModels/LogViewModel.vala:50
+msgid "Clear Logs?"
+msgstr "लॉग साफ करें?"
+
+#: src/ViewModels/LogViewModel.vala:51
+msgid "Clearing means the logs here will be permanently lost with no recovery."
+msgstr "साफ करने का मतलब है कि यहां लॉग बिना किसी पुनर्प्राप्ति के स्थायी रूप से खो जाएंगे।"
+
+#: src/ViewModels/LogViewModel.vala:52
+msgid "Cancel"
+msgstr "रद्द करें"
+
+#: src/ViewModels/LogViewModel.vala:53
+msgid "Clear"
+msgstr "साफ करें"
