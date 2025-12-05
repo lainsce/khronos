@@ -46,7 +46,7 @@
       <value key="GnomeSoftware::key-colors">[(145, 65, 172)]</value>
     </custom>
     <translation type="gettext">@app_id@</translation>
-    <launchable type="desktop-id">io.github.lainsce.Khronos.desktop</launchable>
+    <launchable type="desktop-id">@app_id@.desktop</launchable>
     <releases>
         <release version="4.0.1" date="2023-10-11">
             <description>
